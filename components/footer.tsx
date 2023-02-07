@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import { InstagramIcon, FacebookIcon, TwitterIcon } from './icons'
-import { LinkTypes, Link_part1, Link_part2, Link_part3, Link_part4 } from './constants/footer'
+import { LinkTypes, Link_part1, Link_part2, Link_part3, Link_part4 } from './constants/Links'
 
 export default function Footer() {
     const router = useRouter();

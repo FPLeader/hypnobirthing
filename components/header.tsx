@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import { DropdownIcon, WorldIcon } from './icons'
-import { LinkTypes, Link_part1, Link_part2, Link_part3, Link_part4 } from './constants/footer'
+import { LinkTypes, Link_part1, Link_part2, Link_part3, Link_part4 } from './constants/Links'
 
 export default function Header() {
     const router = useRouter();
@@ -15,7 +15,9 @@ export default function Header() {
     return (
         <main className='w-full flex justify-center text-dark bg-white fixed border-b border-deviders py-3.5 z-10'>
             <div className='max-w-[1536px] w-full flex items-center justify-between'>
-                <img src='/img/logo.png' alt='Logo' className='w-[170px] h-[65px]' />
+                <div className='cursor-pointer selcet-none' onClick={() => router.push('/')}>
+                    <img src='/img/logo.png' alt='Logo' className='w-[170px] h-[65px]' />
+                </div>
                 <div className='flex items-center gap-8'>
                     <div className={style.dropDownWrapper}>
                         HypnoBirthing
