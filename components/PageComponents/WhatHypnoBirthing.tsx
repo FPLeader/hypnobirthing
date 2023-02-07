@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function AboutUsPage() {
+export default function WhatHypnoBirthing() {
     return (
         <div className='max-w-[1536px] m-auto min-h-screen pt-[90px]'>
             <div className='text-center text-[60px]'>
-                About us page
+                WHAT IS HYPNOBIRTHING?
             </div>
         </div>
     )

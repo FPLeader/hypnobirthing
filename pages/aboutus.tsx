@@ -1,8 +1,8 @@
 import React from 'react'
-import Aboutuspage from '@/components/pages/Aboutuspage'
+import {AboutUsPage} from '@/components/PageComponents'
 
 export default function aboutus() {
     return (
-        <Aboutuspage />
+        <AboutUsPage />
     )
 }

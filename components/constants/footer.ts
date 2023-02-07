@@ -3,13 +3,13 @@ export interface LinkTypes {
     name: string;
 }
 
-export const FooterLink_part1: LinkTypes[] = [
+export const Link_part1: LinkTypes[] = [
     {
         name: 'HypnoBirthing',
         link: 'title'
     },
     {
-        link: '/',
+        link: '/whathypno',
         name: 'What is HypnoBirthing?'
     },
     {
@@ -34,7 +34,7 @@ export const FooterLink_part1: LinkTypes[] = [
     }
 ]
 
-export const FooterLink_part2: LinkTypes[] = [
+export const Link_part2: LinkTypes[] = [
     {
         name: 'For Parents',
         link: 'title'
@@ -73,7 +73,7 @@ export const FooterLink_part2: LinkTypes[] = [
     }
 ]
 
-export const FooterLink_part3: LinkTypes[] = [
+export const Link_part3: LinkTypes[] = [
     {
         name: 'For Professionals',
         link: 'title'
@@ -96,7 +96,7 @@ export const FooterLink_part3: LinkTypes[] = [
     }
 ]
 
-export const FooterLink_part4: LinkTypes[] = [
+export const Link_part4: LinkTypes[] = [
     {
         name: 'Blog',
         link: 'title'

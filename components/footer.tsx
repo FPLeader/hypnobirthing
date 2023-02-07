@@ -1,8 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import { InstagramIcon, FacebookIcon, TwitterIcon } from './icons'
-import { FooterLink_part1, FooterLink_part2, FooterLink_part3, FooterLink_part4 } from './constants/footer'
-import { LinkTypes } from './constants/footer'
+import { LinkTypes, Link_part1, Link_part2, Link_part3, Link_part4 } from './constants/footer'
 
 export default function Footer() {
     const router = useRouter();
@@ -33,28 +32,28 @@ export default function Footer() {
                 </div>
                 <div className='flex flex-wrap justify-between w-full lg:w-9/12 relative'>
                     <div className={style.linkPartStyle}>
-                        {FooterLink_part1.map((obj: LinkTypes, index: number) => (
+                        {Link_part1.map((obj: LinkTypes, index: number) => (
                             <div key={index} className={`${index === 0 ? 'text-lg pb-4' : 'cursor-pointer uppercase text-sm pb-3'}`} onClick={() => index !== 0 && router.push(obj.link)}>
                                 {obj.name}
                             </div>
                         ))}
                     </div>
                     <div className={style.linkPartStyle}>
-                        {FooterLink_part2.map((obj: LinkTypes, index: number) => (
+                        {Link_part2.map((obj: LinkTypes, index: number) => (
                             <div key={index} className={`${index === 0 ? 'text-lg pb-4' : 'cursor-pointer uppercase text-sm pb-3'}`} onClick={() => index !== 0 && router.push(obj.link)}>
                                 {obj.name}
                             </div>
                         ))}
                     </div>
                     <div className={style.linkPartStyle}>
-                        {FooterLink_part3.map((obj: LinkTypes, index: number) => (
+                        {Link_part3.map((obj: LinkTypes, index: number) => (
                             <div key={index} className={`${index === 0 ? 'text-lg pb-4' : 'cursor-pointer uppercase text-sm pb-3'}`} onClick={() => index !== 0 && router.push(obj.link)}>
                                 {obj.name}
                             </div>
                         ))}
                     </div>
                     <div className={style.linkPartStyle}>
-                        {FooterLink_part4.map((obj: LinkTypes, index: number) => (
+                        {Link_part4.map((obj: LinkTypes, index: number) => (
                             <div key={index} className={`${index === 0 ? 'text-lg pb-4' : 'cursor-pointer uppercase text-sm pb-3'}`} onClick={() => index !== 0 && router.push(obj.link)}>
                                 {obj.name}
                             </div>
