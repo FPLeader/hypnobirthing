@@ -1,0 +1,22 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      'dark': '#252525',
+      'Label': '#A3A09E',
+      'deviders': '#D1CECC',
+      'beighe': '#DFD3BC',
+      'bcg_2': '#F5EBE9',
+      'bcg': '#FFFAFA',
+      'white': '#FFFFFF',
+    },
+  },
+  plugins: [],
+}
