@@ -9,7 +9,7 @@ export default function Header() {
     const style = {
         dropDownWrapper: 'uppercase flex items-center gap-2 cursor-pointer py-2 group relative select-none',
         dropDownInner: 'absolute hidden group-hover:flex flex-col py-2 border border-deviders rounded-md shadow-md top-10 bg-white',
-        dropDownItem: 'min-w-[150px] hover:bg-bcg_2 px-4 py-1',
+        dropDownItem: 'normal-case min-w-[150px] hover:bg-bcg_2 px-4 py-1',
     }
 
     return (

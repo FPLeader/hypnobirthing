@@ -103,7 +103,7 @@ export const Link_part4: LinkTypes[] = [
     },
     {
         name: 'Articles',
-        link: '/articles',
+        link: '/article',
     },
     {
         name: 'Birth stories',
