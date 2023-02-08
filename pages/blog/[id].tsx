@@ -38,6 +38,7 @@ export default function Blog() {
     return (
         <div>
             <Banner image='/img/birthBanner.png' title={blogdata.title} />
+            {/* <Banner image='/img/blue.png' title={blogdata.title} /> */}
             <div className='max-w-[1536px] m-auto'>
                 <div className='text-dark font-light italic text-[60px] pt-[69px] pb-[30px]'>{blogdata.header}</div>
                 <div className='md:flex grid gap-y-[60px]'>
