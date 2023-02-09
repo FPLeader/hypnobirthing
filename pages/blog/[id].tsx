@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router'
-import { Banner } from '@/components/Sections'
-import { PromoteBlogs, ComingChildBirth, MoreBirthStories } from '@/components/Sections'
+import { Banner, PromoteBlogs, ComingChildBirth, MoreBirthStories } from '@/components/Sections'
 
 export default function Blog() {
     const router = useRouter()
@@ -37,8 +36,7 @@ export default function Blog() {
 
     return (
         <div>
-            <Banner image='/img/birthBanner.png' title={blogdata.title} />
-            {/* <Banner image='/img/blue.png' title={blogdata.title} /> */}
+            <Banner title={blogdata.title} />
             <div className='max-w-[1536px] m-auto'>
                 <div className='text-dark font-light italic text-[60px] pt-[69px] pb-[30px]'>{blogdata.header}</div>
                 <div className='md:flex grid gap-y-[60px]'>
@@ -63,5 +61,4 @@ export default function Blog() {
             </div>
         </div>
     )
-
 }
