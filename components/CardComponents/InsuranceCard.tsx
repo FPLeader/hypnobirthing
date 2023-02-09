@@ -16,7 +16,7 @@ export default function InsuranceCard({
             <div className='text-2xl text-medium '>{title}</div>
             {list ?
                 <ul className='list-disc pl-[20px]'>
-                    {contents.map((obj: string, index: number) => (
+                    {contents?.map((obj: string, index: number) => (
                         <li key={index} className='text-lg'>{obj}</li>
                     ))}
                 </ul>
