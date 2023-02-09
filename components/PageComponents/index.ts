@@ -15,3 +15,8 @@ export { default as OurCommunityPage } from './OurCommunity'
 //Blog
 export { default as ArticlePage } from './Article'
 export { default as BlogPage } from './Blog'
+
+//Store
+
+//Contact
+export { default as ContactPage } from './Contact'
