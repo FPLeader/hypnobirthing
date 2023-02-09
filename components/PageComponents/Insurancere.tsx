@@ -21,8 +21,8 @@ export default function Insurancere() {
                         </div>
                         <div>
                             <div className='grid grid-cols-2 grid-flow-row gap-[35px]'>
-                                {InsuranceCards.map((obj: InsuranceCardType, index) => (
-                                    <InsuranceCard key={index} title={obj.title} content={obj.content} list={obj?.list} contents={obj?.contents} />
+                                {InsuranceCards.map((obj: InsuranceCardType, index:number) => (
+                                    <InsuranceCard key={index} title={obj.title} content={obj.content} list={obj.list} contents={obj?.contents} />
                                 ))}
                             </div>
                         </div>

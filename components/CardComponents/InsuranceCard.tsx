@@ -1,7 +1,7 @@
 interface InsuranceCardProps {
     title: string;
     content: string;
-    list?: boolean;
+    list: boolean;
     contents?: string[];
 }
 

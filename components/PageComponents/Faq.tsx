@@ -1,6 +1,6 @@
 import { Banner, PromoteBlogs, ComingChildBirth } from '@/components/Sections'
-import { FaqData, FaqType } from '../constants/FaqData';
-import { FaqItem } from '../other';
+import { FaqData, FaqType } from '../constants/FaqData'
+import { FaqItem } from '../other'
 
 export default function Faq() {
     return (
