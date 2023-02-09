@@ -9,7 +9,7 @@ export default function OurCommunity() {
         <>
             <div className='max-w-[1536px] m-auto min-h-screen pt-[90px]'>
                 <div className='pt-[50px] relative'>
-                    <div className='text-6xl font-light italic'>
+                    <div className='text-6xl text-dark font-light italic'>
                         Our Community
                     </div>
                     <div className='text-base max-w-[800px] pt-5'>
