@@ -38,7 +38,7 @@ export default function Blog({
     }
 
     return (
-        <div>
+        <>
             <Banner title={blogdata.title} />
             <div className='max-w-[1536px] m-auto'>
                 <div className='text-dark font-light italic text-[60px] pt-[69px] pb-[30px]'>{blogdata.header}</div>
@@ -62,6 +62,6 @@ export default function Blog({
             <div className='pt-[40px]'>
                 <ComingChildBirth />
             </div>
-        </div>
+        </>
     )
 }

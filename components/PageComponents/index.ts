@@ -9,6 +9,7 @@ export { default as AboutUsPage } from './AboutUs'
 export { default as FaqPage } from './Faq'
 export { default as InsurancerePage } from './Insurancere'
 export { default as OurCommunityPage } from './OurCommunity'
+
 //For Professionals
 
 //Blog

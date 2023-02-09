@@ -135,3 +135,48 @@ export const BlogCards: BlogCardType[] = [
         author: 'Sharon Peled'
     }
 ]
+
+export interface InsuranceCardType {
+    title: string;
+    content: string;
+    list?: boolean;
+    contents?: string[];
+}
+
+export const InsuranceCards: InsuranceCardType[] = [
+    {
+        title: 'Clalit health insurance: *2700 or 1-222-2700',
+        content: 'Platinum customers can receive a 75% refund for a private childbirth preparation course',
+    },
+    {
+        title: 'Meuhedet (United) health insurance: *3833 or 077-2703716',
+        content: `"Peak" customers will receive a refund of up to 50% or NIS 416, whichever is lower - the policy of the United Health Insurance Fund is not completely clear these days. Please check with the insurance system 03-5202323 the eligibility for a refund.`
+    },
+    {
+        title: 'Leumit Health Care Services',
+        content: '',
+        list: true,
+        contents: [
+            `Silver Leumit Insurance (page 11) - 80% refund up to NIS 226.`,
+            `Gold Leumit Insurance (page 11) - 80% refund up to NIS 282`
+        ]
+    },
+    {
+        title: 'Maccabi health fund - *3555',
+        content: `My Maccabi customers “Maccabi Sheli” - 75% refund for a childbirth preparation course`
+    }
+]
+
+export const InsuranceText1 = [
+    `This information was obtained from different insurance companies.`,
+    `Please note that the policies listed are valid as of 31.12.22.`,
+    `Sometimes there are changes in the company policy, it is very important to verify personally with your insurance so that you make sure to receive your refund.`
+]
+
+export const InsuranceText2 = [
+    `Generally the refunds from “Kupot Holim” are part of the “pregnancy basket” (sal herayon). So refunds will vary depending on one’s individual use of the basket.`,
+    `Please attach the course receipts to your refund request.`,
+    `The data written above is data that we received from the health insurance funds and Pashut Laledet has no responsibility for its validity.`,
+    `Things change from time to time, so it is highly recommended to check directly with the health insurance companies what exactly you are entitled to.`,
+    `Some private insurance companies also allow you to receive a refund, so it is highly recommended for those with private medical insurance to check eligibility for refunds.`
+]
