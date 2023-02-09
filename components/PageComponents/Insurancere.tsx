@@ -1,4 +1,4 @@
-import { InsurancecCard } from '../CardComponents'
+import { InsuranceCard } from '../CardComponents'
 import { InsuranceCardType, InsuranceCards, InsuranceText1, InsuranceText2 } from '../constants/CardsData'
 import { PromoteBlogs, ComingChildBirth } from '@/components/Sections'
 
@@ -22,7 +22,7 @@ export default function Insurancere() {
                         <div>
                             <div className='grid grid-cols-2 grid-flow-row gap-[35px]'>
                                 {InsuranceCards.map((obj: InsuranceCardType, index) => (
-                                    <InsurancecCard key={index} title={obj.title} content={obj.content} list={obj?.list} contents={obj?.contents} />
+                                    <InsuranceCard key={index} title={obj.title} content={obj.content} list={obj?.list} contents={obj?.contents} />
                                 ))}
                             </div>
                         </div>
