@@ -2,7 +2,7 @@ import { Banner, PromoteBlogs, ComingChildBirth } from '@/components/Sections'
 import { FaqData, FaqType } from '../constants/FaqData';
 import { FaqItem } from '../other';
 
-export default function FaqPage() {
+export default function Faq() {
     return (
         <>
             <Banner title={'Frequently Asked Questions'} textStyle='center' />

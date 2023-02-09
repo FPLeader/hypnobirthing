@@ -1,7 +1,7 @@
-import { OurCommunity } from '@/components/PageComponents'
+import { OurCommunityPage } from '@/components/PageComponents'
 
 export default function ourteachers() {
     return (
-        <OurCommunity />
+        <OurCommunityPage />
     )
 }

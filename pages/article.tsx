@@ -1,7 +1,7 @@
-import { Article } from '@/components/PageComponents'
+import { ArticlePage } from '@/components/PageComponents'
 
 export default function article() {
     return (
-        <Article />
+        <ArticlePage />
     )
 }

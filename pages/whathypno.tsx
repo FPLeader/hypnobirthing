@@ -1,7 +1,7 @@
-import {WhatHypnoBirthing} from '@/components/PageComponents'
+import { WhatHypnoBirthingPage } from '@/components/PageComponents'
 
 export default function whathypno() {
     return (
-        <WhatHypnoBirthing />
+        <WhatHypnoBirthingPage />
     )
 }
