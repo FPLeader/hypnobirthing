@@ -157,11 +157,11 @@ export const InsuranceCards: InsuranceCardType[] = [
     {
         title: 'Leumit Health Care Services',
         content: '',
-        list: false,
-        // contents: [
-        //     `Silver Leumit Insurance (page 11) - 80% refund up to NIS 226.`,
-        //     `Gold Leumit Insurance (page 11) - 80% refund up to NIS 282`
-        // ]
+        list: true,
+        contents: [
+            `Silver Leumit Insurance (page 11) - 80% refund up to NIS 226.`,
+            `Gold Leumit Insurance (page 11) - 80% refund up to NIS 282`
+        ]
     },
     {
         title: 'Maccabi health fund - *3555',
