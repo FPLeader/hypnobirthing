@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { ArrowDownIcon, ArrowUpIcon } from '../icons';
 import { useSpring, animated } from 'react-spring';

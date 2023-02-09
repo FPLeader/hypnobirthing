@@ -1,4 +1,3 @@
-
 import { BlogData, BlogType } from './constants/BlogData'
 
 export default function PromoteBlogs() {

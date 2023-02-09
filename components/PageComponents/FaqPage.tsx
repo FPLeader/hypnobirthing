@@ -1,4 +1,3 @@
-
 import { Banner, PromoteBlogs, ComingChildBirth } from '@/components/Sections'
 import { FaqData, FaqType } from '../constants/FaqData';
 import { FaqItem } from '../other';

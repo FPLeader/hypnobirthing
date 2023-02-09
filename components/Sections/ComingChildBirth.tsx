@@ -1,5 +1,3 @@
-
-
 export default function ComingChildBirth() {
   return (
     <div className='w-full h-[232px] bg-bcg_2'>

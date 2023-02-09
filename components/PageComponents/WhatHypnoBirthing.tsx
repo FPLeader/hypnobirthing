@@ -1,5 +1,3 @@
-
-
 export default function WhatHypnoBirthing() {
     return (
         <div className='max-w-[1536px] m-auto min-h-screen pt-[90px]'>

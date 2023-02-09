@@ -1,4 +1,3 @@
-
 import BlogCard from './BlogCard'
 import { MoreBlogData, MoreBlogType } from '../constants/BlogData'
 

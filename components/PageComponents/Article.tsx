@@ -1,4 +1,3 @@
-
 import { SelectButton, SearchButton } from '../ButtonComponents'
 import { BlogCard } from '../CardComponents'
 import { BlogCards, BlogCardType } from '../constants/CardsData'

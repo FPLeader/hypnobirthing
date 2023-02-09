@@ -1,4 +1,3 @@
-
 import Carousel from 'react-multi-carousel';
 import { CreateSlider } from './constants/BannerImages';
 

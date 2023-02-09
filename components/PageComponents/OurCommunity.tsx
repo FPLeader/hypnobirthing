@@ -1,4 +1,3 @@
-
 import { SelectButton, SearchButton } from '../ButtonComponents'
 import { CommunityCard } from '../CardComponents'
 import { CommunityCards, CommunityCardType } from '../constants/CardsData'

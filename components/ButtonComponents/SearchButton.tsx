@@ -1,5 +1,3 @@
-
-
 export default function SearchButton() {
     return (
         <div className='flex items-center w-full'>

@@ -1,5 +1,3 @@
-
-
 interface CommunityCardProps {
   image: string;
   name: string;
