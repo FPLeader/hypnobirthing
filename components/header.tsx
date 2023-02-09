@@ -12,7 +12,7 @@ export default function Header() {
     }
 
     return (
-        <main className='w-full h-[90px] flex justify-center items-center text-dark bg-white fixed border-b border-deviders z-10'>
+        <main className='w-full h-[90px] flex justify-center items-center text-dark bg-bcg fixed border-b border-deviders z-10'>
             <div className='max-w-[1536px] w-full flex items-center justify-between'>
                 <div className='cursor-pointer selcet-none' onClick={() => router.push('/')}>
                     <img src='/img/logo.png' alt='Logo' className='w-[170px] h-[65px]' />
