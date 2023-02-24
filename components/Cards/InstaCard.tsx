@@ -11,7 +11,7 @@ export default function InstaCard({
 }: InstaCardProps) {
 
     return (
-        <a href={link} target='_blank' rel='noopner'>
+        <a href={link} target='_blank' rel='noreferrer'>
             <div className='select-none cursor-pointer relative group'>
                 <img src={image} alt='' className='w-full h-full' />
                 <div className='w-full h-full flex justify-center items-center absolute top-0 left-0'>
