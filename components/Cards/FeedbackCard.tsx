@@ -1,4 +1,4 @@
-import ReactStars from 'react-rating-stars-component';
+import ReactStars from 'react-rating-stars-component'
 
 interface FeedbackCardProps {
   rating: number,
@@ -14,7 +14,7 @@ export default function FeedbackCard({
   return (
     <div className='w-full flex flex-col items-center justify-center'>
       <ReactStars
-        count={5}
+        count={rating ? rating : 5}
         size={32}
         edit={false}
         fullIcon={<i className='fa fa-star'></i>}
