@@ -14,7 +14,7 @@ export default function FeedbackCard({
   return (
     <div className='w-full flex flex-col items-center justify-center'>
       <ReactStars
-        count={rating ? rating : 5}
+        count={5}
         size={32}
         edit={false}
         fullIcon={<i className='fa fa-star'></i>}
