@@ -10,7 +10,7 @@ export default function InstagramSection() {
         <div className='opacity-20'>
           <InstagramIcon width={36} height={36} color='gray' />
         </div>
-        <div className='text-dark text-[12px] md:text-[18px] lg:text-[28px] font-light italic'>We're on Instagram</div>
+        <div className='text-dark text-[12px] md:text-[18px] lg:text-[28px] font-light italic'>We&apos;re on Instagram</div>
         <div className='text-dark text-[10px] md:text-[12px] lg:text-[14px] font-semibold'>@pashutlaledet</div>
       </div>
       <InstaCard image='img/insta.png' link='https://asdf.com' />
