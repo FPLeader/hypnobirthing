@@ -87,27 +87,6 @@ a {
   text-decoration: none;
 }
 
-/* react-multi-carousel */
-.react-multi-carousel-list {
-  display: flex;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.react-multi-carousel-track {
-  backface-visibility: hidden;
-  display: flex;
-  flex-direction: row;
-  margin: 0;
-  padding: 0;
-  position: relative;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  will-change: transform, transition;
-  list-style: none;
-}
-
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

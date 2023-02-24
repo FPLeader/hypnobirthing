@@ -1,0 +1,7 @@
+export { default as CommunityCard } from './CommunityCard'
+export { default as BlogCard } from './BlogCard'
+export { default as InsuranceCard } from './InsuranceCard'
+export { default as UpcomingCard } from './UpcomingCard'
+export { default as InstaCard } from './InstaCard'
+export { default as ProductCard } from './ProductCard'
+export { default as FeedbackCard } from './FeedbackCard'

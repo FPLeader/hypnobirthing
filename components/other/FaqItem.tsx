@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowDownIcon, ArrowUpIcon } from '../icons';
+import { ArrowDownIcon, ArrowUpIcon } from '@/assests/Icons';
 import { useSpring, animated } from 'react-spring';
 
 interface FaqItemProps {

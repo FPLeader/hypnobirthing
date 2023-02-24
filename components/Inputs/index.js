@@ -1,0 +1,1 @@
+export {default as SubmitInput} from './SubmitInput'

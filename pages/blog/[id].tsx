@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { BlogPage } from '@/components/PageComponents'
+import { BlogPage } from '@/components/Pages'
 
 export default function Blog() {
     const router = useRouter()

@@ -1,4 +1,4 @@
-import { OurCommunityPage } from '@/components/PageComponents'
+import { OurCommunityPage } from '@/components/Pages'
 
 export default function ourteachers() {
     return (

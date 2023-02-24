@@ -1,4 +1,4 @@
-import {InsurancerePage} from '@/components/PageComponents'
+import {InsurancerePage} from '@/components/Pages'
 
 export default function insurancerefunds() {
     return (

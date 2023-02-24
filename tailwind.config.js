@@ -4,6 +4,7 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
+    "./layouts/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     colors: {
@@ -15,6 +16,7 @@ module.exports = {
       'beighe': '#DFD3BC',
       'bcg_2': '#F5EBE9',
       'bcg': '#FFFAFA',
+      // 'gray': '#2B2525',
       'white': '#FFFFFF',
     },
     extend: {

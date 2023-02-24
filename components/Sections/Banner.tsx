@@ -1,4 +1,5 @@
 import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 import { CreateSlider } from './constants/BannerImages';
 
 interface BannerProps {
@@ -12,10 +13,6 @@ export default function Banner({
 }: BannerProps) {
 
     const responsive = {
-        superLargeDesktop: {
-            breakpoint: { max: 4000, min: 3000 },
-            items: 5
-        },
         desktop: {
             breakpoint: { max: 3000, min: 1280 },
             items: 1,
