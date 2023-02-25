@@ -11,7 +11,7 @@ export const FeedbackCards: FeedbackCardType[] = [
         name: 'Tawny Knight'
     },
     {
-        rating: 5,
+        rating: 4,
         title: `What an amazing method! So instinctive to what Mother's bodies are born to do!! Thanks!`,
         name: 'Tawny Knight'
     },

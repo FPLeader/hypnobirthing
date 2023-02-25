@@ -7,7 +7,7 @@ export default function SubmitSection() {
       <img src='/img/submit.png' alt='' className='w-full min-h-[300px]' />
       <div className='absolute w-full top-[30px] lg:top-[75px] flex flex-col items-center gap-y-[20px] md:gap-y-[30px]'>
         <div className='text-dark text-[32px] md:text-[40px] lg:text-[60px] font-light italic'>Free Relaxation Gift</div>
-        <div className='flex items-center flex-col md:flex-row gap-[15px]'>
+        <div className='w-full flex items-center flex-col md:justify-center  md:flex-row gap-[15px]'>
           <SubmitInput placeholder='Enter email address' />
           <SubmitButton text='Submit' />
         </div>

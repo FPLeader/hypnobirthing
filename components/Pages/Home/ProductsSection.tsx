@@ -1,7 +1,7 @@
-import { HomeTitle } from '@/components/Titles'
-import { RegularButton } from '@/components/Buttons'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { HomeTitle } from '@/components/Titles'
+import { RegularButton } from '@/components/Buttons'
 import { ProductCards, ProductCardType } from '@/services/Constants/Home/ProductCardsData'
 import { ProductCard } from '@/components/Cards';
 

@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { DropdownIcon, WorldIcon } from '@/assests/Icons'
-import { LinkTypes, Link_part1, Link_part2, Link_part3, Link_part4 } from '@/services/Constants/Links'
+import { LinkType, LinkPart1, LinkPart2, LinkPart3, LinkPart4 } from '@/services/Constants/Links'
 
 export default function Header() {
     const router = useRouter();
@@ -22,7 +22,7 @@ export default function Header() {
                         HypnoBirthing
                         <DropdownIcon />
                         <div className={style.dropDownInner}>
-                            {Link_part1.map((obj: LinkTypes, index: number) => (
+                            {LinkPart1.map((obj: LinkType, index: number) => (
                                 <div key={index} className={`${index === 0 ? 'hidden' : `${style.dropDownItem}`}`} onClick={() => index !== 0 && router.push(obj.link)}>
                                     {obj.name}
                                 </div>
@@ -33,7 +33,7 @@ export default function Header() {
                         For Parents
                         <DropdownIcon />
                         <div className={style.dropDownInner}>
-                            {Link_part2.map((obj: LinkTypes, index: number) => (
+                            {LinkPart2.map((obj: LinkType, index: number) => (
                                 <div key={index} className={`${index === 0 ? 'hidden' : `${style.dropDownItem}`}`} onClick={() => index !== 0 && router.push(obj.link)}>
                                     {obj.name}
                                 </div>
@@ -44,7 +44,7 @@ export default function Header() {
                         For Professionals
                         <DropdownIcon />
                         <div className={style.dropDownInner}>
-                            {Link_part3.map((obj: LinkTypes, index: number) => (
+                            {LinkPart3.map((obj: LinkType, index: number) => (
                                 <div key={index} className={`${index === 0 ? 'hidden' : `${style.dropDownItem}`}`} onClick={() => index !== 0 && router.push(obj.link)}>
                                     {obj.name}
                                 </div>
@@ -55,7 +55,7 @@ export default function Header() {
                         Blog
                         <DropdownIcon />
                         <div className={style.dropDownInner}>
-                            {Link_part4.map((obj: LinkTypes, index: number) => (
+                            {LinkPart4.map((obj: LinkType, index: number) => (
                                 <div key={index} className={`${index === 0 ? 'hidden' : `${style.dropDownItem}`}`} onClick={() => index !== 0 && router.push(obj.link)}>
                                     {obj.name}
                                 </div>

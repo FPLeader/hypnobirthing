@@ -1,9 +1,9 @@
-export interface LinkTypes {
+export interface LinkType {
     link: string;
     name: string;
 }
 
-export const Link_part1: LinkTypes[] = [
+export const LinkPart1: LinkType[] = [
     {
         name: 'HypnoBirthing',
         link: 'title'
@@ -34,7 +34,7 @@ export const Link_part1: LinkTypes[] = [
     }
 ]
 
-export const Link_part2: LinkTypes[] = [
+export const LinkPart2: LinkType[] = [
     {
         name: 'For Parents',
         link: 'title'
@@ -73,7 +73,7 @@ export const Link_part2: LinkTypes[] = [
     }
 ]
 
-export const Link_part3: LinkTypes[] = [
+export const LinkPart3: LinkType[] = [
     {
         link: 'title',
         name: 'For Professionals',
@@ -96,7 +96,7 @@ export const Link_part3: LinkTypes[] = [
     }
 ]
 
-export const Link_part4: LinkTypes[] = [
+export const LinkPart4: LinkType[] = [
     {
         link: 'title',
         name: 'Blog',

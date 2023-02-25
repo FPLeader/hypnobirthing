@@ -17,6 +17,7 @@ module.exports = {
       'bcg_2': '#F5EBE9',
       'bcg': '#FFFAFA',
       // 'gray': '#2B2525',
+      'gray_1': '#EBE6E6',
       'white': '#FFFFFF',
     },
     extend: {
