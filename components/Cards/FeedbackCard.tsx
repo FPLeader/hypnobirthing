@@ -1,4 +1,4 @@
-import ReactStars from 'react-stars'
+import ReactStars from 'next-react-stars'
 
 interface FeedbackCardProps {
   rating: number,
