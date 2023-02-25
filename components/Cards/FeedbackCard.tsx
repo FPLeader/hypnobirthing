@@ -1,4 +1,4 @@
-import ReactStars from 'next-react-stars'
+// import ReactStars from 'react-star-rating-component'
 
 interface FeedbackCardProps {
   rating: number,
@@ -13,12 +13,13 @@ export default function FeedbackCard({
 }: FeedbackCardProps) {
   return (
     <div className='w-full flex flex-col items-center justify-center'>
-      <ReactStars
+      {/* <ReactStars
         count={5}
-        size={24}
+        size={32}
         edit={false}
-        half={true}
-        color1={'#DFD3BC'} />
+        fullIcon={<i className='fa fa-star'></i>}
+        activeColor='beighe'
+      /> */}
       <div className='mt-[15px] flex flex-col items-center gap-y-[10px] text-dark text-center'>
         <div className='text-[20px]'>{title}</div>
         <div className='w-0 h-[15px] border-r-[1px] border-dark'></div>
