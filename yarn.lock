@@ -2355,6 +2355,11 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
+next-react-stars@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/next-react-stars/-/next-react-stars-2.2.3.tgz#01efab4a6fe39ae1d4328ee4a802cb2c293ac486"
+  integrity sha512-soY+1mLPDk9gPVzbi4Tu3cDds6267Ks5DBwmpSCrsaXUknqWuZdtCDd0g4z7/sQ7/THFAasFq9i5Oqz5cvoG6Q==
+
 next@13.1.6:
   version "13.1.6"
   resolved "https://registry.yarnpkg.com/next/-/next-13.1.6.tgz#054babe20b601f21f682f197063c9b0b32f1a27c"
@@ -2810,11 +2815,6 @@ react-spring@^9.6.1:
     "@react-spring/three" "~9.7.0"
     "@react-spring/web" "~9.7.0"
     "@react-spring/zdog" "~9.7.0"
-
-react-stars@^2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/react-stars/-/react-stars-2.2.5.tgz#911852018e1574a0f9a2c1dfa4f0bc9af071b921"
-  integrity sha512-O//KS6Z9RZnUOU/r+3+wxCzNalVn/wEWIcbAQFRV3dw8WbV+ys/kgcpBPijqTiNpHGrcwZdtb/7wF/UVem20CQ==
 
 react@18.2.0:
   version "18.2.0"
