@@ -1,4 +1,4 @@
-import {FaqPage} from '@/components/Pages'
+import { FaqPage } from '@/components/Pages'
 
 export default function aboutus() {
     return (
