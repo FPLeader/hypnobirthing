@@ -4,7 +4,6 @@ export default function Home() {
     return (
         <div className='pt-[90px]'>
             <BannerSection />
-            <AboveFold />
             <QuoteSection />
             <UpcomingSection />
             <WhatHypnoSection />
