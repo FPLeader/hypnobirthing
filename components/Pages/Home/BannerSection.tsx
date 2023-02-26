@@ -24,7 +24,7 @@ export default function BannerSection() {
     };
 
     return (
-        <div className='w-full relative max-md:h-[calc(100vh_-_70px)]'>
+        <div className='w-full relative max-md:h-[calc(100vh_-_70px)] max-md:min-h-[calc(100vw/1.86_+_221px)]'>
             <div className='w-full relative'>
                 <Carousel
                     autoPlay
