@@ -8,11 +8,11 @@ export default function SubmitInput({
 }: InputProps) {
     return (
         <div className='w-full md:max-w-[356px]'>
-            <div className='mx-[20px]'>
+            <div className='max-md:mx-[20px]'>
                 <input
                     type='text'
                     id=''
-                    className='w-full px-[24px] py-[11.5px] lg:py-[16.5px] bg-bcg_2 border-[1px] border-dark text-dark text-[Lato] text-[16px] rounded-[500px] placeholder:text-[#2B252590] placeholder:text-[Lato]'
+                    className='w-full px-[24px] py-[9.5px] lg:py-[16.5px] bg-bcg_2 border-[1px] border-dark text-dark text-[Lato] text-[16px] rounded-[500px] placeholder:text-[#2B252590] placeholder:text-[Lato] text-center md:text-left'
                     placeholder={placeholder ? placeholder : ''}
                     required
                 />

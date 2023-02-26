@@ -2,7 +2,7 @@ import { BannerSection, QuoteSection, UpcomingSection, WhatHypnoSection, BlogsSe
 
 export default function Home() {
     return (
-        <div className='pt-[90px]'>
+        <div className='pt-[70px] md:pt-[90px]'>
             <BannerSection />
             <QuoteSection />
             <UpcomingSection />

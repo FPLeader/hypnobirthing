@@ -7,7 +7,7 @@ import { PromoteBlogs, ComingChildBirth } from '../Sections'
 export default function OurCommunity() {
     return (
         <>
-            <div className='max-w-[1536px] m-auto min-h-screen pt-[90px]'>
+            <div className='max-w-[1536px] m-auto min-h-screen pt-[70px] md:pt-[90px]'>
                 <div className='pt-[50px] relative'>
                     <div className='text-6xl text-dark font-light italic'>
                         Our Community

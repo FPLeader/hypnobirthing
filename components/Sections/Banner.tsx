@@ -19,19 +19,19 @@ export default function Banner({
             slidesToSlide: 1
         },
         tablet: {
-            breakpoint: { max: 1280, min: 800 },
+            breakpoint: { max: 1280, min: 768 },
             items: 1,
             slidesToSlide: 1
         },
         mobile: {
-            breakpoint: { max: 800, min: 0 },
+            breakpoint: { max: 768, min: 0 },
             items: 1,
             slidesToSlide: 1
         }
     };
 
     return (
-        <div className='w-full relative pt-[90px]'>
+        <div className='w-full relative'>
             <Carousel
                 autoPlay
                 autoPlaySpeed={2000}

@@ -1,10 +1,10 @@
 import { Banner, PromoteBlogs, ComingChildBirth } from '@/components/Sections'
 import { FaqData, FaqType } from '@/services/Constants/FaqData'
-import { FaqItem } from '../other'
+import { FaqItem } from '../Other'
 
 export default function Faq() {
     return (
-        <>
+        <div className='pt-[70px] md:pt-[90px]'>
             <Banner title='Frequently Asked Questions' textStyle='center' />
             <div className='max-w-[1536px] m-auto pt-[70px]'>
                 <div className='max-w-[805px] grid gap-y-[16px] m-auto'>
@@ -19,6 +19,6 @@ export default function Faq() {
             <div className='pt-[40px]'>
                 <ComingChildBirth />
             </div>
-        </>
+        </div>
     )
 }

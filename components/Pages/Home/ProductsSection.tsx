@@ -14,12 +14,12 @@ export default function ProductsSection() {
       slidesToSlide: 1
     },
     tablet: {
-      breakpoint: { max: 1280, min: 800 },
+      breakpoint: { max: 1280, min: 768 },
       items: 3,
       slidesToSlide: 1
     },
     mobile: {
-      breakpoint: { max: 800, min: 0 },
+      breakpoint: { max: 768, min: 0 },
       items: 1,
       slidesToSlide: 1
     }
