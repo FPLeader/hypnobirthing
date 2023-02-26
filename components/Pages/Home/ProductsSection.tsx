@@ -26,7 +26,7 @@ export default function ProductsSection() {
   };
 
   return (
-    <div className='py-[60px] md:py-[80px] lg:py-[160px] mx-[20px] flex justify-center'>
+    <div className='py-[20px] md:py-[80px] lg:py-[160px] mx-[20px] flex justify-center'>
       <div className='max-w-[1536px] w-full'>
         <div className='md:flex md:justify-between md:items-end w-full'>
           <HomeTitle text='Popular Products' />
@@ -34,7 +34,7 @@ export default function ProductsSection() {
             <RegularButton text='store' />
           </div>
         </div>
-        <div className='mt-[70px]'>
+        <div className='mt-[20px] md:mt-[70px]'>
           <Carousel
             autoPlay
             autoPlaySpeed={3000}
@@ -53,7 +53,7 @@ export default function ProductsSection() {
               ))
             }
           </Carousel>
-          <div className='flex justify-center mt-[48px] block md:hidden'>
+          <div className='flex justify-center mt-[20px] md:mt-[48px] block md:hidden'>
             <RegularButton text='store' />
           </div>
         </div>

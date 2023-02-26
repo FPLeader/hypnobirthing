@@ -17,10 +17,10 @@ export default function Footer() {
         <main className='w-full bg-beighe text-dark flex justify-center'>
             <div className='mx-[20px] w-full max-w-[1536px]'>
                 <div className='w-full flex flex-col md:flex-row justify-center md:justify-between md:gap-x-[40px]'>
-                    <div className='w-full flex flex-row justify-between min-[]: md:w-5/12 lg:w-3/12 gap-x-[15px] md:flex-col mt-[39px] md:mt-[49px]'>
+                    <div className='w-full flex flex-row justify-between md:w-5/12 lg:w-3/12 gap-x-[15px] md:flex-col mt-[39px] md:mt-[49px]'>
                         <div>
                             <img src='/img/logo.png' alt='Logo' className='w-[230px]' />
-                            <div className='text-base max-w-[277px] text-base mt-[15px]'>
+                            <div className='text-[16px] max-w-[277px] text-base mt-[15px]'>
                                 Rights reserved to Pashut Laledet - the Israeli Childbirth Education Center for calm birthing.
                             </div>
                         </div>

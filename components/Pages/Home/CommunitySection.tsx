@@ -3,7 +3,7 @@ import { RegularButton } from '@/components/Buttons'
 
 export default function CommunitySection() {
   return (
-    <div className='py-[60px] md:py-[80px] lg:py-[160px] flex justify-center bg-bcg_2'>
+    <div className='py-[20px] md:py-[80px] lg:py-[160px] flex justify-center bg-bcg_2'>
       <div className='max-w-[1536px] mx-[20px]'>
         <div className='md:flex md:justify-between md:items-end w-full'>
           <HomeTitle text='Our Professional Community' />
@@ -11,7 +11,7 @@ export default function CommunitySection() {
             <RegularButton text='read more' />
           </div>
         </div>
-        <div className='mt-[70px] flex flex-col md:flex-row justify-between items-center gap-x-[70px] gap-y-[25px]'>
+        <div className='mt-[20px] md:mt-[70px] flex flex-col md:flex-row justify-between items-center gap-x-[70px] gap-y-[25px]'>
           <div className='relative w-full md:w-5/12 min-w-auto md:min-w-[400px]'>
             <img src='/img/community.png' alt='' className='w-full' />
             <div className='absolute bottom-[10px] left-[17px] text-white'>photo by Shelley Lawnikanus</div>
@@ -28,7 +28,7 @@ export default function CommunitySection() {
             </div>
           </div>
         </div>
-        <div className='flex justify-center mt-[25px] block md:hidden'>
+        <div className='flex justify-center mt-[20px] block md:hidden'>
           <RegularButton text='read more' />
         </div>
       </div>

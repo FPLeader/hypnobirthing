@@ -14,11 +14,11 @@ export default function FeedbackCard({
   return (
     <div className='w-full flex flex-col items-center justify-center'>
       {/* <ReactStars
-        count={5}
-        size={32}
+        starCount={5}
+        size={31}
         edit={false}
         fullIcon={<i className='fa fa-star'></i>}
-        activeColor='beighe'
+        activeColor='#DFD3BC'
       /> */}
       <div className='mt-[15px] flex flex-col items-center gap-y-[10px] text-dark text-center'>
         <div className='text-[20px]'>{title}</div>

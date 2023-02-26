@@ -39,7 +39,7 @@ export default function BannerSection() {
                 >
                     {CreateSlider.map((slider: string, index: number) => {
                         return (
-                            <img key={index} src={slider} alt={'slider-image' + index} className='image-carousel w-full min-h-[350px] max-h-[770px]' draggable={false} />
+                            <img key={index} src={slider} alt={'slider-image' + index} className='image-carousel w-full' draggable={false} />
                         )
                     })}
                 </Carousel>
@@ -47,7 +47,7 @@ export default function BannerSection() {
                     <div className='text-white text-[14px]'>photo by Shelley Lawnikanus</div>
                 </div>
             </div>
-            <div className='w-full px-[20px] md:px-0 mt-[20px] md:absolute md:bottom-[76px] flex flex-col items-center text-center'>
+            <div className='w-full px-[20px] hidden md:px-0 mt-[20px] md:absolute md:bottom-[76px] md:flex flex-col items-center text-center'>
                 <div className='font-light italic text-[32px] md:text-[50px] lg:text-[60px] text-dark md:text-white'>Creating positive birth experiences</div>
                 <div className='w-full flex flex-col items-center md:justify-center md:flex-row gap-y-[15px] gap-x-[20px] mt-[20px] lg:mt-[30px]'>
                     <div className='w-full md:w-[224px] h-[45px] md:h-[55px] lg:h-[60px] bg-beighe flex justify-center items-center rounded-[500px] cursor-pointer select-none'>

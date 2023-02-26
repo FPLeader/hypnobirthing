@@ -38,8 +38,8 @@ export default function InstagramSection() {
         removeArrowOnDeviceType={['tablet', 'mobile', 'desktop']}
         shouldResetAutoplay={false}
       >
-        <InstaCard image='img/insta1.png' link='https://asdf.com' />
-        {/* <InstaCard image='img/insta2.png' link='https://asdf.com' /> */}
+        {/* <InstaCard image='img/insta1.png' link='https://asdf.com' /> */}
+        <InstaCard image='img/insta2.png' link='https://asdf.com' />
         <InstaCard image='img/insta2.png' link='https://asdf.com' />
         <div className='w-full h-full p-[2px] flex flex-col justify-center items-center gap-y-[10px] bg-bcg_2'>
           <div className='opacity-20'>
@@ -48,10 +48,10 @@ export default function InstagramSection() {
           <div className='text-dark text-[12px] md:text-[18px] lg:text-[28px] font-light italic'>We&apos;re on Instagram</div>
           <div className='text-dark text-[10px] md:text-[12px] lg:text-[14px] font-semibold'>@pashutlaledet</div>
         </div>
-        <InstaCard image='img/insta3.png' link='https://asdf.com' />
-        <InstaCard image='img/insta4.png' link='https://asdf.com' />
-        {/* <InstaCard image='img/insta2.png' link='https://asdf.com' />
-        <InstaCard image='img/insta2.png' link='https://asdf.com' /> */}
+        {/* <InstaCard image='img/insta3.png' link='https://asdf.com' />
+        <InstaCard image='img/insta4.png' link='https://asdf.com' /> */}
+        <InstaCard image='img/insta2.png' link='https://asdf.com' />
+        <InstaCard image='img/insta2.png' link='https://asdf.com' />
       </Carousel>
     </div>
   )

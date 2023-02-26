@@ -11,7 +11,7 @@ export default function FeedbackSection() {
   }
 
   return (
-    <div className='py-[160px] mx-[20px] flex justify-center'>
+    <div className='py-[20px] md:py-[80px] lg:py-[160px] mx-[20px] flex justify-center'>
       <div className='max-w-[1536px] w-full'>
         <div className='md:flex md:justify-between md:items-end w-full'>
           <HomeTitle text='What People Are Saying' />
@@ -19,7 +19,7 @@ export default function FeedbackSection() {
             <RegularButton text='Reviews' />
           </div>
         </div>
-        <div className='w-full h-max mt-[30px] md:mt-[42px] lg:mt-[70px] flex flex-col md:flex-row justify-between gap-[25px] md:gap-[20px] lg:gap-[34px]'>
+        <div className='w-full h-max mt-[20px] md:mt-[42px] lg:mt-[70px] flex flex-col md:flex-row justify-between gap-[20px] md:gap-[20px] lg:gap-[34px]'>
           <FeedbackCard rating={FeedbackCards[0].rating} title={FeedbackCards[0].title} name={FeedbackCards[0].name} />
           <div className={style.dividerWrapper} >
             <div className={style.dividerInner} />
@@ -30,7 +30,7 @@ export default function FeedbackSection() {
           </div>
           <FeedbackCard rating={FeedbackCards[2].rating} title={FeedbackCards[2].title} name={FeedbackCards[2].name} />
         </div>
-        <div className='flex justify-center mt-[25px] block md:hidden'>
+        <div className='flex justify-center mt-[20px] block md:hidden'>
           <RegularButton text='Reviews' />
         </div>
       </div>
