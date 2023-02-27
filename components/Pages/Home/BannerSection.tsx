@@ -45,7 +45,7 @@ export default function BannerSection() {
                     })}
                 </Carousel>
                 <div className='absolute bottom-[10px] left-[20px] lg:left-[108px]'>
-                    <div className='text-white text-[14px]'>photo by Shelley Lawnikanus</div>
+                    <div className='text-white text-[14px] opacity-80'>photo by Shelley Lawnikanus</div>
                 </div>
             </div>
             <AboveFold />

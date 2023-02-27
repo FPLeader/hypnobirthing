@@ -18,7 +18,7 @@ export const UpcomingCards: UpcomingCardType[] = [
     },
     {
         id: 2,
-        image: '/img/upcoming1.png',
+        image: '/img/upcoming2.png',
         title: Date.now(),
         header: 'Frontal Birth Preparation',
         content: 'Rehovot / Zoom',
@@ -26,7 +26,7 @@ export const UpcomingCards: UpcomingCardType[] = [
     },
     {
         id: 3,
-        image: '/img/upcoming1.png',
+        image: '/img/upcoming3.png',
         title: Date.now(),
         header: 'Frontal Birth Preparation',
         content: 'Rehovot / Zoom',
