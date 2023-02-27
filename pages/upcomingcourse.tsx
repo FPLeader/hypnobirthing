@@ -1,6 +1,7 @@
+import { UpcomingCoursePage } from '@/components/Pages'
 
 export default function upcomingcourse() {
     return (
-        <div>upcomingcourse</div>
+        <UpcomingCoursePage />
     )
 }

@@ -58,7 +58,7 @@ export default function FaqItem({
                 </animated.div>
             </div>
             <animated.div className='h-full overflow-hidden' style={openAnimation} >
-                <div className='w-full my-[10px] border border-[1px] border-dark opacity-20' />
+                <div className='w-full my-[10px] border border border-dark opacity-20' />
                 <div className='text-dark text-[18px] font-normal'>
                     {content}
                 </div>

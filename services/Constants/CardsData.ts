@@ -1,7 +1,7 @@
 export interface CommunityCardType {
-    image: string;
-    name: string;
-    description: string;
+    image: string,
+    name: string,
+    description: string,
 }
 
 export const CommunityCards: CommunityCardType[] = [
@@ -53,12 +53,12 @@ export const CommunityCards: CommunityCardType[] = [
 ]
 
 export interface BlogCardType {
-    id: number;
-    image: string;
-    title: string;
-    header: string;
-    content: string;
-    author: string;
+    id: number,
+    image: string,
+    title: string,
+    header: string,
+    content: string,
+    author: string,
 }
 
 export const BlogCards: BlogCardType[] = [
@@ -137,10 +137,10 @@ export const BlogCards: BlogCardType[] = [
 ]
 
 export interface InsuranceCardType {
-    title: string;
-    content: string;
-    list: boolean;
-    contents?: string[];
+    title: string,
+    content: string,
+    list: boolean,
+    contents?: string[],
 }
 
 export const InsuranceCards: InsuranceCardType[] = [
@@ -182,4 +182,90 @@ export const InsuranceText2 = [
     `The data written above is data that we received from the health insurance funds and Pashut Laledet has no responsibility for its validity.`,
     `Things change from time to time, so it is highly recommended to check directly with the health insurance companies what exactly you are entitled to.`,
     `Some private insurance companies also allow you to receive a refund, so it is highly recommended for those with private medical insurance to check eligibility for refunds.`
+]
+
+
+
+export interface CourseCardType {
+    date: number,
+    title: string,
+    location: string,
+    teacher: string,
+}
+
+export interface SearchResultType {
+    month: number,
+    cards: CourseCardType[],
+}
+
+export const SearchResult: SearchResultType[] = [
+    {
+        month: 12,
+        cards: [
+            {
+                date: Date.now(),
+                title: 'Frontal Birth Preparation',
+                location: 'Odim (near Netanya)',
+                teacher: 'Hagar Ben David',
+            },
+            {
+                date: Date.now(),
+                title: 'Frontal Birth Preparation',
+                location: 'Odim (near Netanya)',
+                teacher: 'Hagar Ben David',
+            },
+            {
+                date: Date.now(),
+                title: 'Frontal Birth Preparation',
+                location: 'Odim (near Netanya)',
+                teacher: 'Hagar Ben David',
+            }
+        ]
+    },
+    {
+        month: 1,
+        cards: [
+            {
+                date: Date.now(),
+                title: 'Frontal Birth Preparation',
+                location: 'Odim (near Netanya)',
+                teacher: 'Hagar Ben David',
+            },
+            {
+                date: Date.now(),
+                title: 'Frontal Birth Preparation',
+                location: 'Odim (near Netanya)',
+                teacher: 'Hagar Ben David',
+            },
+            {
+                date: Date.now(),
+                title: 'Frontal Birth Preparation',
+                location: 'Odim (near Netanya)',
+                teacher: 'Hagar Ben David',
+            }
+        ]
+    },
+    {
+        month: 2,
+        cards: [
+            {
+                date: Date.now(),
+                title: 'Frontal Birth Preparation',
+                location: 'Odim (near Netanya)',
+                teacher: 'Hagar Ben David',
+            },
+            {
+                date: Date.now(),
+                title: 'Frontal Birth Preparation',
+                location: 'Odim (near Netanya)',
+                teacher: 'Hagar Ben David',
+            },
+            {
+                date: Date.now(),
+                title: 'Frontal Birth Preparation',
+                location: 'Odim (near Netanya)',
+                teacher: 'Hagar Ben David',
+            }
+        ]
+    }
 ]

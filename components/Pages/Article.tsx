@@ -1,8 +1,9 @@
-import { SelectButton, SearchButton } from '../Buttons'
+import { SearchButton } from '../Buttons'
+import { CategorySelect } from '../Select'
 import { BlogCard } from '../Cards'
-import { BlogCards, BlogCardType } from '@/services/Constants/CardsData'
-import { SelectData1} from '@/services/Constants/SelectOptions'
 import { PromoteBlogs, ComingChildBirth } from '../Sections'
+import { BlogCards, BlogCardType } from '@/services/Constants/CardsData'
+import { SelectData1 } from '@/services/Constants/SelectOptions'
 
 export default function Article() {
     return (
@@ -18,9 +19,9 @@ export default function Article() {
                 </div>
                 <div className='pt-[60px] flex flex-col md:flex-row gap-2.5 items-end'>
                     <div className='flex w-full md:w-9/12 gap-2.5'>
-                        <SelectButton category='Category' selectItems={SelectData1} />
-                        <SelectButton category='Author' selectItems={SelectData1} />
-                        <SelectButton category='Subject' selectItems={SelectData1} />
+                        <CategorySelect category='Category' selectItems={SelectData1} />
+                        <CategorySelect category='Author' selectItems={SelectData1} />
+                        <CategorySelect category='Subject' selectItems={SelectData1} />
                     </div>
                     <div className='w-full md:w-3/12'>
                         <SearchButton />

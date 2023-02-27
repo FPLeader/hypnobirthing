@@ -1,7 +1,8 @@
-import { SelectButton, SearchButton } from '../Buttons'
+import { SearchButton } from '../Buttons'
 import { CommunityCard } from '../Cards'
+import { CategorySelect } from '../Select'
 import { CommunityCards, CommunityCardType } from '@/services/Constants/CardsData'
-import { SelectData1} from '@/services/Constants/SelectOptions'
+import { SelectData1 } from '@/services/Constants/SelectOptions'
 import { PromoteBlogs, ComingChildBirth } from '../Sections'
 
 export default function OurCommunity() {
@@ -19,8 +20,8 @@ export default function OurCommunity() {
                 </div>
                 <div className='pt-[60px] flex flex-col md:flex-row gap-2.5 items-end'>
                     <div className='flex w-full md:w-6/12 gap-2.5'>
-                        <SelectButton category='Category' selectItems={SelectData1}/>
-                        <SelectButton category='Area' selectItems={SelectData1}/>
+                        <CategorySelect category='Category' selectItems={SelectData1} />
+                        <CategorySelect category='Area' selectItems={SelectData1} />
                     </div>
                     <div className='w-full md:w-6/12'>
                         <SearchButton />

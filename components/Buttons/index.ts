@@ -1,4 +1,3 @@
-export { default as SelectButton } from './Select'
 export { default as SearchButton } from './Search'
 export { default as RegularButton } from './Regular'
 export { default as SubmitButton } from './Submit'

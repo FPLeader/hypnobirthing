@@ -6,6 +6,7 @@ export { default as WhatHypnoBirthingPage } from './WhatHypnoBirthing'
 export { default as AboutUsPage } from './AboutUs'
 
 //For Parents
+export { default as UpcomingCoursePage } from './UpcomingCourse'
 export { default as FaqPage } from './Faq/'
 export { default as InsurancerePage } from './Insurancere'
 export { default as OurCommunityPage } from './OurCommunity'

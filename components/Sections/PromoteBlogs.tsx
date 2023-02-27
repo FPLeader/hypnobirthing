@@ -1,4 +1,4 @@
-import { BlogData, BlogType } from './constants/BlogData'
+import { BlogData, BlogType } from '@/services/Constants/Sections/BlogData'
 
 export default function PromoteBlogs() {
     return (

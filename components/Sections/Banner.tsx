@@ -1,6 +1,6 @@
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { CreateSlider } from './constants/BannerImages';
+import { CreateSlider } from '@/services/Constants/Sections/BannerImages';
 
 interface BannerProps {
     title: string;

@@ -1,5 +1,5 @@
 import BlogCard from './BlogCard'
-import { MoreBlogData, MoreBlogType } from '../constants/BlogData'
+import { MoreBlogData, MoreBlogType } from '@/services/Constants/Sections/BlogData'
 
 export default function MoreBirthStories() {
     return (
