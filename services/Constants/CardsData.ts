@@ -203,19 +203,19 @@ export const SearchResult: SearchResultType[] = [
         month: 12,
         cards: [
             {
-                date: Date.now(),
+                date: 0,
                 title: 'Frontal Birth Preparation',
                 location: 'Odim (near Netanya)',
                 teacher: 'Hagar Ben David',
             },
             {
-                date: Date.now(),
+                date: 0,
                 title: 'Frontal Birth Preparation',
                 location: 'Odim (near Netanya)',
                 teacher: 'Hagar Ben David',
             },
             {
-                date: Date.now(),
+                date: 0,
                 title: 'Frontal Birth Preparation',
                 location: 'Odim (near Netanya)',
                 teacher: 'Hagar Ben David',
@@ -226,19 +226,19 @@ export const SearchResult: SearchResultType[] = [
         month: 1,
         cards: [
             {
-                date: Date.now(),
+                date: 0,
                 title: 'Frontal Birth Preparation',
                 location: 'Odim (near Netanya)',
                 teacher: 'Hagar Ben David',
             },
             {
-                date: Date.now(),
+                date: 0,
                 title: 'Frontal Birth Preparation',
                 location: 'Odim (near Netanya)',
                 teacher: 'Hagar Ben David',
             },
             {
-                date: Date.now(),
+                date: 0,
                 title: 'Frontal Birth Preparation',
                 location: 'Odim (near Netanya)',
                 teacher: 'Hagar Ben David',
@@ -249,19 +249,19 @@ export const SearchResult: SearchResultType[] = [
         month: 2,
         cards: [
             {
-                date: Date.now(),
+                date: 0,
                 title: 'Frontal Birth Preparation',
                 location: 'Odim (near Netanya)',
                 teacher: 'Hagar Ben David',
             },
             {
-                date: Date.now(),
+                date: 0,
                 title: 'Frontal Birth Preparation',
                 location: 'Odim (near Netanya)',
                 teacher: 'Hagar Ben David',
             },
             {
-                date: Date.now(),
+                date: 0,
                 title: 'Frontal Birth Preparation',
                 location: 'Odim (near Netanya)',
                 teacher: 'Hagar Ben David',
