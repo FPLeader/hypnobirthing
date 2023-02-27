@@ -32,6 +32,7 @@ export default function BannerSection() {
                     swipeable
                     draggable
                     infinite
+                    showDots
                     ssr
                     responsive={responsive}
                     containerClass='carousel-container'
@@ -49,6 +50,39 @@ export default function BannerSection() {
                 </div>
             </div>
             <AboveFold />
+            <style>{`
+                .react-multi-carousel-dot button {
+                    background: #DFD3BC80;
+                    width: 48px;
+                    height: 4px;
+                    border: 1px solid #DFD3BC80;
+                    border-radius: 10px;
+                    margin-bottom: 30px;
+                }
+                .react-multi-carousel-dot--active button {
+                    background: #ffffff;
+                    width: 48px;
+                    height: 4px;
+                    border: 1px solid #ffffff;
+                    border-radius: 10px;
+                }
+                .react-multi-carousel-list {
+                    display: flex;
+                    align-items: stretch;
+                    overflow: hidden;
+                    position: relative;
+                }
+                @media only screen and (max-width: 768px) {
+                    .react-multi-carousel-dot button {
+                        width: 22px;
+                        height: 4px;
+                    }
+                    .react-multi-carousel-dot--active button {
+                        width: 22px;
+                        height: 4px;
+                    }
+                }
+            `}</style>
         </div>
     )
 }
