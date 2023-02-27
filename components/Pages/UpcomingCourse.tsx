@@ -13,7 +13,7 @@ export default function UpcomingCourse() {
                 <div className='pt-[25px] md:pt-[30px] lg:pt-[50px] text-[32px] md:text-[40px] lg:text-[60px] text-center md:text-left text-dark font-light italic'>
                     Upcoming Childbirth Courses
                 </div>
-                <div className='mt-[20px] flex flex-col-reverse md:flex-row md:justify-between md:items-center gap-[20px] md:gap-[35px]'>
+                <div className='mt-[20px] flex flex-col-reverse lg:flex-row md:justify-between md:items-center gap-[20px] md:gap-[35px]'>
                     <div className='text-[16px]'>
                         <div>We&apos;d like to invite you and your birth companion to a childbirth preparation class at Pashut Laledet, the Center for HypnoBirthing in Israel. This comprehensive course will prepare you for a gentle and calm birth and help you come to the realization that your body and your baby actually already know how to birth! What often gets in the way is the mind.</div>
                         <br />
