@@ -14,14 +14,10 @@ export default function Course({
     teacher
 }: CourseCardType) {
     const moment = require('moment');
-    const [dateShow, setDateShow] = useState<number>(Date.now());
 
-    useEffect(() => {
-        setDateShow(date);
-    }, [date])
     return (
         <div className='rounded-[10px] border border-beighe'>
-            <div className='h-[38px] text-[] text-[12px] lg:text-[16px] flex justify-center items-center bg-bcg_2'>{moment(dateShow).format('DD/MM/YYYY, dddd, HH:mm')}</div>
+            <div className='h-[38px] text-[] text-[12px] lg:text-[16px] flex justify-center items-center bg-bcg_2'>{moment(Date.now()).format('DD/MM/YYYY, dddd, HH:mm')}</div>
             <div className='py-[15px] flex flex-col gap-[6px] text-center text-dark'>
                 <div className='font-medium text-[16px] lg:text-[24px]'>{title}</div>
                 <div className='opacity-60 text-[14px] lg:text-[18px]'>{location}</div>
