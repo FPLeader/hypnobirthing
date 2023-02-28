@@ -26,7 +26,7 @@ export default function UpcomingCourse() {
                         <div>You can learn more about reimbursement for the childbirth preparation courses through your health insurance “Kupat Holim” here. In general depending on your insurance company and level of insurance you may be able to receive up to a 75% refund on the course.</div>
                     </div>
                     {/* https://www.youtube.com/watch?v=YGxKPJDzok8 */}
-                    <div className='md:min-w-[385px] h-[217px] border-[4px] border-[#DFD3BC38] rounded-[10px] bg-gradient-to-r from-[#DFD3BC38] to-[#DFD3BC38]'>
+                    <div className='md:min-w-[385px] h-[217px] border-[4px] border-[#DFD3BC38] rounded-[10px] bg-gradient-to-r from-[#DFD3BC38] to-[#DFD3BC38] overflow-hidden'>
                         <iframe
                             width='100%'
                             height='100%'
