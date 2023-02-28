@@ -27,7 +27,7 @@ export default function Article() {
                         <SearchButton />
                     </div>
                 </div>
-                <div className='flex flex-wrap justify-between gap-10 pt-10'>
+                <div className='grid grid-rows-3 gap-10 pt-10'>
                     {
                         BlogCards.map((obj: BlogCardType, index: number) => (
                             <BlogCard key={index} id={obj.id} image={obj.image} title={obj.title} header={obj.header} content={obj.content} author={obj.author} />

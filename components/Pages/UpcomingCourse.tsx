@@ -3,6 +3,7 @@ import { CategorySelect } from '../Select'
 import { SelectData1 } from '@/services/Constants/SelectOptions'
 import { CourseCardType, SearchResultType, SearchResult } from '@/services/Constants/CardsData'
 import { CourseCard, VideoCard } from '@/components/Cards'
+import { RegularTitle } from '../Titles'
 
 export default function UpcomingCourse() {
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -10,8 +11,8 @@ export default function UpcomingCourse() {
     return (
         <div className='pt-[70px] lg:pt-[90px] pb-[60px] md:pb-[92.5px] lg:pb-[160px] w-full flex justify-center'>
             <div className='max-w-[1225px] mx-[20px] w-full'>
-                <div className='pt-[25px] md:pt-[30px] lg:pt-[50px] text-[32px] md:text-[40px] lg:text-[60px] text-center md:text-left text-dark font-light italic'>
-                    Upcoming Childbirth Courses
+                <div className='pt-[25px] md:pt-[30px] lg:pt-[50px] '>
+                    <RegularTitle text='Upcoming Childbirth Courses' />
                 </div>
                 <div className='mt-[20px] flex flex-col-reverse lg:flex-row md:justify-between md:items-center gap-[20px] md:gap-x-[35px]'>
                     <div className='text-[16px]'>

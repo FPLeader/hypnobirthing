@@ -1,22 +1,27 @@
 import { Banner, PromoteBar, UpcomingClassesBar } from '@/components/Sections'
 import { FaqData, FaqType } from '@/services/Constants/FaqData'
-import FaqItem from './FaqItem'
+import { FaqItem, QuestionBox } from './Sections'
 
 export default function Faq() {
     return (
         <div className='pt-[70px] md:pt-[90px]'>
             <Banner title='Frequently Asked Questions' textStyle='center' />
-            <div className='max-w-[1225px] m-auto pt-[70px]'>
-                <div className='max-w-[805px] grid gap-y-[16px] m-auto'>
-                    {FaqData.map((obj: FaqType, index: number) => (
-                        <FaqItem key={index} title={obj.title} content={obj.content} />
-                    ))}
-                </div>
-                <div className='pt-[140px]'>
-                    <PromoteBar />
+            <div className='w-full flex justify-center'>
+                <div className='max-w-[1225px] w-full px-[20px] mt-[20px] md:mt-[70px]'>
+                    <div className='flex flex-col md:flex-row gap-[20px] md:gap-[35px]'>
+                        <div className='flex flex-col gap-y-[16px]'>
+                            {FaqData.map((obj: FaqType, index: number) => (
+                                <FaqItem key={index} title={obj.title} content={obj.content} />
+                            ))}
+                        </div>
+                        <QuestionBox />
+                    </div>
+                    <div className='mt-[20px] md:mt-[80px] lg:mt-[120px]'>
+                        <PromoteBar />
+                    </div>
                 </div>
             </div>
-            <div className='pt-[40px]'>
+            <div className='mt-[20px] md:mt-[40px]'>
                 <UpcomingClassesBar />
             </div>
         </div>

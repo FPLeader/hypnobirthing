@@ -16,8 +16,9 @@ module.exports = {
       'beighe': '#DFD3BC',
       'bcg_2': '#F5EBE9',
       'bcg': '#FFFAFA',
-      // 'gray': '#2B2525',
+      'gray': '#2B2525',
       'gray_1': '#EBE6E6',
+      'bhover': '#c1deba',
       'white': '#FFFFFF',
     },
     extend: {

@@ -5,6 +5,22 @@ export interface FaqType {
 
 export const FaqData: FaqType[] = [
   {
+    title: 'Is the price of the course per couple?',
+    content: 'You can read about the refund policies of different insurance companies “kupot holim” here (please note that we are not responsible for refunds from your insurance). If you have private medical insurance, you should ask about their refund policy regarding childbirth preparation courses. Most companies allow a refund for attending our course. It is recommended to verify the reimbursement amount with your health insurance.'
+  },
+  {
+    title: 'Should my partner attend the course with me?',
+    content: 'You can read about the refund policies of different insurance companies “kupot holim” here (please note that we are not responsible for refunds from your insurance). If you have private medical insurance, you should ask about their refund policy regarding childbirth preparation courses. Most companies allow a refund for attending our course. It is recommended to verify the reimbursement amount with your health insurance.'
+  },
+  {
+    title: 'Is it necessary to pay separately for my husband?',
+    content: 'You can read about the refund policies of different insurance companies “kupot holim” here (please note that we are not responsible for refunds from your insurance). If you have private medical insurance, you should ask about their refund policy regarding childbirth preparation courses. Most companies allow a refund for attending our course. It is recommended to verify the reimbursement amount with your health insurance.'
+  },
+  {
+    title: 'When should I start the course?',
+    content: 'You can read about the refund policies of different insurance companies “kupot holim” here (please note that we are not responsible for refunds from your insurance). If you have private medical insurance, you should ask about their refund policy regarding childbirth preparation courses. Most companies allow a refund for attending our course. It is recommended to verify the reimbursement amount with your health insurance.'
+  },
+  {
     title: 'Is there an online book?',
     content: 'You can read about the refund policies of different insurance companies “kupot holim” here (please note that we are not responsible for refunds from your insurance). If you have private medical insurance, you should ask about their refund policy regarding childbirth preparation courses. Most companies allow a refund for attending our course. It is recommended to verify the reimbursement amount with your health insurance.'
   },
