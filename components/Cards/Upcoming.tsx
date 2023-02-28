@@ -27,7 +27,7 @@ export default function UpcomingCard({
         <div className='text-dark text-[12px] lg:text-[16px] text-center pt-[7.5px] lg:pt-[10px] pb-[6.5px] lg:pb-[9px]'>{moment(Date.now()).format('DD/MM/YYYY, dddd, HH:mm')}</div>
       </div>
       <div className='mt-[10px] lg:mt-[15px] text-dark text-center flex flex-col gap-y-[10px] lg:gap-y-[6px]'>
-        <div className='text-[16px] lg:text-[24px] font-bold'>{header}</div>
+        <div className='text-[16px] lg:text-[24px] font-medium'>{header}</div>
         <div className='text-[14px] lg:text-[18px]'>{content}</div>
         <div className='text-[14px] lg:text-[18px] opacity-60'>—&nbsp;{author}</div>
       </div>

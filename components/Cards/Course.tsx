@@ -19,7 +19,7 @@ export default function Course({
         <div className='rounded-[10px] border border-beighe'>
             <div className='h-[38px] text-[] text-[12px] lg:text-[16px] flex justify-center items-center bg-bcg_2'>{moment(Date.now()).format('DD/MM/YYYY, dddd, HH:mm')}</div>
             <div className='py-[15px] flex flex-col gap-[6px] text-center text-dark'>
-                <div className='font-bold text-[16px] lg:text-[24px]'>{title}</div>
+                <div className='font-medium text-[16px] lg:text-[24px]'>{title}</div>
                 <div className='opacity-60 text-[14px] lg:text-[18px]'>{location}</div>
                 <div className='text-[14px] lg:text-[18px]'>—&nbsp;{teacher}</div>
             </div>

@@ -2,11 +2,11 @@ import { SearchButton } from '@/components/Buttons'
 import { CategorySelect } from '../Select'
 import { SelectData1 } from '@/services/Constants/SelectOptions'
 import { CourseCardType, SearchResultType, SearchResult } from '@/services/Constants/CardsData'
-import { CourseCard } from '@/components/Cards'
+import { CourseCard, VideoCard } from '@/components/Cards'
 
 export default function UpcomingCourse() {
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-    
+
     return (
         <div className='pb-[60px] md:pb-[92.5px] lg:pb-[160px] w-full flex justify-center pt-[70px] lg:pt-[90px]'>
             <div className='max-w-[1225px] mx-[20px] w-full'>
@@ -25,17 +25,8 @@ export default function UpcomingCourse() {
                         <br />
                         <div>You can learn more about reimbursement for the childbirth preparation courses through your health insurance “Kupat Holim” here. In general depending on your insurance company and level of insurance you may be able to receive up to a 75% refund on the course.</div>
                     </div>
-                    {/* https://www.youtube.com/watch?v=YGxKPJDzok8 */}
                     <div className='md:min-w-[385px] h-[217px] border-[4px] border-[#DFD3BC38] rounded-[10px] bg-gradient-to-r from-[#DFD3BC38] to-[#DFD3BC38] overflow-hidden'>
-                        <iframe
-                            width='100%'
-                            height='100%'
-                            src={`https://www.youtube.com/embed/YGxKPJDzok8`}
-                            frameBorder='0'
-                            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                            allowFullScreen
-                            title='HypnoBirthing'
-                        />
+                        <VideoCard title='HypnoBirthing' code='YGxKPJDzok8' />
                     </div>
                 </div>
                 <div className='mt-[30px] lg:mt-[40px] w-full max-w-[1068px] flex flex-col md:flex-row items-end gap-[10px]'>
@@ -47,7 +38,7 @@ export default function UpcomingCourse() {
                 <div className='mt-[20px] md:mt-[30px] lg:mt-[40px] flex flex-col gap-[20px] lg:gap-[40px]'>
                     {SearchResult.map((MonthData: SearchResultType, index: number) => (
                         <div key={index} className='flex flex-col gap-[25px]'>
-                            <div className='text-dark font-bold text-[28px]'>Month:&nbsp;{months[MonthData.month-1]}</div>
+                            <div className='text-dark font-medium text-[28px]'>Month:&nbsp;{months[MonthData.month - 1]}</div>
                             <div className='flex flex-col md:grid md:grid-cols-3 gap-[20px] md:gap-[35px]'>
                                 {MonthData.cards.map((card: CourseCardType, index: number) => (
                                     <div key={index}>
