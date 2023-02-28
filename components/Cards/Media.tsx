@@ -16,7 +16,7 @@ export default function Media({
     return (
         <div className='w-full flex flex-col md:flex-row justify-between items-center gap-[20px] md:gap-[25px] border-[2px] border-beighe rounded-[20px] overflow-hidden'>
             <div className='w-full md:max-w-[440px]'>
-                <img src={image} alt={title} className='h-auto w-full' />
+                <img src={image} alt={title} className='w-full' />
             </div>
             <div className='w-full flex flex-col gap-[10px] lg:gap-[15px] px-[20px] pb-[20px] md:pb-0 md:px-0 md:pr-[20px] lg:pr-[35px]'>
                 <div className='flex flex-col gap-[3px] lg:gap-[6px] text-dark text-center md:text-left'>

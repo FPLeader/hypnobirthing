@@ -1,7 +1,8 @@
 
 export default function AboveFold() {
+    // <div className='w-full max-md:h-[calc(100vh_-_70px_-_100vw/1.86)] max-md:min-h-[221px] flex items-center'></div>
     return (
-        <div className='w-full max-md:h-[calc(100vh_-_70px_-_100vw/1.86)] max-md:min-h-[221px] flex items-center'>
+        <div className='w-full flex items-center max-md:my-[30px] max-sm:my-[20px]'>
             <div className='w-full px-[20px] m-auto md:px-0 md:absolute md:bottom-[76px] flex flex-col items-center text-center'>
                 <div className='font-light italic text-[32px] md:text-[50px] lg:text-[60px] text-dark md:text-white'>Creating positive birth experiences</div>
                 <div className='w-full flex flex-col items-center md:justify-center md:flex-row gap-y-[15px] gap-x-[20px] mt-[20px] lg:mt-[30px]'>
