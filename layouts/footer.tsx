@@ -8,7 +8,7 @@ export default function Footer() {
     const style = {
         IconStyle: 'bg-white rounded-full w-10 h-10 flex justify-center items-center cursor-pointer',
         GroupStyle: 'flex flex-col items-start gap-y-[10px] md:gap-y-[15px]',
-        MenuTitle: 'text-[18px] font-medium',
+        MenuTitle: 'text-[18px] font-bold',
         ItemsStyle: 'w-full grid grid-cols-2 md:flex md:flex-col gap-x-[27px] gap-y-[10px] md:gap-y-[12px]',
         MenuItem: 'cursor-pointer uppercase text-[14px]'
     }

@@ -51,7 +51,7 @@ export default function FaqItem({
     return (
         <animated.div className='p-[16px] border border-beighe rounded-lg' style={bgAnimation}>
             <div className='flex justify-between items-center select-none cursor-pointer' onClick={() => setIsOpen(!isOpen)}>
-                <div className='font-medium text-[20px] text-dark pr-[24px]'>{title}</div>
+                <div className='font-bold text-[20px] text-dark pr-[24px]'>{title}</div>
 
                 <animated.div style={isOpen ? iconUpAnimation : iconDownAnimation}>
                     {isOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}

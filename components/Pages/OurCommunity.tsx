@@ -16,7 +16,7 @@ export default function OurCommunity() {
                     <div className='text-base max-w-[800px] pt-5'>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     </div>
-                    <div className='absolute top-[100px] right-0 bg-beighe w-[250px] uppercase text-sm text-dark font-medium flex justify-center py-[17.5px] rounded-full select-none cursor-pointer'>Become a professional</div>
+                    <div className='absolute top-[100px] right-0 bg-beighe w-[250px] uppercase text-sm text-dark font-bold flex justify-center py-[17.5px] rounded-full select-none cursor-pointer'>Become a professional</div>
                 </div>
                 <div className='pt-[60px] flex flex-col md:flex-row gap-2.5 items-end'>
                     <div className='flex w-full md:w-6/12 gap-2.5'>

@@ -47,7 +47,7 @@ export default function UpcomingCourse() {
                 <div className='mt-[20px] md:mt-[30px] lg:mt-[40px] flex flex-col gap-[20px] lg:gap-[40px]'>
                     {SearchResult.map((MonthData: SearchResultType, index: number) => (
                         <div key={index} className='flex flex-col gap-[25px]'>
-                            <div className='text-dark font-medium text-[28px]'>Month:&nbsp;{months[MonthData.month-1]}</div>
+                            <div className='text-dark font-bold text-[28px]'>Month:&nbsp;{months[MonthData.month-1]}</div>
                             <div className='flex flex-col md:grid md:grid-cols-3 gap-[20px] md:gap-[35px]'>
                                 {MonthData.cards.map((card: CourseCardType, index: number) => (
                                     <div key={index}>
