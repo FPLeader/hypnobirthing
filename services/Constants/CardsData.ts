@@ -285,30 +285,30 @@ export const MediaCards: MediaCardType[] = [
         image: '/img/media1.png',
         url: 'colbonews.co.il',
         title: 'Whose Birth Is It?',
-        content: `Relax, happily, when you're in the center and everyone around you is only attentive to you and the baby on the way. Sharon Peled, director of the "Just Giving Birth" Center, explains that giving birth can be a different, safe and stress-free experience, if we just change the approach`,
+        content: `Relax, happily, when you're in the center and everyone around you is only attentive to you and the baby on the way. Sharon Peled, director of the "Just Giving Birth" Center, explains that giving birth can be a different, safe and stress-free experience, if we just change the approach asdfasdfasdfasdfasdfasdfasdfasdfasdfdasfasdfasdfasdfasd`,
     },
     {
         image: '/img/media2.png',
         url: 'colbonews.co.il',
         title: 'Whose Birth Is It?',
-        content: `Relax, happily, when you're in the center and everyone around you is only attentive to you and the baby on the way. Sharon Peled, director of the "Just Giving Birth" Center, explains that giving birth can be a different, safe and stress-free experience, if we just change the approach`,
+        content: `Relax, happily, when you're in the center and everyone around you is only attentive to you and the baby on the way. Sharon Peled, director of the "Just Giving Birth" Center, explains that giving birth can be a different, safe and stress-free experience, if we just change the approach asdfasdfasdfasdfasdfasdfasdfasdfasdfdasfasdfasdfasdfasd`,
     },
     {
         image: '/img/media3.png',
         url: 'colbonews.co.il',
         title: 'Whose Birth Is It?',
-        content: `Relax, happily, when you're in the center and everyone around you is only attentive to you and the baby on the way. Sharon Peled, director of the "Just Giving Birth" Center, explains that giving birth can be a different, safe and stress-free experience, if we just change the approach`,
+        content: `Relax, happily, when you're in the center and everyone around you is only attentive to you and the baby on the way. Sharon Peled, director of the "Just Giving Birth" Center, explains that giving birth can be a different, safe and stress-free experience, if we just change the approach asdfasdfasdfasdfasdfasdfasdfasdfasdfdasfasdfasdfasdfasd`,
     },
     {
         image: '/img/media4.png',
         url: 'colbonews.co.il',
         title: 'Whose Birth Is It?',
-        content: `Relax, happily, when you're in the center and everyone around you is only attentive to you and the baby on the way. Sharon Peled, director of the "Just Giving Birth" Center, explains that giving birth can be a different, safe and stress-free experience, if we just change the approach`,
+        content: `Relax, happily, when you're in the center and everyone around you is only attentive to you and the baby on the way. Sharon Peled, director of the "Just Giving Birth" Center, explains that giving birth can be a different, safe and stress-free experience, if we just change the approach asdfasdfasdfasdfasdfasdfasdfasdfasdfdasfasdfasdfasdfasd`,
     },
     {
         image: '/img/media5.png',
         url: 'colbonews.co.il',
         title: 'Whose Birth Is It?',
-        content: `Relax, happily, when you're in the center and everyone around you is only attentive to you and the baby on the way. Sharon Peled, director of the "Just Giving Birth" Center, explains that giving birth can be a different, safe and stress-free experience, if we just change the approach`,
+        content: `Relax, happily, when you're in the center and everyone around you is only attentive to you and the baby on the way. Sharon Peled, director of the "Just Giving Birth" Center, explains that giving birth can be a different, safe and stress-free experience, if we just change the approach asdfasdfasdfasdfasdfasdfasdfasdfasdfdasfasdfasdfasdfasd`,
     }
 ]

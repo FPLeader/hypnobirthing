@@ -1,9 +1,12 @@
+import { RegularButton } from '../Buttons'
+import { HomeTitle } from '../Titles'
+
 export default function UpcomingClassesBar() {
   return (
-    <div className='w-full h-[232px] bg-bcg_2'>
-      <div className='max-w-[1225px] h-full m-auto flex justify-between items-center'>
-        <div className='text-[60px] text-dark text-[60px] font-light italic'>Upcoming Childbirth Classes</div>
-        <div className='bg-beighe w-[166px] uppercase text-sm text-dark font-medium flex justify-center py-[17.5px] rounded-full select-none cursor-pointer'>Learn more</div>
+    <div className='w-full py-[20px] md:py-[80px] lg:py-[100px] bg-bcg_2 flex justify-center'>
+      <div className='max-w-[1225px] mx-[20px] w-full flex flex-col gap-[20px] lg:flex-row justify-between items-center'>
+        <HomeTitle text='Upcoming Childbirth Classes' />
+        <RegularButton text='Learn more' />
       </div>
     </div>
   )

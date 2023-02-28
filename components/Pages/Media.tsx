@@ -16,8 +16,8 @@ export default function Media() {
         <div className='max-w-[1225px] mx-[20px] w-full'>
           <div className='flex flex-col md:flex-row gap-[35px]'>
             <div className={style.VideoWrapper}>
-              <VideoCard title={`Meghan Markle's birth preparation course`} code='YGxKPJDzok8' style='w-full h-[346px]' />
-              <div className={style.VideoTitle}>Meghan Markle's birth preparation course</div>
+              <VideoCard title={`Meghan Markle&apos;s birth preparation course`} code='YGxKPJDzok8' style='w-full h-[346px]' />
+              <div className={style.VideoTitle}>Meghan Markle&apos;s birth preparation course</div>
             </div>
             <div className={style.VideoWrapper}>
               <VideoCard title={`Pashut Laledet HypnoBirthing — Paula Aji`} code='H-de2tLu9Xo' style='w-full h-[346px]' />
