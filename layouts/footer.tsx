@@ -15,7 +15,7 @@ export default function Footer() {
 
     return (
         <main className='w-full bg-beighe text-dark flex justify-center'>
-            <div className='mx-[20px] w-full max-w-[1536px]'>
+            <div className='mx-[20px] w-full max-w-[1225px]'>
                 <div className='w-full flex flex-col md:flex-row justify-center md:justify-between md:gap-x-[40px]'>
                     <div className='w-full flex flex-row justify-between md:w-5/12 lg:w-3/12 gap-x-[15px] md:flex-col mt-[39px] md:mt-[49px]'>
                         <div>

@@ -3,8 +3,8 @@ import { RegularButton } from '@/components/Buttons'
 
 export default function CommunitySection() {
   return (
-    <div className='py-[20px] md:py-[80px] lg:py-[100px] flex justify-center bg-bcg_2'>
-      <div className='max-w-[1536px] mx-[20px]'>
+    <div className='py-[20px] md:py-[80px] lg:py-[120px] flex justify-center bg-bcg_2'>
+      <div className='max-w-[1225px] mx-[20px]'>
         <div className='md:flex md:justify-between md:items-end w-full'>
           <HomeTitle text='Our Professional Community' />
           <div className='hidden md:block'>

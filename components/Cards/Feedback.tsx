@@ -1,5 +1,7 @@
 // import ReactStars from 'react-star-rating-component'
 
+import { StarIcon } from '@/assests/Icons'
+
 interface FeedbackCardProps {
   rating: number,
   title: string,
@@ -20,6 +22,13 @@ export default function FeedbackCard({
         fullIcon={<i className='fa fa-star'></i>}
         activeColor='#DFD3BC'
       /> */}
+      <div className='flex gap-[3px]'>
+        <StarIcon />
+        <StarIcon />
+        <StarIcon />
+        <StarIcon />
+        <StarIcon />
+      </div>
       <div className='mt-[15px] flex flex-col items-center gap-y-[10px] text-dark text-center'>
         <div className='text-[20px]'>{title}</div>
         <div className='w-0 h-[15px] border-r-[1px] border-dark'></div>

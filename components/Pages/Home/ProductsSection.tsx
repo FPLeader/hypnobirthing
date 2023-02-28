@@ -26,8 +26,8 @@ export default function ProductsSection() {
   };
 
   return (
-    <div className='py-[20px] md:py-[80px] lg:py-[100px] mx-[20px] flex justify-center'>
-      <div className='max-w-[1536px] w-full'>
+    <div className='py-[20px] md:py-[80px] lg:py-[120px] mx-[20px] flex justify-center'>
+      <div className='max-w-[1225px] w-full'>
         <div className='md:flex md:justify-between md:items-end w-full'>
           <HomeTitle text='Popular Products' />
           <div className='hidden md:block'>

@@ -3,8 +3,8 @@ import { HomeTitle } from '@/components/Titles'
 
 export default function WhatHypnoSection() {
     return (
-        <div className='pt-[20px] pb-[20px] md:py-[80px] lg:py-[100px] w-full flex justify-center'>
-            <div className='max-w-[1536px] mx-[20px] w-full'>
+        <div className='pt-[20px] pb-[20px] md:py-[80px] lg:py-[120px] w-full flex justify-center'>
+            <div className='max-w-[1225px] mx-[20px] w-full'>
                 <div className='block md:hidden'>
                     <HomeTitle text='What is HypnoBirthing' />
                 </div>

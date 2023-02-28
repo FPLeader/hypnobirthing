@@ -41,7 +41,7 @@ export default function BannerSection() {
                 >
                     {CreateSlider.map((slider: string, index: number) => {
                         return (
-                            <img key={index} src={slider} alt={'slider-image' + index} className='image-carousel w-full' draggable={false} />
+                            <img key={index} src={slider} alt={'slider-image' + index} className='image-carousel w-full select-none' draggable={false} />
                         )
                     })}
                 </Carousel>

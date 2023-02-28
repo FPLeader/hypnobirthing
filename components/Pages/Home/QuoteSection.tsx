@@ -6,7 +6,7 @@ export default function QuoteSection() {
         QuoteIcon: 'w-[40px] md:w-[60px] lg:w-[76px] h-[30px] md:h-[46px] lg:h-[58px]'
     }
     return (
-        <div className='py-[20px] md:pt-[99px] md:pb-[93px] lg:py-[100px] px-[20px]'>
+        <div className='py-[20px] md:pt-[99px] md:pb-[93px] lg:py-[120px] px-[20px]'>
             <div className='w-full flex flex-col items-center'>
                 <div className='max-w-[1016px] relative'>
                     <div className='absolute top-0 left-0'>

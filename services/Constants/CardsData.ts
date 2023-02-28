@@ -65,6 +65,7 @@ export const BlogCards: BlogCardType[] = [
     {
         id: 1,
         image: '/img/blog1.png',
+        // image: '/img/teacher.png',
         title: 'Birth story',
         header: 'I Did It!',
         content: 'I had two c-sections with my first two babies and then decided with baby number 3, I wanted to have a vaginal birth after two csections (vbac). The medical world says DON’T DO IT!!! Every doctor I talked to about having a VBAC said that the risks of a uterine rupture...',
@@ -73,6 +74,7 @@ export const BlogCards: BlogCardType[] = [
     {
         id: 2,
         image: '/img/blog2.png',
+        // image: '/img/teacher.png',
         title: 'Birth story',
         header: 'I Did It!',
         content: 'I had two c-sections with my first two babies and then decided with baby number 3, I wanted to have a vaginal birth after two csections (vbac). The medical world says DON’T DO IT!!! Every doctor I talked to about having a VBAC said that the risks of a uterine rupture...',
@@ -81,6 +83,7 @@ export const BlogCards: BlogCardType[] = [
     {
         id: 3,
         image: '/img/blog3.png',
+        // image: '/img/teacher.png',
         title: 'Birth story',
         header: 'I Did It!',
         content: 'I had two c-sections with my first two babies and then decided with baby number 3, I wanted to have a vaginal birth after two csections (vbac). The medical world says DON’T DO IT!!! Every doctor I talked to about having a VBAC said that the risks of a uterine rupture...',

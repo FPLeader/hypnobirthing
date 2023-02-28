@@ -9,7 +9,7 @@ export default function UpcomingCourse() {
     
     return (
         <div className='pb-[60px] md:pb-[92.5px] lg:pb-[160px] w-full flex justify-center pt-[70px] lg:pt-[90px]'>
-            <div className='max-w-[1536px] mx-[20px] w-full'>
+            <div className='max-w-[1225px] mx-[20px] w-full'>
                 <div className='pt-[25px] md:pt-[30px] lg:pt-[50px] text-[32px] md:text-[40px] lg:text-[60px] text-center md:text-left text-dark font-light italic'>
                     Upcoming Childbirth Courses
                 </div>
@@ -26,15 +26,15 @@ export default function UpcomingCourse() {
                         <div>You can learn more about reimbursement for the childbirth preparation courses through your health insurance “Kupat Holim” here. In general depending on your insurance company and level of insurance you may be able to receive up to a 75% refund on the course.</div>
                     </div>
                     {/* https://www.youtube.com/watch?v=YGxKPJDzok8 */}
-                    <div className='md:min-w-[385px] md:h-[213px]'>
+                    <div className='md:min-w-[385px]'>
                         <iframe
-                            width="100%"
-                            height="100%"
+                            width='100%'
+                            height='100%'
                             src={`https://www.youtube.com/embed/YGxKPJDzok8`}
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            frameBorder='0'
+                            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                             allowFullScreen
-                            title="HypnoBirthing"
+                            title='HypnoBirthing'
                         />
                     </div>
                 </div>
