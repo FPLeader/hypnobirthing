@@ -46,12 +46,12 @@ export default function Banner({
             >
                 {CreateSlider.map((slider: string, index: number) => {
                     return (
-                        <img key={index} src={slider} alt={'slider-image' + index} className='image-carousel w-full' draggable={false} />
+                        <img key={index} src={slider} alt={'slider-image' + index} className='image-carousel w-full min-h-[120px]' draggable={false} />
                     )
                 })}
             </Carousel>
-            <div className='h-[70px] w-full flex items-center absolute bottom-0 bg-[#F5EBE9A6]'>
-                <div className={'max-w-[1538px] w-full text-dark font-light italic text-[38px] m-auto ' + `${textStyle === 'center' && 'text-center'}`}>
+            <div className='h-[30px] md:h-[70px] w-full flex items-center absolute bottom-0 bg-[#F5EBE9A6]'>
+                <div className={'max-w-[1225px] w-full text-dark font-light italic text-[16px] md:text-[24px] lg:text-[38px] m-auto ' + `${textStyle === 'center' && 'text-center'}`}>
                     {title}
                 </div>
             </div>
