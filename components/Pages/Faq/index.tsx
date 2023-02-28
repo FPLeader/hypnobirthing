@@ -1,4 +1,4 @@
-import { Banner, PromoteBlogs, ComingChildBirth } from '@/components/Sections'
+import { Banner, PromoteBar, UpcomingClassesBar } from '@/components/Sections'
 import { FaqData, FaqType } from '@/services/Constants/FaqData'
 import FaqItem from './FaqItem'
 
@@ -13,11 +13,11 @@ export default function Faq() {
                     ))}
                 </div>
                 <div className='pt-[140px]'>
-                    <PromoteBlogs />
+                    <PromoteBar />
                 </div>
             </div>
             <div className='pt-[40px]'>
-                <ComingChildBirth />
+                <UpcomingClassesBar />
             </div>
         </div>
     )
