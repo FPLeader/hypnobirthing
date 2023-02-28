@@ -36,7 +36,7 @@ export default function Media() {
           </div>
         </div>
       </div>
-      <div className='md:mt-[20px] md:mt-[40px]'>
+      <div className='mt-[20px] md:mt-[40px]'>
         <UpcomingClassesBar />
       </div>
     </div>
