@@ -1,14 +1,14 @@
 import { SearchButton } from '../Buttons'
 import { CategorySelect } from '../Select'
 import { BlogCard } from '../Cards'
-import { PromoteBlogs, ComingChildBirth } from '../Sections'
+import { PromoteBar, UpcomingClassesBar } from '../Sections'
 import { BlogCards, BlogCardType } from '@/services/Constants/CardsData'
 import { SelectData1 } from '@/services/Constants/SelectOptions'
 
 export default function Article() {
     return (
         <>
-            <div className='max-w-[1536px] m-auto min-h-screen pt-[70px] md:pt-[90px]'>
+            <div className='max-w-[1225px] m-auto min-h-screen pt-[70px] md:pt-[90px]'>
                 <div className='pt-[50px] relative'>
                     <div className='text-6xl font-light text-dark italic'>
                         Our Blog Posts
@@ -35,11 +35,11 @@ export default function Article() {
                     }
                 </div>
                 <div className='pt-[140px]'>
-                    <PromoteBlogs />
+                    <PromoteBar />
                 </div>
             </div>
             <div className='pt-[40px]'>
-                <ComingChildBirth />
+                <UpcomingClassesBar />
             </div>
         </>
     )

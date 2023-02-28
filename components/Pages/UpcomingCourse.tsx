@@ -8,7 +8,7 @@ export default function UpcomingCourse() {
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
     return (
-        <div className='pb-[60px] md:pb-[92.5px] lg:pb-[160px] w-full flex justify-center pt-[70px] lg:pt-[90px]'>
+        <div className='pt-[70px] lg:pt-[90px] pb-[60px] md:pb-[92.5px] lg:pb-[160px] w-full flex justify-center'>
             <div className='max-w-[1225px] mx-[20px] w-full'>
                 <div className='pt-[25px] md:pt-[30px] lg:pt-[50px] text-[32px] md:text-[40px] lg:text-[60px] text-center md:text-left text-dark font-light italic'>
                     Upcoming Childbirth Courses
@@ -25,9 +25,7 @@ export default function UpcomingCourse() {
                         <br />
                         <div>You can learn more about reimbursement for the childbirth preparation courses through your health insurance “Kupat Holim” here. In general depending on your insurance company and level of insurance you may be able to receive up to a 75% refund on the course.</div>
                     </div>
-                    <div className='md:min-w-[385px] h-[217px] border-[4px] border-[#DFD3BC38] rounded-[10px] bg-gradient-to-r from-[#DFD3BC38] to-[#DFD3BC38] overflow-hidden'>
-                        <VideoCard title='HypnoBirthing' code='YGxKPJDzok8' />
-                    </div>
+                    <VideoCard title='HypnoBirthing' code='YGxKPJDzok8' style='md:min-w-[385px] h-[217px]' />
                 </div>
                 <div className='mt-[30px] lg:mt-[40px] w-full max-w-[1068px] flex flex-col md:flex-row items-end gap-[10px]'>
                     <CategorySelect category='Area' selectItems={SelectData1} />

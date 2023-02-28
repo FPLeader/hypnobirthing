@@ -1,4 +1,4 @@
-import { Banner, PromoteBlogs, ComingChildBirth, MoreBirthStories } from '@/components/Sections'
+import { Banner, PromoteBar, UpcomingClassesBar, MoreBirthStories } from '@/components/Sections'
 
 interface BlogProps {
     id: number;
@@ -41,7 +41,7 @@ export default function Blog() {
     return (
         <div className='pt-[70px] md:pt-[90px]'>
             <Banner title={blogdata.title} />
-            <div className='max-w-[1536px] m-auto'>
+            <div className='max-w-[1225px] m-auto'>
                 <div className='text-dark font-light italic text-[60px] pt-[69px] pb-[30px]'>{blogdata.header}</div>
                 <div className='md:flex grid gap-y-[60px]'>
                     <div className='w-full md:w-8/12 pr-[60px] grid gap-y-[30px] text-dark'>
@@ -57,11 +57,11 @@ export default function Blog() {
                     </div>
                 </div>
                 <div className='pt-[97px]'>
-                    <PromoteBlogs />
+                    <PromoteBar />
                 </div>
             </div>
             <div className='pt-[40px]'>
-                <ComingChildBirth />
+                <UpcomingClassesBar />
             </div>
         </div>
     )

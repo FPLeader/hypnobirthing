@@ -1,4 +1,4 @@
-export { default as PromoteBlogs } from './PromoteBlogs'
-export { default as ComingChildBirth } from './ComingChildBirth'
+export { default as PromoteBar } from './PromoteBar'
+export { default as UpcomingClassesBar } from './UpcomingClassesBar'
 export { default as Banner } from './Banner'
 export { default as MoreBirthStories } from './MoreBirthStories'

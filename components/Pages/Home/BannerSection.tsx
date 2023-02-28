@@ -55,7 +55,7 @@ export default function BannerSection() {
                     background: #DFD3BC80;
                     width: 48px;
                     height: 4px;
-                    border: 1px solid #DFD3BC80;
+                    border: 0;
                     border-radius: 10px;
                     margin-bottom: 30px;
                 }
@@ -63,7 +63,7 @@ export default function BannerSection() {
                     background: #ffffff;
                     width: 48px;
                     height: 4px;
-                    border: 1px solid #ffffff;
+                    border: 0;
                     border-radius: 10px;
                 }
                 .react-multi-carousel-list {

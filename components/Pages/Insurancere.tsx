@@ -1,11 +1,11 @@
 import { InsuranceCard } from '../Cards'
 import { InsuranceCardType, InsuranceCards, InsuranceText1, InsuranceText2 } from '@/services/Constants/CardsData'
-import { PromoteBlogs, ComingChildBirth } from '@/components/Sections'
+import { PromoteBar, UpcomingClassesBar } from '@/components/Sections'
 
 export default function Insurancere() {
     return (
         <>
-            <div className='max-w-[1536px] m-auto min-h-screen pt-[70px] md:pt-[90px]'>
+            <div className='max-w-[1225px] m-auto min-h-screen pt-[70px] md:pt-[90px]'>
                 <div className='pt-[50px] relative'>
                     <div className='text-6xl font-light italic text-dark'>
                         Insurance Refunds
@@ -14,7 +14,7 @@ export default function Insurancere() {
                         Reimbursement for a childbirth preparation course through your health insurance “Kupat Holim”
                     </div>
                     <div className='grid gap-y-[40px]'>
-                        <div className='p-[20px] border-2 border-beighe rounded-[10px] mt-[60px]'>
+                        <div className='p-[20px] border-[2px] border-beighe rounded-[10px] mt-[60px]'>
                             {InsuranceText1.map((obj: string, index: number) => (
                                 <li key={index} className='text-dark text-[18px]'>{obj}</li>
                             ))}
@@ -33,12 +33,12 @@ export default function Insurancere() {
                         </ul>
                     </div>
                     <div className='pt-[160px]'>
-                        <PromoteBlogs />
+                        <PromoteBar />
                     </div>
                 </div>
             </div>
             <div className='pt-[40px]'>
-                <ComingChildBirth />
+                <UpcomingClassesBar />
             </div>
         </>
     )
