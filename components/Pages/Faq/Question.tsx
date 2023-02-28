@@ -10,7 +10,7 @@ export default function Question() {
             <div className='mt-[20px] md:mt-[30px] p-[20px] md:p-[25px] border border-beighe rounded-[10px]'>
                 <div className='flex flex-col gap-[15px] text-center'>
                     <div className='text-[26px] lg:text-[32px] italic font-light'>Any questions?</div>
-                    <div className='text-[16px] md:text-[18px]'>If you don't find what you're looking for, please email us and we'll get back to you!</div>
+                    <div className='text-[16px] md:text-[18px]'>If you don&apos;t find what you&apos;re looking for, please email us and we&apos;ll get back to you!</div>
                     <FullButton text='Contact Form' />
                 </div>
             </div>
