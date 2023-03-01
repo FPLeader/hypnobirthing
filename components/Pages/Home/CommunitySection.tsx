@@ -13,7 +13,7 @@ export default function CommunitySection() {
         </div>
         <div className='mt-[20px] md:mt-[70px] flex flex-col md:flex-row justify-between items-center gap-x-[70px] gap-y-[25px]'>
           <div className='relative w-full md:w-5/12 min-w-auto md:min-w-[400px]'>
-            < img draggable='false' src='/img/community.png' alt='' className='w-full' />
+            <img draggable='false' src='/img/community.png' alt='' className='w-full' />
             <div className='absolute bottom-[10px] left-[17px] text-white'>photo by Shelley Lawnikanus</div>
           </div>
           <div className='w-full md:w-7/12'>

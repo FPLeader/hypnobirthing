@@ -5,7 +5,7 @@ export default function Question() {
         <div className='w-full md:min-w-[300px] lg:min-w-[385px]'>
             <div className='relative w-full'>
                 <div className='absolute top-[15px] left-[20px] text-[18px] rounded-[10px] text-white opacity-80'>photo by Shelley Lawnikanus</div>
-                < img draggable='false' src='/img/faq.png' alt='question' className='w-full' />
+                <img draggable='false' src='/img/faq.png' alt='question' className='w-full' />
             </div>
             <div className='mt-[20px] md:mt-[30px] p-[20px] md:p-[25px] border border-beighe rounded-[10px]'>
                 <div className='flex flex-col gap-[15px] text-center'>

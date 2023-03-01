@@ -22,7 +22,7 @@ export default function BlogCard({
   return (
     <div className='w-full flex flex-col' onClick={() => { router.push(`/blog/${id}`) }}>
       <div className='flex flex-col bg-beighe hover:cursor-pointer rounded-xl'>
-        < img draggable='false' src={image} alt={title} className='w-full rounded-t-xl' />
+        <img draggable='false' src={image} alt={title} className='w-full rounded-t-xl' />
         <div className='text-dark text-[12px] lg:text-[16px] text-center pt-[7.5px] lg:pt-[10px] pb-[6.5px] lg:pb-[9px]'>{title}</div>
       </div>
       <div className='mt-[10px] px-[5px] lg:px-[15px] lg:mt-[15px] text-dark text-center flex flex-col gap-y-[4px] lg:gap-y-[6px]'>

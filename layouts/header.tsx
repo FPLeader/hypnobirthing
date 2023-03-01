@@ -21,7 +21,7 @@ export default function Header() {
         <div className='w-full h-[70px] md:h-[90px] flex justify-center items-center text-dark bg-bcg fixed border-b border-deviders z-10'>
             <div className='max-w-[1225px] mx-[20px] w-full flex items-center justify-between'>
                 <div className='cursor-pointer selcet-none' onClick={() => router.push('/')}>
-                    < img draggable='false' src='/img/logo.png' alt='Logo' className='w-[142px] md:w-[170px] h-[61px] md:h-[65px]' />
+                    <img draggable='false' src='/img/logo.png' alt='Logo' className='w-[142px] md:w-[170px] h-[61px] md:h-[65px]' />
                 </div>
                 <div className='gap-x-[12px] xl:gap-x-[40px] hidden lg:flex lg:items-center '>
                     {HeaderLinks.map((items: LinksType, index: number) => (
