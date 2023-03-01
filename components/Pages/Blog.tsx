@@ -45,7 +45,7 @@ export default function Blog() {
                 <div className='text-dark font-light italic text-[60px] pt-[69px] pb-[30px]'>{blogdata.header}</div>
                 <div className='md:flex grid gap-y-[60px]'>
                     <div className='w-full md:w-8/12 pr-[60px] grid gap-y-[30px] text-dark'>
-                        <img src={blogdata.image} alt={blogdata.title} className='w-full max-w-[780px] rounded-[10px]' />
+                        < img draggable='false' src={blogdata.image} alt={blogdata.title} className='w-full max-w-[780px] rounded-[10px]' />
                         <div className='text-lg whitespace-pre-line self-stretch'>{blogdata.content}</div>
                         <div className='text-lg font-normal italic opacity-60 flex justify-between'>
                             <div>—&nbsp;{blogdata.author}</div>

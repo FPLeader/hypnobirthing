@@ -10,7 +10,7 @@ export default function QuoteSection() {
             <div className='w-full flex flex-col items-center'>
                 <div className='max-w-[1016px] relative'>
                     <div className='absolute top-0 left-0'>
-                        <img src='/img/quoteleft.png' alt='' className={style.QuoteIcon} />
+                        < img draggable='false' src='/img/quoteleft.png' alt='' className={style.QuoteIcon} />
                     </div>
                     <div className='mt-[42px] md:mt-[23px] lg:mt-[18px] mb-[10px] md:mb-[23px] lg:mb-[29px] px-[5px] md:px-[80px] lg:px-[125px]'>
                         <div className='font-light italic text-dark text-[24px] md:text-[32px] lg:text-[38px] text-center'>
@@ -18,7 +18,7 @@ export default function QuoteSection() {
                         </div>
                     </div>
                     <div className='absolute bottom-0 right-0'>
-                        <img src='/img/quoteright.png' alt='' className={style.QuoteIcon} />
+                        < img draggable='false' src='/img/quoteright.png' alt='' className={style.QuoteIcon} />
                     </div>
                 </div>
                 <div className='mt-[10px] md:mt-[7px] lg:mt-[11px] flex flex-col md:flex-row items-center justify-center'>

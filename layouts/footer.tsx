@@ -19,7 +19,7 @@ export default function Footer() {
                 <div className='w-full flex flex-col md:flex-row justify-center md:justify-between md:gap-x-[40px]'>
                     <div className='w-full flex flex-row justify-between md:w-5/12 lg:w-3/12 gap-x-[15px] md:flex-col mt-[39px] md:mt-[49px]'>
                         <div>
-                            <img src='/img/logo.png' alt='Logo' className='w-[230px]' />
+                            < img draggable='false' src='/img/logo.png' alt='Logo' className='w-[230px]' />
                             <div className='text-[16px] max-w-[277px] text-base mt-[15px]'>
                                 Rights reserved to Pashut Laledet - the Israeli Childbirth Education Center for calm birthing.
                             </div>
@@ -37,7 +37,7 @@ export default function Footer() {
                         </div>
                         <div className='hidden md:block lg:hidden mt-[73px]'>
                             <div className='flex flex-col gap-y-[7px]'>
-                                <img src='/img/affiliated.png' alt='Logo' className='w-[21px] h-[21px]' />
+                                < img draggable='false' src='/img/affiliated.png' alt='Logo' className='w-[21px] h-[21px]' />
                                 <div className='text-dark text-[18px] opacity-60'>
                                     <div>Affiliated with&nbsp;</div>
                                     <div className='underline underline-offset-4 cursor-pointer select-none' onClick={() => router.push('/')}>HypnoBirthing International</div>
@@ -64,7 +64,7 @@ export default function Footer() {
                         </div>
                         <div className='hidden lg:block'>
                             <div className='flex items-center absolute bottom-0 right-0 gap-x-[2px]'>
-                                <img src='/img/affiliated.png' alt='Logo' className='w-[21px] h-[21px]' />
+                                < img draggable='false' src='/img/affiliated.png' alt='Logo' className='w-[21px] h-[21px]' />
                                 <div className='flex text-dark text-[18px] opacity-60'>Affiliated with&nbsp;<div className='underline underline-offset-4 cursor-pointer select-none' onClick={() => router.push('/')}>HypnoBirthing International</div></div>
                             </div>
                         </div>
@@ -73,7 +73,7 @@ export default function Footer() {
 
                 <div className='block md:hidden mt-[27.5px] w-full flex justify-center'>
                     <div className='flex gap-x-[7px]'>
-                        <img src='/img/affiliated.png' alt='Logo' className='w-[21px] h-[21px]' />
+                        < img draggable='false' src='/img/affiliated.png' alt='Logo' className='w-[21px] h-[21px]' />
                         <div className='flex text-dark text-[14px] opacity-60'>
                             <div>Affiliated with&nbsp;</div>
                             <div className='underline underline-offset-4 cursor-pointer select-none' onClick={() => router.push('/')}>HypnoBirthing International</div>
