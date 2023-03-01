@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { InstagramIcon, FacebookIcon, TwitterIcon } from '@/assests/Icons'
-import { LinkType, LinkPart1, LinkPart2, LinkPart3, LinkPart4 } from '@/services/Constants/Links'
+import { LinksType, FooterLinks, LinkType } from '@/services/Constants/Links'
 
 export default function Footer() {
     const router = useRouter();
@@ -9,7 +9,7 @@ export default function Footer() {
         IconStyle: 'bg-white rounded-full w-10 h-10 flex justify-center items-center cursor-pointer',
         GroupStyle: 'flex flex-col items-start gap-y-[10px] md:gap-y-[15px]',
         MenuTitle: 'text-[18px] font-semibold',
-        ItemsStyle: 'w-full grid grid-cols-2 md:flex md:flex-col gap-x-[27px] gap-y-[10px] md:gap-y-[12px]',
+        ItemWrapper: 'w-full grid grid-cols-2 md:flex md:flex-col gap-x-[27px] gap-y-[10px] md:gap-y-[12px]',
         MenuItem: 'cursor-pointer uppercase text-[14px]'
     }
 
@@ -47,54 +47,20 @@ export default function Footer() {
                     </div>
                     <div className='md:w-7/12 lg:w-9/12 relative mt-[25px] md:mt-[60px]'>
                         <div className='grid md:grid-cols-2 gap-y-[25px] md:gap-[32px] lg:gap-[0px] lg:flex lg:justify-between'>
-                            <div className={style.GroupStyle}>
-                                <div className={style.MenuTitle}>
-                                    {LinkPart1[0].name}
+                            {FooterLinks.map((items: LinksType, index: number) => (
+                                <div key={index} className={style.GroupStyle}>
+                                    <div className={style.MenuTitle}>
+                                        {items.title}
+                                    </div>
+                                    <div className={style.ItemWrapper}>
+                                        {items.links.map((item: LinkType, index: number) => (
+                                            <div key={index} className={style.MenuItem} onClick={() => router.push(item.link)}>
+                                                {item.title}
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
-                                <div className={style.ItemsStyle}>
-                                    {LinkPart1.slice(1).map((obj: LinkType, index: number) => (
-                                        <div key={index} className={style.MenuItem} onClick={() => router.push(obj.link)}>
-                                            {obj.name}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                            <div className={style.GroupStyle}>
-                                <div className={style.MenuTitle}>
-                                    {LinkPart2[0].name}
-                                </div>
-                                <div className={style.ItemsStyle}>
-                                    {LinkPart2.slice(1).map((obj: LinkType, index: number) => (
-                                        <div key={index} className={style.MenuItem} onClick={() => router.push(obj.link)}>
-                                            {obj.name}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                            <div className={style.GroupStyle}>
-                                <div className={style.MenuTitle}>
-                                    {LinkPart3[0].name}
-                                </div>
-                                <div className={style.ItemsStyle}>
-                                    {LinkPart3.slice(1).map((obj: LinkType, index: number) => (
-                                        <div key={index} className={style.MenuItem} onClick={() => router.push(obj.link)}>
-                                            {obj.name}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                            <div className={style.GroupStyle}>
-                                <div className={style.MenuTitle}>
-                                    {LinkPart4[0].name}
-                                </div>
-                                <div className={style.ItemsStyle}>
-                                    {LinkPart4.slice(1).map((obj: LinkType, index: number) => (
-                                        <div key={index} className={style.MenuItem} onClick={() => router.push(obj.link)}>
-                                            {obj.name}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
+                            ))}
                         </div>
                         <div className='hidden lg:block'>
                             <div className='flex items-center absolute bottom-0 right-0 gap-x-[2px]'>

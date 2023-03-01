@@ -1,120 +1,254 @@
 export interface LinkType {
-    link: string;
-    name: string;
+    title: string,
+    link: string,
 }
 
-export const LinkPart1: LinkType[] = [
+export interface LinksType {
+    title: string,
+    links: LinkType[],
+}
+
+export const HeaderLinks: LinksType[] = [
     {
-        name: 'HypnoBirthing',
-        link: 'title'
+        title: 'HypnoBirthing',
+        links: [
+            {
+                title: 'What is HypnoBirthing?',
+                link: '/whathypno'
+            },
+            {
+                title: 'About Us',
+                link: '/aboutus',
+            },
+            {
+                title: 'Reviews',
+                link: '/reviews',
+            },
+            {
+                title: 'Media',
+                link: '/media',
+            },
+            {
+                title: 'SHOP',
+                link: '/shop',
+            },
+            {
+                title: 'Contact',
+                link: '/contact',
+            }
+
+        ]
     },
     {
-        name: 'What is HypnoBirthing?',
-        link: '/whathypno'
+        title: 'For Parents',
+        links: [
+            {
+                title: 'Upcoming Courses',
+                link: '/upcomingcourse',
+            },
+            {
+                title: 'Course Content',
+                link: '/coursecontent',
+            },
+            {
+                title: 'FAQ',
+                link: '/faq',
+            },
+            {
+                title: 'Insurance Refunds',
+                link: '/insurancerefunds',
+            },
+            {
+                title: 'Our Teachers',
+                link: '/ourteachers',
+            },
+            {
+                title: 'Our Birth Professionals',
+                link: '/ourbirthpros',
+            },
+            {
+                title: 'After The Birth',
+                link: '/afterthebirth',
+            },
+            {
+                title: 'Due Date Calculator',
+                link: '/duedatecalc',
+            }
+        ]
     },
     {
-        name: 'About Us',
-        link: '/aboutus',
+        title: 'For Professionals',
+        links: [
+            {
+                title: 'Trainings',
+                link: '/trainings',
+            },
+            {
+                title: 'Become An Educator',
+                link: '/becomeaneducator',
+            },
+            {
+                title: 'Support HypnoBirthing',
+                link: '/support',
+            },
+            {
+                title: 'Log-In',
+                link: '/login',
+            }
+        ]
     },
     {
-        name: 'Reviews',
-        link: '/reviews',
+        title: 'Blog',
+        links: [
+            {
+                title: 'Articles',
+                link: '/article',
+            },
+            {
+                title: 'Birth stories',
+                link: '/birthstories',
+            },
+            {
+                title: 'Recipes',
+                link: '/',
+            },
+            {
+                title: 'Videos',
+                link: '/',
+            }
+        ]
     },
     {
-        name: 'Media',
-        link: '/media',
-    },
-    {
-        name: 'SHOP',
-        link: '/shop',
-    },
-    {
-        name: 'Contact',
-        link: '/contact',
+        title: 'Store',
+        links: [
+            {
+                title: 'Articles',
+                link: '/article',
+            },
+            {
+                title: 'Birth stories',
+                link: '/birthstories',
+            },
+            {
+                title: 'Recipes',
+                link: '/',
+            },
+            {
+                title: 'Videos',
+                link: '/',
+            }
+        ]
     }
 ]
 
-export const LinkPart2: LinkType[] = [
+export const FooterLinks:LinksType[] = [
     {
-        name: 'For Parents',
-        link: 'title'
-    },
-    {
-        name: 'Upcoming Courses',
-        link: '/upcomingcourse',
-    },
-    {
-        name: 'Course Content',
-        link: '/coursecontent',
-    },
-    {
-        name: 'FAQ',
-        link: '/faq',
-    },
-    {
-        name: 'Insurance Refunds',
-        link: '/insurancerefunds',
-    },
-    {
-        name: 'Our Teachers',
-        link: '/ourteachers',
-    },
-    {
-        name: 'Our Birth Professionals',
-        link: '/ourbirthpros',
-    },
-    {
-        name: 'After The Birth',
-        link: '/afterthebirth',
-    },
-    {
-        name: 'Due Date Calculator',
-        link: '/duedatecalc',
-    }
-]
+        title: 'HypnoBirthing',
+        links: [
+            {
+                title: 'What is HypnoBirthing?',
+                link: '/whathypno'
+            },
+            {
+                title: 'About Us',
+                link: '/aboutus',
+            },
+            {
+                title: 'Reviews',
+                link: '/reviews',
+            },
+            {
+                title: 'Media',
+                link: '/media',
+            },
+            {
+                title: 'SHOP',
+                link: '/shop',
+            },
+            {
+                title: 'Contact',
+                link: '/contact',
+            }
 
-export const LinkPart3: LinkType[] = [
-    {
-        link: 'title',
-        name: 'For Professionals',
+        ]
     },
     {
-        name: 'Trainings',
-        link: '/trainings',
+        title: 'For Parents',
+        links: [
+            {
+                title: 'Upcoming Courses',
+                link: '/upcomingcourse',
+            },
+            {
+                title: 'Course Content',
+                link: '/coursecontent',
+            },
+            {
+                title: 'FAQ',
+                link: '/faq',
+            },
+            {
+                title: 'Insurance Refunds',
+                link: '/insurancerefunds',
+            },
+            {
+                title: 'Our Teachers',
+                link: '/ourteachers',
+            },
+            {
+                title: 'Our Birth Professionals',
+                link: '/ourbirthpros',
+            },
+            {
+                title: 'After The Birth',
+                link: '/afterthebirth',
+            },
+            {
+                title: 'Due Date Calculator',
+                link: '/duedatecalc',
+            }
+        ]
     },
     {
-        name: 'Become An Educator',
-        link: '/becomeaneducator',
+        title: 'For Professionals',
+        links: [
+            {
+                title: 'Trainings',
+                link: '/trainings',
+            },
+            {
+                title: 'Become An Educator',
+                link: '/becomeaneducator',
+            },
+            {
+                title: 'Support HypnoBirthing',
+                link: '/support',
+            },
+            {
+                title: 'Log-In',
+                link: '/login',
+            }
+        ]
     },
     {
-        name: 'Support HypnoBirthing',
-        link: '/support',
+        title: 'Blog',
+        links: [
+            {
+                title: 'Articles',
+                link: '/article',
+            },
+            {
+                title: 'Birth stories',
+                link: '/birthstories',
+            },
+            {
+                title: 'Recipes',
+                link: '/',
+            },
+            {
+                title: 'Videos',
+                link: '/',
+            }
+        ]
     },
-    {
-        name: 'Log-In',
-        link: '/login',
-    }
-]
-
-export const LinkPart4: LinkType[] = [
-    {
-        link: 'title',
-        name: 'Blog',
-    },
-    {
-        name: 'Articles',
-        link: '/article',
-    },
-    {
-        name: 'Birth stories',
-        link: '/birthstories',
-    },
-    {
-        name: 'Recipes',
-        link: '/',
-    },
-    {
-        name: 'Videos',
-        link: '/',
-    }
 ]
