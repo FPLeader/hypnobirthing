@@ -1,6 +1,6 @@
 export interface FaqType {
-  title: string;
-  content: string;
+  title: string,
+  content: string,
 }
 
 export const FaqData: FaqType[] = [

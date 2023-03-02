@@ -1,27 +1,27 @@
 interface InsuranceCardProps {
-    title: string;
-    content: string;
-    list: boolean;
-    contents?: string[];
+    title: string,
+    content: string,
+    list?: boolean,
+    contents?: string[],
 }
 
 export default function InsuranceCard({
     title,
     content,
-    list,
+    list = false,
     contents,
 }: InsuranceCardProps) {
     return (
-        <div className='h-full bg-bcg_2 rounded-xl p-[25px] text-dark'>
-            <div className='text-2xl text-medium '>{title}</div>
-            <div className='pt-[10px]'>
+        <div className='h-full flex flex-col gap-[10px] bg-bcg_2 rounded-[10px] p-[20px] md:p-[25px] text-dark'>
+            <div className='text-[20px] md:text-[24px] text-medium '>{title}</div>
+            <div>
                 {list ?
                     <ul className='list-disc pl-[20px]'>
                         {contents?.map((obj: string, index: number) => (
-                            <li key={index} className='text-lg'>{obj}</li>
+                            <li key={index} className='text-[16px] md:text-[18px]'>{obj}</li>
                         ))}
                     </ul>
-                    : <div className='text-lg  text-normal'>{content}</div>}
+                    : <div className='text-[16px] md:text-[18px]'>{content}</div>}
             </div>
         </div>
     )

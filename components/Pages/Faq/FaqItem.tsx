@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { ArrowDownIcon, ArrowUpIcon } from '@/assests/Icons';
-import { useSpring, animated } from 'react-spring';
+import { ArrowDownIcon, ArrowUpIcon } from '@/assests/Icons'
+import { useSpring, animated } from 'react-spring'
 
 interface FaqItemProps {
-    title: string;
-    content: string;
+    title: string,
+    content: string,
 }
 
 export default function FaqItem({

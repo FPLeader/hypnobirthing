@@ -1,6 +1,6 @@
 import { UpcomingCoursePage } from '@/components/Pages'
 
-export default function upcomingcourse() {
+export default function UpcomingCourse() {
     return (
         <UpcomingCoursePage />
     )

@@ -1,6 +1,6 @@
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-import { CreateSlider } from '@/services/Constants/Home/BannerImages';
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
+import { CreateSlider } from '@/services/Constants/Home/BannerImages'
 import { AboveFold } from './Sections'
 
 export default function BannerSection() {
@@ -42,7 +42,7 @@ export default function BannerSection() {
                 >
                     {CreateSlider.map((slider: string, index: number) => {
                         return (
-                            <img draggable='false' key={index} src={slider} alt={'slider-image' + index} className='image-carousel w-full select-none' draggable={false} />
+                            <img draggable='false' key={index} src={slider} alt={'slider-image' + index} className='image-carousel w-full select-none' />
                         )
                     })}
                 </Carousel>

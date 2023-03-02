@@ -5,13 +5,13 @@ import { StarIcon } from '@/assests/Icons'
 interface FeedbackCardProps {
   rating: number,
   title: string,
-  name: string
+  name: string,
 }
 
 export default function FeedbackCard({
   rating,
   title,
-  name
+  name,
 }: FeedbackCardProps) {
   return (
     <div className='w-full flex flex-col items-center justify-center'>

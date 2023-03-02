@@ -9,13 +9,13 @@ export { default as MediaPage } from './Media'
 //For Parents
 export { default as UpcomingCoursePage } from './UpcomingCourse'
 export { default as FaqPage } from './Faq/'
-export { default as InsurancerePage } from './Insurancere'
+export { default as InsurancePage } from './Insurance'
 export { default as OurCommunityPage } from './OurCommunity'
 
 //For Professionals
 
 //Blog
-export { default as ArticlePage } from './Article'
+export { default as ArticlePage } from './Article/'
 export { default as BlogPage } from './Blog'
 
 //Store

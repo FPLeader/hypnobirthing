@@ -36,8 +36,17 @@ module.exports = {
       },
       animation: {
         'fade-in-down': 'fade-in-down 0.5s ease-out'
-      }
+      },
+      lineClamp: {
+        7: '7',
+        8: '8',
+        9: '9',
+        10: '10',
+      },
     },
+  },
+  variants: {
+    lineClamp: ['responsive', 'hover'],
   },
   plugins: [
     require('@tailwindcss/line-clamp'),

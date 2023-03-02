@@ -8,21 +8,14 @@ interface HeaderLinkProps {
 
 export default function HeaderLink({
     title,
-    isIcon
+    isIcon = true
 }: HeaderLinkProps) {
-    const [showIcon, setShowIcon] = useState<boolean>(true)
-
-    useEffect(() => {
-        setShowIcon(false);
-        console.log('isIcon =>', isIcon);
-        console.log('showIcon =>', showIcon);
-    }, [isIcon]);
+    const [showIcon, setShowIcon] = useState<boolean>(isIcon)
 
     return (
         <div className='uppercase flex items-center gap-[5px] xl:gap-[10px] cursor-pointer py-2 relative select-none'>
             {title}
-            {/* {showIcon && <DropdownIcon />} */}
-            <DropdownIcon />
+            {showIcon && <DropdownIcon />}
         </div>
     )
 }

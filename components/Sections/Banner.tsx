@@ -1,10 +1,10 @@
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-import { CreateSlider } from '@/services/Constants/Sections/BannerImages';
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
+import { CreateSlider } from '@/services/Constants/Sections/BannerImages'
 
 interface BannerProps {
-    title: string;
-    textStyle?: string;
+    title: string,
+    textStyle?: string,
 }
 
 export default function Banner({
@@ -46,7 +46,7 @@ export default function Banner({
             >
                 {CreateSlider.map((slider: string, index: number) => {
                     return (
-                        <img draggable='false' key={index} src={slider} alt={'slider-image' + index} className='image-carousel w-full min-h-[120px]' draggable={false} />
+                        <img draggable='false' key={index} src={slider} alt={'slider-image' + index} className='image-carousel w-full min-h-[120px]'/>
                     )
                 })}
             </Carousel>

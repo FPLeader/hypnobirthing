@@ -99,7 +99,7 @@ export const BlogCards: BlogCardType[] = [
     },
     {
         id: 5,
-        image: '/img/birth.png',
+        image: '/img/teacher.png',
         title: 'Birth story',
         header: 'I Did It!',
         content: 'I had two c-sections with my first two babies and then decided with baby number 3, I wanted to have a vaginal birth after two csections (vbac). The medical world says DON’T DO IT!!! Every doctor I talked to about having a VBAC said that the risks of a uterine rupture...',
@@ -142,7 +142,7 @@ export const BlogCards: BlogCardType[] = [
 export interface InsuranceCardType {
     title: string,
     content: string,
-    list: boolean,
+    list?: boolean,
     contents?: string[],
 }
 
@@ -150,12 +150,10 @@ export const InsuranceCards: InsuranceCardType[] = [
     {
         title: 'Clalit health insurance: *2700 or 1-222-2700',
         content: 'Platinum customers can receive a 75% refund for a private childbirth preparation course',
-        list: false,
     },
     {
         title: 'Meuhedet (United) health insurance: *3833 or 077-2703716',
         content: `"Peak" customers will receive a refund of up to 50% or NIS 416, whichever is lower - the policy of the United Health Insurance Fund is not completely clear these days. Please check with the insurance system 03-5202323 the eligibility for a refund.`,
-        list: false,
     },
     {
         title: 'Leumit Health Care Services',
@@ -169,7 +167,6 @@ export const InsuranceCards: InsuranceCardType[] = [
     {
         title: 'Maccabi health fund - *3555',
         content: `My Maccabi customers “Maccabi Sheli” - 75% refund for a childbirth preparation course`,
-        list: false,
     }
 ]
 
@@ -311,4 +308,32 @@ export const MediaCards: MediaCardType[] = [
         title: 'Whose Birth Is It?',
         content: `Relax, happily, when you're in the center and everyone around you is only attentive to you and the baby on the way. Sharon Peled, director of the "Just Giving Birth" Center, explains that giving birth can be a different, safe and stress-free experience, if we just change the approach asdfasdfasdfasdfasdfasdfasdfasdfasdfdasfasdfasdfasdfasd`,
     }
+]
+
+export interface BigBlogCardType {
+    id: number,
+    image: string,
+    title: string,
+    header: string,
+    content: string,
+    author: string,
+}
+
+export const BigBlogCards: BigBlogCardType[] = [
+    {
+        id: 1,
+        image: '/img/bigpic1.png',
+        title: 'Article',
+        header: 'Whose Birth Is It?',
+        content: `Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?`,
+        author: 'Rebecca Rosenstein'
+    },
+    {
+        id: 2,
+        image: '/img/bigpic2.png',
+        title: 'Birth story',
+        header: 'I Did It!',
+        content: `Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?`,
+        author: 'Sharon Peled'
+    },
 ]

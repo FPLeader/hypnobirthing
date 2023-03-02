@@ -1,6 +1,6 @@
 import { OurCommunityPage } from '@/components/Pages'
 
-export default function ourteachers() {
+export default function OurTeachers() {
     return (
         <OurCommunityPage />
     )

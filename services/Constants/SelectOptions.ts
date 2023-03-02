@@ -1,6 +1,6 @@
 interface SelectItem {
-    value: string;
-    text: string;
+    value: string,
+    text: string,
 }
 
 export const SelectData1: SelectItem[] = [
@@ -10,22 +10,18 @@ export const SelectData1: SelectItem[] = [
     },
     {
         value: 'us',
-        text: 'US'
+        text: 'IS'
     },
     {
         value: 'us',
-        text: 'US'
+        text: 'CA'
     },
     {
         value: 'us',
-        text: 'US'
+        text: 'IT'
     },
     {
         value: 'us',
-        text: 'US'
-    },
-    {
-        value: 'us',
-        text: 'US'
+        text: 'BR'
     }
 ]

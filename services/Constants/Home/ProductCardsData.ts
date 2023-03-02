@@ -1,8 +1,8 @@
 export interface ProductCardType {
-    id: number;
-    image: string;
-    title: string;
-    price: number;
+    id: number,
+    image: string,
+    title: string,
+    price: number,
 }
 
 export const ProductCards: ProductCardType[] = [

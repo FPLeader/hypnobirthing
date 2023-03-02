@@ -1,13 +1,13 @@
 import { HomeTitle } from '@/components/Titles'
 import { RegularButton } from '@/components/Buttons'
 import { FeedbackCard } from '@/components/Cards'
-import { FeedbackCards } from '@/services/Constants/Home/FeedbackCardsData'
+import { FeedbackCardType, FeedbackCards } from '@/services/Constants/Home/FeedbackCardsData'
 
 export default function FeedbackSection() {
 
   const style = {
     dividerWrapper: 'w-full md:w-0 flex justify-center items-center',
-    dividerInner: 'w-full md:w-0 h-full md:max-h-[76px] max-w-[100px] border-[2px] border-gray_1'
+    dividerInner: 'w-full md:w-0 h-full md:max-h-[76px] max-w-[100px] border-[1px] border-gray_1'
   }
 
   return (
@@ -20,15 +20,14 @@ export default function FeedbackSection() {
           </div>
         </div>
         <div className='w-full h-max mt-[20px] md:mt-[42px] lg:mt-[70px] flex flex-col md:flex-row justify-between gap-[20px] md:gap-[20px] lg:gap-[34px]'>
-          <FeedbackCard rating={FeedbackCards[0].rating} title={FeedbackCards[0].title} name={FeedbackCards[0].name} />
-          <div className={style.dividerWrapper} >
-            <div className={style.dividerInner} />
-          </div>
-          <FeedbackCard rating={FeedbackCards[1].rating} title={FeedbackCards[1].title} name={FeedbackCards[1].name} />
-          <div className={style.dividerWrapper} >
-            <div className={style.dividerInner} ></div>
-          </div>
-          <FeedbackCard rating={FeedbackCards[2].rating} title={FeedbackCards[2].title} name={FeedbackCards[2].name} />
+          {FeedbackCards.map((CardData: FeedbackCardType, index: number) => (
+            <>
+              {index !== 0 && <div className={style.dividerWrapper} >
+                <div className={style.dividerInner} />
+              </div>}
+              <FeedbackCard rating={CardData.rating} title={CardData.title} name={CardData.name} />
+            </>
+          ))}
         </div>
         <div className='flex justify-center mt-[20px] block md:hidden'>
           <RegularButton text='Reviews' />

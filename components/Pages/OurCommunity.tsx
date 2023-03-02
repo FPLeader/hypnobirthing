@@ -18,7 +18,7 @@ export default function OurCommunity() {
                             <RegularButton text='Become a professional' />
                         </div>
                     </div>
-                    <div className='text-base max-w-[800px] pt-5'>
+                    <div className='text-dark text-[16px] md:max-w-[800px] text-center md:text-left mt-[10px] md:mt-[20px]'>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     </div>
                     <div className='mt-[20px] block md:hidden'>
@@ -47,7 +47,7 @@ export default function OurCommunity() {
                 </div>
             </div>
             <div className='mt-[20px] md:mt-[40px]'>
-                <UpcomingClassesBar />
+                <UpcomingClassesBar title='Upcoming Childbirth Classes' buttonText='Learn More' link='\upcomingcourse' />
             </div>
         </>
     )

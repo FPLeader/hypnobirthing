@@ -1,10 +1,10 @@
 export interface UpcomingCardType {
-    id: number;
-    image: string;
-    title: number;
-    header: string;
-    content: string;
-    author: string;
+    id: number,
+    image: string,
+    title: number,
+    header: string,
+    content: string,
+    author: string,
 }
 
 export const UpcomingCards: UpcomingCardType[] = [

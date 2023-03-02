@@ -1,5 +1,5 @@
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
 import { InstaCard } from '@/components/Cards'
 import { InstagramIcon } from '@/assests/Icons'
 

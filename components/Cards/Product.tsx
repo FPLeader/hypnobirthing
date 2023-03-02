@@ -1,8 +1,8 @@
 export interface ProductCardProps {
-    id: number;
-    image: string;
-    title: string;
-    price: number;
+    id: number,
+    image: string,
+    title: string,
+    price: number,
 }
 
 export default function ProductCard({
@@ -12,8 +12,8 @@ export default function ProductCard({
     price
 }: ProductCardProps) {
     return (
-        <div className='max-md:w-full max-md:flex max-md:justify-center'>
-            <div className='max-w-[280px] select-none'>
+        <div className='w-full flex justify-center'>
+            <div className='w-full max-w-[280px] select-none'>
                 <img draggable='false' src={image} alt='' />
                 <div className='mt-[10px] lg:mt-[15px] text-dark text-center flex flex-col gap-y-[8px] lg:gap-y-[10px]'>
                     <div className='text-[16px] lg:text-[20px] font-medium'>{title}</div>

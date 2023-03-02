@@ -13,7 +13,7 @@ export default function UpcomingSection() {
             <RegularButton text='more classes' />
           </div>
         </div>
-        <div className='mt-[20px] md:mt-[42px] lg:mt-[70px] flex flex-col md:flex-row justify-between gap-[20px] md:gap-[20px] lg:gap-[34px]'>
+        <div className='mt-[20px] md:mt-[42px] lg:mt-[70px] grid sm:grid-cols-2 md:grid-cols-3 gap-[20px] lg:gap-[34px]'>
           {
             UpcomingCards.map((obj: UpcomingCardType, index: number) => (
               <UpcomingCard key={index} id={obj.id} image={obj.image} title={obj.title} header={obj.header} content={obj.content} author={obj.author} />

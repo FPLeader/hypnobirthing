@@ -56,7 +56,7 @@ export const HeaderLinks: LinksType[] = [
             },
             {
                 title: 'Insurance Refunds',
-                link: '/insurancerefunds',
+                link: '/insurance',
             },
             {
                 title: 'Our Teachers',
@@ -189,7 +189,7 @@ export const FooterLinks:LinksType[] = [
             },
             {
                 title: 'Insurance Refunds',
-                link: '/insurancerefunds',
+                link: '/insurance',
             },
             {
                 title: 'Our Teachers',

@@ -1,4 +1,4 @@
-import { InstagramIcon } from "@/assests/Icons"
+import { InstagramIcon } from '@/assests/Icons'
 
 interface InstaCardProps {
     image: string,

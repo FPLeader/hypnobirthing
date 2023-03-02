@@ -1,7 +1,10 @@
-import { Banner, PromoteBar, UpcomingClassesBar, MoreBirthStories } from '@/components/Sections'
+import { Banner, PromoteBar, UpcomingClassesBar } from '@/components/Sections'
+import { SmallBlogCard } from '@/components/Cards'
+import { SmallBlogsData, SmallBlogType } from '@/services/Constants/Sections/BlogData'
+import { RegularTitle } from '../Titles'
 
 interface BlogProps {
-    id: number;
+    id: number,
 }
 
 // export default function Blog({
@@ -41,27 +44,36 @@ export default function Blog() {
     return (
         <div className='pt-[70px] md:pt-[90px]'>
             <Banner title={blogdata.title} />
-            <div className='max-w-[1225px] m-auto'>
-                <div className='text-dark font-light italic text-[60px] pt-[69px] pb-[30px]'>{blogdata.header}</div>
-                <div className='md:flex grid gap-y-[60px]'>
-                    <div className='w-full md:w-8/12 pr-[60px] grid gap-y-[30px] text-dark'>
-                        <img draggable='false' src={blogdata.image} alt={blogdata.title} className='w-full max-w-[780px] rounded-[10px]' />
-                        <div className='text-lg whitespace-pre-line self-stretch'>{blogdata.content}</div>
-                        <div className='text-lg font-normal italic opacity-60 flex justify-between'>
-                            <div>—&nbsp;{blogdata.author}</div>
-                            <div>{moment(blogdata.date).format('MMMM D, YYYY')}</div>
+            <div className='w-full flex justify-center'>
+                <div className='w-full max-w-[1225px] mx-[20px]'>
+                    <div className='mt-[20px] md:mt-[69px] mb-[20px] md:mb-[30px]'>
+                        <RegularTitle text={blogdata.header} />
+                    </div>
+                    <div className='flex flex-col lg:flex-row gap-[20px] lg:gap-[60px]'>
+                        <div className='w-full lg:w-2/3 flex flex-col gap-[20px] md:gap-[30px] text-dark'>
+                            <img draggable='false' src={blogdata.image} alt={blogdata.title} className='w-full rounded-[10px]' />
+                            <div className='text-[16px] md:text-[18px] whitespace-pre-line self-stretch'>{blogdata.content}</div>
+                            <div className='text-[16px] md:text-[18px] font-normal italic opacity-60 flex justify-between'>
+                                <div>—&nbsp;{blogdata.author}</div>
+                                <div>{moment(blogdata.date).format('MMMM D, YYYY')}</div>
+                            </div>
+                        </div>
+                        <div className='w-full flex flex-col gap-[20px] md:gap-[25px] lg:w-1/3'>
+                            <div className='text-dark text-[30px]'>More Birth Stories</div>
+                            <div className='grid gap-[20px]'>
+                                {SmallBlogsData.map((CardData: SmallBlogType, index: number) => (
+                                    <SmallBlogCard key={index} id={CardData.id} image={CardData.image} header={CardData.header} content={CardData.content} author={CardData.author} />
+                                ))}
+                            </div>
                         </div>
                     </div>
-                    <div className='w-full md:w-4/12'>
-                        <MoreBirthStories />
-                    </div>
-                </div>
-                <div className='pt-[97px]'>
-                    <PromoteBar />
                 </div>
             </div>
-            <div className='pt-[40px]'>
-                <UpcomingClassesBar />
+            <div className='mt-[20px] md:mt-[80px] lg:mt-[120px]'>
+                <PromoteBar />
+            </div>
+            <div className='mt-[20px] md:mt-[40px]'>
+                <UpcomingClassesBar title='Upcoming Childbirth Classes' buttonText='Learn More' link='\upcomingcourse' />
             </div>
         </div>
     )

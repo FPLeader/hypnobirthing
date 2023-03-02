@@ -16,13 +16,13 @@ export default function Faq() {
                         </div>
                         <QuestionBox />
                     </div>
-                    <div className='mt-[20px] md:mt-[80px] lg:mt-[120px]'>
-                        <PromoteBar />
-                    </div>
                 </div>
             </div>
+            <div className='mt-[20px] md:mt-[80px] lg:mt-[120px]'>
+                <PromoteBar />
+            </div>
             <div className='mt-[20px] md:mt-[40px]'>
-                <UpcomingClassesBar />
+                <UpcomingClassesBar title='Upcoming Childbirth Classes' buttonText='Learn More' link='\upcomingcourse' />
             </div>
         </div>
     )

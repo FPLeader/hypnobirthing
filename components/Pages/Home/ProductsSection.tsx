@@ -1,9 +1,9 @@
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
 import { HomeTitle } from '@/components/Titles'
 import { RegularButton } from '@/components/Buttons'
 import { ProductCards, ProductCardType } from '@/services/Constants/Home/ProductCardsData'
-import { ProductCard } from '@/components/Cards';
+import { ProductCard } from '@/components/Cards'
 
 export default function ProductsSection() {
 
@@ -14,12 +14,17 @@ export default function ProductsSection() {
       slidesToSlide: 1
     },
     tablet: {
-      breakpoint: { max: 1280, min: 768 },
+      breakpoint: { max: 1280, min: 950 },
       items: 3,
       slidesToSlide: 1
     },
     mobile: {
-      breakpoint: { max: 768, min: 0 },
+      breakpoint: { max: 950, min: 640 },
+      items: 2,
+      slidesToSlide: 1
+    },
+    small_mobile: {
+      breakpoint: { max: 640, min: 0 },
       items: 1,
       slidesToSlide: 1
     }
@@ -44,7 +49,7 @@ export default function ProductsSection() {
             ssr
             responsive={responsive}
             containerClass='carousel-container w-full'
-            removeArrowOnDeviceType={['tablet', 'mobile', 'desktop']}
+            removeArrowOnDeviceType={['tablet', 'mobile', 'desktop', 'small_mobile']}
             shouldResetAutoplay={false}
           >
             {

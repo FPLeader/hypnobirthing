@@ -29,7 +29,7 @@ export default function WhatHypnoSection() {
                             <RegularButton text='Read more' />
                         </div>
                     </div>
-                    <div className='mt-[20px] md:mt-0 relative w-full md:w-5/12'>
+                    <div className='mt-[20px] md:mt-0 h-max relative w-full md:w-5/12'>
                         <img draggable='false' src='/img/whathypno.png' alt='' className='w-full' />
                         <div className='absolute bottom-[10px] right-[11.5px] text-white'>photo by Shelley Lawnikanus</div>
                     </div>
