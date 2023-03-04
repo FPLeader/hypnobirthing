@@ -5,7 +5,7 @@ export default function Exercises() {
         <div>
             <div className='flex flex-col gap-[10px]'>
                 {CourseOutlines.map((item: string, index: number) => (
-                    <div className='border border-beighe flex rounded-[8px] overflow-hidden'>
+                    <div key={index} className='border border-beighe flex rounded-[8px] overflow-hidden'>
                         <div className='w-[30px] md:w-[60px] flex justify-center items-center bg-beighe'>
                             <div className='text-white text-[20px] md:text-[24px]'>{index + 1}</div>
                         </div>

@@ -14,10 +14,10 @@ export default function Introduction() {
                     </span>
                     <VideoCard title='What is HypnoBirthing?' code='YGxKPJDzok8' style='w-full' />
                     <div className='flex items-center'>
-                        <img draggable='false' src='/img/whathypno2.png' alt='' className='w-full blur-sm' />
+                        <img draggable='false' src='/img/whathypno2.png' alt='' className='w-full' />
                     </div>
                     <span className='text-[18px] text-dark'>
-                        You and your partner will learn to focus inwards, to trust your body and your baby. You'll have a chance to work through fears and to reexamine your perception of birth. The result of the course is that participants feel empowered and are ready to handle the excitement of birth and the birth setting while staying focused and present in the moment as the birth unfolds.
+                        You and your partner will learn to focus inwards, to trust your body and your baby. You&apos;ll have a chance to work through fears and to reexamine your perception of birth. The result of the course is that participants feel empowered and are ready to handle the excitement of birth and the birth setting while staying focused and present in the moment as the birth unfolds.
                         <br /><br />
                         Our group classes are held all over Israel or live on zoom. The course consists of 5 meetings, 3 hours each, the most comprehensive course offered here in Israel today. The 5 week process gives you the time to bring about change and work towards the birth that you imagine for yourself. You may be eligible for a refund from Kupat Holim.
                         <br /><br />

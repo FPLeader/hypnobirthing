@@ -17,10 +17,10 @@ export default function index() {
                     <div className='w-full mt-[20px] grid lg:grid-cols-2 gap-[20px] md:gap-[30px] lg:gap-x-[35px] lg:gap-y-[70px]'>
                         <ExerciseSection />
                         <div className='w-full flex items-center justify-center'>
-                            <img draggable='false' src='/img/coursecontent1.png' alt='' className='w-full rounded-[10px] blur-lg' />
+                            <img draggable='false' src='/img/coursecontent1.png' alt='' className='w-full rounded-[10px]' />
                         </div>
                         <div className='w-full flex items-center justify-center'>
-                            <img draggable='false' src='/img/coursecontent2.png' alt='' className='w-full rounded-[10px] blur-lg' />
+                            <img draggable='false' src='/img/coursecontent2.png' alt='' className='w-full rounded-[10px]' />
                         </div>
                         <div className='max-lg:row-start-3'>
                             <TechniquesSection />
