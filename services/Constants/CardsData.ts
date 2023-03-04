@@ -337,3 +337,86 @@ export const BigBlogCards: BigBlogCardType[] = [
         author: 'Sharon Peled'
     },
 ]
+
+export interface MemberCardType {
+    id: number,
+    image: string,
+    name: string,
+    title: string,
+    description: string,
+}
+
+export const MemberCards: MemberCardType[] = [
+    {
+        id: 1,
+        image: '/img/member1.png',
+        name: 'Paula Aji',
+        title: 'Modern Applied Psychology & Personal Development',
+        description: `I believe that women know how to birth and that babies know how to be born. I believe that with guidance and support, the fears and the noise of the medical approach to birth can be put aside and replaced with full presence. Families can feel empowered and safe to celebrate their births.
+        I'm an International Faculty Trainer of the HypnoBirthing Institute, and a founder and faculty trainer of Pashut Laledet HypnoBirthing in Israel. In this capacity I have trained hundreds of childbirth educators and other birth professionals in HypnoBirthing all around the world.
+        I'm also a founder of Mind Body Birthkeepers mentoring trainings for doulas and other birth professionals, in which a bridge is created for cooperative understanding of scientific and spiritual, medical and natural approaches to the childbearing year.
+        My newest endeavor is as a founder of Mechanisms of Balance which is a project illustrating female internal anatomy to enrich understanding and techniques for health and balance.
+        My background certifications and trainings in healing, hypnosis, HypnoBirthing, Lamaze, Bradley, Evidence Based Birth, Spinning Babies, the Art of Birth and DONA have supported my work in educating and accompanying families. I have attended over 600 births and educated over 2000 families.
+        I'm a native New Yorker living with my partner in Karmei Yosef, Israel. I am fluent in English and Hebrew. My favorite way to spend free time is cuddling with my grandbabies. I also love reading, hiking, qigong and chocolate.`
+    },
+    {
+        id: 2,
+        image: '/img/member2.png',
+        name: 'Talya Aji Demri',
+        title: 'Modern Applied Psychology & Personal Development',
+        description: `I believe that women know how to birth and that babies know how to be born. I believe that with guidance and support, the fears and the noise of the medical approach to birth can be put aside and replaced with full presence. Families can feel empowered and safe to celebrate their births.
+        I'm an International Faculty Trainer of the HypnoBirthing Institute, and a founder and faculty trainer of Pashut Laledet HypnoBirthing in Israel. In this capacity I have trained hundreds of childbirth educators and other birth professionals in HypnoBirthing all around the world.
+        I'm also a founder of Mind Body Birthkeepers mentoring trainings for doulas and other birth professionals, in which a bridge is created for cooperative understanding of scientific and spiritual, medical and natural approaches to the childbearing year.
+        My newest endeavor is as a founder of Mechanisms of Balance which is a project illustrating female internal anatomy to enrich understanding and techniques for health and balance.
+        My background certifications and trainings in healing, hypnosis, HypnoBirthing, Lamaze, Bradley, Evidence Based Birth, Spinning Babies, the Art of Birth and DONA have supported my work in educating and accompanying families. I have attended over 600 births and educated over 2000 families.
+        I'm a native New Yorker living with my partner in Karmei Yosef, Israel. I am fluent in English and Hebrew. My favorite way to spend free time is cuddling with my grandbabies. I also love reading, hiking, qigong and chocolate.`
+    },
+    {
+        id: 3,
+        image: '/img/member3.png',
+        name: 'Paula Aji',
+        title: 'Modern Applied Psychology & Personal Development',
+        description: `I believe that women know how to birth and that babies know how to be born. I believe that with guidance and support, the fears and the noise of the medical approach to birth can be put aside and replaced with full presence. Families can feel empowered and safe to celebrate their births.
+        I'm an International Faculty Trainer of the HypnoBirthing Institute, and a founder and faculty trainer of Pashut Laledet HypnoBirthing in Israel. In this capacity I have trained hundreds of childbirth educators and other birth professionals in HypnoBirthing all around the world.
+        I'm also a founder of Mind Body Birthkeepers mentoring trainings for doulas and other birth professionals, in which a bridge is created for cooperative understanding of scientific and spiritual, medical and natural approaches to the childbearing year.
+        My newest endeavor is as a founder of Mechanisms of Balance which is a project illustrating female internal anatomy to enrich understanding and techniques for health and balance.
+        My background certifications and trainings in healing, hypnosis, HypnoBirthing, Lamaze, Bradley, Evidence Based Birth, Spinning Babies, the Art of Birth and DONA have supported my work in educating and accompanying families. I have attended over 600 births and educated over 2000 families.
+        I'm a native New Yorker living with my partner in Karmei Yosef, Israel. I am fluent in English and Hebrew. My favorite way to spend free time is cuddling with my grandbabies. I also love reading, hiking, qigong and chocolate.`
+    },
+    {
+        id: 4,
+        image: '/img/member4.png',
+        name: 'Rebecca Rosenstein',
+        title: 'educator, birth doula, gentle birth childbirth educator',
+        description: `I believe that women know how to birth and that babies know how to be born. I believe that with guidance and support, the fears and the noise of the medical approach to birth can be put aside and replaced with full presence. Families can feel empowered and safe to celebrate their births.
+        I'm an International Faculty Trainer of the HypnoBirthing Institute, and a founder and faculty trainer of Pashut Laledet HypnoBirthing in Israel. In this capacity I have trained hundreds of childbirth educators and other birth professionals in HypnoBirthing all around the world.
+        I'm also a founder of Mind Body Birthkeepers mentoring trainings for doulas and other birth professionals, in which a bridge is created for cooperative understanding of scientific and spiritual, medical and natural approaches to the childbearing year.
+        My newest endeavor is as a founder of Mechanisms of Balance which is a project illustrating female internal anatomy to enrich understanding and techniques for health and balance.
+        My background certifications and trainings in healing, hypnosis, HypnoBirthing, Lamaze, Bradley, Evidence Based Birth, Spinning Babies, the Art of Birth and DONA have supported my work in educating and accompanying families. I have attended over 600 births and educated over 2000 families.
+        I'm a native New Yorker living with my partner in Karmei Yosef, Israel. I am fluent in English and Hebrew. My favorite way to spend free time is cuddling with my grandbabies. I also love reading, hiking, qigong and chocolate.`
+    },
+    {
+        id: 5,
+        image: '/img/member2.png',
+        name: 'Maor Demri',
+        title: 'CMO-Chief Marketing Operation',
+        description: `I believe that women know how to birth and that babies know how to be born. I believe that with guidance and support, the fears and the noise of the medical approach to birth can be put aside and replaced with full presence. Families can feel empowered and safe to celebrate their births.
+        I'm an International Faculty Trainer of the HypnoBirthing Institute, and a founder and faculty trainer of Pashut Laledet HypnoBirthing in Israel. In this capacity I have trained hundreds of childbirth educators and other birth professionals in HypnoBirthing all around the world.
+        I'm also a founder of Mind Body Birthkeepers mentoring trainings for doulas and other birth professionals, in which a bridge is created for cooperative understanding of scientific and spiritual, medical and natural approaches to the childbearing year.
+        My newest endeavor is as a founder of Mechanisms of Balance which is a project illustrating female internal anatomy to enrich understanding and techniques for health and balance.
+        My background certifications and trainings in healing, hypnosis, HypnoBirthing, Lamaze, Bradley, Evidence Based Birth, Spinning Babies, the Art of Birth and DONA have supported my work in educating and accompanying families. I have attended over 600 births and educated over 2000 families.
+        I'm a native New Yorker living with my partner in Karmei Yosef, Israel. I am fluent in English and Hebrew. My favorite way to spend free time is cuddling with my grandbabies. I also love reading, hiking, qigong and chocolate.`
+    },
+    {
+        id: 6,
+        image: '/img/member6.png',
+        name: 'Shelley Lawnikanis',
+        title: 'Family photographer',
+        description: `I believe that women know how to birth and that babies know how to be born. I believe that with guidance and support, the fears and the noise of the medical approach to birth can be put aside and replaced with full presence. Families can feel empowered and safe to celebrate their births.
+        I'm an International Faculty Trainer of the HypnoBirthing Institute, and a founder and faculty trainer of Pashut Laledet HypnoBirthing in Israel. In this capacity I have trained hundreds of childbirth educators and other birth professionals in HypnoBirthing all around the world.
+        I'm also a founder of Mind Body Birthkeepers mentoring trainings for doulas and other birth professionals, in which a bridge is created for cooperative understanding of scientific and spiritual, medical and natural approaches to the childbearing year.
+        My newest endeavor is as a founder of Mechanisms of Balance which is a project illustrating female internal anatomy to enrich understanding and techniques for health and balance.
+        My background certifications and trainings in healing, hypnosis, HypnoBirthing, Lamaze, Bradley, Evidence Based Birth, Spinning Babies, the Art of Birth and DONA have supported my work in educating and accompanying families. I have attended over 600 births and educated over 2000 families.
+        I'm a native New Yorker living with my partner in Karmei Yosef, Israel. I am fluent in English and Hebrew. My favorite way to spend free time is cuddling with my grandbabies. I also love reading, hiking, qigong and chocolate.`
+    },
+]

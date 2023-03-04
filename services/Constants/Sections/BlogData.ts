@@ -63,3 +63,22 @@ export const SmallBlogsData: SmallBlogType[] = [
         author: 'Avishag Oren'
     }
 ]
+
+export interface SupportCardType {
+    image: string,
+    title: string,
+    link: string,
+}
+
+export const SupportCards: SupportCardType[] = [
+    {
+        image: '/img/BlogSec4.png',
+        title: 'Birth Professionals Support HypnoBirthing — One Day Workshop',
+        link: '/',
+    },
+    {
+        image: '/img/BlogSec5.png',
+        title: 'Pashut Laledet HypnoBirthing Educator Training',
+        link: '/',
+    },
+]

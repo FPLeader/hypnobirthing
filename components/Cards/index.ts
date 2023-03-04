@@ -7,6 +7,7 @@ export { default as FeedbackCard } from './Feedback'
 export { default as CourseCard } from './Course'
 export { default as VideoCard } from './Video'
 export { default as MediaCard } from './Media'
+export { default as MemberCard } from './Member'
 
 // Blog Type
 export { default as BigBlogCard } from './Blogs/BigBlog'

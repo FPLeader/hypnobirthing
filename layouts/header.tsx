@@ -12,9 +12,16 @@ export default function Header() {
         dividerWrapper: 'w-full lg:w-0 flex justify-center items-center',
         dividerInner: 'w-full lg:w-0 h-full border-[1px] border-deviders'
     }
-    
-    const onClickHandler = (index : number) => {
-        setMenuPage(index);
+
+    const onClickHandler = (index: number) => {
+        if (MenuPage === index) {
+            document.body.style.overflow = 'visible';
+            setMenuPage(-1);
+        }
+        else {
+            document.body.style.overflow = 'hidden';
+            setMenuPage(index);
+        }
     }
 
 
@@ -53,12 +60,12 @@ export default function Header() {
                         </div>
                         <div className='w-full lg:w-2/3 grid grid-cols-3 gap-[30px]'>
                             {MenuPage >= 0 && HeaderLinks[MenuPage].links.map((item: LinkType, index: number) => (
-                                <div key={index} className={style.MenuItem} onClick={() => { router.push(item.link), setMenuPage(-1) }}>{item.title}</div>
+                                <div key={index} className={style.MenuItem} onClick={() => { document.body.style.overflow = 'visible', router.push(item.link), setMenuPage(-1) }}>{item.title}</div>
                             ))}
                         </div>
                     </div>
                 </div>
-                <div className='h-full bg-dark opacity-50' onClick={() => setMenuPage(-1)}>
+                <div className='h-full bg-dark opacity-50' onClick={() => { setMenuPage(-1), document.body.style.overflow = 'visible' }}>
                 </div>
             </div>
         </div >
