@@ -7,7 +7,7 @@ export default function Faq() {
         <div className='pt-[70px] md:pt-[90px]'>
             <Banner title='Frequently Asked Questions' textStyle='center' />
             <div className='w-full flex justify-center'>
-                <div className='max-w-[1225px] w-full px-[20px] mt-[20px] md:mt-[70px]'>
+                <div className='max-w-[1225px] w-full px-[20px] mt-[20px] md:mt-[30px] lg:mt-[70px]'>
                     <div className='flex flex-col md:flex-row gap-[20px] md:gap-[35px]'>
                         <div className='flex flex-col gap-y-[16px]'>
                             {FaqData.map((obj: FaqType, index: number) => (

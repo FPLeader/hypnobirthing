@@ -7,8 +7,8 @@ export default function index() {
         <div className='pt-[70px] md:pt-[90px] w-full'>
             <Banner title='Course Content' textStyle='left' />
             <div className='w-full flex justify-center'>
-                <div className='w-full max-w-[1226px] mx-[20px]'>
-                    <div className='pt-[25px] md:pt-[30px] lg:pt-[50px] '>
+                <div className='w-full max-w-[1225px] mx-[20px]'>
+                    <div className='mt-[20px] md:mt-[30px] lg:mt-[70px]'>
                         <RegularTitle text='Course Content' />
                     </div>
                     <div className='text-dark text-[16px] mt-[10px] md:mt-[20px]'>

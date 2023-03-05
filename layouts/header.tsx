@@ -14,7 +14,7 @@ export default function Header() {
     }
 
     const onClickHandler = (index: number) => {
-        if (MenuPage === index) {
+        if (MenuPage === index || index === -1) {
             document.body.style.overflow = 'visible';
             setMenuPage(-1);
         }
@@ -37,7 +37,7 @@ export default function Header() {
                             <HeaderLinkButton title={items.title} />
                         </div>
                     ))}
-                    <div onClick={() => router.push('\contact')}>
+                    <div onClick={() => { router.push('\contact'), onClickHandler(-1) }}>
                         <HeaderLinkButton title='contact' isIcon={false} />
                     </div>
                 </div>

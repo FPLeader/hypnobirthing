@@ -420,3 +420,66 @@ export const MemberCards: MemberCardType[] = [
         I'm a native New Yorker living with my partner in Karmei Yosef, Israel. I am fluent in English and Hebrew. My favorite way to spend free time is cuddling with my grandbabies. I also love reading, hiking, qigong and chocolate.`
     },
 ]
+
+
+
+export interface ReviewCardType {
+    title: string,
+    content: string,
+    name: string,
+    address: string,
+    date: number,
+}
+
+export const ReviewCards: ReviewCardType[] = [
+    {
+        title: `She's amazing!`,
+        content: `Do yourself a favour! Before we met Sharon I was terrified of giving birth, to the point I felt anxious all of the time. A couple of my friends recommended Sharon and I am so thankful they did. After just a few sessions we had confronted our fears, learnt so much and were armed with an arsenal of visualisations and breathing exercises to help us on our birth journey. For us, knowledge was power. I cannot recommend Sharon highly enough. She’s amazing! Even my husband who was sceptical at first got so much out of the experience.`,
+        name: 'Emile Kyle',
+        address: 'Tel Aviv, Israel',
+        date: 0,
+    },
+    {
+        title: 'Thanks!',
+        content: `What an amazing method! So instinctive to what Mother's bodies are born to do!! Thanks!`,
+        name: 'Tawny Knight',
+        address: 'Tel Aviv, Israel',
+        date: 0,
+    },
+    {
+        title: 'Support and help',
+        content: `After taking her course, I felt empowered to protect myself and fully able to face any difficulties that might arise in childbirth. When I first came to the course, I was sure I would give birth alone.
+        But during the course I realised that I could not give birth without the help of someone else, even if it was my husband or my best friend.
+        I realised how important it is to have someone with me who can support and help me during the birth.
+        I also realised how important it is to be prepared for the birth.
+        During my pregnancy I thought I knew everything about childbirth, but during the course I realised what a fool I had been.`,
+        name: 'Carol John',
+        address: 'NY, USA',
+        date: 0,
+    },
+    {
+        title: 'Better than anything',
+        content: 'After preparing with HypnoBirthing my birth was better than anything that I could have even imagined.',
+        name: 'Joy Kraynak',
+        address: 'Tel Aviv, Israel',
+        date: 0,
+    },
+    {
+        title: 'Wonderful experience',
+        content: `My husband and I had such a wonderful experience preparing for the birth of our daughter when we attended a HypnoBirthing class. I still remember how during the class, sitting in a chair instead of on a bed, and not in my usual position, I felt something happening inside me.
+        It was as if someone inside was pushing me, so much so that I involuntarily started to move.
+        At that moment I understood what it was.
+        And I was absolutely certain that the baby would be born naturally.
+        My husband and I really wanted the birth to be painless.`,
+        name: 'Erin Failaev',
+        address: 'Beersheba, Israel',
+        date: 0,
+    },
+    {
+        title: `She's amazing!`,
+        content: 'Just what we needed as we navigated a system that has forgotten the power of a woman and her baby. Thanks!',
+        name: 'Mary Angelique',
+        address: 'Tel Aviv, Israel',
+        date: 0,
+    }
+]

@@ -10,8 +10,8 @@ export default function ProTrainings() {
     return (
         <div className='pt-[70px] md:pt-[90px] min-h-screen w-full'>
             <Banner title='Professional Trainings' textStyle='left' />
-            <div className='w-full flex justify-center mt-[20px] md:mt-[30px] lg:mt-[75px]'>
-                <div className='w-full max-w-[1226px] mx-[20px]'>
+            <div className='w-full flex justify-center mt-[20px] md:mt-[30px] lg:mt-[70px]'>
+                <div className='w-full max-w-[1225px] mx-[20px]'>
                     <div className='w-full mt-[20px] grid lg:grid-cols-2 gap-[20px] md:gap-[30px] lg:gap-x-[35px] lg:gap-y-[70px]'>
                         <div className='flex flex-col gap-[16px]'>
                             <div className={style.Title}>Pashut Laledet HypnoBirthing</div>

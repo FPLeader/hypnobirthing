@@ -11,7 +11,7 @@ export default function UpcomingCourse() {
     return (
         <div className='pt-[70px] lg:pt-[90px] pb-[60px] md:pb-[92.5px] lg:pb-[160px] w-full flex justify-center'>
             <div className='max-w-[1225px] mx-[20px] w-full'>
-                <div className='pt-[25px] md:pt-[30px] lg:pt-[50px] '>
+                <div className='mt-[20px] md:mt-[30px] lg:mt-[70px]'>
                     <RegularTitle text='Upcoming Childbirth Courses' />
                 </div>
                 <div className='mt-[20px] flex flex-col-reverse lg:flex-row md:justify-between md:items-center gap-[20px] md:gap-x-[35px]'>

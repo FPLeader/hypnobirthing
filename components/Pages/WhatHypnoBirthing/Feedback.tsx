@@ -5,7 +5,7 @@ export default function Feedback() {
 
     const style = {
         dividerWrapper: 'w-full md:w-0 flex justify-center items-center',
-        dividerInner: 'w-full md:w-0 h-full md:max-h-[76px] max-w-[100px] border-[1px] border-gray_1'
+        dividerInner: 'w-full md:w-0 h-full md:max-h-[76px] max-w-[100px] border border-gray_1'
     }
 
     return (

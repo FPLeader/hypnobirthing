@@ -46,7 +46,7 @@ export default function Blog() {
             <Banner title={blogdata.title} />
             <div className='w-full flex justify-center'>
                 <div className='w-full max-w-[1225px] mx-[20px]'>
-                    <div className='mt-[20px] md:mt-[69px] mb-[20px] md:mb-[30px]'>
+                    <div className='mt-[20px] md:mt-[30px] lg:mt-[70px] mb-[20px] md:mb-[30px]'>
                         <RegularTitle text={blogdata.header} />
                     </div>
                     <div className='flex flex-col lg:flex-row gap-[20px] lg:gap-[60px]'>

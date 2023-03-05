@@ -4,7 +4,7 @@ interface InputProps {
 }
 
 export default function SubmitInput({
-    placeholder
+    placeholder = ''
 }: InputProps) {
     return (
         <div className='w-full md:max-w-[356px]'>
@@ -13,7 +13,7 @@ export default function SubmitInput({
                     type='text'
                     id=''
                     className='w-full px-[24px] py-[9.5px] lg:py-[16.5px] bg-bcg_2 border border-dark text-dark text-[Lato] text-[16px] rounded-[500px] placeholder:text-[#2B252590] placeholder:text-[Lato] text-center md:text-left'
-                    placeholder={placeholder ? placeholder : ''}
+                    placeholder={placeholder}
                     required
                 />
             </div>

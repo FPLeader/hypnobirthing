@@ -5,6 +5,7 @@ export { default as HomePage } from './Home'
 export { default as WhatHypnoBirthingPage } from './WhatHypnoBirthing/'
 export { default as AboutUsPage } from './AboutUs/'
 export { default as MediaPage } from './Media'
+export { default as ReviewsPage } from './Reviews'
 
 //For Parents
 export { default as UpcomingCoursePage } from './UpcomingCourse'

@@ -12,7 +12,7 @@ export default function OurCommunity() {
         <>
             <div className='w-full flex justify-center'>
                 <div className='max-w-[1225px] mx-[20px] pt-[70px] md:pt-[90px]'>
-                    <div className='mt-[50px] md:flex md:justify-between md:items-end'>
+                    <div className='mt-[20px] md:mt-[30px] lg:mt-[70px] md:flex md:justify-between md:items-end'>
                         <RegularTitle text='Our Community' />
                         <div className='hidden md:block'>
                             <RegularButton text='Become a professional' />
