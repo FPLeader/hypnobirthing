@@ -52,7 +52,7 @@ export default function Contact() {
                                 </div>
                                 <div className='flex flex-col md:flex-row justify-between items-center gap-[20px]'>
                                     <RegularButton text='submit' />
-                                    <div className='text-center md:text-left text-Label text-[14px]'>By clicking "send" you accept our Terms & Conditions and Privacy Policy</div>
+                                    <div className='text-center md:text-left text-Label text-[14px]'>By clicking &quot;send&quot; you accept our Terms & Conditions and Privacy Policy</div>
                                 </div>
                             </div>
                             <div className='w-[400px] w-full hidden lg:block'>
