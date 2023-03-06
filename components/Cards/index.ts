@@ -8,6 +8,7 @@ export { default as CourseCard } from './Course'
 export { default as VideoCard } from './Video'
 export { default as MediaCard } from './Media'
 export { default as MemberCard } from './Member'
+export { default as MemberRowCard } from './MemberRow'
 export { default as ReviewCard } from './Review'
 
 // Blog Type

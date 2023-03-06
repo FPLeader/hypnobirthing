@@ -39,3 +39,14 @@ export const TechniquesData = [
     'Education',
     'In addition, focused relaxation through touch and choice of movement or positions',
 ]
+
+export const OurBenefitsData = [
+    'Sharing the path of gentle and intuitive care-giving with birth professionals',
+    'Fostering loving communication between mother, partner and baby',
+    'Helping women feel safe and comfortable in their bodies',
+    'Enabling women to find their source of strength',
+    'Assisting couples to tap into their own intuition',
+    'Allowing the future parents to find calm in pregnancy and birth',
+    'Empowering families to communicate clearly with their medical caregivers',
+    'Showing couples a way to enjoy a gentle welcome for their babies into the world'
+]
