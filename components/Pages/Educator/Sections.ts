@@ -1,0 +1,5 @@
+export { default as IntroductionSection } from './Introduction'
+export { default as OurBenefitsSection } from './OurBenefits'
+export { default as ReviewsSection } from './Reviews'
+export { default as PhilosophySection } from './Philosophy'
+export { default as TeachersSection } from './Teachers'

@@ -483,3 +483,27 @@ export const ReviewCards: ReviewCardType[] = [
         date: 0,
     }
 ]
+
+export const SupportReviewCards: ReviewCardType[] = [
+    {
+        title: 'Better than anything',
+        content: 'After preparing with HypnoBirthing my birth was better than anything that I could have even imagined.',
+        name: 'Joy Kraynak',
+        address: 'Tel Aviv, Israel',
+        date: 0,
+    },
+    {
+        title: 'Thanks!',
+        content: `What an amazing method! So instinctive to what Mother's bodies are born to do!! Thanks!`,
+        name: 'Tawny Knight',
+        address: 'Tel Aviv, Israel',
+        date: 0,
+    },
+    {
+        title: `She's amazing!`,
+        content: 'Just what we needed as we navigated a system that has forgotten the power of a woman and her baby. Thanks!',
+        name: 'Mary Angelique',
+        address: 'Tel Aviv, Israel',
+        date: 0,
+    }
+]
