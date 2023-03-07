@@ -13,9 +13,9 @@ export default function SoftLanding() {
                 </div>
                 <div className='w-full lg:w-1/2 flex flex-col gap-[20px]'>
                     <div className='text-[16px] md:text-[18px] lg:text-[20px]'>
-                        We've known for years that women in childbirth need support.Everyone knows that,but what happens next?
+                        We&apos;ve known for years that women in childbirth need support.Everyone knows that,but what happens next?
                         <br /><br />
-                        We are so proud to present something to you that even we didn't realize how much it was missing until we started working on it.Postpartum preparation, including a full lactation preparation workshop and working with a couples coach, as a bonus.
+                        We are so proud to present something to you that even we didn&apos;t realize how much it was missing until we started working on it.Postpartum preparation, including a full lactation preparation workshop and working with a couples coach, as a bonus.
                     </div>
                 </div >
             </div>
