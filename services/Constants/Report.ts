@@ -50,3 +50,10 @@ export const OurBenefitsData = [
     'Empowering families to communicate clearly with their medical caregivers',
     'Showing couples a way to enjoy a gentle welcome for their babies into the world'
 ]
+
+export const NewMomCirclesData = [
+    'Self-knowledge circle',
+    'A circle for the mum you love',
+    'A circle for the mum you love',
+    'Self-knowledge circle'
+]

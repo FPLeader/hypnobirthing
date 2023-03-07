@@ -1,4 +1,4 @@
-import {MediaPage} from '@/components/Pages'
+import { MediaPage } from '@/components/Pages'
 
 export default function Media() {
     return (
