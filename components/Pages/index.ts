@@ -32,3 +32,7 @@ export { default as BlogPage } from './Blog'
 
 //Contact
 export { default as ContactPage } from './Contact'
+
+//Other
+export { default as TeacherPage } from './Teacher/'
+export { default as ClassPage } from './Class/'

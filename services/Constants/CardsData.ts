@@ -193,6 +193,22 @@ export interface CourseCardType {
     teacher: string,
 }
 
+export const CourseCardsData: CourseCardType[] = [
+    {
+        date: 0,
+        title: 'Frontal Birth Preparation',
+        location: 'Odim (near Netanya)',
+        teacher: 'Hagar Ben David',
+    },
+    {
+        date: 0,
+        title: 'Frontal Birth Preparation',
+        location: 'Odim (near Netanya)',
+        teacher: 'Hagar Ben David',
+    }
+]
+
+
 export interface SearchResultType {
     month: number,
     cards: CourseCardType[],
@@ -267,6 +283,40 @@ export const SearchResult: SearchResultType[] = [
                 teacher: 'Hagar Ben David',
             }
         ]
+    }
+]
+
+
+export interface BigCourseCardType {
+    image: string,
+    date: number,
+    title: string,
+    location: string,
+    teacher: string,
+}
+
+
+export const BigCourseCardsData: BigCourseCardType[] = [
+    {
+        image: '/img/upcoming1.png',
+        date: 0,
+        title: 'Frontal Birth Preparation',
+        location: 'Odim (near Netanya)',
+        teacher: 'Hagar Ben David',
+    },
+    {
+        image: '/img/upcoming2.png',
+        date: 0,
+        title: 'Frontal Birth Preparation',
+        location: 'Odim (near Netanya)',
+        teacher: 'Hagar Ben David',
+    },
+    {
+        image: '/img/upcoming3.png',
+        date: 0,
+        title: 'Frontal Birth Preparation',
+        location: 'Odim (near Netanya)',
+        teacher: 'Hagar Ben David',
     }
 ]
 
@@ -420,8 +470,6 @@ export const MemberCards: MemberCardType[] = [
         I'm a native New Yorker living with my partner in Karmei Yosef, Israel. I am fluent in English and Hebrew. My favorite way to spend free time is cuddling with my grandbabies. I also love reading, hiking, qigong and chocolate.`
     },
 ]
-
-
 
 export interface ReviewCardType {
     title: string,

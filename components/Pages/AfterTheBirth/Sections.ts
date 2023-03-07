@@ -1,0 +1,6 @@
+export { default as IntroductionSection } from './Introduction'
+export { default as SoftLandingSection } from './SoftLanding'
+export { default as BreastfeedingSection } from './Breastfeeding'
+export { default as CourseSection } from './Course'
+export { default as PostpartumSection } from './Postpartum'
+export { default as NewMomSection } from './NewMom'
