@@ -27,7 +27,7 @@ export default function Course({
                 <div className='text-[14px] lg:text-[18px]'>—&nbsp;{teacher}</div>
             </div>
             <div
-                className='h-[45px] text-[14px] uppercase flex justify-center items-center bg-[#DFD3BC80] hover:bg-beighe active:bg-[#DFD3BC80] transaction-all duration-300 cursor-pointer select-none'
+                className='h-[45px] text-[14px] uppercase flex justify-center items-center bg-[#DFD3BC80] hover:bg-beighe active:bg-[#DFD3BC80] transition-all duration-300 cursor-pointer select-none'
                 onClick={() => router.push(link)}
             >
                 reserve my spot</div>

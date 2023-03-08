@@ -14,6 +14,7 @@ module.exports = {
       'Label': '#A3A09E',
       'deviders': '#D1CECC',
       'beighe': '#DFD3BC',
+      'beighe_2': '#F0E6DB',
       'bcg_2': '#F5EBE9',
       'bcg': '#FFFAFA',
       'gray': '#2B2525',

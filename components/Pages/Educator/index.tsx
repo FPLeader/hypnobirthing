@@ -1,22 +1,26 @@
-import { IntroductionSection, OurBenefitsSection, ReviewsSection, PhilosophySection, TeachersSection } from './Sections'
-import { MiddleButton } from '@/components/Buttons'
+import { IntroductionSection, AboutMeSection, UpcomingSection, MyAritclesSection , MyContactsSection } from './Sections'
+import { PromoteBar, UpcomingClassesBar } from '@/components/Sections'
 
 export default function index() {
-    return (
-        <div className='w-full flex justify-center pt-[70px] md:pt-[90px] pb-[20px] md:pb-[30px] lg:pb-[90px]'>
-            <div className='w-full max-w-[1225px] mx-[20px]'>
-                <div className='w-full mt-[20px] md:mt-[30px] lg:mt-[70px] flex flex-col gap-[20px] md:gap-[40px] lg:gap-[70px]'>
-                    <IntroductionSection />
-                    <OurBenefitsSection />
-                    <ReviewsSection />
-                    <TeachersSection />
-                    <PhilosophySection />
-                    <div className='flex flex-col md:flex-row gap-[15px] md:gap-[20px]'>
-                        <MiddleButton text='to register' link='/register' paddingType={1} />
-                        <MiddleButton text='contact us' type={1} link='/contact' paddingType={1} />
-                    </div>
-                </div>
-            </div>
+  return (
+    <div className='pt-[70px] md:pt-[90px] w-full'>
+      <IntroductionSection />
+      <div className='w-full flex justify-center mt-[20px] md:mt-[30px] lg:mt-[70px]'>
+        <div className='w-full max-w-[1225px] mx-[20px]'>
+          <div className='min-[1225px]:max-w-[805px] lg:max-w-[calc(100vw-460px)] w-full max-md:mt-[520px] max-lg:mt-[240px] flex flex-col gap-[20px] md:gap-[30px] lg:gap-[70px]'>
+            <AboutMeSection />
+            <UpcomingSection />
+            <MyAritclesSection />
+            <MyContactsSection />
+          </div>
         </div>
-    )
+      </div>
+      <div className='mt-[20px] md:mt-[70px] lg:mt-[100px]'>
+        <PromoteBar />
+      </div>
+      <div className='mt-[20px] md:mt-[40px]'>
+        <UpcomingClassesBar title='Upcoming Childbirth Classes' buttonText='Learn More' link='\upcomingcourse' />
+      </div>
+    </div>
+  )
 }

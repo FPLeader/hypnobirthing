@@ -13,7 +13,7 @@ export default function MemberCard({
   description
 }: CommunityCardProps) {
   return (
-    <div className='w-full flex flex-col border-[2px] border-beighe bg-white hover:bg-beighe active:bg-white select-none cursor-pointer rounded-[10px] overflow-hidden transaction-all duration-500'>
+    <div className='w-full flex flex-col border-[2px] border-beighe bg-white hover:bg-beighe active:bg-white select-none cursor-pointer rounded-[10px] overflow-hidden transition-all duration-500'>
       <img draggable='false' src={image} alt={name} className='w-full' />
       <div className='w-full p-[15px] text-center text-dark flex flex-col gap-[10px]'>
         <div className='text-[18px]'>{name}</div>

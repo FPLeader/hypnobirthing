@@ -81,7 +81,7 @@ export const HeaderLinks: LinksType[] = [
             },
             {
                 title: 'Become An Educator',
-                link: '/educator',
+                link: '/SupportEducator',
             },
             {
                 title: 'Support HypnoBirthing',
@@ -214,7 +214,7 @@ export const FooterLinks:LinksType[] = [
             },
             {
                 title: 'Become An Educator',
-                link: '/educator',
+                link: '/SupportEducator',
             },
             {
                 title: 'Support HypnoBirthing',

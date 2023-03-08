@@ -19,7 +19,7 @@ export { default as AfterTheBirthPage } from './AfterTheBirth/'
 
 //For Professionals
 export { default as TrainingPage } from './ProTrainings'
-export { default as EducatorPage } from './Educator/'
+export { default as SupportEducatorPage } from './SupportEducator/'
 export { default as SupportPage } from './Support/'
 //log in page mssing
 
@@ -36,3 +36,4 @@ export { default as ContactPage } from './Contact'
 //Other
 export { default as TeacherPage } from './Teacher/'
 export { default as ClassPage } from './Class/'
+export { default as EducatorPage } from './Educator/'
