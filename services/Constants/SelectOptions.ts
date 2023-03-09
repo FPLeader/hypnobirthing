@@ -25,3 +25,23 @@ export const SelectData1: SelectItem[] = [
         text: 'BR'
     }
 ]
+
+interface SelectProfileType {
+    value: string,
+    text: string,
+}
+
+export const SelectProfile: SelectProfileType[] = [
+    {
+        value: 'Educator',
+        text: 'Educator'
+    },
+    {
+        value: 'Teacher',
+        text: 'Teacher'
+    },
+    {
+        value: 'Doul',
+        text: 'Doul'
+    },
+]

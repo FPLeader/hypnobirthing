@@ -24,7 +24,7 @@ export default function Reviews() {
                                 address={ReviewCards[0].address}
                                 date={ReviewCards[0].date}
                             />
-                            <img draggable={false} src='/img/review1.png' className='w-full rounded-[10px] blur-lg' />
+                            <img draggable={false} src='/img/review1.png' className='w-full rounded-[10px] lg:rounded-[15px] blur-lg' />
                             <ReviewCard
                                 title={ReviewCards[1].title}
                                 content={ReviewCards[1].content}
@@ -58,7 +58,7 @@ export default function Reviews() {
                                 address={ReviewCards[4].address}
                                 date={ReviewCards[4].date}
                             />
-                            <img draggable={false} src='/img/review2.png' className='w-full rounded-[10px] blur-lg' />
+                            <img draggable={false} src='/img/review2.png' className='w-full rounded-[10px] lg:rounded-[15px] blur-lg' />
                             <ReviewCard
                                 title={ReviewCards[5].title}
                                 content={ReviewCards[5].content}
@@ -76,7 +76,7 @@ export default function Reviews() {
                                 address={ReviewCards[0].address}
                                 date={ReviewCards[0].date}
                             />
-                            <img draggable={false} src='/img/review1.png' className='w-full rounded-[10px] blur-lg' />
+                            <img draggable={false} src='/img/review1.png' className='w-full rounded-[10px] lg:rounded-[15px] blur-lg' />
                             <ReviewCard
                                 title={ReviewCards[1].title}
                                 content={ReviewCards[1].content}
@@ -108,7 +108,7 @@ export default function Reviews() {
                                 address={ReviewCards[4].address}
                                 date={ReviewCards[4].date}
                             />
-                            <img draggable={false} src='/img/review2.png' className='w-full rounded-[10px] blur-lg' />
+                            <img draggable={false} src='/img/review2.png' className='w-full rounded-[10px] lg:rounded-[15px] blur-lg' />
                             <ReviewCard
                                 title={ReviewCards[5].title}
                                 content={ReviewCards[5].content}

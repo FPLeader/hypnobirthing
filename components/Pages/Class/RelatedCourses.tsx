@@ -7,7 +7,7 @@ export default function RelatedCourses() {
     <div className='flex flex-col gap-[16px]'>
       <div className='text-[24px] lg:text-[28px] font-medium'>Related courses ({numberOfCourses})</div>
       <div className='grid md:grid-cols-2 gap-[20px] md:gap-[35px]'>
-        {CourseCardsData.map((card: CourseCardType, index: number) => (
+        {CourseCardsData.slice(0,2).map((card: CourseCardType, index: number) => (
           <div key={index}>
             <CourseCard date={card.date} title={card.title} location={card.location} teacher={card.teacher} />
           </div>

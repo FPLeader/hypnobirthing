@@ -19,9 +19,10 @@ export { default as AfterTheBirthPage } from './AfterTheBirth/'
 
 //For Professionals
 export { default as TrainingPage } from './ProTrainings'
-export { default as SupportEducatorPage } from './SupportEducator/'
-export { default as SupportPage } from './Support/'
-//log in page mssing
+export { default as PashutTrainingPage } from './PashutTraining/'
+export { default as OnedayPage } from './Oneday/'
+export { default as LogInPage } from './LogIn'
+export { default as SignUpPage } from './SignUp'
 
 //Blog
 export { default as ArticlePage } from './Article/'
@@ -34,6 +35,5 @@ export { default as BlogPage } from './Blog'
 export { default as ContactPage } from './Contact'
 
 //Other
-export { default as TeacherPage } from './Teacher/'
 export { default as ClassPage } from './Class/'
 export { default as EducatorPage } from './Educator/'

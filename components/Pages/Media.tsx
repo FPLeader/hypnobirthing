@@ -15,11 +15,11 @@ export default function Media() {
         <div className='w-full max-w-[1225px] px-[20px]'>
           <div className='flex flex-col md:flex-row gap-[20px] md:gap-[35px]'>
             <div className={style.VideoWrapper}>
-              <VideoCard title={`Meghan Markle&apos;s birth preparation course`} code='YGxKPJDzok8' style='w-full h-[346px]' />
+              <VideoCard title={`Meghan Markle&apos;s birth preparation course`} code='YGxKPJDzok8' style='w-full aspect-w-16 aspect-h-9' />
               <div className={style.VideoTitle}>Meghan Markle&apos;s birth preparation course</div>
             </div>
             <div className={style.VideoWrapper}>
-              <VideoCard title={`Pashut Laledet HypnoBirthing — Paula Aji`} code='H-de2tLu9Xo' style='w-full h-[346px]' />
+              <VideoCard title={`Pashut Laledet HypnoBirthing — Paula Aji`} code='H-de2tLu9Xo' style='w-full aspect-w-16 aspect-h-9' />
               <div className={style.VideoTitle}>Pashut Laledet HypnoBirthing — Paula Aji</div>
             </div>
           </div>

@@ -8,8 +8,8 @@ export default function WhatHypnoSection() {
                 <div className='block md:hidden'>
                     <HomeTitle text='What is HypnoBirthing' />
                 </div>
-                <div className='flex flex-col-reverse md:flex-row justify-between gap-x-[70px]'>
-                    <div className='w-full md:w-7/12'>
+                <div className='grid md:grid-cols-12 gap-[20px] md:gap-[30px] lg:gap-[70px]'>
+                    <div className='w-full max-md:row-start-2 md:col-span-7'>
                         <div className='hidden md:block'>
                             <HomeTitle text='What is HypnoBirthing' />
                         </div>
@@ -29,8 +29,8 @@ export default function WhatHypnoSection() {
                             <RegularButton text='Read more' />
                         </div>
                     </div>
-                    <div className='mt-[20px] md:mt-0 h-max relative w-full md:w-5/12'>
-                        <img draggable='false' src='/img/whathypno.png' alt='' className='w-full' />
+                    <div className='mt-[20px] md:mt-0 h-max md:h-full relative w-full md:col-span-5'>
+                        <img draggable='false' src='/img/whathypno.png' alt='' className='w-full h-full max-md:max-h-[400px] object-cover blur-lg' />
                         <div className='absolute bottom-[10px] right-[11.5px] text-white'>photo by Shelley Lawnikanus</div>
                     </div>
                 </div>

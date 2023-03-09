@@ -13,7 +13,8 @@ export default function BlogsSection() {
                         <RegularButton text='blog' />
                     </div>
                 </div>
-                <div className='mt-[20px] md:mt-[42px] lg:mt-[70px] grid sm:grid-cols-2 md:grid-cols-3 justify-between gap-[25px] md:gap-[20px] lg:gap-[34px]'>
+
+                <div className='mt-[20px] md:mt-[42px] lg:mt-[70px] grid sm:grid-cols-2 md:grid-cols-3 gap-[25px] md:gap-[20px] lg:gap-[34px]'>
                     {
                         BlogCards.slice(0, 3).map((obj: BlogCardType, index: number) => (
                             <BlogCard key={index} id={obj.id} image={obj.image} title={obj.title} header={obj.header} content={obj.content} author={obj.author} />

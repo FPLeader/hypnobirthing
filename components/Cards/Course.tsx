@@ -26,11 +26,11 @@ export default function Course({
                 <div className='opacity-60 text-[14px] lg:text-[18px]'>{location}</div>
                 <div className='text-[14px] lg:text-[18px]'>—&nbsp;{teacher}</div>
             </div>
-            <div
-                className='h-[45px] text-[14px] uppercase flex justify-center items-center bg-[#DFD3BC80] hover:bg-beighe active:bg-[#DFD3BC80] transition-all duration-300 cursor-pointer select-none'
+            <button
+                className='w-full h-[45px] text-[14px] uppercase flex justify-center items-center bg-[#DFD3BC80] hover:bg-beighe active:bg-[#DFD3BC80] transition-all duration-300'
                 onClick={() => router.push(link)}
             >
-                reserve my spot</div>
+                reserve my spot</button>
         </div>
     )
 }

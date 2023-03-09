@@ -12,10 +12,8 @@ export default function Introduction() {
                         <br /><br />
                         We teach a range of relaxation techniques such as guided imagery, breathing, meditation, birthing positions, and touch. In addition we focus on communication- with yourself, your baby, your family, and with your caregivers.
                     </span>
-                    <VideoCard title='What is HypnoBirthing?' code='YGxKPJDzok8' style='w-full' />
-                    <div className='flex items-center'>
-                        <img draggable='false' src='/img/whathypno2.png' alt='' className='w-full' />
-                    </div>
+                    <VideoCard title='What is HypnoBirthing?' code='YGxKPJDzok8' style='w-full h-full min-h-[177px] sm:min-h-[400px]' />
+                    <img draggable='false' src='/img/whathypno2.png' alt='' className='w-full h-full object-cover rounded-[10px] lg:rounded-[15px]' />
                     <span className='text-[18px] text-dark'>
                         You and your partner will learn to focus inwards, to trust your body and your baby. You&apos;ll have a chance to work through fears and to reexamine your perception of birth. The result of the course is that participants feel empowered and are ready to handle the excitement of birth and the birth setting while staying focused and present in the moment as the birth unfolds.
                         <br /><br />

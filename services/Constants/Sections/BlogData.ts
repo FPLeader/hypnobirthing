@@ -74,11 +74,11 @@ export const SupportCards: SupportCardType[] = [
     {
         image: '/img/BlogSec4.png',
         title: 'Birth Professionals Support HypnoBirthing — One Day Workshop',
-        link: '/',
+        link: '/oneday',
     },
     {
         image: '/img/BlogSec5.png',
         title: 'Pashut Laledet HypnoBirthing Educator Training',
-        link: '/',
+        link: '/pashut',
     },
 ]

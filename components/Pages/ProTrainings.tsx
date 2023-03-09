@@ -21,12 +21,8 @@ export default function ProTrainings() {
                                 Giving birth is a natural process. Yet a burden of anxiety and fear of birth has been passed from generation to generation across western societies. This has resulted in a modern medical system that is led by fear. Even women who believe that birth is normal and natural often get caught up in the fear based approach. In many cultures, for thousands of years women have supported women through pregnancy and birth. This custom serves to reduce fear and allows women to connect to their bodies and their intuition. In this tradition, we invite you to join us.
                             </div>
                         </div>
-                        <div className='w-full flex items-center justify-center'>
-                            <img draggable='false' src='/img/protraining1.png' alt='' className='w-full rounded-[10px]' />
-                        </div>
-                        <div className='w-full flex items-center justify-center'>
-                            <img draggable='false' src='/img/protraining2.png' alt='' className='w-full rounded-[10px]' />
-                        </div>
+                        <img draggable='false' src='/img/protraining1.png' alt='' className='w-full h-full max-lg:max-h-[480px] object-cover rounded-[10px] lg:rounded-[15px]' />
+                        <img draggable='false' src='/img/protraining2.png' alt='' className='w-full h-full max-lg:max-h-[480px] object-cover rounded-[10px] lg:rounded-[15px]' />
                         <div className='max-lg:row-start-3'>
                             <div className={style.Content}>
                                 If you are a birth professional and want to learn and practice skills for gentle birthing, we welcome you to train with us.
