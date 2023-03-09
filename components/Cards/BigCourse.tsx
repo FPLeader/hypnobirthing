@@ -16,7 +16,7 @@ export default function BigCourse({
     const moment = require('moment');
 
     return (
-        <div className='w-full flex flex-col' >
+        <div className='w-full max-md:max-w-[385px] max-md:m-auto flex flex-col' >
             <div className='flex flex-col bg-beighe hover:cursor-pointer rounded-[15px] overflow-hidden'>
                 <img draggable='false' src={image} alt='' className='w-full blur-lg' />
                 <div className='text-dark text-[12px] lg:text-[16px] text-center pt-[7.5px] lg:pt-[10px] pb-[6.5px] lg:pb-[9px]'>{moment(date).format('DD/MM/YYYY, dddd, HH:mm')}</div>

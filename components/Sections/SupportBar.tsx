@@ -9,16 +9,16 @@ export default function SupportBar() {
             <div className='w-full max-w-[1225px] mx-[20px]'>
                 <div className='grid lg:grid-cols-2 gap-[20px] md:gap-[35px]'>
                     {SupportCards.map((obj: SupportCardType, index: number) => (
-                        <div
+                        <button
                             key={index}
                             className='p-[15px] lg:p-[25px] flex items-center w-full rounded-[10px] border-[2px] border-beighe bg-bcg_2 hover:bg-beighe active:bg-bcg_2 cursor-pointer select-none overflow-hidden transactioin-all duration-300 gap-[15px]'
                             onClick={() => router.push(obj.link)}
                         >
                             <div className='w-full max-w-[90px] md:max-w-[118px]'>
-                                <img draggable='false' src={obj.image} alt={obj.title} className='w-full ' />
+                                <img draggable='false' src={obj.image} alt={obj.title} className='w-full' />
                             </div>
                             <div className='text-dark text-[20px] md:text-[32px] font-light italic'>{obj.title}</div>
-                        </div>
+                        </button>
                     ))}
                 </div >
             </div>

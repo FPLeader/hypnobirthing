@@ -40,8 +40,8 @@ export default function Contact() {
                                 </div>
                             </div>
                         </div>
-                        <div className='bg-bcg_2 p-[20px] lg:p-[30px] rounded-[10px] flex items-center justify-between'>
-                            <div className='lg:max-w-[675px] w-full flex flex-col gap-[20px]'>
+                        <div className='lg:grid lg:grid-cols-10 bg-bcg_2 p-[20px] lg:p-[30px] rounded-[10px] flex items-center justify-between'>
+                            <div className='lg:col-span-6 w-full flex flex-col gap-[20px]'>
                                 <div className='text-center md:text-left text-[24px] lg:text-[28px] font-medium'>Contact Form</div>
                                 <div className='flex flex-col gap-[10px]'>
                                     <CategoryInput category='Full name' placeholder='Enter your name' />
@@ -55,13 +55,13 @@ export default function Contact() {
                                     <div className='text-center md:text-left text-Label text-[14px]'>By clicking &quot;send&quot; you accept our Terms & Conditions and Privacy Policy</div>
                                 </div>
                             </div>
-                            <div className='w-[400px] w-full hidden lg:block'>
-                                <img draggable='false' src='\img\blogSec6.png' alt='' className='min-w-[400px]' />
+                            <div className='lg:col-span-4 w-full hidden lg:block'>
+                                <img draggable='false' src='\img\blogSec6.png' alt='' className='' />
                             </div>
                         </div>
                     </div>
                     <div className='relative'>
-                        <img src='/img/contactus.png' alt='contactus' className='rounded-[10px] blur-lg' />
+                        <img src='/img/contactus.png' alt='contactus' className='rounded-[10px] lg:rounded-[15px] blur-lg' />
                         <div className='text-white text-[16px] lg:text-[18px] absolute top-[15px] lg:top-[20px] left-[15px] lg:left-[25px]'>photo by Shelley Lawnikanus</div>
                     </div>
                 </div>

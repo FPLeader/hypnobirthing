@@ -31,8 +31,8 @@ export default function Contact({
     }
 
     return (
-        <div
-            className={`w-full h-[50px] md:h-[45px] flex justify-center items-center w-full border border-beighe ${BgType === 0 ? 'bg-beighe_2 hover:bg-beighe active:bg-beighe_2' : 'bg-bcg hover:bg-beighe_2 active:bg-bcg'} rounded-[10px] select-none cursor-pointer transition-all duration-400`}
+        <button
+            className={`w-full h-[50px] md:h-[45px] flex justify-center items-center w-full border border-beighe ${BgType === 0 ? 'bg-beighe_2 hover:bg-beighe active:bg-beighe_2' : 'bg-bcg hover:bg-beighe_2 active:bg-bcg'} rounded-[10px] transition-all duration-400`}
         >
             <div className='w-full grid grid-cols-3 min-[350px]:grid-cols-7 gap-[14px]'>
                 <div className='col-span-1 min-[350px]:col-span-3'>
@@ -44,6 +44,6 @@ export default function Contact({
                     {text}
                 </div>
             </div>
-        </div >
+        </button >
     )
 }

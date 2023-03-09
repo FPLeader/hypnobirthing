@@ -205,6 +205,18 @@ export const CourseCardsData: CourseCardType[] = [
         title: 'Frontal Birth Preparation',
         location: 'Odim (near Netanya)',
         teacher: 'Hagar Ben David',
+    },
+    {
+        date: 0,
+        title: 'Frontal Birth Preparation',
+        location: 'Odim (near Netanya)',
+        teacher: 'Hagar Ben David',
+    },
+    {
+        date: 0,
+        title: 'Frontal Birth Preparation',
+        location: 'Odim (near Netanya)',
+        teacher: 'Hagar Ben David',
     }
 ]
 

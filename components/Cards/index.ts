@@ -18,3 +18,5 @@ export { default as TeacherProfileCard } from './TeacherProfile'
 export { default as BigBlogCard } from './Blogs/BigBlog'
 export { default as BlogCard } from './Blogs/RegularBlog'
 export { default as SmallBlogCard } from './Blogs/SmallBlog'
+
+export { default as BadgeCard } from './Badge'

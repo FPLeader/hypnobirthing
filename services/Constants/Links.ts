@@ -56,7 +56,7 @@ export const HeaderLinks: LinksType[] = [
             },
             {
                 title: 'Our Teachers',
-                link: '/ourteachers',
+                link: '/ourcommunity',
             },
             {
                 title: 'Our Birth Professionals',
@@ -81,7 +81,7 @@ export const HeaderLinks: LinksType[] = [
             },
             {
                 title: 'Become An Educator',
-                link: '/SupportEducator',
+                link: '/supporteducator',
             },
             {
                 title: 'Support HypnoBirthing',
@@ -106,11 +106,11 @@ export const HeaderLinks: LinksType[] = [
             },
             {
                 title: 'Recipes',
-                link: '/',
+                link: '/recipes',
             },
             {
                 title: 'Videos',
-                link: '/',
+                link: '/videos',
             }
         ]
     },
@@ -127,11 +127,11 @@ export const HeaderLinks: LinksType[] = [
             },
             {
                 title: 'Recipes',
-                link: '/',
+                link: '/recipes',
             },
             {
                 title: 'Videos',
-                link: '/',
+                link: '/videos',
             }
         ]
     }
@@ -189,7 +189,7 @@ export const FooterLinks:LinksType[] = [
             },
             {
                 title: 'Our Teachers',
-                link: '/ourteachers',
+                link: '/ourcommunity',
             },
             {
                 title: 'Our Birth Professionals',
@@ -214,7 +214,7 @@ export const FooterLinks:LinksType[] = [
             },
             {
                 title: 'Become An Educator',
-                link: '/SupportEducator',
+                link: '/supporteducator',
             },
             {
                 title: 'Support HypnoBirthing',
@@ -239,11 +239,11 @@ export const FooterLinks:LinksType[] = [
             },
             {
                 title: 'Recipes',
-                link: '/',
+                link: '/recipes',
             },
             {
                 title: 'Videos',
-                link: '/',
+                link: '/videos',
             }
         ]
     },

@@ -3,11 +3,9 @@ import { NewMomCirclesData } from '@/services/Constants/Report'
 export default function NewMom() {
     return (
         <div className='flex flex-col gap-[20px] lg:gap-[30px]'>
-            <div className='flex flex-col-reverse items-center lg:flex-row gap-[15px] lg:gap-[35px]'>
-                <div className='w-full lg:w-1/2'>
-                    <img draggable='false' src='\img\support1.png' alt='' className='w-full rounded-[10px] lg:rounded-[15px]' />
-                </div>
-                <div className='w-full lg:w-1/2 text-dark flex flex-col gap-[15px] lg:gap-[20px]'>
+            <div className='grid lg:grid-cols-2 gap-[15px] lg:gap-[35px]'>
+                <img draggable='false' src='\img\support1.png' alt='' className='w-full h-full max-lg:max-h-[480px] object-cover rounded-[10px] lg:rounded-[15px]' />
+                <div className='w-full max-lg:row-start-1 text-dark flex flex-col gap-[15px] lg:gap-[20px]'>
                     <div className='text-[30px] md:text-[40px] lg:text-[44px] font-light italic'>
                         New Mom Circles
                     </div>

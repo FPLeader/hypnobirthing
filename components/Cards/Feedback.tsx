@@ -29,10 +29,10 @@ export default function FeedbackCard({
         <StarIcon />
         <StarIcon />
       </div>
-      <div className='mt-[15px] flex flex-col items-center gap-y-[10px] text-dark text-center'>
-        <div className='text-[20px]'>{title}</div>
+      <div className='mt-[15px] flex flex-col items-center gap-[10px] text-dark text-center'>
+        <div className='text-[16px] lg:text-[20px]'>{title}</div>
         <div className='w-0 h-[15px] border-r-[1px] border-dark'></div>
-        <div className='font-medium text-[16px]'>{name}</div>
+        <div className='font-medium text-[14px] lg:text-[16px]'>{name}</div>
       </div>
     </div>
   )
