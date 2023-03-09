@@ -5,7 +5,7 @@ import { FaqItem, QuestionBox } from './Sections'
 export default function Faq() {
     return (
         <div className='pt-[70px] md:pt-[90px]'>
-            <Banner title='Frequently Asked Questions' textStyle='center' />
+            <Banner title='Frequently Asked Questions' image='/img/banner3.png' />
             <div className='w-full flex justify-center'>
                 <div className='max-w-[1225px] w-full px-[20px] mt-[20px] md:mt-[30px] lg:mt-[70px]'>
                     <div className='flex flex-col md:flex-row gap-[20px] md:gap-[35px]'>

@@ -4,7 +4,7 @@ import { useSpring, animated } from 'react-spring'
 
 export default function Expand() {
     //accordion function
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
 
     //rotate animation
     const iconUpAnimation = useSpring<{ from: {}, to: {}, config: {} }>({

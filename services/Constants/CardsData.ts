@@ -247,6 +247,24 @@ export const SearchResult: SearchResultType[] = [
                 title: 'Frontal Birth Preparation',
                 location: 'Odim (near Netanya)',
                 teacher: 'Hagar Ben David',
+            },
+            {
+                date: 0,
+                title: 'Frontal Birth Preparation',
+                location: 'Odim (near Netanya)',
+                teacher: 'Hagar Ben David',
+            },
+            {
+                date: 0,
+                title: 'Frontal Birth Preparation',
+                location: 'Odim (near Netanya)',
+                teacher: 'Hagar Ben David',
+            },
+            {
+                date: 0,
+                title: 'Frontal Birth Preparation',
+                location: 'Odim (near Netanya)',
+                teacher: 'Hagar Ben David',
             }
         ]
     },
@@ -270,12 +288,54 @@ export const SearchResult: SearchResultType[] = [
                 title: 'Frontal Birth Preparation',
                 location: 'Odim (near Netanya)',
                 teacher: 'Hagar Ben David',
+            },
+            {
+                date: 0,
+                title: 'Frontal Birth Preparation',
+                location: 'Odim (near Netanya)',
+                teacher: 'Hagar Ben David',
+            },
+            {
+                date: 0,
+                title: 'Frontal Birth Preparation',
+                location: 'Odim (near Netanya)',
+                teacher: 'Hagar Ben David',
+            },
+            {
+                date: 0,
+                title: 'Frontal Birth Preparation',
+                location: 'Odim (near Netanya)',
+                teacher: 'Hagar Ben David',
             }
         ]
     },
     {
         month: 2,
         cards: [
+            {
+                date: 0,
+                title: 'Frontal Birth Preparation',
+                location: 'Odim (near Netanya)',
+                teacher: 'Hagar Ben David',
+            },
+            {
+                date: 0,
+                title: 'Frontal Birth Preparation',
+                location: 'Odim (near Netanya)',
+                teacher: 'Hagar Ben David',
+            },
+            {
+                date: 0,
+                title: 'Frontal Birth Preparation',
+                location: 'Odim (near Netanya)',
+                teacher: 'Hagar Ben David',
+            },
+            {
+                date: 0,
+                title: 'Frontal Birth Preparation',
+                location: 'Odim (near Netanya)',
+                teacher: 'Hagar Ben David',
+            },
             {
                 date: 0,
                 title: 'Frontal Birth Preparation',

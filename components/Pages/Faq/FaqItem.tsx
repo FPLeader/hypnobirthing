@@ -17,7 +17,7 @@ export default function FaqItem({
     //background animation with react spring
     const bgAnimation = useSpring<{ from: {}, to: {}, config: {} }>({
         from: { opacity: '0', background: '#ffffff' },
-        to: { opacity: '1', background: isOpen ? '#DFD3BC' : '#ffffff' },
+        to: { opacity: '1', background: isOpen ? '#F5EBE9' : '#ffffff' },
         config: { duration: '200' }
     });
 
@@ -53,7 +53,7 @@ export default function FaqItem({
             <div className='flex justify-between items-center select-none cursor-pointer' onClick={() => setIsOpen(!isOpen)}>
                 <div className='font-medium text-[20px] text-dark pr-[24px]'>{title}</div>
 
-                <animated.div style={isOpen ? iconUpAnimation : iconDownAnimation}>
+                <animated.div style={isOpen ? iconDownAnimation : iconUpAnimation}>
                     {isOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
                 </animated.div>
             </div>

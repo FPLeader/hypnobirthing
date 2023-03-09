@@ -3,18 +3,18 @@ import { Banner, SupportBar } from '@/components/Sections'
 export default function ProTrainings() {
 
     const style = {
-        Title: 'text-dark text-center font-medium md:text-left text-[20px] md:text-[24px] lg:text-[28px]',
+        Title: 'text-dark text-center md:text-left text-[20px] md:text-[24px] lg:text-[28px]',
         Content: 'text-dark text-[16px] lg:text-[18px]',
     }
 
     return (
         <div className='pt-[70px] md:pt-[90px] min-h-screen w-full'>
-            <Banner title='Professional Trainings' textStyle='left' />
+            <Banner title='Professional Trainings' image='/img/banner9.png' />
             <div className='w-full flex justify-center mt-[20px] md:mt-[30px] lg:mt-[70px]'>
                 <div className='w-full max-w-[1225px] mx-[20px]'>
+                    <div className={style.Title}>Pashut Laledet HypnoBirthing</div>
                     <div className='w-full mt-[20px] grid lg:grid-cols-2 gap-[20px] md:gap-[30px] lg:gap-x-[35px] lg:gap-y-[70px]'>
                         <div className='flex flex-col gap-[16px]'>
-                            <div className={style.Title}>Pashut Laledet HypnoBirthing</div>
                             <div className={style.Content}>
                                 Pashut Laledet is a community of like minded professionals who support families throughout the childbearing year with HypnoBirthing tools and philosophy.  We believe that all babies deserve a calm and loving welcome to the world. Their parents should feel supported throughout this amazing time in their lives.
                                 <br /><br />

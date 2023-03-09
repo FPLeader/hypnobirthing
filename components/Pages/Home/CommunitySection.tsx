@@ -13,11 +13,11 @@ export default function CommunitySection() {
         </div>
         <div className='mt-[20px] md:mt-[70px] grid md:grid-cols-12 gap-[20px] md:gap-[30px] lg:gap-[70px]'>
           <div className='relative w-full h-max md:h-full max-md:row-start-2 md:col-span-5'>
-            <img draggable='false' src='/img/community.png' alt='' className='w-full h-full max-md:max-h-[400px] object-cover blur-lg' />
+            <img draggable='false' src='/img/community.png' alt='' className='w-full h-full max-md:max-h-[400px] object-cover' />
             <div className='absolute bottom-[10px] left-[17px] text-white'>photo by Shelley Lawnikanus</div>
           </div>
           <div className='w-full md:col-span-7'>
-            <div className='text-dark text-[16px] lg:text-[24px]'>
+            <div className='text-dark text-[16px] lg:text-[18px] tracking-wide leading-loose'>
               <div>
                 Pashut Laledet is a community of like minded professionals who support families throughout the childbearing year with HypnoBirthing tools and philosophy. We believe that all babies deserve a calm and loving welcome to the world. Their parents should feel supported throughout this amazing time in their lives.
               </div>

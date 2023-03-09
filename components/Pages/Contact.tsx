@@ -13,7 +13,7 @@ export default function Contact() {
 
     return (
         <div className='pt-[70px] md:pt-[90px] w-full'>
-            <Banner title='Contact Us' textStyle='center' />
+            <Banner title='Contact Us' image='/img/banner4.png' />
             <div className='w-full my-[20px] md:my-[30px] lg:my-[70px] flex justify-center'>
                 <div className='max-w-[1225px] mx-[20px] flex flex-col gap-[70px]'>
                     <div className='flex flex-col gap-[40px]'>
@@ -61,7 +61,7 @@ export default function Contact() {
                         </div>
                     </div>
                     <div className='relative'>
-                        <img src='/img/contactus.png' alt='contactus' className='rounded-[10px] lg:rounded-[15px] blur-lg' />
+                        <img src='/img/contactus.png' alt='contactus' className='rounded-[10px] lg:rounded-[15px]' />
                         <div className='text-white text-[16px] lg:text-[18px] absolute top-[15px] lg:top-[20px] left-[15px] lg:left-[25px]'>photo by Shelley Lawnikanus</div>
                     </div>
                 </div>
