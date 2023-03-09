@@ -12,7 +12,7 @@ export default function Video({
     style
 }: VideoProps) {
     return (
-        <div className={`${style} border-[4px] border-[#DFD3BC38] rounded-[10px] bg-gradient-to-r from-[#DFD3BC38] to-[#DFD3BC38] overflow-hidden`}>
+        <div className={`${style} border-[4px] border-[#DFD3BC38] rounded-[10px] lg:rounded-[15px] bg-gradient-to-r from-[#DFD3BC38] to-[#DFD3BC38] overflow-hidden`}>
             <iframe
                 width='100%'
                 height='100%'

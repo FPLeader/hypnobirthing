@@ -8,7 +8,7 @@ export default function Header() {
 
     const style = {
         MenuTitle: 'text-dark text-[24px] uppercase font-semibold',
-        MenuItem: 'text-dark text-[16px] italic uppercase cursor-pointer select-none',
+        MenuItem: 'text-dark text-[16px] uppercase text-left',
         dividerWrapper: 'w-full lg:w-0 flex justify-center items-center',
         dividerInner: 'w-full lg:w-0 h-full border-[1px] border-deviders'
     }
@@ -26,7 +26,7 @@ export default function Header() {
 
 
     return (
-        <div className='w-full h-[70px] md:h-[90px] flex justify-center items-center text-dark bg-bcg fixed border-b border-deviders z-10'>
+        <div className='w-full h-[70px] md:h-[90px] flex justify-center items-center text-dark bg-bcg fixed border-b border-deviders z-[2000]'>
             <div className='max-w-[1225px] mx-[20px] w-full flex items-center justify-between'>
                 <div className='cursor-pointer selcet-none' onClick={() => router.push('/')}>
                     <img draggable='false' src='/img/logo.png' alt='Logo' className='w-[142px] md:w-[170px] h-[61px] md:h-[65px]' />
@@ -37,6 +37,12 @@ export default function Header() {
                             <HeaderLinkButton title={items.title} />
                         </div>
                     ))}
+                    <div onClick={() => { router.push('\article'), onClickHandler(-1) }}>
+                        <HeaderLinkButton title='blog' isIcon={false} />
+                    </div>
+                    <div onClick={() => { router.push('\store'), onClickHandler(-1) }}>
+                        <HeaderLinkButton title='store' isIcon={false} />
+                    </div>
                     <div onClick={() => { router.push('\contact'), onClickHandler(-1) }}>
                         <HeaderLinkButton title='contact' isIcon={false} />
                     </div>
@@ -60,7 +66,7 @@ export default function Header() {
                         </div>
                         <div className='w-full lg:w-2/3 grid grid-cols-3 gap-[30px]'>
                             {MenuPage >= 0 && HeaderLinks[MenuPage].links.map((item: LinkType, index: number) => (
-                                <div key={index} className={style.MenuItem} onClick={() => { document.body.style.overflow = 'visible', router.push(item.link), setMenuPage(-1) }}>{item.title}</div>
+                                <button key={index} className={style.MenuItem} onClick={() => { document.body.style.overflow = 'visible', router.push(item.link), setMenuPage(-1) }}>{item.title}</button>
                             ))}
                         </div>
                     </div>

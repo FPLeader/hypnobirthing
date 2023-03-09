@@ -18,7 +18,7 @@ export default function BigCourse({
     return (
         <div className='w-full max-md:max-w-[385px] max-md:m-auto flex flex-col' >
             <div className='flex flex-col bg-beighe hover:cursor-pointer rounded-[15px] overflow-hidden'>
-                <img draggable='false' src={image} alt='' className='w-full blur-lg' />
+                <img draggable='false' src={image} alt='' className='w-full' />
                 <div className='text-dark text-[12px] lg:text-[16px] text-center pt-[7.5px] lg:pt-[10px] pb-[6.5px] lg:pb-[9px]'>{moment(date).format('DD/MM/YYYY, dddd, HH:mm')}</div>
             </div>
             <div className='mt-[10px] lg:mt-[15px] text-dark text-center flex flex-col gap-y-[10px] lg:gap-y-[6px]'>

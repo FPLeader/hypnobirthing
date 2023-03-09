@@ -93,48 +93,6 @@ export const HeaderLinks: LinksType[] = [
             }
         ]
     },
-    {
-        title: 'Blog',
-        links: [
-            {
-                title: 'Articles',
-                link: '/article',
-            },
-            {
-                title: 'Birth stories',
-                link: '/birthstories',
-            },
-            {
-                title: 'Recipes',
-                link: '/recipes',
-            },
-            {
-                title: 'Videos',
-                link: '/videos',
-            }
-        ]
-    },
-    {
-        title: 'Store',
-        links: [
-            {
-                title: 'Articles',
-                link: '/article',
-            },
-            {
-                title: 'Birth stories',
-                link: '/birthstories',
-            },
-            {
-                title: 'Recipes',
-                link: '/recipes',
-            },
-            {
-                title: 'Videos',
-                link: '/videos',
-            }
-        ]
-    }
 ]
 
 export const FooterLinks:LinksType[] = [

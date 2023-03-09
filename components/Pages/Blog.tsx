@@ -43,7 +43,7 @@ export default function Blog() {
 
     return (
         <div className='pt-[70px] md:pt-[90px]'>
-            <Banner title={blogdata.title} />
+            <Banner title={blogdata.title} image='/img/banner1.png' />
             <div className='w-full flex justify-center'>
                 <div className='w-full max-w-[1225px] mx-[20px]'>
                     <div className='mt-[20px] md:mt-[30px] lg:mt-[70px] mb-[20px] md:mb-[30px]'>

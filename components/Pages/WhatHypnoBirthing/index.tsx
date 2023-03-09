@@ -5,7 +5,7 @@ export default function WhatHypnoBirthing() {
     return (
         <>
             <div className='pt-[70px] md:pt-[90px]'>
-                <Banner title='What is HypnoBirthing?' />
+                <Banner title='What is HypnoBirthing?' image='/img/banner2.png' />
             </div>
             <div className='mt-[20px] md:mt-[30px] lg:mt-[70px] flex flex-col gap-[20px] md:gap-[60px] lg:gap-[100px]'>
                 <IntroductionSection />

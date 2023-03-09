@@ -14,7 +14,7 @@ export default function OurBlogPosts() {
             <div className='w-full max-w-[1225px] mx-[20px]'>
                 <div className='pt-[50px] relative'>
                     <RegularTitle text='Our Blog Posts' />
-                    <div className='text-base max-w-[800px] pt-5'>
+                    <div className='text-base max-w-[800px] mt-[20px]'>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     </div>
                 </div>

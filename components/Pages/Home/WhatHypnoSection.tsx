@@ -13,7 +13,7 @@ export default function WhatHypnoSection() {
                         <div className='hidden md:block'>
                             <HomeTitle text='What is HypnoBirthing' />
                         </div>
-                        <div className='mt-[25px] md:mt-[50px] text-dark text-[16px] lg:text-[22px]'>
+                        <div className='mt-[25px] md:mt-[50px] text-dark text-[16px] lg:text-[18px] tracking-wide leading-relaxed'>
                             <div>HypnoBirthing® is a natural approach to a safe, easier, more comfortable birthing. By learning to release fear and consequently releasing physical tension, the birth experience can be gentle and empowering.
                             </div>
                             <br />
@@ -30,7 +30,7 @@ export default function WhatHypnoSection() {
                         </div>
                     </div>
                     <div className='mt-[20px] md:mt-0 h-max md:h-full relative w-full md:col-span-5'>
-                        <img draggable='false' src='/img/whathypno.png' alt='' className='w-full h-full max-md:max-h-[400px] object-cover blur-lg' />
+                        <img draggable='false' src='/img/whathypno.png' alt='' className='w-full h-full max-md:max-h-[400px] object-cover' />
                         <div className='absolute bottom-[10px] right-[11.5px] text-white'>photo by Shelley Lawnikanus</div>
                     </div>
                 </div>

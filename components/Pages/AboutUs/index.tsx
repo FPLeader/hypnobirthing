@@ -1,7 +1,7 @@
 import { useState } from 'react'
 // import Modal from 'react-modal'
 import { IntroductionSection, OurGoalsSectioin, TeamSection } from './Sections'
-import { PromoteBar, UpcomingClassesBar } from '@/components/Sections'
+import { PromoteBar, UpcomingClassesBar, Banner } from '@/components/Sections'
 import { MemberCards } from '@/services/Constants/CardsData'
 
 // Modal.setAppElement('#main');
@@ -21,7 +21,7 @@ export default function AboutUsPage() {
     //     setIsOpen(false);
     // }
     return (
-        <>
+        <div className='pt-[70px] md:pt-[90px] w-full'>
             {/* {id >= 0 &&
             <div className='w-full h-screen flex justify-center items-center'>
                 <Modal
@@ -35,12 +35,11 @@ export default function AboutUsPage() {
                     <img src={MemberCards[id].image} alt='' className='w-full max-w-[230px] rounded-[20px]' />
                 </Modal>
             } */}
-            <div className='pt-[70px] md:pt-[90px]'>
-                <div className='mt-[20px] md:mt-[30px] lg:mt-[70px] flex flex-col gap-[20px] md:gap-[40px] lg:gap-[70px]'>
-                    <IntroductionSection />
-                    <OurGoalsSectioin />
-                    <TeamSection openModal={openModal} setId={setId} />
-                </div>
+            <Banner title='About Us' image='/img/banner7.png' />
+            <div className='mt-[20px] md:mt-[30px] lg:mt-[70px] flex flex-col gap-[20px] md:gap-[40px] lg:gap-[70px]'>
+                <IntroductionSection />
+                <OurGoalsSectioin />
+                <TeamSection openModal={openModal} setId={setId} />
             </div>
             <div className='mt-[20px] md:mt-[80px] lg:mt-[120px]'>
                 <PromoteBar />
@@ -48,6 +47,6 @@ export default function AboutUsPage() {
             <div className='mt-[20px] md:mt-[40px]'>
                 <UpcomingClassesBar title='Upcoming Childbirth Classes' buttonText='Learn More' link='\upcomingcourse' />
             </div>
-        </>
+        </div>
     )
 }

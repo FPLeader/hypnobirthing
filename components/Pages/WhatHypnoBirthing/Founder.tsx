@@ -12,7 +12,11 @@ export default function Founder() {
                     <br /><br />
                     Marie Mongan received many of the highest awards both in the realms of hypnosis, and in the birth field. She was the mentor of Paula Aji who brought HypnoBirthing to Israel in 2007, and she supported Paula Aji, Sharon Peled and Rebecca Rosenstein through the founding of Pashut Laledet HypnoBirthing in Israel and the Hebrew translation of the teaching materials.
                 </div>
-                <VideoCard title='Founder of hypnobirthing' code='YGxKPJDzok8' style='w-full aspect-w-16 aspect-h-9' />
+                <div className='flex justify-center'>
+                    <div className='w-full max-w-[800px] min-h-[177px]'>
+                        <VideoCard title='Founder of hypnobirthing' code='YGxKPJDzok8' style='w-full aspect-w-4 aspect-h-3' />
+                    </div>
+                </div>
             </div>
         </div>
     )
