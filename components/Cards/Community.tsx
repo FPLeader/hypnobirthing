@@ -4,7 +4,7 @@ interface CommunityCardProps {
   image: string,
   name: string,
   description: string,
-  link: string,
+  link?: string,
 }
 
 export default function CommunityCard({
