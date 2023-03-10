@@ -1,20 +1,24 @@
 export interface BlogType {
     image: string,
     title: string,
+    link: string,
 }
 
 export const BlogData: BlogType[] = [
     {
         image: '/img/BlogSec1.png',
         title: 'Our Latest Blog Posts',
+        link: '/article'
     },
     {
         image: '/img/BlogSec2.png',
         title: 'Popular Products',
+        link: '/shop'
     },
     {
         image: '/img/BlogSec3.png',
         title: 'What People Are Saying',
+        link: '/reviews'
     }
 ]
 
