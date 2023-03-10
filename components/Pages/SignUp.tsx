@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { CategoryInput } from '../Inputs'
 import { CategorySelect } from '../Select'
@@ -5,14 +6,18 @@ import { SelectProfile } from '@/services/Constants/SelectOptions'
 
 export default function SignUp() {
     const router = useRouter()
+    const [CheckOne, setCheckOne] = useState<boolean>(false);
+    const [CheckTwo, setCheckTwo] = useState<boolean>(false);
 
     const style = {
-        CheckBox: 'appearance-none bg-white w-[26px] h-[26px] text-beighe bg-gray-100 border-Label rounded checked:bg-beighe focus:ring-0',
+        CheckBox: 'bg-white border rounded-[4px] border-Label w-[26px] h-[26px] flex flex-shrink-0 justify-center items-center mr-2',
         LinkStyle: 'text-dark text-[14px] font-medium underline underline-offset-4 decoration decoration-dark'
     }
 
     const SignUpFunction = () => {
-        router.push('/');
+        if (CheckOne && CheckTwo) {
+            router.push('/profile/educator');
+        }
     }
 
     return (
@@ -59,22 +64,45 @@ export default function SignUp() {
                         />
                     </div>
                     <div className='flex flex-col gap-[17px]'>
-                        <div className='flex items-center gap-[10px]'>
-                            <input type='checkbox' value='' className={style.CheckBox} />
-                            <label className='text-dark text-[14px]'>
+                        <div className='flex items-center'>
+                            <input
+                                type='checkbox'
+                                id='checkbox-one'
+                                onChange={() => setCheckOne(!CheckOne)}
+                                className='opacity-0 absolute w-[26px] h-[26px]'
+                            />
+                            <div className={style.CheckBox}>
+                                <svg className='hidden pointer-events-none' width='16' height='11' viewBox='0 0 16 11' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                                    <path d='M14.5 1.125L5.5625 10.0625L1.5 6' stroke='#2B2525' strokeWidth='1.6666' strokeLinecap='round' strokeLinejoin='round' />
+                                </svg>
+                            </div>
+                            <label htmlFor='checkbox-one' className='text-dark text-[14px]'>
                                 Send me helpful emails to find rewarding work and job leads.
                             </label>
                         </div>
                         <div className='flex items-center gap-[10px]'>
-                            <input type='checkbox' value='' className={style.CheckBox} />
-                            <label className='text-dark text-[14px]'>
-                                I agree with the <a href='#' className={style.LinkStyle}>Terms of Service</a>, including the <a href='#' className={style.LinkStyle}>User Agreement</a> and Privacy Policy.
-                            </label>
+                            <div className='flex items-center'>
+                                <input
+                                    type='checkbox'
+                                    id='checkbox-two'
+                                    onChange={() => setCheckTwo(!CheckTwo)}
+                                    className='opacity-0 absolute w-[26px] h-[26px]'
+                                />
+                                <div className={style.CheckBox}>
+                                    <svg className='hidden pointer-events-none' width='16' height='11' viewBox='0 0 16 11' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                                        <path d='M14.5 1.125L5.5625 10.0625L1.5 6' stroke='#2B2525' strokeWidth='1.6666' strokeLinecap='round' strokeLinejoin='round' />
+                                    </svg>
+                                </div>
+                                <label htmlFor='checkbox-two' className='text-dark text-[14px]'>
+                                    I agree with the <a href='#' className={style.LinkStyle}>Terms of Service</a>, including the <a href='#' className={style.LinkStyle}>User Agreement</a> and Privacy Policy.
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <button
-                        className='w-full whitespace-nowrap h-max text-center py-[12.5px] lg:py-[17.5px] text-dark text-[14px] font-medium uppercase bg-beighe hover:bg-bhover active:bg-beighe rounded-[500px] transition-all duration-300'
+                        className='w-full whitespace-nowrap h-max text-center py-[12.5px] lg:py-[17.5px] text-dark text-[14px] font-medium uppercase bg-beighe hover:bg-bhover active:bg-beighe disabled:bg-disabled disabled:cursor-not-allowed rounded-[500px] transition-all duration-300'
                         onClick={() => SignUpFunction()}
+                        disabled={!(CheckOne && CheckTwo)}
                     >
                         Create my account
                     </button>

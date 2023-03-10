@@ -91,3 +91,20 @@ a {
     color-scheme: dark;
   }
 }
+
+@layer components {
+  .block {
+    display: block;
+  }
+  .checked {
+    background: #DFD3BC;
+  }
+}
+
+input:checked+div {
+  @apply checked;
+}
+
+input:checked+div svg {
+  @apply block;
+}

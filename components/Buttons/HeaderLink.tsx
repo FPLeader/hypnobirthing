@@ -13,9 +13,9 @@ export default function HeaderLink({
     const [showIcon, setShowIcon] = useState<boolean>(isIcon)
 
     return (
-        <div className='uppercase flex items-center gap-[5px] xl:gap-[10px] cursor-pointer py-2 relative select-none'>
+        <button className='uppercase flex items-center gap-[5px] xl:gap-[10px] md:py-2 relative'>
             {title}
             {showIcon && <DropdownIcon />}
-        </div>
+        </button>
     )
 }

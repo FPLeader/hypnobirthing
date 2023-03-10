@@ -9,7 +9,7 @@ export default function Introduction() {
             <div className='lg:mt-[20px] capitalize text-center md:text-left text-[32px] md:text-[40px] lg:text-[44px] italic font-light'>Sharon Peled</div>
             <div className='lg:mt-[20px] capitalize text-center md:text-left text-[18px]'>Modern Applied Psychology & Personal Development</div>
             <div className='flex flex-col gap-[5px]'>
-              <div className='flex flex-col md:flex-row max-md:justify-center max-md:items-center md:items-end text-[16px] md:text-[18px]'>
+              <div className='flex flex-col md:flex-row gap-[5px] max-md:justify-center max-md:items-center md:items-end text-[16px] md:text-[18px]'>
                 <div className='text-Label'>Category:&nbsp;</div>
                 <div className='flex gap-[5px]'>
                   <BadgeCard text='educator' />
@@ -22,7 +22,7 @@ export default function Introduction() {
               </div>
             </div>
           </div>
-          <div className='flex flex-col md:flex-row lg:flex-col gap-[30px] max-lg:w-full absolute top-[230px] md:top-[180px] lg:top-0 right-0'>
+          <div className='flex flex-col md:flex-row lg:flex-col gap-[30px] max-lg:w-full absolute top-[200px] md:top-[180px] lg:top-0 right-0'>
             <div className='max-md:max-w-[385px] max-md:m-auto lg:max-w-[385px] flex flex-col md:flex-row md:items-center overflow-hidden border-[2px] rounded-[15px] border-beighe'>
               <div className='md:max-lg:w-[229px]'>
                 <img draggable='false' src='/img/teacher.png' alt='Sharon Peled' className='max-w-[385px] w-full' />

@@ -22,6 +22,7 @@ module.exports = {
       'gray_1': '#EBE6E6',
       'bhover': '#c1deba',
       'white': '#FFFFFF',
+      'disabled': '#F0E6DB',
     },
     aspectRatio: {
       auto: 'auto',

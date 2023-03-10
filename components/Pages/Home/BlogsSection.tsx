@@ -5,10 +5,13 @@ import { BlogCard } from '@/components/Cards'
 
 export default function BlogsSection() {
     return (
-        <div className='py-[20px] md:py-[80px] lg:pt-[120px] lg:pb-[120px] bg-bcg_2 w-full flex justify-center'>
+        <div className='py-[30px] md:py-[80px] lg:pt-[120px] lg:pb-[120px] bg-bcg_2 w-full flex justify-center'>
             <div className='max-w-[1225px] mx-[20px] w-full'>
                 <div className='md:flex md:justify-between md:items-end w-full'>
-                    <HomeTitle text='Our Latest Blog Posts' />
+                    <HomeTitle
+                        text='Our Latest Blog Posts'
+                        link='/article'
+                    />
                     <div className='hidden md:block'>
                         <RegularButton text='blog' />
                     </div>

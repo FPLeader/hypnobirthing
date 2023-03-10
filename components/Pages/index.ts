@@ -37,3 +37,5 @@ export { default as ContactPage } from './Contact'
 //Other
 export { default as ClassPage } from './Class/'
 export { default as EducatorPage } from './Educator/'
+export { default as EditEducatorPage } from './Profile/Educator/'
+export { default as EducatorSettingsPage } from './Profile/Settings/'

@@ -3,15 +3,21 @@ import { HomeTitle } from '@/components/Titles'
 
 export default function WhatHypnoSection() {
     return (
-        <div className='pt-[20px] pb-[20px] md:py-[80px] lg:py-[120px] w-full flex justify-center'>
+        <div className='py-[30px] md:py-[80px] lg:py-[120px] w-full flex justify-center'>
             <div className='max-w-[1225px] mx-[20px] w-full'>
                 <div className='block md:hidden'>
-                    <HomeTitle text='What is HypnoBirthing' />
+                    <HomeTitle
+                        text='What is HypnoBirthing'
+                        link='/whathypno'
+                    />
                 </div>
                 <div className='grid md:grid-cols-12 gap-[20px] md:gap-[30px] lg:gap-[70px]'>
                     <div className='w-full max-md:row-start-2 md:col-span-7'>
                         <div className='hidden md:block'>
-                            <HomeTitle text='What is HypnoBirthing' />
+                            <HomeTitle
+                                text='What is HypnoBirthing'
+                                link='/whathypno'
+                            />
                         </div>
                         <div className='mt-[25px] md:mt-[50px] text-dark text-[16px] lg:text-[18px] tracking-wide leading-relaxed'>
                             <div>HypnoBirthing® is a natural approach to a safe, easier, more comfortable birthing. By learning to release fear and consequently releasing physical tension, the birth experience can be gentle and empowering.

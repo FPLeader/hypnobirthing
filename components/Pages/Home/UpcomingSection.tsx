@@ -5,10 +5,13 @@ import { HomeTitle } from '@/components/Titles'
 
 export default function UpcomingSection() {
   return (
-    <div className='py-[20px] md:pt-[80px] md:pb-[9px] lg:pt-[120px] lg:pb-[20px] bg-bcg_2 w-full flex justify-center'>
+    <div className='py-[30px] md:pt-[80px] md:pb-[9px] lg:pt-[120px] lg:pb-[20px] bg-bcg_2 w-full flex justify-center'>
       <div className='max-w-[1225px] mx-[20px] w-full'>
         <div className='md:flex md:justify-between md:items-end w-full'>
-          <HomeTitle text='Upcoming Childbirth Classes' />
+          <HomeTitle
+            text='Upcoming Childbirth Classes'
+            link='/upcomingcourse'
+          />
           <div className='hidden md:block'>
             <RegularButton text='more classes' />
           </div>
