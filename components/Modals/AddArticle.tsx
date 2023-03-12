@@ -92,7 +92,7 @@ export default function AddArticle({
                                             <br /><br />
                                             A good and selling cover contains: a thematic image, a clear, unblurred image,no writing on the image
                                             <br /><br />
-                                            The article may be returned for revision if the cover: bright "acid" colours, "hypnotic" backgrounds, any 18+ images (alcohol, sex, smoking, weapons, violence etc.), contact details and contact requests (including social media logins), watermarks
+                                            The article may be returned for revision if the cover: bright &ldquo;acid&ldquo; colours, &ldquo;hypnotic&ldquo; backgrounds, any 18+ images (alcohol, sex, smoking, weapons, violence etc.), contact details and contact requests (including social media logins), watermarks
                                         </div>
                                     </div>
 

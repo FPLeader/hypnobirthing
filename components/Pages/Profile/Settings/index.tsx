@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { RegularTitle } from '@/components/Titles'
 import { ProfileSection, LogInSecuritySection, UpcomingSection, MyAritclesSection } from './Sections'
 
-export default function index() {
+export default function Index() {
     const [tab, setTab] = useState<number>(0);
 
     const OptionClass = (OptionIndex: number) => {
