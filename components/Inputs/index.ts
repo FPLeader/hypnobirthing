@@ -1,4 +1,6 @@
 export { default as SubmitInput } from './Submit'
 export { default as SearchInput } from './Search'
 export { default as CategoryInput } from './Category'
+export { default as IconInput } from './Icon'
 export { default as Textarea } from './Textarea'
+export { default as CategoryDatePicker } from './CategoryDatePicker'

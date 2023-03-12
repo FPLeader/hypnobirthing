@@ -40,12 +40,12 @@ export default function SignUp() {
                             <CategoryInput
                                 category='Phone number'
                                 placeholder='Enter your name'
-                                type='text'
+                                type='tel'
                             />
                             <CategoryInput
                                 category='Email'
                                 placeholder='user@example.com'
-                                type='text'
+                                type='email'
                             />
                         </div>
                         <CategoryInput

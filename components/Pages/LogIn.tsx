@@ -22,7 +22,7 @@ export default function LogIn() {
                         <CategoryInput
                             category='Email'
                             placeholder='user@example.com'
-                            type='text'
+                            type='email'
                         />
                         <CategoryInput
                             category='Password'

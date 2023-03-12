@@ -46,7 +46,7 @@ export default function Contact() {
                                 <div className='flex flex-col gap-[10px]'>
                                     <CategoryInput category='Full name' placeholder='Enter your name' />
                                     <CategoryInput category='Phone number' type='number' placeholder='+972' />
-                                    <CategoryInput category='Email' placeholder='user@example.com' />
+                                    <CategoryInput category='Email' type='email' placeholder='user@example.com' />
                                     <CategoryInput category='Location' placeholder='Enter your location' />
                                     <Textarea category='Comments' placeholder='Enter text here' />
                                 </div>

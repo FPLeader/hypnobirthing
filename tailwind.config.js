@@ -6,6 +6,8 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
     './layouts/**/*.{js,ts,jsx,tsx}',
+    './node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}',
+    './node_modules/tailwind-datepicker-react/dist/**/*.js',
   ],
   theme: {
     colors: {
@@ -76,6 +78,7 @@ module.exports = {
     aspectRatio: false,
   },
   plugins: [
+    require('flowbite/plugin'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
     require('@tailwindcss/line-clamp'),
