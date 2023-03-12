@@ -11,9 +11,6 @@ export default function index() {
                     <div className='mt-[20px] md:mt-[30px] lg:mt-[70px]'>
                         <RegularTitle text='Course Content' />
                     </div>
-                    <div className='lg:w-1/2 lg:pr-[15px] text-dark text-[16px] mt-[10px] md:mt-[20px]'>
-                        Over the course of 5 weeks, your instructor will lead you through exercises to identify & release your fears regarding birthing and replace those fears with instinctive knowledge, and confidence.
-                    </div>
                     <div className='w-full mt-[20px] grid lg:grid-cols-2 gap-[20px] md:gap-[30px] lg:gap-x-[40px] lg:gap-y-[70px]'>
                         <ExerciseSection />
                         <img draggable='false' src='/img/coursecontent1.png' alt='' className='w-full h-full max-lg:max-h-[480px] rounded-[10px] lg:rounded-[15px] object-cover' />

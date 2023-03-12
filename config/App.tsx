@@ -1,5 +1,5 @@
 export const APP = {
-    TITLE: 'HypnoBbirthing',
+    TITLE: 'HypnoBirthing',
     URL: 'https://',
     META: {
         DESCRIPTION:
