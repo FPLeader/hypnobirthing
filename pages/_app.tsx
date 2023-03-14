@@ -26,7 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
         image={APP.URL + APP.META.IMAGE}
         url={APP.URL}
       />
-      <LocaleContext.Provider value={{ locale, setLocale }}>
+      <LocaleContext.Provider value={{ locale}}>
         <div className='font-[lato]' id='main'>
           <link rel='stylesheet' href='https://use.typekit.net/zfz1tfz.css' />
           <HeaderPage />
