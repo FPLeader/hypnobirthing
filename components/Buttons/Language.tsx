@@ -1,15 +1,21 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 import { WorldIcon } from '@/assests/Icons'
 
+import i18n from '@/services/i18n'
+import LocaleContext from '@/services/LocaleContext'
+
 export default function Language() {
-    const [Language, SetLanguage] = useState<boolean>(true);
-    const ClickHandler = () => {
-        SetLanguage(!Language);
-    }
+    const { locale } = useContext(LocaleContext);
+
     return (
-        <div onClick={ClickHandler} className='max-md:hidden bg-white hover:bg-bcg_2 border border-deviders rounded-[6px] px-2 py-[6px] flex items-center gap-1 cursor-pointer select-none transition-all duration-300'>
+        <div
+            className='max-md:hidden bg-white hover:bg-bcg_2 border border-deviders rounded-[6px] px-2 py-[6px] flex items-center gap-1 cursor-pointer select-none transition-all duration-300'
+            onClick={() => {
+                i18n.changeLanguage(locale !== 'en' ? 'en' : 'he')
+            }}
+        >
             <WorldIcon />
-            {Language ? 'EN' : 'HE'}
+            {locale === 'en' ? 'En' : 'He'}
         </div>
     )
 }

@@ -114,7 +114,7 @@ export default function Header() {
                             <div className='uppercase text-[18px]'>{items.title}</div>
                             <div className='grid gap-[10px]'>
                                 {HeaderLinks[index].links.map((item: LinkType, index: number) => (
-                                    <button key={index} className={style.MenuItem} onClick={() => { document.body.style.overflow = 'visible', router.push(item.link), setMenuPage(-1) }}>{item.title}</button>
+                                    <button key={index} className={style.MenuItem} onClick={() => { document.body.style.overflow = 'visible', router.push(item.link), setIsNavOpen(false) }}>{item.title}</button>
                                 ))}
                             </div>
                         </>
