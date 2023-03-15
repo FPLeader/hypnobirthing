@@ -34,6 +34,9 @@ export { default as BlogPage } from './Blog'
 //Contact
 export { default as ContactPage } from './Contact'
 
+//404
+export { default as NotFoundPage } from './NotFound'
+
 //Other
 export { default as ClassPage } from './Class/'
 export { default as EducatorPage } from './Educator/'

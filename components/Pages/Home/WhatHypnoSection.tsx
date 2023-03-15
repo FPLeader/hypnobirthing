@@ -36,7 +36,7 @@ export default function WhatHypnoSection() {
                         </div>
                     </div>
                     <div className='mt-[20px] md:mt-0 h-max md:h-full relative w-full md:col-span-5'>
-                        <img draggable='false' src='/img/whathypno.png' alt='' className='w-full h-full max-md:max-h-[400px] object-cover' />
+                        <img draggable='false' src='/img/whathypno.png' alt='' className={`w-full h-full max-md:max-h-[400px] object-cover ${process.env.DEV_MODE ? 'blur-lg':''}`} />
                         <div className='absolute bottom-[10px] right-[11.5px] text-white'>photo by Shelley Lawnikanus</div>
                     </div>
                 </div>

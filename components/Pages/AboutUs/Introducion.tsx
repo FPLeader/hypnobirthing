@@ -14,7 +14,7 @@ export default function Introduction() {
                         <br /><br />
                         Pashut Laledet now also offers helpful information, contacts and courses for the postpartum period after birth.
                     </span>
-                    <img draggable='false' src='/img/whathypno2.png' alt='' className='w-full h-full max-lg:max-h-[480px] object-cover rounded-[10px] lg:rounded-[15px]' />
+                    <img draggable='false' src='/img/whathypno2.png' alt='' className={`w-full h-full max-lg:max-h-[480px] object-cover rounded-[10px] lg:rounded-[15px] ${process.env.DEV_MODE ? 'blur-lg':''}`} />
                 </div>
             </div>
         </div>

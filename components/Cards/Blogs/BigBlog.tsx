@@ -22,7 +22,7 @@ export default function BigBlogCard({
   return (
     <div className='w-full flex flex-col' onClick={() => { router.push(`/blog/${id}`) }}>
       <div className='border border-[2px] border-beighe hover:cursor-pointer rounded-[15px] overflow-hidden'>
-        <img draggable='false' src={image} alt={title} className='w-full h-full min-h-[230px] md:h-[446px] object-cover' />
+        <img draggable='false' src={image} alt={title} className={`w-full h-full min-h-[230px] md:h-[446px] object-cover ${process.env.DEV_MODE ? 'blur-lg':''}`} />
         <div className='text-dark uppercase bg-beighe text-[14px] md:text-[16px] text-center md:text-left pl-[20px] py-[10px]'>{title}</div>
         <div className='p-[10px] md:p-[20px] text-dark flex flex-col gap-[4px] md:gap-[6px]'>
           <div className='text-[16px] md:text-[24px] text-center md:text-left font-medium'>{header}</div>

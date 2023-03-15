@@ -42,7 +42,7 @@ export default function BannerSection() {
                 >
                     {CreateSlider.map((slider: string, index: number) => {
                         return (
-                            <img draggable='false' key={index} src={slider} alt={'slider-image' + index} className='image-carousel w-full h-[350px] md:h-[770px] object-cover' />
+                            <img draggable='false' key={index} src={slider} alt={'slider-image' + index} className={`image-carousel w-full h-[350px] md:h-[770px] object-cover ${process.env.DEV_MODE ? 'blur-lg':''}`} />
                         )
                     })}
                 </Carousel>

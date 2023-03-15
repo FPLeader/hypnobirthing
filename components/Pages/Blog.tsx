@@ -51,7 +51,7 @@ export default function Blog() {
                     </div>
                     <div className='flex flex-col lg:flex-row gap-[20px] lg:gap-[60px]'>
                         <div className='w-full lg:w-2/3 flex flex-col gap-[20px] md:gap-[30px] text-dark'>
-                            <img draggable='false' src={blogdata.image} alt={blogdata.title} className='w-full rounded-[10px] lg:rounded-[15px]' />
+                            <img draggable='false' src={blogdata.image} alt={blogdata.title} className={`w-full rounded-[10px] lg:rounded-[15px] ${process.env.DEV_MODE ? 'blur-lg':''}`} />
                             <div className='text-[16px] md:text-[18px] whitespace-pre-line self-stretch'>{blogdata.content}</div>
                             <div className='text-[16px] md:text-[18px] font-normal italic opacity-60 flex justify-between'>
                                 <div>—&nbsp;{blogdata.author}</div>

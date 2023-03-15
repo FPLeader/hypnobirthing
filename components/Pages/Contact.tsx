@@ -61,7 +61,7 @@ export default function Contact() {
                         </div>
                     </div>
                     <div className='relative'>
-                        <img src='/img/contactus.png' alt='contactus' className='rounded-[10px] lg:rounded-[15px]' />
+                        <img src='/img/contactus.png' alt='contactus' className={`rounded-[10px] lg:rounded-[15px] ${process.env.DEV_MODE ? 'blur-lg':''}`} />
                         <div className='text-white text-[16px] lg:text-[18px] absolute top-[15px] lg:top-[20px] left-[15px] lg:left-[25px]'>photo by Shelley Lawnikanus</div>
                     </div>
                 </div>

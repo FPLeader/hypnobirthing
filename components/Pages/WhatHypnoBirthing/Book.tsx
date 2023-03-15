@@ -7,7 +7,7 @@ export default function Book() {
                 <div className='text-[32px] max-md:block hidden text-center font-light italic'>HypnoBirthing Book</div>
                 <div className='flex flex-col items-center md:flex-row max-md:mt-[20px] gap-[20px] md:gap-[35px]'>
                     <div className='w-full md:w-1/3 lg:w-1/2 flex justify-center'>
-                        <img draggable='false' src='./img/Book.png' alt='' className='w-full max-w-[385px]' />
+                        <img draggable='false' src='./img/Book.png' alt='' className={`w-full max-w-[385px] ${process.env.DEV_MODE ? 'blur-lg':''}`} />
                     </div>
                     <div className='w-full md:w-2/3 md:w-1/2 text-dark flex flex-col gap-[20px] lg:gap-[30px]'>
                         <div className='text-[32px] max-md:hidden md:block md:text-[40px] lg:text-[44px] font-light italic'>HypnoBirthing Book</div>

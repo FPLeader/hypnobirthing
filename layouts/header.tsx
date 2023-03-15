@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { LinkType, LinksType, HeaderLinks } from '@/services/Constants/Links'
 import { HeaderLinkButton, LanguageButton, HamburgerButton } from '@/components/Buttons'
@@ -7,7 +7,7 @@ import useWindowSize from '@/services/Hooks/useWindowSize'
 export default function Header() {
     const { width } = useWindowSize();
     const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
-    const [MenuPage, setMenuPage] = useState<number>(-1);
+    const [menuPage, setMenuPage] = useState<number>(-1);
     const router = useRouter();
 
     const style = {
@@ -35,7 +35,7 @@ export default function Header() {
     }, [width]);
 
     const onClickHandler = (index: number) => {
-        if (MenuPage === index || index === -1) {
+        if (menuPage === index || index === -1) {
             document.body.style.overflow = 'visible';
             setMenuPage(-1);
         }
@@ -61,7 +61,7 @@ export default function Header() {
                     <div className='gap-[12px] xl:gap-[40px] hidden lg:flex lg:items-center '>
                         {HeaderLinks.map((items: LinksType, index: number) => (
                             <div key={index} onClick={() => onClickHandler(index)}>
-                                <HeaderLinkButton title={items.title} />
+                                <HeaderLinkButton title={items.title} index={index} status={menuPage}/>
                             </div>
                         ))}
                         <div onClick={() => { router.push('\article'), onClickHandler(-1) }}>
@@ -86,18 +86,18 @@ export default function Header() {
                         </div>
                     </div>
                 </div>
-                <div className={`h-screen w-full ${MenuPage < 0 ? 'hidden opacity-0' : 'block opacity-100'} max-md:hidden absolute top-[90px] z-9`}>
+                <div className={`h-screen w-full ${menuPage < 0 ? 'hidden opacity-0' : 'block opacity-100'} max-md:hidden absolute top-[90px] z-9`}>
                     <div className='w-full bg-bcg border-b border-deviders transaction-all duration-300 flex justify-center'>
                         <div className='max-w-[1225px] mx-[20px] w-full py-[40px] flex flex-col lg:flex-row gap-[30px] lg:gap-[40px]'>
                             <div className='w-full lg:w-1/3 flex flex-col gap-[20px]'>
-                                <div className={style.MenuTitle}>{MenuPage >= 0 && HeaderLinks[MenuPage].title}</div>
+                                <div className={style.MenuTitle}>{menuPage >= 0 && HeaderLinks[menuPage].title}</div>
                                 <div>Resource for mind-body health, meditationi, personal growth, nutrition, and more.</div>
                             </div>
                             <div className={style.dividerWrapper}>
                                 <div className={style.dividerInner} />
                             </div>
                             <div className='w-full lg:w-2/3 grid grid-cols-3 gap-[30px]'>
-                                {MenuPage >= 0 && HeaderLinks[MenuPage].links.map((item: LinkType, index: number) => (
+                                {menuPage >= 0 && HeaderLinks[menuPage].links.map((item: LinkType, index: number) => (
                                     <button key={index} className={style.MenuItem} onClick={() => { document.body.style.overflow = 'visible', router.push(item.link), setMenuPage(-1) }}>{item.title}</button>
                                 ))}
                             </div>

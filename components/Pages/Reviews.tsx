@@ -5,7 +5,7 @@ import { ReviewCards } from '@/services/Constants/CardsData'
 export default function Reviews() {
 
     const style = {
-        ImgStyle: 'w-full h-full max-md:max-h-[310px] min-h-[270px] object-cover rounded-[10px] lg:rounded-[15px]',
+        ImgStyle: `w-full h-full max-md:max-h-[310px] min-h-[270px] object-cover rounded-[10px] lg:rounded-[15px] ${process.env.DEV_MODE ? 'blur-lg':''}`,
     }
     return (
         <div className='pt-[70px] md:pt-[90px] w-full'>

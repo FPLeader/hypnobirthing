@@ -25,7 +25,7 @@ export default function Introduction() {
             <div className='aspect-square'>
               <div className='max-md:max-w-[385px] max-md:m-auto lg:max-w-[385px] flex flex-col md:flex-row md:items-center overflow-hidden border-[4px] rounded-[15px] border-beighe'>
                 <div className='md:max-lg:w-[229px] relative'>
-                  <img draggable='false' src='/img/editphoto1.png' alt='Edit Photo' className='max-w-[385px] w-full bg-white' />
+                  <img draggable='false' src='/img/editphoto1.png' alt='Edit Photo' className={`max-w-[385px] w-full bg-white ${process.env.DEV_MODE ? 'blur-lg':''}`} />
                   <div className='absolute top-0 w-full h-full flex justify-center items-center'>
                     <UploadButton text='add photo' />
                   </div>

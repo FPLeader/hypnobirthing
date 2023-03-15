@@ -13,7 +13,7 @@ export default function OurGoals() {
                     ))}
                 </div>
             </div>
-            <img draggable='false' src='\img\support2.png' alt='' className='w-full rounded-[10px] lg:rounded-[20px]' />
+            <img draggable='false' src='\img\support2.png' alt='' className={`w-full rounded-[10px] lg:rounded-[20px] ${process.env.DEV_MODE ? 'blur-lg':''}`} />
         </>
     )
 }

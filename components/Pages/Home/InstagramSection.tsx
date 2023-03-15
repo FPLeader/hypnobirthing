@@ -30,7 +30,7 @@ export default function InstagramSection() {
         autoPlay
         autoPlaySpeed={3000}
         swipeable
-        draggable
+        draggable={false}
         infinite
         ssr
         responsive={responsive}
@@ -39,7 +39,6 @@ export default function InstagramSection() {
         shouldResetAutoplay={false}
       >
         <InstaCard image='img/insta1.png' link='https://asdf.com' />
-        {/* <InstaCard image='img/insta2.png' link='https://asdf.com' /> */}
         <InstaCard image='img/insta2.png' link='https://asdf.com' />
         <div className='w-full h-full p-[2px] flex flex-col justify-center items-center gap-y-[10px] bg-bcg_2'>
           <div className='opacity-20'>
@@ -50,8 +49,6 @@ export default function InstagramSection() {
         </div>
         <InstaCard image='img/insta3.png' link='https://asdf.com' />
         <InstaCard image='img/insta4.png' link='https://asdf.com' />
-        {/* <InstaCard image='img/insta2.png' link='https://asdf.com' />
-        <InstaCard image='img/insta2.png' link='https://asdf.com' /> */}
       </Carousel>
     </div>
   )

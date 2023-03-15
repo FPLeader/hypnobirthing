@@ -16,7 +16,7 @@ export default function CommunitySection() {
         </div>
         <div className='mt-[20px] md:mt-[70px] grid md:grid-cols-12 gap-[20px] md:gap-[30px] lg:gap-[70px]'>
           <div className='relative w-full h-max md:h-full max-md:row-start-2 md:col-span-5'>
-            <img draggable='false' src='/img/community.png' alt='' className='w-full h-full max-md:max-h-[400px] object-cover' />
+            <img draggable='false' src='/img/community.png' alt='' className={`w-full h-full max-md:max-h-[400px] object-cover ${process.env.DEV_MODE ? 'blur-lg':''}`} />
             <div className='absolute bottom-[10px] left-[17px] text-white'>photo by Shelley Lawnikanus</div>
           </div>
           <div className='w-full md:col-span-7'>
