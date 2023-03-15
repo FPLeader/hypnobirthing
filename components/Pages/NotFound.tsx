@@ -8,7 +8,7 @@ export default function Insurance() {
                     <div className='w-full h-full flex justify-center items-center'>
                         <div className='flex flex-col items-center gap-[15px] md:gap-[20px] lg:gap-[30px]'>
                             <div className='text-center text-dark font-light text-[30px] md:text-[36px] lg:text-[42px]'>
-                                This page doesn't exist.
+                                This page doesn&apos;t exist.
                             </div>
                             <RegularButton text={'Back to Main Page'} />
                         </div>
