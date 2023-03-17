@@ -64,13 +64,13 @@ export default function Header() {
                                 <HeaderLinkButton title={items.title} index={index} status={menuPage}/>
                             </div>
                         ))}
-                        <div onClick={() => { router.push('\article'), onClickHandler(-1) }}>
+                        <div onClick={() => { router.push('/article'), onClickHandler(-1) }}>
                             <HeaderLinkButton title='blog' isIcon={false} />
                         </div>
-                        <div onClick={() => { router.push('\store'), onClickHandler(-1) }}>
+                        <div onClick={() => { router.push('/store'), onClickHandler(-1) }}>
                             <HeaderLinkButton title='store' isIcon={false} />
                         </div>
-                        <div onClick={() => { router.push('\contact'), onClickHandler(-1) }}>
+                        <div onClick={() => { router.push('/contact'), onClickHandler(-1) }}>
                             <HeaderLinkButton title='contact' isIcon={false} />
                         </div>
                     </div>
@@ -119,13 +119,13 @@ export default function Header() {
                             </div>
                         </>
                     ))}
-                    <div onClick={() => { router.push('\article'), document.body.style.overflow = 'visible' }}>
+                    <div onClick={() => { router.push('/article'), document.body.style.overflow = 'visible' }}>
                         <HeaderLinkButton title='blog' isIcon={false} />
                     </div>
-                    <div onClick={() => { router.push('\store'), document.body.style.overflow = 'visible' }}>
+                    <div onClick={() => { router.push('/store'), document.body.style.overflow = 'visible' }}>
                         <HeaderLinkButton title='store' isIcon={false} />
                     </div>
-                    <div onClick={() => { router.push('\contact'), document.body.style.overflow = 'visible' }}>
+                    <div onClick={() => { router.push('/contact'), document.body.style.overflow = 'visible' }}>
                         <HeaderLinkButton title='contact' isIcon={false} />
                     </div>
                 </div>
