@@ -25,6 +25,7 @@ module.exports = {
       'bhover': '#c1deba',
       'white': '#FFFFFF',
       'disabled': '#F0E6DB',
+      'danger': '#FF0000',
     },
     aspectRatio: {
       auto: 'auto',

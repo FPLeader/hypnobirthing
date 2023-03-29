@@ -1,9 +1,37 @@
-import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { useState, useEffect, useLayoutEffect } from 'react'
+import { toast } from 'react-toastify'
+import { useAppSelector } from '@/services/Hooks'
 import { RegularTitle } from '@/components/Titles'
 import { ProfileSection, LogInSecuritySection, UpcomingSection, MyAritclesSection } from './Sections'
 
-export default function Index() {
+interface SettingsPageProps {
+    settingId: number,
+}
+
+export default function Index({
+    settingId
+}: SettingsPageProps) {
+    const router = useRouter();
     const [tab, setTab] = useState<number>(0);
+    const [domLoaded, setDomLoaded] = useState<boolean>(false);
+    const { isLogIn } = useAppSelector((state) => state.auth);
+
+    // initalize
+    useEffect(() => {
+        if (isLogIn === '') {
+            router.push('/login');
+        }
+        setDomLoaded(true);
+    }, []);
+
+    useLayoutEffect(() => {
+        setTab(settingId);
+    }, [settingId]);
+
+    const changeTab = (value: number) => {
+        router.push({ pathname: '/profile/settings', query: { setting: value } });
+    }
 
     const OptionClass = (OptionIndex: number) => {
         let style = 'inline-block select-none cursor-pointer uppercase w-full h-full flex justify-center items-center p-[17.5px] transition-all duration-all';
@@ -15,65 +43,69 @@ export default function Index() {
     }
 
     return (
-        <div className='pt-[70px] md:pt-[90px] w-full'>
+        <div className='pt-[70px] min-h-screen md:pt-[90px] w-full'>
             <div className='w-full flex justify-center my-[20px] md:my-[30px] lg:my-[50px]'>
                 <div className='w-full max-w-[1225px] mx-[20px] flex flex-col gap-[20px] md:gap-[30px] lg:gap-[40px]'>
                     <RegularTitle text='Profile Settings' />
-                    <div className='max-w-[864px] text-dark'>
-                        <div className='sm:hidden'>
-                            <select
-                                id='tabs'
-                                className='bg-white border border-beighe text-sm rounded-lg block w-full p-2.5'
-                                onChange={(e) => setTab(Number(e.target.value))}
-                            >
-                                <option value={0}>profile Pashut Laledet</option>
-                                <option value={1}>Log-in and security</option>
-                                <option value={2}>Upcoming Sessions</option>
-                                <option value={3}>My articles</option>
-                            </select>
-                        </div>
-                        <ul className='hidden text-[14px] font-medium text-center divide-x divide-beighe rounded-[10px] overflow-hidden border-[2px] border-beighe sm:flex'>
-                            <li className='w-full'>
-                                <div
-                                    className={OptionClass(0)}
-                                    onClick={() => setTab(0)}
-                                >profile Pashut Laledet</div>
-                            </li>
-                            <li className='w-full'>
-                                <div
-                                    className={OptionClass(1)}
-                                    onClick={() => setTab(1)}
-                                >Log-in and security</div>
-                            </li>
-                            <li className='w-full'>
-                                <div
-                                    className={OptionClass(2)}
-                                    onClick={() => setTab(2)}
-                                >Upcoming Sessions</div>
-                            </li>
-                            <li className='w-full'>
-                                <div
-                                    className={OptionClass(3)}
-                                    onClick={() => setTab(3)}
-                                >My articles</div>
-                            </li>
-                        </ul>
-                    </div>
-                    {
-                        tab === 0 ?
-                            <ProfileSection />
-                            :
-                            tab === 1 ?
-                                <LogInSecuritySection />
-                                :
-                                tab === 2 ?
-                                    <div>
-                                        <UpcomingSection />
-                                    </div>
+                    {domLoaded &&
+                        <>
+                            <div className='max-w-[864px] text-dark'>
+                                <div className='sm:hidden'>
+                                    <select
+                                        id='tabs'
+                                        className='bg-white border border-beighe text-sm rounded-lg block w-full p-2.5'
+                                        onChange={(e) => setTab(Number(e.target.value))}
+                                    >
+                                        <option value={0}>profile Pashut Laledet</option>
+                                        <option value={1}>Log-in and security</option>
+                                        <option value={2}>Upcoming Sessions</option>
+                                        <option value={3}>My articles</option>
+                                    </select>
+                                </div>
+                                <ul className='hidden text-[14px] font-medium text-center divide-x divide-beighe rounded-[10px] overflow-hidden border-[2px] border-beighe sm:flex'>
+                                    <li className='w-full'>
+                                        <div
+                                            className={OptionClass(0)}
+                                            onClick={() => changeTab(0)}
+                                        >profile Pashut Laledet</div>
+                                    </li>
+                                    <li className='w-full'>
+                                        <div
+                                            className={OptionClass(1)}
+                                            onClick={() => changeTab(1)}
+                                        >Log-in and security</div>
+                                    </li>
+                                    <li className='w-full'>
+                                        <div
+                                            className={OptionClass(2)}
+                                            onClick={() => changeTab(2)}
+                                        >Upcoming Sessions</div>
+                                    </li>
+                                    <li className='w-full'>
+                                        <div
+                                            className={OptionClass(3)}
+                                            onClick={() => changeTab(3)}
+                                        >My articles</div>
+                                    </li>
+                                </ul>
+                            </div>
+                            {
+                                tab === 0 ?
+                                    <ProfileSection />
                                     :
-                                    <div>
-                                        <MyAritclesSection />
-                                    </div>
+                                    tab === 1 ?
+                                        <LogInSecuritySection />
+                                        :
+                                        tab === 2 ?
+                                            <div>
+                                                <UpcomingSection />
+                                            </div>
+                                            :
+                                            <div>
+                                                <MyAritclesSection />
+                                            </div>
+                            }
+                        </>
                     }
                 </div>
             </div>

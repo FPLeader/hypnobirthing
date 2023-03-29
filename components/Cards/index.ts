@@ -20,3 +20,4 @@ export { default as BlogCard } from './Blogs/RegularBlog'
 export { default as SmallBlogCard } from './Blogs/SmallBlog'
 
 export { default as BadgeCard } from './Badge'
+export { default as ContactCard } from './Contact'

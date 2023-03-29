@@ -4,10 +4,9 @@ import { FeedbackCard } from '@/components/Cards'
 import { FeedbackCardType, FeedbackCards } from '@/services/Constants/Home/FeedbackCardsData'
 
 export default function FeedbackSection() {
-
   const style = {
-    dividerWrapper: 'w-full md:w-0 flex justify-center items-center',
-    dividerInner: 'w-full md:w-0 h-full md:max-h-[76px] max-w-[100px] border border-gray_1'
+    DividerWrapper: 'w-full md:w-0 flex justify-center items-center',
+    DividerInner: 'w-full md:w-0 h-full md:max-h-[76px] max-w-[100px] border border-gray_1'
   }
 
   return (
@@ -24,12 +23,12 @@ export default function FeedbackSection() {
         </div>
         <div className='w-full h-max mt-[20px] md:mt-[42px] lg:mt-[70px] flex flex-col md:flex-row justify-between gap-[20px] md:gap-[20px] lg:gap-[34px]'>
           {FeedbackCards.map((CardData: FeedbackCardType, index: number) => (
-            <>
-              {index !== 0 && <div className={style.dividerWrapper} >
-                <div className={style.dividerInner} />
+            <div key={index} className='flex flex-col md:flex-row justify-between gap-[20px] md:gap-[20px] lg:gap-[34px]'>
+              {index !== 0 && <div className={style.DividerWrapper} >
+                <div className={style.DividerInner} />
               </div>}
               <FeedbackCard rating={CardData.rating} title={CardData.title} name={CardData.name} />
-            </>
+            </div>
           ))}
         </div>
         <div className='flex justify-center mt-[20px] block md:hidden'>

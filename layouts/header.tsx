@@ -3,9 +3,14 @@ import { useRouter } from 'next/router'
 import { LinkType, LinksType, HeaderLinks } from '@/services/Constants/Links'
 import { HeaderLinkButton, LanguageButton, HamburgerButton } from '@/components/Buttons'
 import useWindowSize from '@/services/Hooks/useWindowSize'
+import i18n from '@/services/i18n'
+import { useTranslation } from 'react-i18next'
+import { AvatarMenu } from '@/components/Menu'
+import { useSelector } from 'react-redux'
 
 export default function Header() {
     const { width } = useWindowSize();
+    const { isLogIn } = useSelector((state: any) => state.auth);
     const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
     const [menuPage, setMenuPage] = useState<number>(-1);
     const router = useRouter();
@@ -52,7 +57,7 @@ export default function Header() {
     }
 
     return (
-        <nav className=''>
+        <nav>
             <div className={`w-full h-[70px] md:h-[90px] flex justify-center items-center text-dark bg-bcg fixed z-[2000] ${!isNavOpen && 'border-b border-deviders'}`}>
                 <div className='max-w-[1225px] mx-[20px] w-full flex items-center justify-between'>
                     <button onClick={() => onLogoClickHandler()}>
@@ -60,8 +65,8 @@ export default function Header() {
                     </button>
                     <div className='gap-[12px] xl:gap-[40px] hidden lg:flex lg:items-center '>
                         {HeaderLinks.map((items: LinksType, index: number) => (
-                            <div key={index} onClick={() => onClickHandler(index)}>
-                                <HeaderLinkButton title={items.title} index={index} status={menuPage}/>
+                            <div key={'headerlink1'+index} onClick={() => onClickHandler(index)}>
+                                <HeaderLinkButton title={items.title} index={index} status={menuPage} />
                             </div>
                         ))}
                         <div onClick={() => { router.push('/article'), onClickHandler(-1) }}>
@@ -74,7 +79,7 @@ export default function Header() {
                             <HeaderLinkButton title='contact' isIcon={false} />
                         </div>
                     </div>
-                    <div className='flex gap-[25px] lg:gap-[32px]'>
+                    <div className='flex items-center gap-[10px] md:gap-[25px] lg:gap-[20px] pr-[5px]'>
                         <LanguageButton />
                         <div
                             className='block lg:hidden'
@@ -84,6 +89,9 @@ export default function Header() {
                                 state={isNavOpen}
                             />
                         </div>
+                        {isLogIn &&
+                            <AvatarMenu />
+                        }
                     </div>
                 </div>
                 <div className={`h-screen w-full ${menuPage < 0 ? 'hidden opacity-0' : 'block opacity-100'} max-md:hidden absolute top-[90px] z-9`}>
@@ -98,7 +106,7 @@ export default function Header() {
                             </div>
                             <div className='w-full lg:w-2/3 grid grid-cols-3 gap-[30px]'>
                                 {menuPage >= 0 && HeaderLinks[menuPage].links.map((item: LinkType, index: number) => (
-                                    <button key={index} className={style.MenuItem} onClick={() => { document.body.style.overflow = 'visible', router.push(item.link), setMenuPage(-1) }}>{item.title}</button>
+                                    <button key={'headerlink2'+index} className={style.MenuItem} onClick={() => { document.body.style.overflow = 'visible', router.push(item.link), setMenuPage(-1) }}>{item.title}</button>
                                 ))}
                             </div>
                         </div>
@@ -110,14 +118,14 @@ export default function Header() {
             <div className={`${isNavOpen ? 'px-[20px] py-[20px] h-[calc(100vh_-_70px)] md:h-[calc(100vh_-_90px)] opacity-100' : 'h-0 opacity-0'} overflow-auto fixed block lg:hidden w-full bg-bcg transition-all duration-300 top-[70px] md:top-[90px] left-0 z-[2000]`}>
                 <div className='grid gap-[15px]'>
                     {HeaderLinks.map((items: LinksType, index: number) => (
-                        <>
+                        <div key={index} className='grid gap-[15px]'>
                             <div className='uppercase text-[18px]'>{items.title}</div>
                             <div className='grid gap-[10px]'>
                                 {HeaderLinks[index].links.map((item: LinkType, index: number) => (
-                                    <button key={index} className={style.MenuItem} onClick={() => { document.body.style.overflow = 'visible', router.push(item.link), setIsNavOpen(false) }}>{item.title}</button>
+                                    <button key={'headerlink3'+index} className={style.MenuItem} onClick={() => { document.body.style.overflow = 'visible', router.push(item.link), setIsNavOpen(false) }}>{item.title}</button>
                                 ))}
                             </div>
-                        </>
+                        </div>
                     ))}
                     <div onClick={() => { router.push('/article'), document.body.style.overflow = 'visible' }}>
                         <HeaderLinkButton title='blog' isIcon={false} />

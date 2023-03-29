@@ -66,9 +66,9 @@ export default function UpcomingCourse() {
                     </div>
                 </div>
                 <div className='mt-[30px] lg:mt-[40px] w-full max-w-[1068px] flex flex-col md:flex-row items-end gap-[10px]'>
-                    <CategorySelect category='Area' selectItems={SelectData1} />
+                    {/* <CategorySelect category='Area' selectItems={SelectData1} />
                     <CategorySelect category='Estimated date of birth' selectItems={SelectData1} />
-                    <CategorySelect category='Teacher' selectItems={SelectData1} />
+                    <CategorySelect category='Teacher' selectItems={SelectData1} /> */}
                     <SearchButton />
                 </div>
                 <div className='mt-[20px] md:mt-[30px] lg:mt-[40px] flex flex-col gap-[20px] lg:gap-[40px]'>

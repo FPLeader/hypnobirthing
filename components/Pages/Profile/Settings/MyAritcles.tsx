@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import { SmallBlogCard } from '@/components/Cards'
 import { SmallBlogsData, SmallBlogType } from '@/services/Constants/Sections/BlogData'
 import { UploadButton } from '@/components/Buttons'
-import { AddArticleModal } from '@/components/Modals';
+import { AddArticleModal } from '@/components/Modals'
 
 export default function MyAritcles() {
     const numberOfArticles = 2;

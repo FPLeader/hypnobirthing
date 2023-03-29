@@ -3,11 +3,15 @@ import { WorldIcon, InstagramIcon, FacebookIcon, TwitterIcon } from '@/assests/I
 interface InputProps {
     IconType: number,
     placeholder: string,
+    inputValue: any,
+    handleChange: any
 }
 
 export default function Category({
     IconType = 0,
     placeholder = '',
+    inputValue,
+    handleChange
 }: InputProps) {
     const renderIcon = () => {
         switch (IconType) {
@@ -24,17 +28,31 @@ export default function Category({
         }
     }
 
+    const isError = () => {
+        if (inputValue.value === '')
+            return false;
+        return (inputValue.errorMessage !== '' && inputValue.errorMessage.length !== 0);
+    }
+
     return (
-        <div className='relative w-full'>
-            <div className='absolute top-0 h-full left-2 flex items-center pl-3 pointer-events-none'>
-                {renderIcon()}
+        <div>
+            <div className='relative w-full'>
+                <div className='absolute top-0 h-full left-2 flex items-center pl-3 pointer-events-none'>
+                    {renderIcon()}
+                </div>
+                <input
+                    type='text'
+                    className={`appearance-none w-full pl-[40px] pr-[15px] py-[9.5px] lg:py-[11px] bg-white border ${isError() ? 'border-danger' : 'border-deviders'} text-dark font-[Lato] text-[16px] rounded-[10px] placeholder:text-[#2B252590] placeholder:font-[Lato] transition-all duration-300`}
+                    placeholder={placeholder}
+                    value={inputValue.value}
+                    onChange={handleChange}
+                />
             </div>
-            <input
-                type='text'
-                className='appearance-none w-full pl-[40px] pr-[15px] py-[9.5px] lg:py-[11px] bg-white border border-deviders focus:border-pink-500y text-dark font-[Lato] text-[16px] rounded-[10px] placeholder:text-[#2B252590] placeholder:font-[Lato]'
-                placeholder={placeholder}
-                required
-            />
+            {isError() &&
+                <span className='pl-[40px] text-[14px] text-danger'>
+                    {inputValue.errorMessage}
+                </span>
+            }
         </div>
     )
 }

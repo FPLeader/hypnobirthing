@@ -3,9 +3,8 @@ import { ReviewCard, VideoCard } from '../Cards'
 import { ReviewCards } from '@/services/Constants/CardsData'
 
 export default function Reviews() {
-
     const style = {
-        ImgStyle: `w-full h-full max-md:max-h-[310px] min-h-[270px] object-cover rounded-[10px] lg:rounded-[15px] ${process.env.DEV_MODE ? 'blur-lg':''}`,
+        ImgStyle: `w-full h-full max-md:max-h-[310px] min-h-[270px] object-cover rounded-[10px] lg:rounded-[15px] ${process.env.DEV_MODE && 'blur-lg'}`,
     }
     return (
         <div className='pt-[70px] md:pt-[90px] w-full'>
@@ -85,7 +84,7 @@ export default function Reviews() {
                                 date={ReviewCards[1].date}
                             />
                             <div className='aspect-w-16 aspect-h-9'>
-                                <VideoCard title='what people are saying' code='YGxKPJDzok8' style='w-full min-h-[214px]' />
+                                <VideoCard title='what people are saying' videoUrl='YGxKPJDzok8' style='w-full min-h-[214px]' />
                             </div>
                             <ReviewCard
                                 title={ReviewCards[2].title}

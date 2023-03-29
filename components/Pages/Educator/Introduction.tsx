@@ -25,11 +25,11 @@ export default function Introduction() {
           <div className='flex flex-col md:flex-row lg:flex-col gap-[30px] max-lg:w-full absolute top-[200px] md:top-[180px] lg:top-0 right-0'>
             <div className='max-md:max-w-[385px] max-md:m-auto lg:max-w-[385px] flex flex-col md:flex-row md:items-center overflow-hidden border-[2px] rounded-[15px] border-beighe'>
               <div className='md:max-lg:w-[229px]'>
-                <img draggable='false' src='/img/teacher.png' alt='Sharon Peled' className={`max-w-[385px] w-full ${process.env.DEV_MODE ? 'blur-lg':''}`} />
+                <img draggable='false' src='/img/teacher.png' alt='Sharon Peled' className={`max-w-[385px] w-full ${process.env.DEV_MODE && 'blur-lg'}`} />
               </div>
             </div>
             <div className='max-md:max-w-[385px] max-md:w-full max-md:m-auto lg:max-w-[385px] flex flex-col md:flex-row md:items-center '>
-              <VideoCard title={`Meghan Markle&apos;s birth preparation course`} code='YGxKPJDzok8' style='w-full md:h-[233px] lg:h-[213px]' />
+              <VideoCard title={`Meghan Markle&apos;s birth preparation course`} videoUrl='YGxKPJDzok8' style='w-full md:h-[233px] lg:h-[213px]' />
             </div>
           </div>
         </div>

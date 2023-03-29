@@ -12,7 +12,7 @@ export const UpcomingCards: UpcomingCardType[] = [
         id: 1,
         image: '/img/upcoming1.png',
         // image: '/img/teacher.png',
-        title: Date.now(),
+        title: 0,
         header: 'Frontal Birth Preparation',
         content: 'Rehovot / Zoom',
         author: 'Dana Raichman and Avishag Oren'
@@ -21,7 +21,7 @@ export const UpcomingCards: UpcomingCardType[] = [
         id: 2,
         image: '/img/upcoming2.png',
         // image: '/img/teacher.png',
-        title: Date.now(),
+        title: 0,
         header: 'Frontal Birth Preparation',
         content: 'Rehovot / Zoom',
         author: 'Dana Raichman and Avishag Oren'
@@ -30,7 +30,7 @@ export const UpcomingCards: UpcomingCardType[] = [
         id: 3,
         image: '/img/upcoming3.png',
         // image: '/img/teacher.png',
-        title: Date.now(),
+        title: 0,
         header: 'Frontal Birth Preparation',
         content: 'Rehovot / Zoom',
         author: 'Dana Raichman and Avishag Oren'

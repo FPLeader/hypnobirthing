@@ -20,7 +20,7 @@ export default function CommunityCard({
       className='w-full max-md:max-w-[385px] max-md:m-auto flex flex-col bg-white hover:bg-beighe active:bg-white rounded-[10px] overflow-hidden transition-all duration-300'
       onClick={() => router.push(link)}
     >
-      <img draggable='false' src={image} alt={name} className={`w-full ${process.env.DEV_MODE ? 'blur-lg':''}`} />
+      <img draggable='false' src={image} alt={name} className={`w-full ${process.env.DEV_MODE && 'blur-lg'}`} />
       <div className='w-full py-4 text-center text-dark'>
         <div className='text-[18px] '>{name}</div>
         <div className='text-[18px] opacity-60'>{description}</div>

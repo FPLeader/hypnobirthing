@@ -2,7 +2,6 @@ import { TechniquesData } from '@/services/Constants/Report'
 import { NormalButton } from '@/components/Buttons'
 
 export default function Techniques() {
-
     const style = {
         Title: 'text-dark text-center font-medium md:text-left text-[20px] md:text-[24px] lg:text-[28px]',
         Content: 'text-dark text-[16px] lg:text-[20px]',

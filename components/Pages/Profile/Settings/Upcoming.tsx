@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import { CourseCard } from '@/components/Cards'
 import { UploadButton } from '@/components/Buttons'
 import { CourseCardsData, CourseCardType } from '@/services/Constants/CardsData'
-import { AddSessionModal } from '@/components/Modals';
+import { AddSessionModal } from '@/components/Modals'
 
 export default function Upcoming() {
   const numberOfCourses = 2;

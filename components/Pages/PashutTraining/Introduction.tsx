@@ -23,7 +23,7 @@ export default function Introduction() {
             </div>
             <div className='w-full h-full flex flex-col gap-[15px]'>
                 <div className='block lg:hidden text-[30px] md:text-[40px] lg:text-[44px] text-center md:text-left font-light italic'>Pashut Laledet HypnoBirthing Educator Training</div>
-                <img draggable='false' src='\img\educator1.png' alt='' className={`w-full h-full max-lg:max-h-[480px] object-cover rounded-[10px] lg:rounded-[15px] ${process.env.DEV_MODE ? 'blur-lg':''}`} />
+                <img draggable='false' src='\img\educator1.png' alt='' className={`w-full h-full max-lg:max-h-[480px] object-cover rounded-[10px] lg:rounded-[15px] ${process.env.DEV_MODE && 'blur-lg'}`} />
             </div>
         </div>
     )

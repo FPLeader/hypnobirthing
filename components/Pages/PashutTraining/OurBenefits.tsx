@@ -13,7 +13,7 @@ export default function OurGoals() {
                     ))}
                 </div>
             </div>
-            <img draggable='false' src='\img\educator2.png' alt='' className={`w-full rounded-[10px] lg:rounded-[20px] ${process.env.DEV_MODE ? 'blur-lg':''}`} />
+            <img draggable='false' src='\img\educator2.png' alt='' className={`w-full rounded-[10px] lg:rounded-[20px] ${process.env.DEV_MODE && 'blur-lg'}`} />
         </>
     )
 }

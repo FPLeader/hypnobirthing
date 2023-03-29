@@ -28,20 +28,119 @@ export const SelectData1: SelectItem[] = [
 
 interface SelectProfileType {
     value: string,
-    text: string,
+    label: string,
 }
 
 export const SelectProfile: SelectProfileType[] = [
     {
         value: 'Educator',
-        text: 'Educator'
+        label: 'Educator'
     },
     {
-        value: 'Teacher',
-        text: 'Teacher'
+        value: 'Birth Professional Supports HypnoBirthing',
+        label: 'Birth Professional Supports HypnoBirthing'
+    }
+]
+
+export const SkillSet: SelectProfileType[] = [
+    {
+        value: 'Childbirth educator',
+        label: 'Childbirth educator'
     },
     {
-        value: 'Doul',
-        text: 'Doul'
+        value: 'Birth Doula',
+        label: 'Birth Doula'
+    },
+    {
+        value: 'Postpartum Doula',
+        label: 'Postpartum Doula'
+    },
+    {
+        value: 'Midwife',
+        label: 'Midwife'
+    },
+    {
+        value: 'Lactation Consultant',
+        label: 'Lactation Consultant'
+    },
+    {
+        value: 'Lactation Counselor',
+        label: 'Lactation Counselor'
+    },
+    {
+        value: 'Yoga Teacher',
+        label: 'Yoga Teacher'
+    },
+    {
+        value: 'Massage Therapist',
+        label: 'Massage Therapist'
+    },
+    {
+        value: 'Baby Massage',
+        label: 'Baby Massage'
+    },
+    {
+        value: 'Naturopath',
+        label: 'Naturopath'
+    },
+    {
+        value: 'Obstetrician',
+        label: 'Obstetrician'
+    },
+    {
+        value: 'Pelvic Floor Physiotherapist',
+        label: 'Pelvic Floor Physiotherapist'
+    },
+    {
+        value: 'Infant Development Specialist',
+        label: 'Infant Development Specialist'
+    },
+    {
+        value: 'Osteopath',
+        label: 'Osteopath'
+    },
+    {
+        value: 'Reflexologist',
+        label: 'Reflexologist'
+    },
+    {
+        value: 'Therapist',
+        label: 'Therapist'
+    },
+    {
+        value: 'Psychologist',
+        label: 'Psychologist'
+    },
+    {
+        value: 'Acupuncturist',
+        label: 'Acupuncturist'
+    },
+    {
+        value: 'Dietician',
+        label: 'Dietician'
+    },
+    {
+        value: 'Equilibrio Practitioner',
+        label: 'Equilibrio Practitioner'
+    },
+    {
+        value: 'Embrio Balance Practitioner',
+        label: 'Embrio Balance Practitioner'
+    },
+    {
+        value: 'Hydrotherapist',
+        label: 'Hydrotherapist'
+    },
+    {
+        value: 'New mothers circle facilitator',
+        label: 'New mothers circle facilitator'
+    },
+    {
+        value: 'Pilates Teacher',
+        label: 'Pilates Teacher'
+    },
+    {
+        value: 'Other',
+        label: 'Other'
     },
 ]

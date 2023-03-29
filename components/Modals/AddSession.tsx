@@ -48,7 +48,7 @@ export default function AddSession({
                         >
                             <Dialog.Panel className='w-full max-w-[800px] transform overflow-hidden rounded-[20px] bg-bcg_2 p-[15px] md:p-[20px] lg:p-[30px] text-left align-middle shadow-xl transition-all'>
                                 <Dialog.Title
-                                    className='text-[20px] lg:text-[28px] font-medium leading-normal text-dark'
+                                    className='text-[20px] lg:text-[28px] font-medium leading-normal text-dark pr-[35px]'
                                 >
                                     Adding a session
                                 </Dialog.Title>

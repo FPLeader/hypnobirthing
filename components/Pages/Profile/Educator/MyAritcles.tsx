@@ -5,7 +5,7 @@ import { UploadButton } from '@/components/Buttons'
 export default function MyAritcles() {
     const numberOfArticles = 0;
     return (
-        <div className='flex flex-col gap-[16px]'>
+        <div className='flex flex-col gap-[16px] text-dark'>
             <div className='text-[24px] lg:text-[28px] font-medium'>My articles ({numberOfArticles})</div>
             <div className='grid md:grid-cols-2 gap-[20px] md:gap-[35px]'>
                 {/* {SmallBlogsData.slice(0, 1).map((CardData: SmallBlogType, index: number) => (

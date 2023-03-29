@@ -8,6 +8,10 @@ import Router from 'next/router'
 import NProgress from 'nprogress'
 import i18n from '@/services/i18n'
 import LocaleContext from '@/services/LocaleContext'
+import { store } from '@/services/Store'
+import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   //Binding events.
@@ -26,14 +30,28 @@ export default function App({ Component, pageProps }: AppProps) {
         image={APP.URL + APP.META.IMAGE}
         url={APP.URL}
       />
-      <LocaleContext.Provider value={{ locale}}>
-        <div className='font-[lato]' id='main'>
-          <link rel='stylesheet' href='https://use.typekit.net/zfz1tfz.css' />
-          <HeaderPage />
-          <Component {...pageProps} />
-          <FooterPage />
-        </div>
-      </LocaleContext.Provider>
+      <Provider store={store}>
+        <LocaleContext.Provider value={{ locale }}>
+          <div className='font-[lato]' id='main'>
+            <link rel='stylesheet' href='https://use.typekit.net/zfz1tfz.css' />
+            <HeaderPage />
+            <Component {...pageProps} />
+            <FooterPage />
+            <ToastContainer
+              position='bottom-right'
+              autoClose={3000}
+              hideProgressBar={false}
+              newestOnTop
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme='light'
+            />
+          </div>
+        </LocaleContext.Provider>
+      </Provider>
       <style>{`
       /* Make clicks pass-through */
       #nprogress {

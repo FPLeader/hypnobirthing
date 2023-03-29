@@ -5,9 +5,9 @@ import { CategoryInput, Textarea } from '../Inputs'
 
 export default function Contact() {
     const style = {
-        wrapper: 'p-[15px] md:p-[20px] lg:p-[25px] text-dark border border-beighe bg-bcg_2 rounded-[10px] flex flex-col gap-[10px]',
-        title: 'text-[20px] md:text-[24px] font-medium',
-        content: 'text-[16px] md:text-[18px]',
+        Wrapper: 'p-[15px] md:p-[20px] lg:p-[25px] text-dark border border-beighe bg-bcg_2 rounded-[10px] flex flex-col gap-[10px]',
+        Title: 'text-[20px] md:text-[24px] font-medium',
+        Content: 'text-[16px] md:text-[18px]',
         IconStyle: 'bg-white rounded-full w-10 h-10 flex justify-center items-center cursor-pointer',
     }
 
@@ -18,13 +18,13 @@ export default function Contact() {
                 <div className='max-w-[1225px] mx-[20px] flex flex-col gap-[70px]'>
                     <div className='flex flex-col gap-[40px]'>
                         <div className='grid md:grid-cols-6 lg:grid-cols-3 gap-[20px] lg:gap-[35px]'>
-                            <div className={`${style.wrapper} md:max-lg:col-start-1 md:max-lg:col-span-5`}>
-                                <div className={style.title}>Phone</div>
-                                <div className={style.content}>054-222-3003</div>
+                            <div className={`${style.Wrapper} md:max-lg:col-start-1 md:max-lg:col-span-5`}>
+                                <div className={style.Title}>Phone</div>
+                                <div className={style.Content}>054-222-3003</div>
                             </div>
-                            <div className={`${style.wrapper} md:max-lg:col-start-1 md:max-lg:col-span-5`}>
-                                <div className={style.title}>E-mail</div>
-                                <div className={style.content}>hypnobirthing.israel@gmail</div>
+                            <div className={`${style.Wrapper} md:max-lg:col-start-1 md:max-lg:col-span-5`}>
+                                <div className={style.Title}>E-mail</div>
+                                <div className={style.Content}>hypnobirthing.israel@gmail</div>
                             </div>
                             <div className='flex justify-center items-center border border-beighe bg-bcg_2 rounded-[10px] md:max-lg:col-start-6 md:max-lg:row-start-1 md:max-lg:row-span-2'>
                                 <div className='p-[15px] flex md:flex-col lg:flex-row gap-[20px]'>
@@ -61,7 +61,7 @@ export default function Contact() {
                         </div>
                     </div>
                     <div className='relative'>
-                        <img src='/img/contactus.png' alt='contactus' className={`rounded-[10px] lg:rounded-[15px] ${process.env.DEV_MODE ? 'blur-lg':''}`} />
+                        <img src='/img/contactus.png' alt='contactus' className={`rounded-[10px] lg:rounded-[15px] ${process.env.DEV_MODE && 'blur-lg'}`} />
                         <div className='text-white text-[16px] lg:text-[18px] absolute top-[15px] lg:top-[20px] left-[15px] lg:left-[25px]'>photo by Shelley Lawnikanus</div>
                     </div>
                 </div>

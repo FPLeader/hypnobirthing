@@ -49,7 +49,7 @@ export default function AddArticle({
                         >
                             <Dialog.Panel className='w-full max-w-[800px] transform overflow-hidden rounded-[20px] bg-bcg_2 p-[15px] md:p-[20px] lg:p-[30px] text-left align-middle shadow-xl transition-all'>
                                 <Dialog.Title
-                                    className='text-[20px] lg:text-[28px] font-medium leading-normal text-dark'
+                                    className='text-[20px] lg:text-[28px] font-medium leading-normal text-dark pr-[35px]'
                                 >
                                     Adding a session
                                 </Dialog.Title>
@@ -62,7 +62,7 @@ export default function AddArticle({
                                     </button>
                                 </div>
                                 <div className='mt-[20px] grid gap-[10px]'>
-                                    <CategorySelect
+                                    {/* <CategorySelect
                                         category='Category'
                                         selectItems={[
                                             {
@@ -73,7 +73,7 @@ export default function AddArticle({
                                                 value: 'Doula',
                                                 text: 'Doula'
                                             }
-                                        ]} />
+                                        ]} /> */}
                                     <CategoryInput category='Title' placeholder='Enter Title text here' />
 
                                     <div className='w-full p-[20px] bg-white rounded-[20px] font-[lato]'>

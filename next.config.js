@@ -2,7 +2,13 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    DEV_MODE: false,
+    DEV_MODE: true,
+    NEXT_PUBLIC_RECAPTCHA_SITE_KEY: '6LdQJR8lAAAAAKwEKMo297y-0-ERWeEgZhtmG-cR',
+    // API_BASE: DEV_MODE === true ? 'http://localhost:5000/api/v1' : 'http://167.172.148.107:5000/api/v1',
+    API_BASE: 'http://localhost:5000/api/v1',
+    // IMAGE_BASE: DEV_MODE === true ? 'http://localhost:5000/images/' : 'http://167.172.148.107:5000/images/',
+    FILE_IMAGE_BASE: 'http://localhost:5000/images/',
+    FILE_VIDEO_BASE: 'http://localhost:5000/videos/',
   }
 }
 

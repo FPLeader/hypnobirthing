@@ -9,7 +9,7 @@ export default function SoftLanding() {
             </div>
             <div className='flex flex-col lg:flex-row items-center gap-[20px] lg:gap-[35px]'>
                 <div className='w-full lg:w-1/2'>
-                    <VideoCard title='Soft Landing' code='YGxKPJDzok8' style='aspect-w-16 aspect-h-9' />
+                    <VideoCard title='Soft Landing' videoUrl='YGxKPJDzok8' style='aspect-w-16 aspect-h-9' />
                 </div>
                 <div className='w-full lg:w-1/2 flex flex-col gap-[20px]'>
                     <p className='text-[16px] md:text-[18px] lg:text-[20px] md:tracking-wide'>

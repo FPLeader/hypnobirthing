@@ -20,9 +20,9 @@ export default function OurBlogPosts() {
                 </div>
                 <div className='pt-[60px] flex flex-col md:flex-row gap-2.5 items-end'>
                     <div className='w-full flex flex-col md:flex-row md:w-8/12 gap-2.5'>
-                        <CategorySelect category='Category' selectItems={SelectData1} />
+                        {/* <CategorySelect category='Category' selectItems={SelectData1} />
                         <CategorySelect category='Author' selectItems={SelectData1} />
-                        <CategorySelect category='Subject' selectItems={SelectData1} />
+                        <CategorySelect category='Subject' selectItems={SelectData1} /> */}
                     </div>
                     <div className='w-full flex flex-col md:flex-row gap-[10px] items-center md:w-4/12'>
                         <SearchInput />

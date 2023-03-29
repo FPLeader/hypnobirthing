@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react'
+
 interface SelectItem {
     value: string,
     text: string,
@@ -6,12 +8,15 @@ interface SelectItem {
 interface SelectProps {
     category: string,
     selectItems: SelectItem[],
+    handleChange: Dispatch<SetStateAction<string>>,
 }
 
 export default function Category({
     category,
     selectItems,
+    handleChange
 }: SelectProps) {
+
     return (
         <div className='w-full flex flex-col gap-[6px]'>
             <label className='text-sm text-dark'>{category}</label>
@@ -43,8 +48,12 @@ export default function Category({
 
                 </ul>
             </div> */}
-            <select id='countries' className='w-full bg-white border border-deviders text-dark text-[16px] text-[Lato] rounded-[10px] p-[10px]'>
-                <option defaultValue=''>Select&nbsp;{category}</option>
+            <select
+                id='countries'
+                onChange={(e) => {handleChange(e.target.value)}}
+                className='w-full bg-white border border-deviders focus:border-dark focus:ring-1 focus:ring-dark text-dark text-[16px] text-[Lato] rounded-[10px] p-[10px]'
+            >
+                {/* <option defaultValue='' >Select&nbsp;{category}</option> */}
                 {selectItems.map((obj, index) => (
                     <option key={index} value={obj.value}>{obj.text}</option>
                 ))}

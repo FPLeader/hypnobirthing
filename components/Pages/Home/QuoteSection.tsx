@@ -1,10 +1,10 @@
 
 
 export default function QuoteSection() {
-
     const style = {
         QuoteIcon: 'w-[40px] md:w-[60px] lg:w-[76px] h-[30px] md:h-[46px] lg:h-[58px]'
     }
+    
     return (
         <div className='py-[30px] md:pt-[99px] md:pb-[93px] lg:py-[120px] px-[20px]'>
             <div className='w-full flex flex-col items-center'>

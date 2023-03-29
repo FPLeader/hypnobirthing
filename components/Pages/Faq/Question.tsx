@@ -4,7 +4,7 @@ export default function Question() {
     return (
         <div className='w-full md:min-w-[300px] lg:min-w-[385px]'>
             <div className='relative w-full'>
-                <img draggable='false' src='/img/faq.png' alt='question' className={`w-full h-full object-cover ${process.env.DEV_MODE ? 'blur-lg':''}`} />
+                <img draggable='false' src='/img/faq.png' alt='question' className={`w-full h-full object-cover ${process.env.DEV_MODE && 'blur-lg'}`} />
                 <div className='absolute bottom-[15px] right-[15px] text-[14px] md:text-[18px] rounded-[10px] text-white opacity-80'>photo by Shelley Lawnikanus</div>
             </div>
             <div className='mt-[20px] md:mt-[30px] p-[20px] md:p-[25px] border border-beighe rounded-[10px]'>

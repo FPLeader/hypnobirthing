@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import { ArrowDownIcon, ArrowUpIcon } from '@/assests/Icons'
 import { useSpring, animated } from 'react-spring'
 

@@ -1,7 +1,6 @@
 import { Banner, SupportBar } from '@/components/Sections'
 
 export default function ProTrainings() {
-
     const style = {
         Title: 'text-dark text-center md:text-left text-[20px] md:text-[24px] lg:text-[28px]',
         Content: 'text-dark text-[16px] lg:text-[18px]',

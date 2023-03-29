@@ -14,7 +14,7 @@ export default function Founder() {
                 </div>
                 <div className='flex justify-center'>
                     <div className='w-full max-w-[800px] min-h-[177px]'>
-                        <VideoCard title='Founder of hypnobirthing' code='YGxKPJDzok8' style='w-full aspect-w-4 aspect-h-3' />
+                        <VideoCard title='Founder of hypnobirthing' videoUrl='YGxKPJDzok8' style='w-full aspect-w-4 aspect-h-3' />
                     </div>
                 </div>
             </div>

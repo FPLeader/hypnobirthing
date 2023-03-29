@@ -6,7 +6,7 @@ export default function Upcoming() {
   const numberOfCourses = 0;
 
   return (
-    <div className='flex flex-col gap-[16px]'>
+    <div className='flex flex-col gap-[16px] text-dark'>
       <div className='text-[24px] lg:text-[28px] font-medium'>Upcoming Sessions ({numberOfCourses})</div>
       <div className='grid md:grid-cols-2 gap-[20px] md:gap-[35px]'>
         {/* {CourseCardsData.slice(0, 1).map((card: CourseCardType, index: number) => (

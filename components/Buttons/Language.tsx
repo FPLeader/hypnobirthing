@@ -9,7 +9,7 @@ export default function Language() {
 
     return (
         <div
-            className='max-md:hidden bg-white hover:bg-bcg_2 border border-deviders rounded-[6px] px-2 py-[6px] flex items-center gap-1 cursor-pointer select-none transition-all duration-300'
+            className='max-md:hidden h-max bg-white hover:bg-bcg_2 border border-deviders rounded-[6px] px-2 py-[6px] flex items-center gap-1 cursor-pointer select-none transition-all duration-300'
             onClick={() => {
                 i18n.changeLanguage(locale !== 'en' ? 'en' : 'he')
             }}

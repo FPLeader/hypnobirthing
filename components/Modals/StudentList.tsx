@@ -48,7 +48,7 @@ export default function StudentList({
                         >
                             <Dialog.Panel className='w-full max-w-[1224px] transform overflow-hidden rounded-[20px] bg-bcg_2 p-[15px] md:p-[20px] lg:p-[30px] text-left align-middle shadow-xl transition-all'>
                                 <Dialog.Title
-                                    className='text-[18px] leading-normal text-dark'
+                                    className='text-[18px] leading-normal text-dark pr-[35px]'
                                 >
                                     Sharon Peled
                                 </Dialog.Title>

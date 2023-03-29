@@ -3,8 +3,6 @@ import { InstagramIcon, FacebookIcon, TwitterIcon } from '@/assests/Icons'
 import { LinksType, FooterLinks, LinkType } from '@/services/Constants/Links'
 
 export default function Footer() {
-    const router = useRouter();
-
     const style = {
         IconStyle: 'bg-white rounded-full w-10 h-10 flex justify-center items-center cursor-pointer',
         GroupStyle: 'flex flex-col items-start gap-y-[10px] md:gap-y-[15px]',
@@ -12,6 +10,8 @@ export default function Footer() {
         ItemWrapper: 'w-full grid grid-cols-2 md:flex md:flex-col gap-x-[27px] gap-y-[10px] md:gap-y-[12px]',
         MenuItem: 'cursor-pointer uppercase text-[14px]'
     }
+    
+    const router = useRouter();
 
     return (
         <main className='w-full bg-beighe text-dark flex justify-center'>

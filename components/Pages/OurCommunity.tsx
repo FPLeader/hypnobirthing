@@ -26,8 +26,8 @@ export default function OurCommunity() {
                     </div>
                     <div className='pt-[60px] flex flex-col md:flex-row gap-2.5 items-end'>
                         <div className='flex w-full md:w-6/12 gap-2.5'>
-                            <CategorySelect category='Category' selectItems={SelectData1} />
-                            <CategorySelect category='Area' selectItems={SelectData1} />
+                            {/* <CategorySelect category='Category' selectItems={SelectData1} />
+                            <CategorySelect category='Area' selectItems={SelectData1} /> */}
                         </div>
                         <div className='w-full flex items-center gap-[10px] md:w-6/12'>
                             <SearchInput />
