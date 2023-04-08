@@ -1,74 +1,191 @@
 import { Banner, PromoteBar, UpcomingClassesBar } from '@/components/Sections'
-import { SmallBlogCard } from '@/components/Cards'
-import { SmallBlogsData, SmallBlogType } from '@/services/Constants/Sections/BlogData'
+import { SmallBlogCard, SmallBlogSkeletonCard } from '@/components/Cards'
 import { RegularTitle } from '../Titles'
+import { useState, useEffect } from 'react'
+import API from '@/services/API'
+import { useAppDispatch, useAppSelector } from '@/services/Hooks'
+import { toast } from 'react-toastify'
 
 interface BlogProps {
-    id: number,
+    blogId: string,
 }
 
-// export default function Blog({
-//     id
-// }: BlogProps) {
-export default function Blog() {
+export default function Blog({
+    blogId = ''
+}: BlogProps) {
     const moment = require('moment');
+    const dispatch = useAppDispatch();
+    const { currentUser } = useAppSelector((state) => state.auth);
 
-    const blogdata = {
-        id: 1,
-        image: '/img/blogBirth.png',
-        title: 'Birth story',
-        header: 'I Did It!',
-        content: `Hi, Joe Valley here. I'll tell you a bit about my son, Kai, and his birth on December 10, 2013.
-
-        It was lunch on Tuesday at Jack Stack's BBQ here in Kansas City where the birth became imminent. Well, really, it was before that, in February when were were in Brisbane just after we signed the lease for our house in the leafy suburb of Bardon. If you know about the Western suburbs of Brisbane, then you know they are lovely. Anyways, that's where this baby adventure begins. In a campervan in a caravan park, to be specific. If you have been following along on this wild ride since then, then you'll remember the dramatic intensity of that time. Those pictures are already on another hard drive.
-        
-        It's a new day now. The plans have changed a few times. “Maybe we'll live in Sydney. Maybe Castlemaine. Maybe Lorne. Can we make Gold Coast work? OK, maybe not Australia.
-        
-        It's crazy to track back through all of that. It feels epic.
-
-        Soooo, the birth. It was fast. 2.5 hours. We were literally at the BBQ restaurant hours before the birth. Then went to the natural grocer to get the capsules and peppers for the placenta encapsulation. Oh, if you saw the cashier's face when I told her we were having a baby. “Like right now?” She asked. I pointed to Andrea having a full on contraction ten feet away on a bench. “Ohhhhhhh!” After we got home, we called our midwife, Sarah Wallbaum, and 2.5 hours later we had a baby.
-        
-        Sacha was there and kept asking Andrea, “Mom, are you doing OK? Can I get you something?” Even when she was howling like a ferocious wolf, Sacha was right there. “Mom, you want some water?”
-        
-        Through the ring of fire, Andrea paused in the moment, which allowed for a most miraculous spectacle. Kai's head was out. With one more contraction, his arms came out, waving like sea snakes. I realized then that he was birthing himself while Andrea refrained from pushing. Kai was mostly sunny side up, and with his arms waving, he opened his eyes there under the water and peered back towards us above the surface. Sarah, the midwife, gasped, “Oh, my god. His eyes are open,” which I first thought meant that he was in trouble. The room seemed to gasp. With a silent room, this little baby wiggled out, and swam into the water. I reached out to pull him back from the darkness around Andrea's left leg where he had disappeared from our view.
-
-        Then up into the air, still silent.
-
-        My days are completely filled with postpartum duties: making Andrea baths, preparing warming foods, feeding Sacha, cleaning the house, the dishes, the car. Andrea actually won't get to the car for a bit; she will stay in for 40 days as part of taking it easy. It's a sweet life.
-
-        This is my first night in my office without the whole family, who has all slept in here together since Kai was born. It felt right to be close to the physical location where Kai was born, just behind me to the right about five feet.`,
-        author: 'Sharon Peled',
-        date: Date.now()
+    interface mainbodyType {
+        id_lng: number,
+        ds_title: string,
+        ds_content: string,
+        ds_readtime: string,
+        ds_category: string,
     }
 
+    interface BlogType {
+        id_blog: string,
+        cd_educator: string,
+        ds_state: string,
+        dt_upload: Date,
+        dt_publish: Date,
+        ds_thumbnail: string,
+        nm_user: string,
+        mainbody: mainbodyType[]
+    }
+
+    // values
+    const [domLoaded, setDomLoaded] = useState<number>(0);
+    const [latestBlog, setLatestBlogs] = useState<BlogType[]>([]);
+    const [currentBlog, setCurrentBlog] = useState<BlogType>();
+
+
+    // initalize
+    useEffect(() => {
+        if (blogId !== '')
+            loadCurrentBlog();
+    }, [blogId]);
+
+    const loadCurrentBlog = () => {
+        API.post('blog/getcurrentblog', {
+            cd_educator: currentUser.cd_educator,
+            id_blog: blogId
+        })
+            .then((result: any) => {
+                if (result.data.status === 'success') {
+                    console.log(result.data.currentBlog);
+                    setCurrentBlog(result.data.currentBlog);
+                    setDomLoaded(1);
+                }
+            })
+            .catch((err) => {
+                if (err.request?.response === '')
+                    toast.error('Something went wrong.');
+                else {
+                    try {
+                        let errorMessage = JSON.parse(err.request?.response).message;
+                        if (errorMessage === 'jwt expired') {
+                            setDomLoaded(3);
+                        } else
+                            setDomLoaded(2);
+                    } catch (error) {
+                        console.error('Error parsing response:', err.request?.response);
+                        setDomLoaded(2);
+                    }
+                }
+            })
+    }
+
+    // import ReactQuill from "react-quill";
+    // import "react-quill/dist/quill.snow.css";
+
+    // const ReactMarkdown = require("react-markdown/with-html"); //for displaying html
+
+    // function editorContent() {
+    //     <div className="ql-editor" style={{ padding: 0 }}>
+    //         <ReactMarkdown escapeHtml={false} source={quilGeneratedHtml} />
+    //     </div>
+    // }
+
     return (
-        <div className='pt-[70px] md:pt-[90px]'>
-            <Banner title={blogdata.title} image='/img/banner1.png' />
-            <div className='w-full flex justify-center'>
-                <div className='w-full max-w-[1225px] mx-[20px]'>
-                    <div className='mt-[20px] md:mt-[30px] lg:mt-[70px] mb-[20px] md:mb-[30px]'>
-                        <RegularTitle text={blogdata.header} />
-                    </div>
-                    <div className='flex flex-col lg:flex-row gap-[20px] lg:gap-[60px]'>
-                        <div className='w-full lg:w-2/3 flex flex-col gap-[20px] md:gap-[30px] text-dark'>
-                            <img draggable='false' src={blogdata.image} alt={blogdata.title} className={`w-full rounded-[10px] lg:rounded-[15px] ${process.env.DEV_MODE && 'blur-lg'}`} />
-                            <div className='text-[16px] md:text-[18px] whitespace-pre-line self-stretch'>{blogdata.content}</div>
-                            <div className='text-[16px] md:text-[18px] font-normal italic opacity-60 flex justify-between'>
-                                <div>—&nbsp;{blogdata.author}</div>
-                                <div>{moment(blogdata.date).format('MMMM D, YYYY')}</div>
+        <div className='pt-[70px] min-h-screen md:pt-[90px]'>
+            {
+                domLoaded === 0 ?
+                    <>
+                        <Banner title={'Blog'} image='/img/banner1.png' />
+                        <div className='w-full flex justify-center'>
+                            <div className='animate-pulse w-full max-w-[1225px] mx-[20px]'>
+                                <div className='mt-[20px] md:mt-[30px] lg:mt-[70px] mb-[20px] md:mb-[30px]'>
+                                    <div className='h-3 md:h-4 w-3/5 bg-gray-300 rounded-full' />
+                                </div>
+                                <div className='flex flex-col lg:flex-row gap-[20px] lg:gap-[60px]'>
+                                    <div className='w-full lg:w-2/3 flex flex-col gap-[20px] md:gap-[30px] text-dark'>
+                                        <div className='w-full h-[300px] rounded-[15px] overflow-hidden'>
+                                            <div className='flex items-center justify-center w-full h-full bg-gray-300'>
+                                                <svg className='w-12 h-12 text-gray-200'
+                                                    xmlns='http://www.w3.org/2000/svg'
+                                                    aria-hidden='true'
+                                                    fill='currentColor'
+                                                    viewBox='0 0 640 512'>
+                                                    <path d='M480 80C480 35.82 515.8 0 560 0C604.2 0 640 35.82 640 80C640 124.2 604.2 160 560 160C515.8 160 480 124.2 480 80zM0 456.1C0 445.6 2.964 435.3 8.551 426.4L225.3 81.01C231.9 70.42 243.5 64 256 64C268.5 64 280.1 70.42 286.8 81.01L412.7 281.7L460.9 202.7C464.1 196.1 472.2 192 480 192C487.8 192 495 196.1 499.1 202.7L631.1 419.1C636.9 428.6 640 439.7 640 450.9C640 484.6 612.6 512 578.9 512H55.91C25.03 512 .0006 486.1 .0006 456.1L0 456.1z' />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div className='grid gap-[15px]'>
+                                            <div className='h-2 md:h-2.5 w-4/5 bg-gray-300 rounded-full' />
+                                            <div className='h-2 md:h-2.5 w-3/5 bg-gray-300 rounded-full' />
+                                            <div className='h-2 md:h-2.5 w-5/5 bg-gray-300 rounded-full' />
+                                            <div className='h-2 md:h-2.5 w-5/5 bg-gray-300 rounded-full' />
+                                            <div className='h-2 md:h-2.5 w-4/5 bg-gray-300 rounded-full' />
+                                            <div className='h-2 md:h-2.5 w-2/5 bg-gray-300 rounded-full' />
+                                        </div>
+                                        <div className='grid gap-[15px]'>
+                                            <div className='h-2 md:h-2.5 w-5/5 bg-gray-300 rounded-full' />
+                                            <div className='h-2 md:h-2.5 w-3/5 bg-gray-300 rounded-full' />
+                                            <div className='h-2 md:h-2.5 w-5/5 bg-gray-300 rounded-full' />
+                                            <div className='h-2 md:h-2.5 w-4/5 bg-gray-300 rounded-full' />
+                                            <div className='h-2 md:h-2.5 w-4/5 bg-gray-300 rounded-full' />
+                                            <div className='h-2 md:h-2.5 w-3/5 bg-gray-300 rounded-full' />
+                                        </div>
+                                        <div className='grid gap-[15px]'>
+                                            <div className='h-2 md:h-2.5 w-5/5 bg-gray-300 rounded-full' />
+                                            <div className='h-2 md:h-2.5 w-3/5 bg-gray-300 rounded-full' />
+                                            <div className='h-2 md:h-2.5 w-5/5 bg-gray-300 rounded-full' />
+                                            <div className='h-2 md:h-2.5 w-5/5 bg-gray-300 rounded-full' />
+                                            <div className='h-2 md:h-2.5 w-5/5 bg-gray-300 rounded-full' />
+                                            <div className='h-2 md:h-2.5 w-4/5 bg-gray-300 rounded-full' />
+                                            <div className='h-2 md:h-2.5 w-3/5 bg-gray-300 rounded-full' />
+                                        </div>
+                                        <div className='mt-[40px] flex justify-between'>
+                                            <div className='h-2 md:h-2.5 w-1/6 bg-gray-300 rounded-full' />
+                                            <div className='h-2 md:h-2.5 w-2/6 bg-gray-300 rounded-full' />
+                                        </div>
+                                    </div>
+                                    <div className='w-full flex flex-col gap-[20px] md:gap-[25px] lg:w-1/3'>
+                                        <div className='text-dark text-[30px]'>More Birth Stories</div>
+                                        <div className='grid gap-[20px]'>
+                                            <SmallBlogSkeletonCard />
+                                            <SmallBlogSkeletonCard />
+                                            <SmallBlogSkeletonCard />
+                                            <SmallBlogSkeletonCard />
+                                            <SmallBlogSkeletonCard />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div className='w-full flex flex-col gap-[20px] md:gap-[25px] lg:w-1/3'>
-                            <div className='text-dark text-[30px]'>More Birth Stories</div>
-                            <div className='grid gap-[20px]'>
-                                {SmallBlogsData.map((CardData: SmallBlogType, index: number) => (
-                                    <SmallBlogCard key={index} id={CardData.id} image={CardData.image} header={CardData.header} content={CardData.content} author={CardData.author} />
-                                ))}
+                    </>
+                    :
+                    <>
+                        <Banner title={currentBlog?.mainbody[0].ds_title ?? ''} image={process.env.FILE_IMAGE_BASE + (currentBlog?.ds_thumbnail ?? '')} />
+                        <div className='w-full flex justify-center'>
+                            <div className='w-full max-w-[1225px] mx-[20px]'>
+                                <div className='mt-[20px] md:mt-[30px] lg:mt-[70px] mb-[20px] md:mb-[30px]'>
+                                    <RegularTitle text={currentBlog?.mainbody[0].ds_title ?? ''} />
+                                </div>
+                                <div className='flex flex-col lg:flex-row gap-[20px] lg:gap-[60px]'>
+                                    <div className='w-full lg:w-2/3 flex flex-col gap-[20px] md:gap-[30px] text-dark'>
+                                        <div className='font-[lato]' dangerouslySetInnerHTML={{ __html: currentBlog?.mainbody[0].ds_content ?? '' }} />
+                                        <div className='text-[16px] md:text-[18px] font-normal italic opacity-60 flex justify-between'>
+                                            <div className='capitalize'>—&nbsp;{currentBlog?.nm_user}</div>
+                                            <div>{moment(currentBlog?.dt_upload).format('MMMM D, YYYY')}</div>
+                                        </div>
+                                    </div>
+                                    <div className='w-full flex flex-col gap-[20px] md:gap-[25px] lg:w-1/3'>
+                                        <div className='text-dark text-[30px]'>More Birth Stories</div>
+                                        <div className='grid gap-[20px]'>
+                                            {/* {SmallBlogsData.map((CardData: SmallBlogType, index: number) => (
+                                                <SmallBlogCard key={index} id={CardData.id} image={CardData.image} header={CardData.header} content={CardData.content} author={CardData.author} />
+                                            ))} */}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </>
+            }
             <div className='mt-[20px] md:mt-[80px] lg:mt-[120px]'>
                 <PromoteBar />
             </div>

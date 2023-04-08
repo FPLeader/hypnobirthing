@@ -1,12 +1,21 @@
 import { useRouter } from 'next/router'
 import { BlogPage } from '@/components/Pages'
+import { useState, useEffect } from 'react';
 
 export default function Blog() {
     const router = useRouter()
-    // const { id } = router.query
+    const [blogId, setBlogId] = useState<string>('');
+    const { id } = router.query;
+
+    useEffect(() => {
+        if (typeof id === 'string') {
+            setBlogId(id);
+        }
+    }, [id]);
 
     return (
-        // <BlogPage id={id} />
-        <BlogPage />
+        <BlogPage
+            blogId={blogId}
+        />
     )
 }

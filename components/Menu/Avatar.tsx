@@ -17,8 +17,8 @@ export default function Avatar() {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [image, setImage] = useState<string>('/img/defaultavatar.png');
     const { currentUser } = useAppSelector((state) => state.auth);
+    // language option
     const { t } = useTranslation();
-    const lng: boolean = i18n.language === 'en' ? true : false;
     const lngId: number = i18n.language === 'en' ? 0 : 1;
 
     // initalize
@@ -54,8 +54,8 @@ export default function Avatar() {
                             <Popover.Panel className='absolute right-0 z-[111111]'>
                                 <div className='mt-[5px] p-[10px] flex flex-col items-start gap-[5px] border border-deviders rounded-[10px] bg-bcg'>
                                     <button className={style.Link} onClick={() => { router.push('/profile/educator'), setIsOpen(false) }}>My Profile</button>
-                                    <button className={style.Link} onClick={() => { router.push('/myarticles'), setIsOpen(false) }}>My Articles</button>
-                                    <button className={style.Link} onClick={() => { router.push('/mycourses'), setIsOpen(false) }}>My Courses</button>
+                                    <button className={style.Link} onClick={() => { router.push('/profile/settings?setting=3'), setIsOpen(false) }}>My Articles</button>
+                                    <button className={style.Link} onClick={() => { router.push('/profile/settings?setting=2'), setIsOpen(false) }}>My Courses</button>
                                     <button className={style.Link} onClick={() => { dispatch(logout(router, '/')), setIsOpen(false) }}>Log out</button>
                                 </div>
                             </Popover.Panel>

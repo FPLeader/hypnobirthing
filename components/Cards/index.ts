@@ -19,5 +19,11 @@ export { default as BigBlogCard } from './Blogs/BigBlog'
 export { default as BlogCard } from './Blogs/RegularBlog'
 export { default as SmallBlogCard } from './Blogs/SmallBlog'
 
+// Small Blog Edit
+export { default as SmallBlogEditCard } from './Blogs/SmallBlogEdit'
+
+// Skeleton Type
+export { default as SmallBlogSkeletonCard } from './Skeleton/SmallBlog'
+
 export { default as BadgeCard } from './Badge'
 export { default as ContactCard } from './Contact'

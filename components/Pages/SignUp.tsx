@@ -31,7 +31,6 @@ export default function SignUp() {
     const [newPassword, setNewPassword] = useState({ ...initialValue, rules: ['required', 'min:8'] });
     const [confirmPassword, setConfirmPassword] = useState({ ...initialValue, rules: ['required', 'match'] });
 
-
     interface MultiSelectOption {
         value: any;
         label: string;
@@ -141,6 +140,7 @@ export default function SignUp() {
                 ar_personaltitle: []
             };
             requestParams.ar_personaltitle.push(personalTitle.value);
+            requestParams.ar_personaltitle.push('');
             setLoadingOpen(true);
             dispatch(register(requestParams, setLoadingOpen, router));
         }

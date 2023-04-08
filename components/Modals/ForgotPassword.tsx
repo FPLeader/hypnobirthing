@@ -8,7 +8,7 @@ import { CloseIcon } from '@/assests/Icons'
 import { CategoryRuleInput } from '../Inputs'
 import { OtpInput } from '@/components/Inputs'
 
-interface AddSessionProps {
+interface ForgotPasswordProps {
     isOpen: boolean,
     closeModal: () => void,
     email: any,
@@ -22,7 +22,7 @@ export default function ForgotPassword({
     email,
     setEmail,
     handleChangeValue,
-}: AddSessionProps) {
+}: ForgotPasswordProps) {
     const { width } = useWindowSize();
     const [loadingOpen, setLoadingOpen] = useState<boolean>(false);
     const [page, setPage] = useState<number>(1);
@@ -89,14 +89,14 @@ export default function ForgotPassword({
                 })
                 .catch((err) => {
                     setLoadingOpen(false)
-                    if (err.request.response === '')
+                    if (err.request?.response === '')
                         toast.error('Something went wrong.');
                     else {
                         try {
-                            let errorMessage = JSON.parse(err.request.response).message;
+                            let errorMessage = JSON.parse(err.request?.response).message;
                             toast.error(errorMessage);
                         } catch (error) {
-                            console.error('Error parsing response:', err.request.response);
+                            console.error('Error parsing response:', err.request?.response);
                             toast.error('Something went wrong.');
                         }
                     }
@@ -117,14 +117,14 @@ export default function ForgotPassword({
                 })
                 .catch((err) => {
                     setLoadingOpen(false);
-                    if (err.request.response === '')
+                    if (err.request?.response === '')
                         toast.error('Something went wrong.');
                     else {
                         try {
-                            let errorMessage = JSON.parse(err.request.response).message;
+                            let errorMessage = JSON.parse(err.request?.response).message;
                             toast.error(errorMessage);
                         } catch (error) {
-                            console.error('Error parsing response:', err.request.response);
+                            console.error('Error parsing response:', err.request?.response);
                             toast.error('Something went wrong.');
                         }
                     }

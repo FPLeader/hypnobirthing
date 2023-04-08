@@ -12,8 +12,10 @@ import { useAppDispatch, useAppSelector } from '@/services/Hooks'
 export default function LogIn() {
     const router = useRouter();
     const dispatch = useAppDispatch();
+    // language option
     const { t } = useTranslation();
-    const lng: boolean = i18n.language === 'en' ? true : false;
+    const lngId: number = i18n.language === 'en' ? 0 : 1;
+    // current user
     const { currentUser } = useAppSelector((state) => state.auth);
 
     const initialValue = {
@@ -96,7 +98,7 @@ export default function LogIn() {
     }
 
     return (
-        <div dir={lng ? "ltr" : "rtl"} className='pt-[70px] lg:pt-[90px] min-h-screen w-full flex justify-center items-center'>
+        <div dir={lngId === 0 ? 'ltr' : 'rtl'} className='pt-[70px] lg:pt-[90px] min-h-screen w-full flex justify-center items-center'>
             <div className='w-full mx-[20px] my-[40px] max-w-[600px] p-[20px] md:p-[30px] lg:p-[40px] bg-bcg_2 rounded-[20px]'>
                 <div className='flex flex-col gap-[20px]'>
                     <ForgotPasswordModal

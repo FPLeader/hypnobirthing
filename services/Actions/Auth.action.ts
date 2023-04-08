@@ -10,19 +10,19 @@ export function register(data: any, setLoadingOpen: any, router: NextRouter) {
                 if (result.data.status === 'success') {
                     toast.info('Check the code has been sent to your email.');
                     setLoadingOpen(false)
-                    dispatch(setTempUser(result.data.user.ds_email));
+                    dispatch(setTempUser(result.data.currentUser.ds_email));
                     router.push('/validatecode');
                 }
             })
             .catch((err) => {
-                if (err.request.response === '')
+                if (err.request?.response === '')
                     toast.error('Something went wrong.');
                 else {
                     try {
-                        let errorMessage = JSON.parse(err.request.response).message;
+                        let errorMessage = JSON.parse(err.request?.response).message;
                         toast.error(errorMessage);
                     } catch (error) {
-                        console.error('Error parsing response:', err.request.response);
+                        console.error('Error parsing response:', err.request?.response);
                         toast.error('Something went wrong.');
                     }
                 }
@@ -46,11 +46,11 @@ export function login(data: any, setLoadingOpen: any, router: NextRouter) {
                 }
             })
             .catch((err) => {
-                if (err.request.response === '')
+                if (err.request?.response === '')
                     toast.error('Something went wrong.');
                 else {
                     try {
-                        let errorMessage = JSON.parse(err.request.response).message;
+                        let errorMessage = JSON.parse(err.request?.response).message;
                         if (errorMessage === `Please verify your email.`) {
                             dispatch(setTempUser(data.ds_email));
                             API.post('auth/resend', {
@@ -63,12 +63,13 @@ export function login(data: any, setLoadingOpen: any, router: NextRouter) {
                                 })
                                 .catch((err) => {
                                     toast.error(`We can't send verification code to your email.`);
+                                    console.log(err);
                                 })
                             router.push('/validatecode');
                         }
                         toast.error(errorMessage);
                     } catch (error) {
-                        console.error('Error parsing response:', err.request.response);
+                        console.error('Error parsing response:', err.request?.response);
                         toast.error('Something went wrong.');
                     }
                 }

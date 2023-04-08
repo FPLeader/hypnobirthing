@@ -6,10 +6,12 @@ import { Dialog, Transition } from '@headlessui/react'
 import { CloseIcon } from '@/assests/Icons'
 import { CategoryRuleInput } from '../Inputs'
 import { OtpInput } from '@/components/Inputs'
-import { useAppDispatch, useAppSelector } from '@/services/Hooks'
 import { setUser } from '@/services/Actions/Auth.action'
+import { useRouter } from 'next/router'
+import { useAppDispatch, useAppSelector } from '@/services/Hooks'
+import { logout } from '@/services/Actions/Auth.action'
 
-interface AddSessionProps {
+interface SecurityUpdateProps {
     isOpen: boolean,
     closeModal: () => void,
     cd_educator: string,
@@ -29,7 +31,8 @@ export default function SecurityUpdate({
     ds_email,
     ds_password,
     ic_sendme
-}: AddSessionProps) {
+}: SecurityUpdateProps) {
+    const router = useRouter();
     const { width } = useWindowSize();
     const [loadingOpen, setLoadingOpen] = useState<boolean>(false);
     const dispatch = useAppDispatch();
@@ -107,18 +110,22 @@ export default function SecurityUpdate({
                     }
                 })
                 .catch((err) => {
-                    setLoadingOpen(false)
-                    if (err.request.response === '')
+                    if (err.request?.response === '')
                         toast.error('Something went wrong.');
                     else {
                         try {
-                            let errorMessage = JSON.parse(err.request.response).message;
-                            toast.error(errorMessage);
+                            let errorMessage = JSON.parse(err.request?.response).message;
+                            if (errorMessage === 'jwt expired') {
+                                dispatch(logout(router, '/login'));
+                                toast.error('Your session was expired, Log in again here.');
+                            } else
+                                toast.error(errorMessage);
                         } catch (error) {
-                            console.error('Error parsing response:', err.request.response);
+                            console.error('Error parsing response:', err.request?.response);
                             toast.error('Something went wrong.');
                         }
                     }
+                    setLoadingOpen(false);
                 })
         } else if (page === 2) {
             API.post('user/verifynewemail', {
@@ -139,18 +146,22 @@ export default function SecurityUpdate({
                     }
                 })
                 .catch((err) => {
-                    setLoadingOpen(false);
-                    if (err.request.response === '')
+                    if (err.request?.response === '')
                         toast.error('Something went wrong.');
                     else {
                         try {
-                            let errorMessage = JSON.parse(err.request.response).message;
-                            toast.error(errorMessage);
+                            let errorMessage = JSON.parse(err.request?.response).message;
+                            if (errorMessage === 'jwt expired') {
+                                dispatch(logout(router, '/login'));
+                                toast.error('Your session was expired, Log in again here.');
+                            } else
+                                toast.error(errorMessage);
                         } catch (error) {
-                            console.error('Error parsing response:', err.request.response);
+                            console.error('Error parsing response:', err.request?.response);
                             toast.error('Something went wrong.');
                         }
                     }
+                    setLoadingOpen(false);
                     setWrongOtpTimer(3);
                 })
         }

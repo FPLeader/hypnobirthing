@@ -1,28 +1,29 @@
 import { useState, useEffect, useRef, useLayoutEffect } from 'react'
+import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
-import { useAppSelector } from '@/services/Hooks'
 import i18n from '@/services/i18n'
 import { useTranslation } from 'react-i18next'
 import { MultiSelect } from 'react-multi-select-component'
 import ReactPlayer from 'react-player'
-import { useAppDispatch } from '@/services/Hooks'
 import { setUser } from '@/services/Actions/Auth.action'
 import API from '@/services/API'
 import { SkillSet, SelectProfile } from '@/services/Constants/SelectOptions'
 import { Textarea, CategoryRuleInput, IconInput } from '@/components/Inputs'
 import { UploadButton } from '@/components/Buttons'
 import { YouTubeInputModal } from '@/components/Modals'
+import { useAppDispatch, useAppSelector } from '@/services/Hooks'
+import { logout } from '@/services/Actions/Auth.action'
 
 export default function Profile() {
+    const router = useRouter();
+    const dispatch = useAppDispatch();
+    
     const style = {
         Title: 'text-[24px] font-medium',
     }
 
-    const dispatch = useAppDispatch();
-
     const [domLoaded, setDomLoaded] = useState<boolean>(false);
     const { t } = useTranslation();
-    const lng: boolean = i18n.language === 'en' ? true : false;
     const lngId: number = i18n.language === 'en' ? 0 : 1;
     const { currentUser } = useAppSelector((state) => state.auth);
     const [loadingOpen, setLoadingOpen] = useState<boolean>(false);
@@ -275,8 +276,26 @@ export default function Profile() {
         if (isSaveButtonActive()) {
             setLoadingOpen(true);
             let formData = new FormData();
-            formData.append('file1', selectedImage as File);
-            formData.append('file2', selectedVideo as File);
+            if (selectedImage !== null) {
+                let parts = selectedImage.name.split('.');
+                let ext = parts[parts.length - 1];
+                let newFileName = 'avatar_' + currentUser.cd_educator + '.' + ext;
+                let _selectedImage = new File([selectedImage], newFileName, { type: selectedImage.type, lastModified: selectedImage.lastModified });
+                // console.log(_selectedImage);
+                formData.append('image', _selectedImage as File);
+            } else {
+                formData.append('image', selectedImage as unknown as File);
+            }
+            if (selectedVideo !== null) {
+                let parts = selectedVideo.name.split('.');
+                let ext = parts[parts.length - 1];
+                let newFileName = 'video_' + currentUser.cd_educator + '.' + ext;
+                let _selectedVideo = new File([selectedVideo], newFileName, { type: selectedVideo.type, lastModified: selectedVideo.lastModified });
+                // console.log(_selectedVideo);
+                formData.append('video', _selectedVideo as File);
+            } else {
+                formData.append('video', selectedVideo as unknown as File);
+            }
             if (getVideoIdFromUrl(videoUrl) !== null) {
                 formData.append('youtubelink', videoUrl);
             } else
@@ -308,11 +327,24 @@ export default function Profile() {
                         setLoadingOpen(false);
                     }
                 })
-                .catch((err: any) => {
-                    console.log(err);
-                    toast.error('Something went wrong.');
+                .catch((err) => {
+                    if (err.request?.response === '')
+                        toast.error('Something went wrong.');
+                    else {
+                        try {
+                            let errorMessage = JSON.parse(err.request?.response).message;
+                            if (errorMessage === 'jwt expired') {
+                                dispatch(logout(router, '/login'));
+                                toast.error('Your session was expired, Log in again here.');
+                            } else
+                                toast.error(errorMessage);
+                        } catch (error) {
+                            console.error('Error parsing response:', err.request?.response);
+                            toast.error('Something went wrong.');
+                        }
+                    }
                     setLoadingOpen(false);
-                });
+                })
         }
     }
 
@@ -421,12 +453,13 @@ export default function Profile() {
                                                 <input
                                                     accept='image/*'
                                                     className='hidden'
-                                                    id='icon-button-file'
+                                                    id='input-image-file'
                                                     type='file'
                                                     ref={avatarBtn}
                                                     onChange={handleImageUpload}
                                                 />
                                                 <div
+                                                    className='w-max'
                                                     onClick={
                                                         () => { avatarBtn.current?.click() }
                                                     }

@@ -4,6 +4,8 @@ export { default as HamburgerIcon } from './hamburger'
 export { default as SearchIcon } from './search'
 export { default as StarIcon } from './star'
 export { default as CloseIcon } from './close'
+export { default as CheckIcon } from './check'
+export { default as UpdownIcon } from './updown'
 
 export { default as PhoneIcon } from './phone'
 export { default as WorldIcon } from './world'

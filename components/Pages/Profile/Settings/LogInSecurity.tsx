@@ -1,5 +1,4 @@
 import { useState, useLayoutEffect } from 'react'
-import { useAppSelector } from '@/services/Hooks'
 import { toast } from 'react-toastify'
 import i18n from '@/services/i18n'
 import { useTranslation } from 'react-i18next'
@@ -7,15 +6,19 @@ import API from '@/services/API'
 import { CategoryRuleInput } from '@/components/Inputs'
 import { UploadButton } from '@/components/Buttons'
 import { SecurityUpdateModal } from '@/components/Modals'
+import { useRouter } from 'next/router'
+import { useAppDispatch, useAppSelector } from '@/services/Hooks'
+import { logout } from '@/services/Actions/Auth.action'
 
 export default function LogInSecurity() {
+    const router = useRouter();
+    const dispatch = useAppDispatch();
     const style = {
         CheckBox: 'bg-white border rounded-[4px] border-Label w-[26px] h-[26px] flex flex-shrink-0 justify-center items-center mr-2',
     }
 
     const [domLoaded, setDomLoaded] = useState<boolean>(false);
     const { t } = useTranslation();
-    const lng: boolean = i18n.language === 'en' ? true : false;
     const lngId: number = i18n.language === 'en' ? 0 : 1;
     const { currentUser } = useAppSelector((state) => state.auth);
     const [loadingOpen, setLoadingOpen] = useState<boolean>(false);
@@ -152,14 +155,18 @@ export default function LogInSecurity() {
                         }
                     })
                     .catch((err) => {
-                        if (err.request.response === '')
+                        if (err.request?.response === '')
                             toast.error('Something went wrong.');
                         else {
                             try {
-                                let errorMessage = JSON.parse(err.request.response).message;
-                                toast.error(errorMessage);
+                                let errorMessage = JSON.parse(err.request?.response).message;
+                                if (errorMessage === 'jwt expired') {
+                                    dispatch(logout(router, '/login'));
+                                    toast.error('Your session was expired, Log in again here.');
+                                } else
+                                    toast.error(errorMessage);
                             } catch (error) {
-                                console.error('Error parsing response:', err.request.response);
+                                console.error('Error parsing response:', err.request?.response);
                                 toast.error('Something went wrong.');
                             }
                         }
@@ -191,10 +198,10 @@ export default function LogInSecurity() {
             //         }
             //     })
             //     .catch((err) => {
-            //         if (err.request.response === '')
+            //         if (err.request?.response === '')
             //             toast.error('Something went wrong.');
             //         else {
-            //             toast.error(JSON.parse(err.request.response).message);
+            //             toast.error(JSON.parse(err.request?.response).message);
             //         }
             //         setLoadingOpen(false)
             //     });

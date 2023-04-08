@@ -4,7 +4,7 @@ import { CloseIcon } from '@/assests/Icons'
 import useWindowSize from '@/services/Hooks/useWindowSize'
 import { ContactButton } from '@/components/Buttons'
 
-interface AddSessionProps {
+interface MemberProfileProps {
     isOpen: boolean,
     // setIsOpen: Dispatch<SetStateAction<boolean>>,
     // openModal: () => void,
@@ -24,7 +24,7 @@ export default function MemberProfile({
     name,
     title,
     description,
-}: AddSessionProps) {
+}: MemberProfileProps) {
     const { width } = useWindowSize();
 
     return (

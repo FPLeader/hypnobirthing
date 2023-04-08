@@ -13,10 +13,12 @@ export default function AboutMe({
   skills = []
 }: SectionProps) {
   const router = useRouter();
-  const MIN_LENGTH = 300;
+  const MIN_LENGTH = 4; // number of lines in description
   const [description, setDescription] = useState<string>(aboutMe);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [skillSet, setSkillSet] = useState<string[]>(skills);
+
+  console.log(description);
 
   return (
     <div className='flex flex-col gap-[20px] md:gap-[30px] lg:gap-[70px]'>
@@ -31,10 +33,10 @@ export default function AboutMe({
                 </div>
                 :
                 <>
-                  <div className={`text-[16px] lg:text-[18px] ${description.length > MIN_LENGTH ? isOpen ? 'h-max' : 'h-[110px]' : ''} overflow-hidden transition-all duration-500`}>
+                  <div className={`whitespace-pre-line text-[16px] lg:text-[18px] ${description.split('\n').length > MIN_LENGTH ? isOpen ? 'h-max' : 'h-[110px]' : ''} overflow-hidden transition-all duration-500`}>
                     {description}
                   </div>
-                  {description.length > MIN_LENGTH && <div className={`z-1 inset-x-0 absolute bottom-0 bg-gradient-to-t from-bcg pt-[80px] pointer-events-none transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`}></div>}
+                  {description.split('\n').length > MIN_LENGTH && <div className={`z-1 inset-x-0 absolute bottom-0 bg-gradient-to-t from-bcg pt-[80px] pointer-events-none transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`}></div>}
                 </>
             }
           </div>
@@ -45,8 +47,8 @@ export default function AboutMe({
             :
             <>
               {
-                description.length > MIN_LENGTH &&
-                <div onClick={() => setIsOpen(!isOpen)}>
+                description.split('\n').length > MIN_LENGTH &&
+                <div className='w-max' onClick={() => setIsOpen(!isOpen)}>
                   <ExpandButton />
                 </div>
               }

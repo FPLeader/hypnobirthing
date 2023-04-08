@@ -1,8 +1,10 @@
+import { useRouter } from 'next/router'
 import { CourseCard } from '@/components/Cards'
 import { UploadButton } from '@/components/Buttons'
 import { CourseCardsData, CourseCardType } from '@/services/Constants/CardsData'
 
 export default function Upcoming() {
+  const router = useRouter();
   const numberOfCourses = 0;
 
   return (
@@ -15,7 +17,9 @@ export default function Upcoming() {
           </div>
         ))} */}
         <div className='w-full min-h-[204px] flex justify-center items-center border border-beighe rounded-[10px]'>
-          <UploadButton text='add Session' />
+          <div onClick={() => router.push({ pathname: '/profile/settings', query: { setting: 2 } })}>
+            <UploadButton text='add Session' />
+          </div>
         </div>
       </div>
     </div>

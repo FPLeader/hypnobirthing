@@ -3,6 +3,7 @@ import { useState, useEffect, useLayoutEffect } from 'react'
 import { toast } from 'react-toastify'
 import { useAppSelector } from '@/services/Hooks'
 import { RegularTitle } from '@/components/Titles'
+import { CategorySelect } from '@/components/Select'
 import { ProfileSection, LogInSecuritySection, UpcomingSection, MyAritclesSection } from './Sections'
 
 interface SettingsPageProps {
@@ -13,9 +14,16 @@ export default function Index({
     settingId
 }: SettingsPageProps) {
     const router = useRouter();
-    const [tab, setTab] = useState<number>(0);
     const [domLoaded, setDomLoaded] = useState<boolean>(false);
     const { isLogIn } = useAppSelector((state) => state.auth);
+
+    const tabOptions = [
+        { id: 0, name: 'Profile Pashut Laledet' },
+        { id: 1, name: 'Log-in and security' },
+        { id: 2, name: 'Upcoming Sessions' },
+        { id: 3, name: 'My articles' },
+    ]
+    const [tab, setTab] = useState(tabOptions[0]);
 
     // initalize
     useEffect(() => {
@@ -26,7 +34,7 @@ export default function Index({
     }, []);
 
     useLayoutEffect(() => {
-        setTab(settingId);
+        setTab(tabOptions[settingId]);
     }, [settingId]);
 
     const changeTab = (value: number) => {
@@ -35,7 +43,7 @@ export default function Index({
 
     const OptionClass = (OptionIndex: number) => {
         let style = 'inline-block select-none cursor-pointer uppercase w-full h-full flex justify-center items-center p-[17.5px] transition-all duration-all';
-        if (OptionIndex === tab)
+        if (OptionIndex === tab.id)
             style += ' bg-beighe';
         else
             style += ' bg-bcg hover:bg-bcg_2';
@@ -51,16 +59,12 @@ export default function Index({
                         <>
                             <div className='max-w-[864px] text-dark'>
                                 <div className='sm:hidden'>
-                                    <select
-                                        id='tabs'
-                                        className='bg-white border border-beighe text-sm rounded-lg block w-full p-2.5'
-                                        onChange={(e) => setTab(Number(e.target.value))}
-                                    >
-                                        <option value={0}>profile Pashut Laledet</option>
-                                        <option value={1}>Log-in and security</option>
-                                        <option value={2}>Upcoming Sessions</option>
-                                        <option value={3}>My articles</option>
-                                    </select>
+                                    <CategorySelect
+                                        category='Language'
+                                        selectItems={tabOptions}
+                                        inputValue={tab}
+                                        handleChange={setTab}
+                                    />
                                 </div>
                                 <ul className='hidden text-[14px] font-medium text-center divide-x divide-beighe rounded-[10px] overflow-hidden border-[2px] border-beighe sm:flex'>
                                     <li className='w-full'>
@@ -90,13 +94,13 @@ export default function Index({
                                 </ul>
                             </div>
                             {
-                                tab === 0 ?
+                                tab.id === 0 ?
                                     <ProfileSection />
                                     :
-                                    tab === 1 ?
+                                    tab.id === 1 ?
                                         <LogInSecuritySection />
                                         :
-                                        tab === 2 ?
+                                        tab.id === 2 ?
                                             <div>
                                                 <UpcomingSection />
                                             </div>

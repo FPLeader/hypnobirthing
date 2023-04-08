@@ -11,14 +11,13 @@ export default function index() {
   const [domLoaded, setDomLoaded] = useState<boolean>(false);
   const { isLogIn } = useAppSelector((state) => state.auth);
   const { t } = useTranslation();
-  const lng: boolean = i18n.language === 'en' ? true : false;
   const lngId: number = i18n.language === 'en' ? 0 : 1;
   const { currentUser } = useAppSelector((state) => state.auth);
   // values
   const [name, setName] = useState<string>('');
   const [personalTitle, setPersonalTitle] = useState<string>('');
   const [avatarImage, setAvatarImage] = useState<string>('');
-  const [videoFile, setVideoFile] = useState<string>('');
+  const [videoUrl, setVideoUrl] = useState<string>('');
   const [category, setCategory] = useState<string[]>([]);
   const [skills, setSkills] = useState<string[]>([]);
   const [aboutMe, setAboutMe] = useState<string>('');
@@ -41,7 +40,7 @@ export default function index() {
       setName(currentUser.nm_user);
       setPersonalTitle(currentUser?.ar_personaltitle[lngId]);
       setAvatarImage(currentUser?.ds_avatar);
-      setVideoFile(currentUser?.ds_video);
+      setVideoUrl(currentUser?.ds_video);
       setCategory(currentUser.ar_category);
       setSkills(currentUser?.ar_skills);
       setAboutMe(currentUser?.ar_aboutme[lngId]);
@@ -66,7 +65,7 @@ export default function index() {
                   personalTitle={personalTitle}
                   category={category}
                   avatarImage={avatarImage}
-                  videoFile={videoFile}
+                  videoUrl={videoUrl}
                 />
                 <div className='w-full flex justify-center mt-[20px] md:mt-[30px] lg:mt-[70px]'>
                   <div className='w-full max-w-[1225px] mx-[20px]'>

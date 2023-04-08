@@ -2,13 +2,14 @@ import { useRouter } from 'next/router'
 import { BadgeCard } from '@/components/Cards'
 import { UploadButton } from '@/components/Buttons'
 import { useState, useEffect } from 'react'
+import ReactPlayer from 'react-player'
 
 interface SectionProps {
   name: string,
   personalTitle: string,
-  category: any,
-  avatarImage: any,
-  videoFile: any,
+  category: string[],
+  avatarImage: string,
+  videoUrl: string,
 }
 
 export default function Introduction({
@@ -16,7 +17,7 @@ export default function Introduction({
   personalTitle,
   category,
   avatarImage,
-  videoFile,
+  videoUrl,
 }: SectionProps) {
   const router = useRouter();
 
@@ -27,10 +28,21 @@ export default function Introduction({
     if (avatarImage !== '') {
       setImage(process.env.FILE_IMAGE_BASE + avatarImage);
     }
-    if (videoFile !== '') {
-      setVideo(process.env.FILE_VIDEO_BASE + videoFile);
+    if (videoUrl !== '') {
+      if (getVideoIdFromUrl(videoUrl) === null)
+        setVideo(process.env.FILE_VIDEO_BASE + videoUrl);
+      else
+        setVideo(videoUrl);
     }
-  }, [avatarImage, videoFile]);
+    console.log(video)
+  }, [avatarImage, videoUrl]);
+
+
+  const getVideoIdFromUrl = (url: string): string | null => {
+    const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([\w-]{11})/; // match the video ID in the URL
+    const match = url.match(regex);
+    return match ? match[1] : null;
+  };
 
   return (
     <div className='w-full bg-bcg_2 pt-[20px] md:pt-[30px] lg:pt-[50px] pb-[82px]'>
@@ -56,25 +68,45 @@ export default function Introduction({
               </div>
             </div>
           </div>
-          <div className={`flex flex-col max-lg:items-center md:flex-row lg:flex-col gap-[15px] lg:gap-[30px] max-lg:w-full absolute ${category.length > 1 ? 'top-[200px]' : 'top-[190px]'} md:top-[160px] lg:top-0 right-0`}>
-            <div className='aspect-square'>
-              <div className='max-md:max-w-[385px] max-md:m-auto lg:max-w-[385px] flex flex-col md:flex-row md:items-center overflow-hidden border-[4px] rounded-[15px] border-beighe'>
-                <div className='w-full md:max-lg:w-[229px] lg:max-w-[385px] relative'>
-                  <div className='aspect-w-1 aspect-h-1'>
-                    <img draggable='false' src={image} alt='Edit Photo' className={`w-full h-full object-cover bg-white`} />
-                  </div>
-                  {avatarImage === '' &&
-                    <div className='absolute top-0 w-full h-full flex justify-center items-center'>
-                      <button onClick={() => router.push({ pathname: '/profile/settings', query: { setting: 0 } })}>
-                        <UploadButton text='add photo' />
-                      </button>
-                    </div>
-                  }
+          <div className={`lg:max-w-[385px] w-full flex flex-col max-lg:items-center md:flex-row lg:flex-col gap-[15px] lg:gap-[30px] max-lg:w-full absolute ${category.length > 1 ? 'top-[200px]' : 'top-[190px]'} md:top-[160px] lg:top-0 right-0`}>
+            <div className='max-md:w-full max-md:max-w-[385px] md:max-lg:min-w-[229px] relative'>
+              <div className='w-full max-w-[385px] overflow-hidden border-[4px] rounded-[15px] border-beighe'>
+                <div className='aspect-w-1 aspect-h-1'>
+                  <img draggable='false' src={image} alt='Edit Photo' className={`w-full h-full object-cover bg-white`} />
                 </div>
               </div>
+              {image === '' &&
+                <div className='absolute top-0 w-full h-full flex justify-center items-center'>
+                  <button onClick={() => router.push({ pathname: '/profile/settings', query: { setting: 0 } })}>
+                    <UploadButton text='add photo' />
+                  </button>
+                </div>
+              }
             </div>
-            <div className='max-lg:min-w-[260px] max-md:max-w-[385px] max-md:w-full max-md:m-auto lg:max-w-[385px] flex flex-col md:flex-row md:items-center '>
-              <div className='border-[4px] border-beighe bg-white rounded-[10px] lg:rounded-[15px] w-full min-h-[233px] lg:h-[213px] flex justify-center items-center' >
+            <div className='md:max-lg:min-w-[260px] max-md:max-w-[385px] max-md:w-full lg:max-w-[385px] flex flex-col md:flex-row md:items-center'>
+              <div className='w-full border-[4px] border-beighe bg-white rounded-[10px] lg:rounded-[15px] overflow-hidden'>
+                <div className='aspect-w-16 aspect-h-9'>
+                  {
+                    getVideoIdFromUrl(video) === null ?
+                      <ReactPlayer
+                        url={video}
+                        width='100%'
+                        height='100%'
+                        controls={true}
+                        playing={false}
+                      />
+                      :
+                      <iframe
+                        width='100%'
+                        height='100%'
+                        src={`https://www.youtube.com/embed/${getVideoIdFromUrl(video)}`}
+                        frameBorder={0}
+                        allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+                        allowFullScreen
+                        title={'About me'}
+                      />
+                  }
+                </div>
                 {video === '' &&
                   <button onClick={() => router.push({ pathname: '/profile/settings', query: { setting: 0 } })}>
                     <UploadButton text='Upload video of me' type={2} />

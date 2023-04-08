@@ -66,14 +66,14 @@ export default function ValidateCode() {
                 })
                 .catch((err) => {
                     try {
-                        let errorMessage = JSON.parse(err.request.response).message;
+                        let errorMessage = JSON.parse(err.request?.response).message;
                         if (errorMessage === 'Incorrect Code.') {
                             toast.error('Incorrect Code.')
                         } else if (errorMessage === 'Expired Code.') {
                             toast.error('Expired Code.');
                         }
                     } catch (error) {
-                        console.error('Error parsing response:', err.request.response);
+                        console.error('Error parsing response:', err.request?.response);
                         toast.error('Something went wrong.');
                     }
                     setWrongOtpTimer(3);
