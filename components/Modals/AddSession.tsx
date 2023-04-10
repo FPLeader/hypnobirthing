@@ -1,4 +1,4 @@
-import { Fragment, Dispatch, SetStateAction } from 'react'
+import { useState, Fragment, Dispatch, SetStateAction } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { CloseIcon } from '@/assests/Icons'
 import { ModalButton } from '../Buttons'
@@ -19,6 +19,12 @@ export default function AddSession({
     closeModal
 }: AddSessionProps) {
     const { width } = useWindowSize();
+    const [name, setName] = useState<string>('');
+    const [location, setLocation] = useState<string>('');
+    const [startDate, setStartDate] = useState<Date>();
+    const [endDate, setEndDate] = useState<Date>();
+    const [introduction, setIntroduction] = useState<string>('');
+    const [description, setDescription] = useState<string>('');
 
     return (
         <Transition appear show={isOpen} as={Fragment}>
@@ -61,19 +67,45 @@ export default function AddSession({
                                     </button>
                                 </div>
                                 <div className='mt-[20px] grid gap-[10px] font-[lato]'>
-                                    <CategoryInput category='Name of session' placeholder='' />
-                                    <CategoryInput category='Location/Zoom' placeholder='' />
+                                    <CategoryInput
+                                        category='Name of session'
+                                        placeholder=''
+                                        inputValue={name}
+                                        handleChange={setName}
+                                    />
+                                    <CategoryInput
+                                        category='Location/Zoom'
+                                        placeholder=''
+                                        inputValue={location}
+                                        handleChange={setLocation}
+                                    />
                                     <div className='grid md:grid-cols-2 gap-[10px]'>
-                                        <CategoryDatePicker category='Estimated date of birth (Start)' placeholder='' />
-                                        <CategoryDatePicker category='Estimated date of birth (Finish)' placeholder='' />
+                                        <CategoryDatePicker
+                                            category='Estimated date of birth (Start)'
+                                            placeholder=''
+                                            setValue={setStartDate}
+                                        />
+                                        <CategoryDatePicker
+                                            category='Estimated date of birth (Finish)'
+                                            placeholder=''
+                                            setValue={setEndDate}
+                                        />
                                     </div>
                                     <div className='grid gap-[6px]'>
                                         <label className='text-[14px] text-dark'>About class</label>
-                                        <Textarea placeholder='Enter text here' />
+                                        <Textarea
+                                            placeholder='Enter text here'
+                                            inputValue={introduction}
+                                            handleChange={setIntroduction}
+                                        />
                                     </div>
                                     <div className='grid gap-[6px]'>
                                         <label className='text-[14px] text-dark'>What is included?</label>
-                                        <Textarea placeholder='Enter text here' />
+                                        <Textarea
+                                            placeholder='Enter text here'
+                                            inputValue={description}
+                                            handleChange={setDescription}
+                                        />
                                     </div>
                                 </div>
 

@@ -31,19 +31,21 @@ export default function Contact({
     }
 
     return (
-        <button
-            className={`w-full h-[50px] md:h-[45px] flex justify-center items-center disabled:bg-disabled border border-beighe ${BgType === 0 ? 'bg-beighe_2 hover:bg-beighe active:bg-beighe_2' : 'bg-bcg hover:bg-beighe_2 active:bg-bcg'} rounded-[10px] transition-all duration-400`}
-        >
-            <div className='w-full grid grid-cols-3 min-[350px]:grid-cols-7 gap-[14px]'>
-                <div className='col-span-1 min-[350px]:col-span-3'>
-                    <div className='float-right'>
-                        {renderIcon()}
+        <a href={link} target='_blank'>
+            <div
+                className={`w-full h-[50px] md:h-[45px] flex justify-center items-center disabled:bg-disabled border border-beighe ${BgType === 0 ? 'bg-beighe_2 hover:bg-beighe active:bg-beighe_2' : 'bg-bcg hover:bg-beighe_2 active:bg-bcg'} rounded-[10px] transition-all duration-400`}
+            >
+                <div className='w-full grid grid-cols-3 min-[350px]:grid-cols-7 gap-[14px]'>
+                    <div className='col-span-1 min-[350px]:col-span-3'>
+                        <div className='float-right'>
+                            {renderIcon()}
+                        </div>
+                    </div>
+                    <div className='col-span-2 min-[350px]:col-span-4 text-dark text-left font-medium text-[14px] uppercase'>
+                        {text}
                     </div>
                 </div>
-                <div className='col-span-2 min-[350px]:col-span-4 text-dark text-left font-medium text-[14px] uppercase'>
-                    {text}
-                </div>
-            </div>
-        </button >
+            </div >
+        </a>
     )
 }

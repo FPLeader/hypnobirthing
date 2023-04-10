@@ -118,7 +118,7 @@ export default function AddArticle({
         else if (selectedLangauge.id === 1)
             return titleHe !== '' && selectedImage !== null && contentHe !== '' && readTimeHe !== '' && categoryHe !== '';
         else
-            return titleEn !== '' && selectedImage !== null && contentEn !== '' && readTimeEn !== '' && categoryEn !== '' && titleHe !== '' && selectedImage !== null && contentHe !== '' && readTimeHe !== '' && categoryHe !== '';
+            return titleEn !== '' && selectedImage !== null && contentEn !== '' && readTimeEn !== '' && categoryEn !== '' && titleHe !== '' && contentHe !== '' && readTimeHe !== '' && categoryHe !== '';
     }
 
     const isButtonDisabled = () => {
@@ -180,7 +180,7 @@ export default function AddArticle({
                 ];
                 formData.append('mainbody', JSON.stringify(blog_total));
             }
-            // delete unnecessary image files in Uploda folder in backend
+            // delete unnecessary image files in Upload folder in backend
             let _ds_images: string[] = [];
             if (selectedLangauge.id === 0) { // in case of English
                 imageUrls.map((imageUrl: string) => {
@@ -397,13 +397,15 @@ export default function AddArticle({
                                             </div>
 
                                             <div className='grid gap-[6px]'>
-                                                <label className='text-[14px] text-dark'>Main content</label>
+                                                <label className='text-[14px] text-dark'>
+                                                    Main content
+                                                </label>
                                                 <div>
                                                     <QuillNoSSRWrapper
                                                         theme='snow'
                                                         value={contentEn}
                                                         handleChange={handleChangeEn}
-                                                        placeholder='Start typing!'
+                                                        placeholder={'Start typing!'}
                                                         style={{ background: 'white', fontFamily: 'lato' }}
                                                         imageUrls={imageUrls}
                                                         setImageUrls={setImageUrls}
@@ -430,8 +432,9 @@ export default function AddArticle({
                                             ?
                                             <>
                                                 <CategoryInput
-                                                    category='Title'
-                                                    placeholder='Enter Title text here'
+                                                    dir='rtl'
+                                                    category='כותרת'
+                                                    placeholder='הזן טקסט כותרת כאן'
                                                     inputValue={titleHe}
                                                     handleChange={setTitleHe}
                                                 />
@@ -507,13 +510,13 @@ export default function AddArticle({
                                                 </div>
 
                                                 <div className='grid gap-[6px]'>
-                                                    <label className='text-[14px] text-dark'>Main content</label>
+                                                    <label className='text-[14px] text-dark text-right'>תוכן עיקרי</label>
                                                     <div>
                                                         <QuillNoSSRWrapper
                                                             theme='snow'
                                                             value={contentHe}
                                                             handleChange={handleChangeHe}
-                                                            placeholder='Start typing!'
+                                                            placeholder='תתחיל להקליד!'
                                                             style={{ background: 'white', fontFamily: 'lato' }}
                                                             imageUrls={imageUrls}
                                                             setImageUrls={setImageUrls}
@@ -523,14 +526,14 @@ export default function AddArticle({
 
                                                 <div className='flex flex-col md:flex-row md:justify-between'>
                                                     <CategoryInput
-                                                        category='Enter read time'
-                                                        placeholder='7 min'
+                                                        category='הזן זמן קריאה'
+                                                        placeholder='7 דקות'
                                                         inputValue={readTimeHe}
                                                         handleChange={setReadTimeHe}
                                                     />
                                                     <CategoryInput
-                                                        category='Enter category'
-                                                        placeholder='Technology'
+                                                        category='היכנס לקטגוריה'
+                                                        placeholder='טֶכנוֹלוֹגִיָה'
                                                         inputValue={categoryHe}
                                                         handleChange={setCategoryHe}
                                                     />
@@ -550,15 +553,13 @@ export default function AddArticle({
                                                 </div>
 
                                                 {/* for Hebrew */}
-                                                <div className='grid gap-[6px]'>
-                                                    <label className='text-[14px] text-dark'>כותרת (עברית)</label>
-                                                    <CategoryInput
-                                                        category=''
-                                                        placeholder='Enter Title text here'
-                                                        inputValue={titleHe}
-                                                        handleChange={setTitleHe}
-                                                    />
-                                                </div>
+                                                <CategoryInput
+                                                    dir='rtl'
+                                                    category='כותרת'
+                                                    placeholder='הזן טקסט כותרת כאן'
+                                                    inputValue={titleHe}
+                                                    handleChange={setTitleHe}
+                                                />
 
                                                 <div className='w-full p-[10px] md:p-[20px] bg-white rounded-[10px] md:rounded-[20px] font-[lato]'>
                                                     {image === '' ?
@@ -650,13 +651,13 @@ export default function AddArticle({
                                                 {/* for Hebrew */}
 
                                                 <div className='grid gap-[6px]'>
-                                                    <label className='text-[14px] text-dark'>תוכן עיקרי (עברית)</label>
+                                                    <label className='text-[14px] text-dark text-right'>תוכן עיקרי (עברית)</label>
                                                     <div>
                                                         <QuillNoSSRWrapper
                                                             theme='snow'
                                                             value={contentHe}
                                                             handleChange={handleChangeHe}
-                                                            placeholder='Start typing!'
+                                                            placeholder='תתחיל להקליד!'
                                                             style={{ background: 'white', fontFamily: 'lato' }}
                                                             imageUrls={imageUrls}
                                                             setImageUrls={setImageUrls}
@@ -664,43 +665,32 @@ export default function AddArticle({
                                                     </div>
                                                 </div>
 
-                                                <div className='flex flex-col gap-[6px]'>
-                                                    <label className='text-[14px] text-dark'>Enter read time (English)</label>
-                                                    <CategoryInput
-                                                        category=''
-                                                        placeholder='7 min'
-                                                        inputValue={readTimeEn}
-                                                        handleChange={setReadTimeEn}
-                                                    />
-                                                </div>
-                                                <div className='flex flex-col gap-[6px]'>
-                                                    <label className='text-[14px] text-dark'>הזן זמן קריאה (עברית)</label>
-                                                    <CategoryInput
-                                                        category=''
-                                                        placeholder='7 min'
-                                                        inputValue={readTimeHe}
-                                                        handleChange={setReadTimeHe}
-                                                    />
-                                                </div>
-
-                                                <div className='flex flex-col gap-[6px]'>
-                                                    <label className='text-[14px] text-dark'>Enter category (English)</label>
-                                                    <CategoryInput
-                                                        category=''
-                                                        placeholder='Technology'
-                                                        inputValue={categoryEn}
-                                                        handleChange={setCategoryEn}
-                                                    />
-                                                </div>
-                                                <div className='flex flex-col gap-[6px]'>
-                                                    <label className='text-[14px] text-dark'>היכנס לקטגוריה (עברית)</label>
-                                                    <CategoryInput
-                                                        category=''
-                                                        placeholder='Technology'
-                                                        inputValue={categoryHe}
-                                                        handleChange={setCategoryHe}
-                                                    />
-                                                </div>
+                                                <CategoryInput
+                                                    category='Enter read time (English)'
+                                                    placeholder='7 min'
+                                                    inputValue={readTimeEn}
+                                                    handleChange={setReadTimeEn}
+                                                />
+                                                <CategoryInput
+                                                    dir='rtl'
+                                                    category='הזן זמן קריאה (עברית)'
+                                                    placeholder='7 דקות'
+                                                    inputValue={readTimeHe}
+                                                    handleChange={setReadTimeHe}
+                                                />
+                                                <CategoryInput
+                                                    category='Enter category (English)'
+                                                    placeholder='Technology'
+                                                    inputValue={categoryEn}
+                                                    handleChange={setCategoryEn}
+                                                />
+                                                <CategoryInput
+                                                    dir='rtl'
+                                                    category='היכנס לקטגוריה (עברית)'
+                                                    placeholder='טֶכנוֹלוֹגִיָה'
+                                                    inputValue={categoryHe}
+                                                    handleChange={setCategoryHe}
+                                                />
                                             </>
                                     }
 

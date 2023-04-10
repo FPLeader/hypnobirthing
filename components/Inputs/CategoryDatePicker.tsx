@@ -1,20 +1,23 @@
-import { useState } from 'react'
+import { useState, Dispatch, SetStateAction } from 'react'
 import Datepicker from 'tailwind-datepicker-react'
 
 interface InputProps {
     category: string,
-    title?: string,
-    placeholder?: string,
+    title: string,
+    placeholder: string,
+    setValue: Dispatch<SetStateAction<Date>>
 }
 
 export default function Category({
     category,
     title = '',
     placeholder = '',
+    setValue,
 }: InputProps) {
     const [show, setShow] = useState<boolean>(false)
     const handleChange = (selectedDate: Date) => {
         console.log(selectedDate)
+        setValue(selectedDate);
     }
     const handleClose = (state: boolean) => {
         setShow(state)

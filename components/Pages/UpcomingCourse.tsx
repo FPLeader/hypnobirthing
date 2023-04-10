@@ -61,7 +61,7 @@ export default function UpcomingCourse() {
                     </div>
                     <div className='w-full lg:min-w-[500px] sm:max-w-[500px]'>
                         <div className='w-full aspect-w-16 aspect-h-9 min-h-[217px]'>
-                            <VideoCard title='HypnoBirthing' code='YGxKPJDzok8' style='w-full' />
+                            <VideoCard title='HypnoBirthing' videoUrl='YGxKPJDzok8' style='w-full' />
                         </div>
                     </div>
                 </div>

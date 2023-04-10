@@ -22,10 +22,10 @@ export default function index() {
   const [skills, setSkills] = useState<string[]>([]);
   const [aboutMe, setAboutMe] = useState<string>('');
   const [phoneNumber, setPhoneNumber] = useState<string>('');
-  const [isPersonalSite, setIsPersonalSite] = useState<boolean>(false);
-  const [isInstagram, setIsInstagram] = useState<boolean>(false);
-  const [isFacebook, setIsFacebook] = useState<boolean>(false);
-  const [isTwitter, setIsTwitter] = useState<boolean>(false);
+  const [personalSite, setPersonalSite] = useState<string>('');
+  const [instagram, setInstagram] = useState<string>('');
+  const [facebook, setFacebook] = useState<string>('');
+  const [twitter, setTwitter] = useState<string>('');
 
   // initalize
   useEffect(() => {
@@ -46,10 +46,14 @@ export default function index() {
       setAboutMe(currentUser?.ar_aboutme[lngId]);
       //contact information
       setPhoneNumber(currentUser.ds_phonenumber);
-      setIsPersonalSite(!currentUser?.ln_personalsite?.length);
-      setIsInstagram(!currentUser?.ln_instagram?.length);
-      setIsFacebook(!currentUser?.ln_facebook?.length);
-      setIsTwitter(!currentUser?.ln_twitter?.length);
+      if (currentUser?.ln_personalsite)
+        setPersonalSite(currentUser.ln_personalsite);
+      if (currentUser?.ln_instagram)
+        setInstagram(currentUser.ln_instagram);
+      if (currentUser?.ln_facebook)
+        setFacebook(currentUser.ln_facebook);
+      if (currentUser?.ln_twitter)
+        setTwitter(currentUser.ln_twitter);
     }
   }, [currentUser]);
 
@@ -78,10 +82,10 @@ export default function index() {
                       <MyAritclesSection />
                       <MyContactsSection
                         phoneNumber={phoneNumber}
-                        isPersonalSite={isPersonalSite}
-                        isInstagram={isInstagram}
-                        isFacebook={isFacebook}
-                        isTwitter={isTwitter}
+                        personalSite={personalSite}
+                        instagram={instagram}
+                        facebook={facebook}
+                        twitter={twitter}
                       />
                     </div>
                   </div>

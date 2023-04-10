@@ -75,16 +75,16 @@ export default function Introduction({
                   <img draggable='false' src={image} alt='Edit Photo' className={`w-full h-full object-cover bg-white`} />
                 </div>
               </div>
-              {image === '' &&
+              {avatarImage === '' &&
                 <div className='absolute top-0 w-full h-full flex justify-center items-center'>
-                  <button onClick={() => router.push({ pathname: '/profile/settings', query: { setting: 0 } })}>
+                  <div onClick={() => router.push({ pathname: '/profile/settings', query: { setting: 0 } })}>
                     <UploadButton text='add photo' />
-                  </button>
+                  </div>
                 </div>
               }
             </div>
             <div className='md:max-lg:min-w-[260px] max-md:max-w-[385px] max-md:w-full lg:max-w-[385px] flex flex-col md:flex-row md:items-center'>
-              <div className='w-full border-[4px] border-beighe bg-white rounded-[10px] lg:rounded-[15px] overflow-hidden'>
+              <div className='w-full h-full border-[4px] border-beighe bg-white rounded-[10px] lg:rounded-[15px] overflow-hidden relative'>
                 <div className='aspect-w-16 aspect-h-9'>
                   {
                     getVideoIdFromUrl(video) === null ?
@@ -108,9 +108,11 @@ export default function Introduction({
                   }
                 </div>
                 {video === '' &&
-                  <button onClick={() => router.push({ pathname: '/profile/settings', query: { setting: 0 } })}>
-                    <UploadButton text='Upload video of me' type={2} />
-                  </button>
+                  <div className='absolute top-0 w-full h-full flex justify-center items-center'>
+                    <div onClick={() => router.push({ pathname: '/profile/settings', query: { setting: 0 } })}>
+                      <UploadButton text='Upload video of me' type={2} />
+                    </div>
+                  </div>
                 }
               </div>
             </div>

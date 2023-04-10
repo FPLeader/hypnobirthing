@@ -3,8 +3,8 @@ import { Icon } from '@iconify/react'
 import i18n from '@/services/i18n'
 import { useTranslation } from 'react-i18next'
 import API from '@/services/API'
-import { useState } from 'react'
-import { EditArticleModal, DeleteArticleModal } from '@/components/Modals'
+import { useState, useEffect } from 'react'
+import { PreviewArticleModal, EditArticleModal, DeleteArticleModal } from '@/components/Modals'
 import { toast } from 'react-toastify'
 
 interface mainbodyType {
@@ -22,15 +22,17 @@ interface BlogCardProps {
     mainbody: mainbodyType[],
     author: string,
     loadBlogs: () => void,
+    previewIcon?: boolean,
 }
 
-export default function SmallBlogCard({
+export default function SmallBlogEditCard({
     cd_educator,
     id,
     image,
     mainbody,
     author,
-    loadBlogs
+    loadBlogs,
+    previewIcon = false
 }: BlogCardProps) {
     const router = useRouter();
     // language option
@@ -38,8 +40,23 @@ export default function SmallBlogCard({
     const lngId: number = i18n.language === 'en' ? 0 : 1;
 
     // for modal box
+    const [isPreviewOpen, setIsPreviewOpen] = useState<boolean>(false);
     const [isEditOpen, setIsEditOpen] = useState<boolean>(false);
     const [isDeleteOpen, setIsDeleteOpen] = useState<boolean>(false);
+
+    // initalize
+    useEffect(() => {
+        // load blogs
+        loadBlogs();
+    }, [isEditOpen]);
+
+    function closePreviewModal() {
+        setIsPreviewOpen(false)
+    }
+
+    function openPreviewModal() {
+        setIsPreviewOpen(true)
+    }
 
     function closeEditModal() {
         setIsEditOpen(false)
@@ -72,9 +89,9 @@ export default function SmallBlogCard({
     const getTextFromContent = () => {
         let content;
         if (mainbody.length === 2) {
-            content = mainbody[lngId].ds_content.replace(/<[^>]+>/g, '').slice(1, -1);
+            content = mainbody[lngId].ds_content.replace(/<[^>]+>/g, '');
         } else {
-            content = mainbody[0].ds_content.replace(/<[^>]+>/g, '').slice(1, -1);
+            content = mainbody[0].ds_content.replace(/<[^>]+>/g, '');
         }
         if (content === '')
             return 'No Content';
@@ -123,6 +140,8 @@ export default function SmallBlogCard({
                                 if (result.data.status === 'success') {
                                     console.log('successfully deleted file', _ds_images);
                                     toast.success('Deleted blog successfully.');
+                                    // reload get my blogs function
+                                    loadBlogs();
                                 }
                             })
                             .catch((err) => {
@@ -130,8 +149,6 @@ export default function SmallBlogCard({
                                 console.log(err);
                             })
                     }
-                    // reload get my blogs function
-                    loadBlogs();
                 }
             })
             .catch((err) => {
@@ -142,6 +159,13 @@ export default function SmallBlogCard({
 
     return (
         <div className='min-h-[155px] flex items-center gap-[15px] select-none overflow-hidden border-[2px] border-beighe rounded-[10px] relative'>
+            <PreviewArticleModal
+                isOpen={isPreviewOpen}
+                closeModal={closePreviewModal}
+                ds_thumbnail={image}
+                mainbody={mainbody}
+                nm_user={author}
+            />
             <EditArticleModal
                 isOpen={isEditOpen}
                 closeModal={closeEditModal}
@@ -149,8 +173,6 @@ export default function SmallBlogCard({
                 id_blog={id}
                 ds_thumbnail={image}
                 mainbody={mainbody}
-                nm_user={author}
-                loadBlogs={loadBlogs}
             />
             <DeleteArticleModal
                 isOpen={isDeleteOpen}
@@ -178,6 +200,14 @@ export default function SmallBlogCard({
                 <div className='text-[14px] md:text-[16px] opacity-60 capitalize line-clamp-1'>—&nbsp;{author}</div>
             </div>
             <div className='absolute top-[5px] right-[10px] flex gap-[10px]'>
+                {previewIcon &&
+                    <button
+                        className='hover:bg-beighe hover:ring-beighe hover:ring-4 hover:rounded-full active:bg-transparent active:ring-0 duration-200 transaction-all'
+                        onClick={openPreviewModal}
+                    >
+                        <Icon icon='icon-park-outline:preview-open' width={20} height={20} color='#252525' />
+                    </button>
+                }
                 <button
                     className='hover:bg-beighe hover:ring-beighe hover:ring-4 hover:rounded-full active:bg-transparent active:ring-0 duration-200 transaction-all'
                     onClick={openEditModal}

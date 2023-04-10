@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { SmallBlogCard, SmallBlogEditCard, SmallBlogSkeletonCard } from '@/components/Cards'
 import { toast } from 'react-toastify'
-import { SmallBlogsData, SmallBlogType } from '@/services/Constants/Sections/BlogData'
 import { UploadButton } from '@/components/Buttons'
 import { AddArticleModal } from '@/components/Modals'
 import API from '@/services/API'
@@ -202,6 +201,7 @@ export default function MyAritcles() {
                                 mainbody={CardData.mainbody}
                                 author={CardData.nm_user}
                                 loadBlogs={loadBlogs}
+                                previewIcon={true}
                             />
                         ))}
                     </div>

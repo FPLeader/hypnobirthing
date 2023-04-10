@@ -13,14 +13,14 @@ interface VideoProps {
 
 export default function Video({
     title,
-    videoUrl,
+    videoUrl = '',
     style
 }: VideoProps) {
 
-    const getVideoIdFromUrl = (url: string): string | null => {
+    const getVideoIdFromUrl = (url: string): string => {
         const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([\w-]{11})/; // match the video ID in the URL
         const match = url.match(regex);
-        return match ? match[1] : null;
+        return match ? match[1] : '';
     };
 
     return (
@@ -35,7 +35,7 @@ export default function Video({
                 title={title}
             /> */}
             {
-                getVideoIdFromUrl(videoUrl) === null ?
+                getVideoIdFromUrl(videoUrl) === '' ?
                     <ReactPlayer
                         url={process.env.FILE_VIDEO_BASE + videoUrl}
                         width='100%'

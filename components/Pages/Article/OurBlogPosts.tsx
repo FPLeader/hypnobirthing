@@ -35,9 +35,9 @@ export default function OurBlogPosts() {
                     </div>
                     <div className='w-full lg:col-span-1'>
                         <div className='h-full grid gap-[20px]'>
-                            {SmallBlogsData.map((CardData: SmallBlogType, index: number) => (
+                            {/* {SmallBlogsData.map((CardData: SmallBlogType, index: number) => (
                                 <SmallBlogCard key={index} id={CardData.id} image={CardData.image} header={CardData.header} content={CardData.content} author={CardData.author} />
-                            ))}
+                            ))} */}
                         </div>
                     </div>
                 </div>

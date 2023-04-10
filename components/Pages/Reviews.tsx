@@ -32,7 +32,7 @@ export default function Reviews() {
                         </div>
                         <div className='hidden lg:flex flex-col gap-[35px]'>
                             <div className='aspect-w-16 aspect-h-9 min-h-[214px]'>
-                                <VideoCard title='what people are saying' code='YGxKPJDzok8' style='w-full' />
+                                <VideoCard title='what people are saying' videoUrl='YGxKPJDzok8' style='w-full' />
                             </div>
                             <ReviewCard
                                 title={ReviewCards[2].title}

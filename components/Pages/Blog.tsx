@@ -5,6 +5,11 @@ import { useState, useEffect } from 'react'
 import API from '@/services/API'
 import { useAppDispatch, useAppSelector } from '@/services/Hooks'
 import { toast } from 'react-toastify'
+import dynamic from 'next/dynamic'
+// @ts-ignore
+dynamic(import('react-quill/dist/quill.snow.css'), { ssr: false, loading: () => <p>Loading ...</p> })
+// import ReactMarkdown from 'react-markdown/with-html';
+
 
 interface BlogProps {
     blogId: string,
@@ -78,17 +83,6 @@ export default function Blog({
             })
     }
 
-    // import ReactQuill from "react-quill";
-    // import "react-quill/dist/quill.snow.css";
-
-    // const ReactMarkdown = require("react-markdown/with-html"); //for displaying html
-
-    // function editorContent() {
-    //     <div className="ql-editor" style={{ padding: 0 }}>
-    //         <ReactMarkdown escapeHtml={false} source={quilGeneratedHtml} />
-    //     </div>
-    // }
-
     return (
         <div className='pt-[70px] min-h-screen md:pt-[90px]'>
             {
@@ -159,7 +153,9 @@ export default function Blog({
                     </>
                     :
                     <>
-                        <Banner title={currentBlog?.mainbody[0].ds_title ?? ''} image={process.env.FILE_IMAGE_BASE + (currentBlog?.ds_thumbnail ?? '')} />
+                        <div className='w-full'>
+                            <img draggable='false' src={process.env.FILE_IMAGE_BASE + (currentBlog?.ds_thumbnail ?? '')} alt='' className={`w-full h-[205px] md:h-[300px] object-cover`} />
+                        </div>
                         <div className='w-full flex justify-center'>
                             <div className='w-full max-w-[1225px] mx-[20px]'>
                                 <div className='mt-[20px] md:mt-[30px] lg:mt-[70px] mb-[20px] md:mb-[30px]'>
@@ -167,8 +163,8 @@ export default function Blog({
                                 </div>
                                 <div className='flex flex-col lg:flex-row gap-[20px] lg:gap-[60px]'>
                                     <div className='w-full lg:w-2/3 flex flex-col gap-[20px] md:gap-[30px] text-dark'>
-                                        <div className='font-[lato]' dangerouslySetInnerHTML={{ __html: currentBlog?.mainbody[0].ds_content ?? '' }} />
-                                        <div className='text-[16px] md:text-[18px] font-normal italic opacity-60 flex justify-between'>
+                                        <div className='font-[lato] ql-editor !p-0' dangerouslySetInnerHTML={{ __html: currentBlog?.mainbody[0].ds_content ?? '' }} />
+                                        <div className='text-[16px] md:text-[18px] font-normal italic opacity-60 flex flex-col items-center md:flex-row md:justify-between'>
                                             <div className='capitalize'>—&nbsp;{currentBlog?.nm_user}</div>
                                             <div>{moment(currentBlog?.dt_upload).format('MMMM D, YYYY')}</div>
                                         </div>

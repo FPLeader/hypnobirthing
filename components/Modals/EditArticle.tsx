@@ -8,7 +8,7 @@ import { CategorySelect } from '../Select'
 import API from '@/services/API'
 import useWindowSize from '@/services/Hooks/useWindowSize'
 import { useRouter } from 'next/router'
-import { useAppDispatch, useAppSelector } from '@/services/Hooks'
+import { useAppDispatch } from '@/services/Hooks'
 import { logout } from '@/services/Actions/Auth.action'
 
 import dynamic from 'next/dynamic'
@@ -16,7 +16,6 @@ const QuillNoSSRWrapper = dynamic(
     () => import('./RenderQuillReact'),
     { ssr: false, loading: () => <p>Loading ...</p> }
 )
-
 
 interface mainbodyType {
     id_lng: number,
@@ -33,8 +32,6 @@ interface EditArticleProps {
     id_blog: string,
     ds_thumbnail: string,
     mainbody: mainbodyType[],
-    nm_user: string,
-    loadBlogs: () => void,
 }
 
 export default function EditArticle({
@@ -44,13 +41,10 @@ export default function EditArticle({
     id_blog,
     ds_thumbnail,
     mainbody,
-    nm_user,
-    loadBlogs
 }: EditArticleProps) {
     const router = useRouter();
     const dispatch = useAppDispatch();
     const { width } = useWindowSize();
-    const { currentUser } = useAppSelector((state) => state.auth);
 
     // values
     const [loadingOpen, setLoadingOpen] = useState<boolean>(false);
@@ -84,18 +78,6 @@ export default function EditArticle({
 
     // initalize
     useEffect(() => {
-        // get all pictures urls from current blog
-        let _ds_images: string[] = [];
-        mainbody.map((blogData: mainbodyType) => {
-            let regex = /images\/(.+?)\\"/g;
-            let text = blogData.ds_content;
-            const matches = [...text.matchAll(regex)];
-            matches.map((match) => {
-                _ds_images.push(match[1]);
-            })
-        })
-        if (_ds_images.length !== 0)
-            setImageUrls(_ds_images);
         if (mainbody.length === 2) { // En/He both option
             setSelectedLanguage(languageOptions[2]);
 
@@ -130,7 +112,36 @@ export default function EditArticle({
             setReadTimeHe(mainbody[0].ds_readtime);
             setCategoryHe(mainbody[0].ds_category);
         }
-    }, [isOpen]);
+    }, [isOpen, ds_thumbnail, mainbody]);
+
+    useEffect(() => {
+        // get all pictures urls from current blog
+        var _ds_images: string[] = [];
+        let regex = /\/([^/]+\.\w{2,4})["']/g;
+        if (selectedLangauge.id === 0) {
+            let matches = [...contentEn.matchAll(regex)];
+            matches.map((match) => {
+                _ds_images.push(match[1]);
+            })
+        } else if (selectedLangauge.id === 1) {
+            let matches = [...contentHe.matchAll(regex)];
+            matches.map((match) => {
+                _ds_images.push(match[1]);
+            })
+        } else if (selectedLangauge.id === 2) {
+            let matchesEn = [...contentEn.matchAll(regex)];
+            matchesEn.map((match) => {
+                _ds_images.push(match[1]);
+            })
+            let matchesHe = [...contentHe.matchAll(regex)];
+            matchesHe.map((match) => {
+                _ds_images.push(match[1]);
+            })
+        }
+        // console.log(_ds_images)
+        if (_ds_images.length !== 0)
+            setImageUrls(_ds_images);
+    }, [mainbody]);
 
     const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
@@ -175,11 +186,11 @@ export default function EditArticle({
 
     const isPublish = () => {
         if (selectedLangauge.id === 0)
-            return titleEn !== '' && selectedImage !== null && contentEn !== '' && readTimeEn !== '' && categoryEn !== '';
+            return titleEn !== '' && image !== '' && contentEn !== '' && readTimeEn !== '' && categoryEn !== '';
         else if (selectedLangauge.id === 1)
-            return titleHe !== '' && selectedImage !== null && contentHe !== '' && readTimeHe !== '' && categoryHe !== '';
+            return titleHe !== '' && image !== '' && contentHe !== '' && readTimeHe !== '' && categoryHe !== '';
         else
-            return titleEn !== '' && selectedImage !== null && contentEn !== '' && readTimeEn !== '' && categoryEn !== '' && titleHe !== '' && selectedImage !== null && contentHe !== '' && readTimeHe !== '' && categoryHe !== '';
+            return titleEn !== '' && image !== '' && contentEn !== '' && readTimeEn !== '' && categoryEn !== '' && titleHe !== '' && contentHe !== '' && readTimeHe !== '' && categoryHe !== '';
     }
 
     const isButtonDisabled = () => {
@@ -207,7 +218,7 @@ export default function EditArticle({
                 formData.append('image', selectedImage as unknown as File);
             }
             formData.append('id_blog', id_blog);
-            formData.append('cd_educator', currentUser.cd_educator);
+            formData.append('cd_educator', cd_educator);
             if (isPublish())
                 formData.append('ds_state', 'underreview');
             else
@@ -226,8 +237,8 @@ export default function EditArticle({
                 ds_readtime: readTimeHe,
                 ds_category: categoryHe
             }
-            console.log('contentEn', contentEn);
-            console.log('contentHe', contentHe);
+            // console.log('contentEn', contentEn);
+            // console.log('contentHe', contentHe);
             if (selectedLangauge.id === 0) // English
                 formData.append('mainbody', JSON.stringify(blog_en));
             else if (selectedLangauge.id === 1) // Hebrew
@@ -241,6 +252,7 @@ export default function EditArticle({
             }
             // delete unnecessary image files in Uploda folder in backend
             let _ds_images: string[] = [];
+            // console.log('imageUrls:', imageUrls);
             if (selectedLangauge.id === 0) { // in case of English
                 imageUrls.map((imageUrl: string) => {
                     // search title En
@@ -256,13 +268,15 @@ export default function EditArticle({
             } else if (selectedLangauge.id === 2) { // in case of En/He option
                 imageUrls.map((imageUrl: string) => {
                     // search title in En or He
+                    // console.log('contentEn.includes(imageUrl)', contentEn.includes(imageUrl));
+                    // console.log('contentHe.includes(imageUrl)', contentHe.includes(imageUrl));
                     if (!contentEn.includes(imageUrl) && !contentHe.includes(imageUrl))
                         _ds_images.push(imageUrl);
                 })
             }
             if (_ds_images.length !== 0) {
                 let formData = new FormData();
-                formData.append('cd_educator', currentUser.cd_educator);
+                formData.append('cd_educator', cd_educator);
                 formData.append('ds_images', JSON.stringify(_ds_images));
                 API.post('blog/deletecontentimages', formData, {
                     headers: {
@@ -303,8 +317,6 @@ export default function EditArticle({
                         setImage('');
                         // image urls
                         setImageUrls([]);
-                        // load blogs
-                        loadBlogs();
                         // close modal
                         closeModal();
                     }
@@ -491,8 +503,9 @@ export default function EditArticle({
                                             ?
                                             <>
                                                 <CategoryInput
-                                                    category='Title'
-                                                    placeholder='Enter Title text here'
+                                                    dir='rtl'
+                                                    category='כותרת'
+                                                    placeholder='הזן טקסט כותרת כאן'
                                                     inputValue={titleHe}
                                                     handleChange={setTitleHe}
                                                 />
@@ -568,13 +581,13 @@ export default function EditArticle({
                                                 </div>
 
                                                 <div className='grid gap-[6px]'>
-                                                    <label className='text-[14px] text-dark'>Main content</label>
+                                                    <label className='text-[14px] text-dark text-right'>תוכן עיקרי</label>
                                                     <div>
                                                         <QuillNoSSRWrapper
                                                             theme='snow'
                                                             value={contentHe}
                                                             handleChange={handleChangeHe}
-                                                            placeholder='Start typing!'
+                                                            placeholder='תתחיל להקליד!'
                                                             style={{ background: 'white', fontFamily: 'lato' }}
                                                             imageUrls={imageUrls}
                                                             setImageUrls={setImageUrls}
@@ -584,14 +597,14 @@ export default function EditArticle({
 
                                                 <div className='flex flex-col md:flex-row md:justify-between'>
                                                     <CategoryInput
-                                                        category='Enter read time'
-                                                        placeholder='7 min'
+                                                        category='הזן זמן קריאה'
+                                                        placeholder='7 דקות'
                                                         inputValue={readTimeHe}
                                                         handleChange={setReadTimeHe}
                                                     />
                                                     <CategoryInput
-                                                        category='Enter category'
-                                                        placeholder='Technology'
+                                                        category='היכנס לקטגוריה'
+                                                        placeholder='טֶכנוֹלוֹגִיָה'
                                                         inputValue={categoryHe}
                                                         handleChange={setCategoryHe}
                                                     />
@@ -611,15 +624,13 @@ export default function EditArticle({
                                                 </div>
 
                                                 {/* for Hebrew */}
-                                                <div className='grid gap-[6px]'>
-                                                    <label className='text-[14px] text-dark'>כותרת (עברית)</label>
-                                                    <CategoryInput
-                                                        category=''
-                                                        placeholder='Enter Title text here'
-                                                        inputValue={titleHe}
-                                                        handleChange={setTitleHe}
-                                                    />
-                                                </div>
+                                                <CategoryInput
+                                                    dir='rtl'
+                                                    category='כותרת'
+                                                    placeholder='הזן טקסט כותרת כאן'
+                                                    inputValue={titleHe}
+                                                    handleChange={setTitleHe}
+                                                />
 
                                                 <div className='w-full p-[10px] md:p-[20px] bg-white rounded-[10px] md:rounded-[20px] font-[lato]'>
                                                     {image === '' ?
@@ -711,13 +722,13 @@ export default function EditArticle({
                                                 {/* for Hebrew */}
 
                                                 <div className='grid gap-[6px]'>
-                                                    <label className='text-[14px] text-dark'>תוכן עיקרי (עברית)</label>
+                                                    <label className='text-[14px] text-dark text-right'>תוכן עיקרי (עברית)</label>
                                                     <div>
                                                         <QuillNoSSRWrapper
                                                             theme='snow'
                                                             value={contentHe}
                                                             handleChange={handleChangeHe}
-                                                            placeholder='Start typing!'
+                                                            placeholder='תתחיל להקליד!'
                                                             style={{ background: 'white', fontFamily: 'lato' }}
                                                             imageUrls={imageUrls}
                                                             setImageUrls={setImageUrls}
@@ -725,43 +736,32 @@ export default function EditArticle({
                                                     </div>
                                                 </div>
 
-                                                <div className='flex flex-col gap-[6px]'>
-                                                    <label className='text-[14px] text-dark'>Enter read time (English)</label>
-                                                    <CategoryInput
-                                                        category=''
-                                                        placeholder='7 min'
-                                                        inputValue={readTimeEn}
-                                                        handleChange={setReadTimeEn}
-                                                    />
-                                                </div>
-                                                <div className='flex flex-col gap-[6px]'>
-                                                    <label className='text-[14px] text-dark'>הזן זמן קריאה (עברית)</label>
-                                                    <CategoryInput
-                                                        category=''
-                                                        placeholder='7 min'
-                                                        inputValue={readTimeHe}
-                                                        handleChange={setReadTimeHe}
-                                                    />
-                                                </div>
-
-                                                <div className='flex flex-col gap-[6px]'>
-                                                    <label className='text-[14px] text-dark'>Enter category (English)</label>
-                                                    <CategoryInput
-                                                        category=''
-                                                        placeholder='Technology'
-                                                        inputValue={categoryEn}
-                                                        handleChange={setCategoryEn}
-                                                    />
-                                                </div>
-                                                <div className='flex flex-col gap-[6px]'>
-                                                    <label className='text-[14px] text-dark'>היכנס לקטגוריה (עברית)</label>
-                                                    <CategoryInput
-                                                        category=''
-                                                        placeholder='Technology'
-                                                        inputValue={categoryHe}
-                                                        handleChange={setCategoryHe}
-                                                    />
-                                                </div>
+                                                <CategoryInput
+                                                    category='Enter read time (English)'
+                                                    placeholder='7 min'
+                                                    inputValue={readTimeEn}
+                                                    handleChange={setReadTimeEn}
+                                                />
+                                                <CategoryInput
+                                                    dir='rtl'
+                                                    category='הזן זמן קריאה (עברית)'
+                                                    placeholder='7 דקות'
+                                                    inputValue={readTimeHe}
+                                                    handleChange={setReadTimeHe}
+                                                />
+                                                <CategoryInput
+                                                    category='Enter category (English)'
+                                                    placeholder='Technology'
+                                                    inputValue={categoryEn}
+                                                    handleChange={setCategoryEn}
+                                                />
+                                                <CategoryInput
+                                                    dir='rtl'
+                                                    category='היכנס לקטגוריה (עברית)'
+                                                    placeholder='טֶכנוֹלוֹגִיָה'
+                                                    inputValue={categoryHe}
+                                                    handleChange={setCategoryHe}
+                                                />
                                             </>
                                     }
 

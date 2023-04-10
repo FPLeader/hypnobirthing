@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 const ReactQuill = dynamic(
     async () => {
         const { default: RQ } = await import('react-quill');
+        // @ts-ignore
         return ({ forwardedRef, ...props }) => <RQ ref={forwardedRef} {...props} />;
     },
     {
@@ -56,14 +57,20 @@ export default function RenderQuillReact({
         input.click();
 
         input.onchange = () => {
-            const file = input?.files[0];
+            const file = input?.files && input.files.length > 0 ? input.files[0] : null;
 
-            // file type is only image.
-            if (/^image\//.test(file.type)) {
-                saveToServer(file);
-            } else {
-                console.warn('You could only upload images.');
+            // Check if file is null or undefined
+            if (!file) {
+                console.warn('No image file selected.');
             }
+
+            // Check file type is only image.
+            if (file)
+                if (/^image\//.test(file.type)) {
+                    saveToServer(file);
+                } else {
+                    console.warn('You could only upload images.');
+                }
         }
     };
 
@@ -98,7 +105,9 @@ export default function RenderQuillReact({
 
     const insertToEditor = (url: string) => {
         if (editorRef.current) {
+            // @ts-ignore
             let range = editorRef.current.getEditorSelection();
+            // @ts-ignore
             editorRef.current.getEditor().insertEmbed(range.index, 'image', url);
         }
     }
@@ -138,9 +147,7 @@ export default function RenderQuillReact({
             // imageResize: {
             //     parchment: Quill.import('parchment')
             // }
-        }),
-        []
-    )
+        }), [])
 
     const formats = useMemo(
         () => (
@@ -157,23 +164,25 @@ export default function RenderQuillReact({
                 'background',
                 'list',
                 'indent',
-                'align',
                 'link',
+                'script',
                 'bullet',
                 'image',
                 'video',
                 'clean',
-                'emoji'
+                'emoji',
+                'align',
             ]
-        ), []
-    )
+        ), [])
 
     return (
         <>
             <ReactQuill
+                // @ts-ignore
                 forwardedRef={editorRef}
                 theme={theme}
                 defaultValue={value}
+                value={value}
                 onChange={(value: any) => handleChange(value)}
                 placeholder={placeholder}
                 style={style}
