@@ -12,7 +12,6 @@ interface mainbodyType {
     ds_title: string,
     ds_content: string,
     ds_readtime: string,
-    ds_category: string,
 }
 
 interface BlogCardProps {
@@ -23,6 +22,7 @@ interface BlogCardProps {
     author: string,
     loadBlogs: () => void,
     previewIcon?: boolean,
+    ds_category: string,
 }
 
 export default function SmallBlogEditCard({
@@ -32,7 +32,8 @@ export default function SmallBlogEditCard({
     mainbody,
     author,
     loadBlogs,
-    previewIcon = false
+    previewIcon = false,
+    ds_category
 }: BlogCardProps) {
     const router = useRouter();
     // language option
@@ -165,6 +166,7 @@ export default function SmallBlogEditCard({
                 ds_thumbnail={image}
                 mainbody={mainbody}
                 nm_user={author}
+                ds_category={ds_category}
             />
             <EditArticleModal
                 isOpen={isEditOpen}
@@ -173,6 +175,7 @@ export default function SmallBlogEditCard({
                 id_blog={id}
                 ds_thumbnail={image}
                 mainbody={mainbody}
+                ds_category={ds_category}
             />
             <DeleteArticleModal
                 isOpen={isDeleteOpen}

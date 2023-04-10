@@ -22,7 +22,6 @@ interface mainbodyType {
     ds_title: string,
     ds_content: string,
     ds_readtime: string,
-    ds_category: string,
 }
 
 interface EditArticleProps {
@@ -32,6 +31,7 @@ interface EditArticleProps {
     id_blog: string,
     ds_thumbnail: string,
     mainbody: mainbodyType[],
+    ds_category: string,
 }
 
 export default function EditArticle({
@@ -41,6 +41,7 @@ export default function EditArticle({
     id_blog,
     ds_thumbnail,
     mainbody,
+    ds_category
 }: EditArticleProps) {
     const router = useRouter();
     const dispatch = useAppDispatch();
@@ -54,17 +55,21 @@ export default function EditArticle({
         { id: 2, name: 'I know English and Hebrew both' },
     ]
     const [selectedLangauge, setSelectedLanguage] = useState(languageOptions[0]);
+    const categoryOptions = [
+        { id: 0, name: 'Article' },
+        { id: 1, name: 'Birth Stories' },
+        { id: 2, name: 'Recipe' },
+    ]
+    const [selectedCategory, setSelectedCategory] = useState(categoryOptions[0]);
     // for English
     const [titleEn, setTitleEn] = useState<string>('');
     const [readTimeEn, setReadTimeEn] = useState<string>('');
-    const [categoryEn, setCategoryEn] = useState<string>('');
     // for quill
     const [contentEn, setContentEn] = useState('');
 
     // for Hebrew
     const [titleHe, setTitleHe] = useState<string>('');
     const [readTimeHe, setReadTimeHe] = useState<string>('');
-    const [categoryHe, setCategoryHe] = useState<string>('');
     // for quill
     const [contentHe, setContentHe] = useState('');
 
@@ -88,13 +93,11 @@ export default function EditArticle({
             setTitleEn(mainbody[0].ds_title);
             setContentEn(mainbody[0].ds_content);
             setReadTimeEn(mainbody[0].ds_readtime);
-            setCategoryEn(mainbody[0].ds_category);
 
             // He option
             setTitleHe(mainbody[1].ds_title);
             setContentHe(mainbody[1].ds_content);
             setReadTimeHe(mainbody[1].ds_readtime);
-            setCategoryHe(mainbody[1].ds_category);
         } else if (mainbody[0].id_lng === 0) { // En option
             setSelectedLanguage(languageOptions[0]);
             setTitleEn(mainbody[0].ds_title);
@@ -102,7 +105,6 @@ export default function EditArticle({
                 setImage(process.env.FILE_IMAGE_BASE + ds_thumbnail);
             setContentEn(mainbody[0].ds_content);
             setReadTimeEn(mainbody[0].ds_readtime);
-            setCategoryEn(mainbody[0].ds_category);
         } else if (mainbody[0].id_lng === 1) { // He option
             setSelectedLanguage(languageOptions[1]);
             setTitleHe(mainbody[0].ds_title);
@@ -110,9 +112,14 @@ export default function EditArticle({
                 setImage(process.env.FILE_IMAGE_BASE + ds_thumbnail);
             setContentHe(mainbody[0].ds_content);
             setReadTimeHe(mainbody[0].ds_readtime);
-            setCategoryHe(mainbody[0].ds_category);
         }
-    }, [isOpen, ds_thumbnail, mainbody]);
+        categoryOptions.map((currentOption) => {
+            if (currentOption.name === ds_category) {
+                setSelectedCategory(categoryOptions[currentOption.id]);
+                return;
+            }
+        })
+    }, [isOpen, ds_thumbnail, mainbody, ds_category]);
 
     useEffect(() => {
         // get all pictures urls from current blog
@@ -186,20 +193,20 @@ export default function EditArticle({
 
     const isPublish = () => {
         if (selectedLangauge.id === 0)
-            return titleEn !== '' && image !== '' && contentEn !== '' && readTimeEn !== '' && categoryEn !== '';
+            return titleEn !== '' && image !== '' && contentEn !== '' && readTimeEn !== '';
         else if (selectedLangauge.id === 1)
-            return titleHe !== '' && image !== '' && contentHe !== '' && readTimeHe !== '' && categoryHe !== '';
+            return titleHe !== '' && image !== '' && contentHe !== '' && readTimeHe !== '';
         else
-            return titleEn !== '' && image !== '' && contentEn !== '' && readTimeEn !== '' && categoryEn !== '' && titleHe !== '' && contentHe !== '' && readTimeHe !== '' && categoryHe !== '';
+            return titleEn !== '' && image !== '' && contentEn !== '' && readTimeEn !== '' && titleHe !== '' && contentHe !== '' && readTimeHe !== '';
     }
 
     const isButtonDisabled = () => {
         if (selectedLangauge.id === 0)
-            return !((ds_thumbnail !== '' && image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleEn !== mainbody[0].ds_title || contentEn !== mainbody[0].ds_content || readTimeEn !== mainbody[0].ds_readtime || categoryEn !== mainbody[0].ds_category);
+            return !((ds_thumbnail !== '' && image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleEn !== mainbody[0].ds_title || contentEn !== mainbody[0].ds_content || readTimeEn !== mainbody[0].ds_readtime || selectedCategory.name !== ds_category);
         else if (selectedLangauge.id === 1)
-            return !((ds_thumbnail !== '' && image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleHe !== mainbody[0].ds_title || contentHe !== mainbody[0].ds_content || readTimeHe !== mainbody[0].ds_readtime || categoryHe !== mainbody[0].ds_category);
+            return !((ds_thumbnail !== '' && image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleHe !== mainbody[0].ds_title || contentHe !== mainbody[0].ds_content || readTimeHe !== mainbody[0].ds_readtime || selectedCategory.name !== ds_category);
         else
-            return !((ds_thumbnail !== '' && image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleEn !== mainbody[0].ds_title || contentEn !== mainbody[0].ds_content || readTimeEn !== mainbody[0].ds_readtime || categoryEn !== mainbody[0].ds_category || titleHe !== mainbody[1].ds_title || contentHe !== mainbody[1].ds_content || readTimeHe !== mainbody[1].ds_readtime || categoryHe !== mainbody[1].ds_category);
+            return !((ds_thumbnail !== '' && image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleEn !== mainbody[0].ds_title || contentEn !== mainbody[0].ds_content || readTimeEn !== mainbody[0].ds_readtime || selectedCategory.name !== ds_category || titleHe !== mainbody?.[1]?.ds_title || contentHe !== mainbody?.[1]?.ds_content || readTimeHe !== mainbody?.[1]?.ds_readtime);
     }
 
     // upload blog
@@ -219,6 +226,7 @@ export default function EditArticle({
             }
             formData.append('id_blog', id_blog);
             formData.append('cd_educator', cd_educator);
+            formData.append('ds_category', selectedCategory.name);
             if (isPublish())
                 formData.append('ds_state', 'underreview');
             else
@@ -228,14 +236,12 @@ export default function EditArticle({
                 ds_title: titleEn,
                 ds_content: contentEn,
                 ds_readtime: readTimeEn,
-                ds_category: categoryEn
             }
             let blog_he = {
                 id_lng: 1,
                 ds_title: titleHe,
                 ds_content: contentHe,
                 ds_readtime: readTimeHe,
-                ds_category: categoryHe
             }
             // console.log('contentEn', contentEn);
             // console.log('contentHe', contentHe);
@@ -305,16 +311,16 @@ export default function EditArticle({
                         // English
                         setTitleEn('');
                         setReadTimeEn('');
-                        setCategoryEn('');
                         setContentEn('');
                         //Hebrew
                         setTitleHe('');
                         setReadTimeHe('');
-                        setCategoryHe('');
                         setContentHe('');
                         // thumbnail
                         setSelectedImage(null);
                         setImage('');
+                        // category
+                        setSelectedCategory(categoryOptions[0]);
                         // image urls
                         setImageUrls([]);
                         // close modal
@@ -397,6 +403,12 @@ export default function EditArticle({
                                                 placeholder='Enter Title text here'
                                                 inputValue={titleEn}
                                                 handleChange={setTitleEn}
+                                            />
+                                            <CategorySelect
+                                                category='Category'
+                                                selectItems={categoryOptions}
+                                                inputValue={selectedCategory}
+                                                handleChange={setSelectedCategory}
                                             />
 
                                             <div className='w-full p-[10px] md:p-[20px] bg-white rounded-[10px] md:rounded-[20px] font-[lato]'>
@@ -483,21 +495,12 @@ export default function EditArticle({
                                                     />
                                                 </div>
                                             </div>
-
-                                            <div className='flex flex-col md:flex-row md:justify-between'>
-                                                <CategoryInput
-                                                    category='Enter read time'
-                                                    placeholder='7 min'
-                                                    inputValue={readTimeEn}
-                                                    handleChange={setReadTimeEn}
-                                                />
-                                                <CategoryInput
-                                                    category='Enter category'
-                                                    placeholder='Technology'
-                                                    inputValue={categoryEn}
-                                                    handleChange={setCategoryEn}
-                                                />
-                                            </div>
+                                            <CategoryInput
+                                                category='Enter read time'
+                                                placeholder='7 min'
+                                                inputValue={readTimeEn}
+                                                handleChange={setReadTimeEn}
+                                            />
                                         </>
                                         : selectedLangauge.id === 1 //Hebrew
                                             ?
@@ -508,6 +511,12 @@ export default function EditArticle({
                                                     placeholder='הזן טקסט כותרת כאן'
                                                     inputValue={titleHe}
                                                     handleChange={setTitleHe}
+                                                />
+                                                <CategorySelect
+                                                    category='קטגוריה'
+                                                    selectItems={categoryOptions}
+                                                    inputValue={selectedCategory}
+                                                    handleChange={setSelectedCategory}
                                                 />
 
                                                 <div className='w-full p-[10px] md:p-[20px] bg-white rounded-[10px] md:rounded-[20px] font-[lato]'>
@@ -595,20 +604,12 @@ export default function EditArticle({
                                                     </div>
                                                 </div>
 
-                                                <div className='flex flex-col md:flex-row md:justify-between'>
-                                                    <CategoryInput
-                                                        category='הזן זמן קריאה'
-                                                        placeholder='7 דקות'
-                                                        inputValue={readTimeHe}
-                                                        handleChange={setReadTimeHe}
-                                                    />
-                                                    <CategoryInput
-                                                        category='היכנס לקטגוריה'
-                                                        placeholder='טֶכנוֹלוֹגִיָה'
-                                                        inputValue={categoryHe}
-                                                        handleChange={setCategoryHe}
-                                                    />
-                                                </div>
+                                                <CategoryInput
+                                                    category='הזן זמן קריאה'
+                                                    placeholder='7 דקות'
+                                                    inputValue={readTimeHe}
+                                                    handleChange={setReadTimeHe}
+                                                />
                                             </>
                                             :
                                             <>
@@ -630,6 +631,13 @@ export default function EditArticle({
                                                     placeholder='הזן טקסט כותרת כאן'
                                                     inputValue={titleHe}
                                                     handleChange={setTitleHe}
+                                                />
+
+                                                <CategorySelect
+                                                    category='Category'
+                                                    selectItems={categoryOptions}
+                                                    inputValue={selectedCategory}
+                                                    handleChange={setSelectedCategory}
                                                 />
 
                                                 <div className='w-full p-[10px] md:p-[20px] bg-white rounded-[10px] md:rounded-[20px] font-[lato]'>
@@ -748,19 +756,6 @@ export default function EditArticle({
                                                     placeholder='7 דקות'
                                                     inputValue={readTimeHe}
                                                     handleChange={setReadTimeHe}
-                                                />
-                                                <CategoryInput
-                                                    category='Enter category (English)'
-                                                    placeholder='Technology'
-                                                    inputValue={categoryEn}
-                                                    handleChange={setCategoryEn}
-                                                />
-                                                <CategoryInput
-                                                    dir='rtl'
-                                                    category='היכנס לקטגוריה (עברית)'
-                                                    placeholder='טֶכנוֹלוֹגִיָה'
-                                                    inputValue={categoryHe}
-                                                    handleChange={setCategoryHe}
                                                 />
                                             </>
                                     }

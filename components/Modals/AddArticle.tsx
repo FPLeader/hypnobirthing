@@ -45,17 +45,21 @@ export default function AddArticle({
         { id: 2, name: 'I know English and Hebrew both' },
     ]
     const [selectedLangauge, setSelectedLanguage] = useState(languageOptions[0]);
+    const categoryOptions = [
+        { id: 0, name: 'Article' },
+        { id: 1, name: 'Birth Stories' },
+        { id: 2, name: 'Recipe' },
+    ]
+    const [selectedCategory, setSelectedCategory] = useState(categoryOptions[0]);
     // for English
     const [titleEn, setTitleEn] = useState<string>('');
     const [readTimeEn, setReadTimeEn] = useState<string>('');
-    const [categoryEn, setCategoryEn] = useState<string>('');
     // for quill
     const [contentEn, setContentEn] = useState('');
 
     // for Hebrew
     const [titleHe, setTitleHe] = useState<string>('');
     const [readTimeHe, setReadTimeHe] = useState<string>('');
-    const [categoryHe, setCategoryHe] = useState<string>('');
     // for quill
     const [contentHe, setContentHe] = useState('');
 
@@ -114,20 +118,20 @@ export default function AddArticle({
 
     const isPublish = () => {
         if (selectedLangauge.id === 0)
-            return titleEn !== '' && selectedImage !== null && contentEn !== '' && readTimeEn !== '' && categoryEn !== '';
+            return titleEn !== '' && selectedImage !== null && contentEn !== '' && readTimeEn !== '';
         else if (selectedLangauge.id === 1)
-            return titleHe !== '' && selectedImage !== null && contentHe !== '' && readTimeHe !== '' && categoryHe !== '';
+            return titleHe !== '' && selectedImage !== null && contentHe !== '' && readTimeHe !== '';
         else
-            return titleEn !== '' && selectedImage !== null && contentEn !== '' && readTimeEn !== '' && categoryEn !== '' && titleHe !== '' && contentHe !== '' && readTimeHe !== '' && categoryHe !== '';
+            return titleEn !== '' && selectedImage !== null && contentEn !== '' && readTimeEn !== '' && titleHe !== '' && contentHe !== '' && readTimeHe !== '';
     }
 
     const isButtonDisabled = () => {
         if (selectedLangauge.id === 0)
-            return !(titleEn !== '' || selectedImage !== null || contentEn !== '' || readTimeEn !== '' || categoryEn !== '');
+            return !(titleEn !== '' || selectedImage !== null || contentEn !== '' || readTimeEn !== '');
         else if (selectedLangauge.id === 1)
-            return !(titleHe !== '' || selectedImage !== null || contentHe !== '' || readTimeHe !== '' || categoryHe !== '');
+            return !(titleHe !== '' || selectedImage !== null || contentHe !== '' || readTimeHe !== '');
         else
-            return !(titleEn !== '' || selectedImage !== null || contentEn !== '' || readTimeEn !== '' || categoryEn !== '' || titleHe !== '' || selectedImage !== null || contentHe !== '' || readTimeHe !== '' || categoryHe !== '');
+            return !(titleEn !== '' || selectedImage !== null || contentEn !== '' || readTimeEn !== '' || titleHe !== '' || selectedImage !== null || contentHe !== '' || readTimeHe !== '');
     }
 
     // upload blog
@@ -149,6 +153,7 @@ export default function AddArticle({
             formData.append('id_blog', id_blog);
             formData.append('cd_educator', currentUser.cd_educator);
             formData.append('nm_user', currentUser.nm_user);
+            formData.append('ds_category', selectedCategory.name);
             if (isPublish())
                 formData.append('ds_state', 'underreview');
             else
@@ -158,14 +163,12 @@ export default function AddArticle({
                 ds_title: titleEn,
                 ds_content: contentEn,
                 ds_readtime: readTimeEn,
-                ds_category: categoryEn
             }
             let blog_he = {
                 id_lng: 1,
                 ds_title: titleHe,
                 ds_content: contentHe,
                 ds_readtime: readTimeHe,
-                ds_category: categoryHe
             }
             // console.log('contentEn', contentEn);
             // console.log('contentHe', contentHe);
@@ -232,16 +235,16 @@ export default function AddArticle({
                         // English
                         setTitleEn('');
                         setReadTimeEn('');
-                        setCategoryEn('');
                         setContentEn('');
                         //Hebrew
                         setTitleHe('');
                         setReadTimeHe('');
-                        setCategoryHe('');
                         setContentHe('');
                         // thumbnail
                         setSelectedImage(null);
                         setImage('');
+                        // category
+                        setSelectedCategory(categoryOptions[0]);
                         // image urls
                         setImageUrls([]);
                         // close modal
@@ -324,6 +327,13 @@ export default function AddArticle({
                                                 placeholder='Enter Title text here'
                                                 inputValue={titleEn}
                                                 handleChange={setTitleEn}
+                                            />
+
+                                            <CategorySelect
+                                                category='Category'
+                                                selectItems={categoryOptions}
+                                                inputValue={selectedCategory}
+                                                handleChange={setSelectedCategory}
                                             />
 
                                             <div className='w-full p-[10px] md:p-[20px] bg-white rounded-[10px] md:rounded-[20px] font-[lato]'>
@@ -413,20 +423,12 @@ export default function AddArticle({
                                                 </div>
                                             </div>
 
-                                            <div className='flex flex-col md:flex-row md:justify-between'>
-                                                <CategoryInput
-                                                    category='Enter read time'
-                                                    placeholder='7 min'
-                                                    inputValue={readTimeEn}
-                                                    handleChange={setReadTimeEn}
-                                                />
-                                                <CategoryInput
-                                                    category='Enter category'
-                                                    placeholder='Technology'
-                                                    inputValue={categoryEn}
-                                                    handleChange={setCategoryEn}
-                                                />
-                                            </div>
+                                            <CategoryInput
+                                                category='Enter read time'
+                                                placeholder='7 min'
+                                                inputValue={readTimeEn}
+                                                handleChange={setReadTimeEn}
+                                            />
                                         </>
                                         : selectedLangauge.id === 1 //Hebrew
                                             ?
@@ -437,6 +439,13 @@ export default function AddArticle({
                                                     placeholder='הזן טקסט כותרת כאן'
                                                     inputValue={titleHe}
                                                     handleChange={setTitleHe}
+                                                />
+
+                                                <CategorySelect
+                                                    category='קטגוריה'
+                                                    selectItems={categoryOptions}
+                                                    inputValue={selectedCategory}
+                                                    handleChange={setSelectedCategory}
                                                 />
 
                                                 <div className='w-full p-[10px] md:p-[20px] bg-white rounded-[10px] md:rounded-[20px] font-[lato]'>
@@ -524,20 +533,12 @@ export default function AddArticle({
                                                     </div>
                                                 </div>
 
-                                                <div className='flex flex-col md:flex-row md:justify-between'>
-                                                    <CategoryInput
-                                                        category='הזן זמן קריאה'
-                                                        placeholder='7 דקות'
-                                                        inputValue={readTimeHe}
-                                                        handleChange={setReadTimeHe}
-                                                    />
-                                                    <CategoryInput
-                                                        category='היכנס לקטגוריה'
-                                                        placeholder='טֶכנוֹלוֹגִיָה'
-                                                        inputValue={categoryHe}
-                                                        handleChange={setCategoryHe}
-                                                    />
-                                                </div>
+                                                <CategoryInput
+                                                    category='הזן זמן קריאה'
+                                                    placeholder='7 דקות'
+                                                    inputValue={readTimeHe}
+                                                    handleChange={setReadTimeHe}
+                                                />
                                             </>
                                             :
                                             <>
@@ -559,6 +560,13 @@ export default function AddArticle({
                                                     placeholder='הזן טקסט כותרת כאן'
                                                     inputValue={titleHe}
                                                     handleChange={setTitleHe}
+                                                />
+
+                                                <CategorySelect
+                                                    category='Category'
+                                                    selectItems={categoryOptions}
+                                                    inputValue={selectedCategory}
+                                                    handleChange={setSelectedCategory}
                                                 />
 
                                                 <div className='w-full p-[10px] md:p-[20px] bg-white rounded-[10px] md:rounded-[20px] font-[lato]'>
@@ -677,19 +685,6 @@ export default function AddArticle({
                                                     placeholder='7 דקות'
                                                     inputValue={readTimeHe}
                                                     handleChange={setReadTimeHe}
-                                                />
-                                                <CategoryInput
-                                                    category='Enter category (English)'
-                                                    placeholder='Technology'
-                                                    inputValue={categoryEn}
-                                                    handleChange={setCategoryEn}
-                                                />
-                                                <CategoryInput
-                                                    dir='rtl'
-                                                    category='היכנס לקטגוריה (עברית)'
-                                                    placeholder='טֶכנוֹלוֹגִיָה'
-                                                    inputValue={categoryHe}
-                                                    handleChange={setCategoryHe}
                                                 />
                                             </>
                                     }

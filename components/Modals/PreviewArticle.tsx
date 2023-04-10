@@ -9,7 +9,6 @@ interface mainbodyType {
     ds_title: string,
     ds_content: string,
     ds_readtime: string,
-    ds_category: string,
 }
 
 interface PreviewArticleProps {
@@ -18,6 +17,7 @@ interface PreviewArticleProps {
     ds_thumbnail: string,
     mainbody: mainbodyType[],
     nm_user: string,
+    ds_category: string,
 }
 
 export default function PreviewArticle({
@@ -26,6 +26,7 @@ export default function PreviewArticle({
     ds_thumbnail,
     mainbody,
     nm_user,
+    ds_category
 }: PreviewArticleProps) {
     const moment = require('moment');
     const { width } = useWindowSize();
@@ -71,7 +72,10 @@ export default function PreviewArticle({
                                     </button>
                                 </div>
 
-                                <div className='mt-[20px]'>
+                                <div className='mt-[20px] grid gap-[10px] md:gap-[20px]'>
+                                    <div className='flex justify-center'>
+                                        <div className='w-max px-[30px] font-light italic text-[14px] md:text-[16px] lg:text-[20px] text-center bg-beighe rounded-full'>{ds_category}</div>
+                                    </div>
                                     {mainbody.map((blogData: mainbodyType, index: number) => (
                                         <div key={'previewblog' + index}>
                                             <div className='text-[lato] text-[20px] md:text-[30px] lg:text-[40px] text-center'>----{blogData.id_lng === 0 ? 'English Blog' : 'בלוג בעברית'}----</div>

@@ -7,7 +7,6 @@ interface mainbodyType {
     ds_title: string,
     ds_content: string,
     ds_readtime: string,
-    ds_category: string,
 }
 
 interface BlogCardProps {
@@ -16,6 +15,7 @@ interface BlogCardProps {
     mainbody: mainbodyType[],
     author: string,
     disabled?: boolean,
+    ds_category: string,
 }
 
 export default function SmallBlogCard({
@@ -23,7 +23,8 @@ export default function SmallBlogCard({
     image,
     mainbody,
     author,
-    disabled = false
+    disabled = false,
+    ds_category,
 }: BlogCardProps) {
     const router = useRouter();
     // language option
