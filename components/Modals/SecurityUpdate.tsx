@@ -224,7 +224,7 @@ export default function SecurityUpdate({
                                         {width >= 768 ? <CloseIcon /> : <CloseIcon width={15} height={15} />}
                                     </button>
                                 </div>
-                                <div className='mt-[20px] grid gap-[20px]'>
+                                <div className='mt-[20px] space-y-[20px]'>
                                     {page === 1 ?
                                         <CategoryRuleInput
                                             category={'Current password'}

@@ -14,7 +14,7 @@ interface VideoProps {
 export default function Video({
     title,
     videoUrl = '',
-    style
+    style = ''
 }: VideoProps) {
 
     const getVideoIdFromUrl = (url: string): string => {

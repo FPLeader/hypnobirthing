@@ -1,11 +1,11 @@
-import { SearchButton, RegularButton } from '../Buttons'
-import { CommunityCard } from '../Cards'
-import { CategorySelect } from '../Select'
+import { SearchButton, RegularButton } from '../../Buttons'
+import { CommunityCard } from '../../Cards'
+import { CategorySelect } from '../../Select'
 import { CommunityCards, CommunityCardType } from '@/services/Constants/CardsData'
 import { SelectData1 } from '@/services/Constants/SelectOptions'
-import { PromoteBar, UpcomingClassesBar } from '../Sections'
-import { RegularTitle } from '../Titles'
-import { SearchInput } from '../Inputs'
+import { PromoteBar, UpcomingClassesBar } from '../../Sections'
+import { RegularTitle } from '../../Titles'
+import { SearchInput } from '../../Inputs'
 
 export default function OurCommunity() {
     return (

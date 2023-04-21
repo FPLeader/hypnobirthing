@@ -10,7 +10,7 @@ export default function Media() {
   
   return (
     <div className='pt-[70px] md:pt-[90px] w-full'>
-      <Banner title='Media' image='/img/banner6.png' />
+      <Banner image='/img/banner6.png' />
       <div className='w-full mt-[20px] md:mt-[30px] lg:mt-[70px] flex justify-center'>
         <div className='w-full max-w-[1225px] px-[20px]'>
           <div className='flex flex-col md:flex-row gap-[20px] md:gap-[35px]'>

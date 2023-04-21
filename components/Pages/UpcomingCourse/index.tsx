@@ -1,14 +1,22 @@
 import { useState } from 'react'
 import { SearchButton, ExpandButton } from '@/components/Buttons'
-import { CategorySelect } from '../Select'
+import { CategorySelect } from '../../Select'
 import { SelectData1 } from '@/services/Constants/SelectOptions'
 import { CourseCardType, SearchResultType, SearchResult } from '@/services/Constants/CardsData'
 import { CourseCard, VideoCard } from '@/components/Cards'
-import { RegularTitle } from '../Titles'
+import { RegularTitle } from '../../Titles'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
+import API from '@/services/API'
+import { toast } from 'react-toastify'
+import i18n from '@/services/i18n'
+import { useTranslation } from 'react-i18next'
 
 export default function UpcomingCourse() {
+    // language option
+    const { t } = useTranslation();
+    const lngId: number = i18n.language === 'en' ? 0 : 1;
+
     const [isOpen1, setIsOpen1] = useState<boolean>(true);
 
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -38,7 +46,7 @@ export default function UpcomingCourse() {
 
     return (
         <div className='pt-[70px] lg:pt-[90px] pb-[60px] md:pb-[92.5px] lg:pb-[160px] w-full flex justify-center'>
-            <div className='max-w-[1225px] px-[20px] w-full'>
+            <div dir='ltr' className='max-w-[1225px] px-[20px] w-full'>
                 <div className='w-full mt-[20px] md:mt-[30px] lg:mt-[70px]'>
                     <RegularTitle text='Upcoming Childbirth Courses' />
                 </div>
@@ -61,7 +69,7 @@ export default function UpcomingCourse() {
                     </div>
                     <div className='w-full lg:min-w-[500px] sm:max-w-[500px]'>
                         <div className='w-full aspect-w-16 aspect-h-9 min-h-[217px]'>
-                            <VideoCard title='HypnoBirthing' videoUrl='YGxKPJDzok8' style='w-full' />
+                            <VideoCard title='HypnoBirthing' videoUrl='https://www.youtube.com/watch?v=dQw4w9WgXcQ' style='w-full' />
                         </div>
                     </div>
                 </div>

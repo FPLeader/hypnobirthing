@@ -1,7 +1,19 @@
 import { SignUpPage } from '@/components/Pages'
+import { useRouter } from 'next/router'
+import { useState, useEffect } from 'react';
 
 export default function SignUp() {
+    const router = useRouter();
+    const [typeId, setTypeId] = useState<number>(0);
+    const { type } = router.query;
+
+    useEffect(() => {
+        if (typeof type === 'string') {
+            setTypeId(parseInt(type));
+        }
+    }, [type]);
+
     return (
-        <SignUpPage />
+        <SignUpPage typeId={typeId} />
     )
 }

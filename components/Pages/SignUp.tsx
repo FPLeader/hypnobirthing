@@ -1,13 +1,20 @@
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useState, useLayoutEffect } from 'react'
 import { MultiSelect } from 'react-multi-select-component'
 import { CategoryRuleInput } from '../Inputs'
-import { SkillSet, SelectProfile } from '@/services/Constants/SelectOptions'
+import { CategorySelect } from '../Select'
+import { SkillSet, TypeOptions } from '@/services/Constants/SelectOptions'
 
 import { register } from '@/services/Actions/Auth.action'
 import { useAppDispatch } from '@/services/Hooks'
 
-export default function SignUp() {
+interface SingUpPageProps {
+    typeId: number,
+}
+
+export default function SignUp({
+    typeId,
+}: SingUpPageProps) {
     const style = {
         CheckBox: 'bg-white border rounded-[4px] border-Label w-[26px] h-[26px] flex flex-shrink-0 justify-center items-center mr-2',
         LinkStyle: 'text-dark text-[14px] font-medium underline underline-offset-4 decoration decoration-dark'
@@ -37,12 +44,18 @@ export default function SignUp() {
         key?: string;
         disabled?: boolean;
     }
-
-    const [profileType, setProfileType] = useState<MultiSelectOption[]>([]);
+    
+    const [profileType, setProfileType] = useState(TypeOptions[0]);
     const [skills, setSkills] = useState<MultiSelectOption[]>([]);
     const [personalTitle, setPersonalTitle] = useState({ ...initialValue, rules: ['required'] });
     // const [CheckOne, setCheckOne] = useState<boolean>(false);
     const [CheckTwo, setCheckTwo] = useState<boolean>(false);
+
+    useLayoutEffect(() => {
+        // console.log(typeId)
+        setProfileType(TypeOptions[typeId]);
+    }, [typeId]);
+
 
     const handleChangeValue = (value: any, setValue: any) => (event: any) => {
         checkValidity({ ...value, value: event.target.value }, setValue);
@@ -98,7 +111,6 @@ export default function SignUp() {
             !phoneNumber.errorMessage.length &&
             !!email.value.length &&
             !email.errorMessage.length &&
-            profileType.length > 0 &&
             skills.length > 0 &&
             !!personalTitle.value.length &&
             !personalTitle.errorMessage.length &&
@@ -111,10 +123,6 @@ export default function SignUp() {
 
     const SignUpHandler = () => {
         if (!loadingOpen) {
-            let _profileType: string[] = [];
-            for (let x of profileType) {
-                _profileType.push(x.label as string);
-            }
             let _skills: string[] = [];
             for (let x of skills) {
                 _skills.push(x.label as string);
@@ -125,7 +133,7 @@ export default function SignUp() {
                 ds_email: string;
                 ds_phonenumber: string;
                 ds_password: string;
-                ar_category: string[];
+                ds_category: string;
                 ar_skills: string[];
                 ar_personaltitle: string[];
             }
@@ -135,7 +143,7 @@ export default function SignUp() {
                 ds_email: email.value,
                 ds_phonenumber: phoneNumber.value,
                 ds_password: confirmPassword.value,
-                ar_category: _profileType,
+                ds_category: profileType.value,
                 ar_skills: _skills,
                 ar_personaltitle: []
             };
@@ -196,17 +204,12 @@ export default function SignUp() {
                                 type='password'
                             />
                         </div>
-                        <div className='w-full flex flex-col gap-[6px]'>
-                            <label className='text-sm text-dark'>Pashut Laledet Cerification</label>
-                            <MultiSelect
-                                options={SelectProfile}
-                                value={profileType}
-                                onChange={setProfileType}
-                                labelledBy='Select'
-                                hasSelectAll={false}
-                                disableSearch={true}
-                            />
-                        </div >
+                        <CategorySelect
+                            category='Pashut Laledet Certification'
+                            selectItems={TypeOptions}
+                            inputValue={profileType}
+                            handleChange={setProfileType}
+                        />
                         <div className='w-full flex flex-col gap-[6px]'>
                             <label className='text-sm text-dark'>Professional Expertise</label>
                             <MultiSelect

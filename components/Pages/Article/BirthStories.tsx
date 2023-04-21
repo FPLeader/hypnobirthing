@@ -14,7 +14,7 @@ export default function OurBlogPosts() {
                         <BigBlogCard id={BigBlogCards[0].id} image={BigBlogCards[0].image} title={BigBlogCards[0].title} header={BigBlogCards[0].header} content={BigBlogCards[0].content} author={BigBlogCards[0].author} />
                     </div>
                     <div className='w-full lg:col-span-1'>
-                        <div className='grid gap-[20px]'>
+                        <div className='space-y-[20px]'>
                             {/* {SmallBlogsData.map((CardData: SmallBlogType, index: number) => (
                                 <SmallBlogCard key={index} id={CardData.id} image={CardData.image} header={CardData.header} content={CardData.content} author={CardData.author} />
                             ))} */}

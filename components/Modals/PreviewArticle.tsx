@@ -72,7 +72,7 @@ export default function PreviewArticle({
                                     </button>
                                 </div>
 
-                                <div className='mt-[20px] grid gap-[10px] md:gap-[20px]'>
+                                <div className='mt-[20px] space-y-[10px] md:gap-[20px]'>
                                     <div className='flex justify-center'>
                                         <div className='w-max px-[30px] font-light italic text-[14px] md:text-[16px] lg:text-[20px] text-center bg-beighe rounded-full'>{ds_category}</div>
                                     </div>

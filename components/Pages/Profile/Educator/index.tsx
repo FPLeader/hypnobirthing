@@ -5,6 +5,7 @@ import i18n from '@/services/i18n'
 import { useTranslation } from 'react-i18next'
 import { IntroductionSection, AboutMeSection, UpcomingSection, MyAritclesSection, MyContactsSection } from './Sections'
 import { PromoteBar, UpcomingClassesBar } from '@/components/Sections'
+import { TypeOptions } from '@/services/Constants/SelectOptions'
 
 export default function index() {
   const router = useRouter();
@@ -18,7 +19,7 @@ export default function index() {
   const [personalTitle, setPersonalTitle] = useState<string>('');
   const [avatarImage, setAvatarImage] = useState<string>('');
   const [videoUrl, setVideoUrl] = useState<string>('');
-  const [category, setCategory] = useState<string[]>([]);
+  const [category, setCategory] = useState<string>('');
   const [skills, setSkills] = useState<string[]>([]);
   const [aboutMe, setAboutMe] = useState<string>('');
   const [phoneNumber, setPhoneNumber] = useState<string>('');
@@ -41,7 +42,7 @@ export default function index() {
       setPersonalTitle(currentUser?.ar_personaltitle[lngId]);
       setAvatarImage(currentUser?.ds_avatar);
       setVideoUrl(currentUser?.ds_video);
-      setCategory(currentUser.ar_category);
+      setCategory(currentUser.ds_category);
       setSkills(currentUser?.ar_skills);
       setAboutMe(currentUser?.ar_aboutme[lngId]);
       //contact information
@@ -78,7 +79,10 @@ export default function index() {
                         aboutMe={aboutMe}
                         skills={skills}
                       />
-                      <UpcomingSection />
+                      {
+                        currentUser.ds_category === TypeOptions[0].value &&
+                        <UpcomingSection />
+                      }
                       <MyAritclesSection />
                       <MyContactsSection
                         phoneNumber={phoneNumber}

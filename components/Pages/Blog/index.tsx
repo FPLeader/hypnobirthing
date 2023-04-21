@@ -1,6 +1,6 @@
 import { Banner, PromoteBar, UpcomingClassesBar } from '@/components/Sections'
 import { SmallBlogCard, SmallBlogSkeletonCard } from '@/components/Cards'
-import { RegularTitle } from '../Titles'
+import { RegularTitle } from '../../Titles'
 import { useState, useEffect } from 'react'
 import API from '@/services/API'
 import { useAppDispatch, useAppSelector } from '@/services/Hooks'
@@ -55,7 +55,6 @@ export default function Blog({
 
     const loadCurrentBlog = () => {
         API.post('blog/getcurrentblog', {
-            cd_educator: currentUser.cd_educator,
             id_blog: blogId
         })
             .then((result: any) => {
@@ -88,7 +87,7 @@ export default function Blog({
             {
                 domLoaded === 0 ?
                     <>
-                        <Banner title={'Blog'} image='/img/banner1.png' />
+                        <Banner image='/img/banner1.png' />
                         <div className='w-full flex justify-center'>
                             <div className='animate-pulse w-full max-w-[1225px] mx-[20px]'>
                                 <div className='mt-[20px] md:mt-[30px] lg:mt-[70px] mb-[20px] md:mb-[30px]'>
@@ -107,7 +106,7 @@ export default function Blog({
                                                 </svg>
                                             </div>
                                         </div>
-                                        <div className='grid gap-[15px]'>
+                                        <div className='space-y-[15px]'>
                                             <div className='h-2 md:h-2.5 w-4/5 bg-gray-300 rounded-full' />
                                             <div className='h-2 md:h-2.5 w-3/5 bg-gray-300 rounded-full' />
                                             <div className='h-2 md:h-2.5 w-5/5 bg-gray-300 rounded-full' />
@@ -115,7 +114,7 @@ export default function Blog({
                                             <div className='h-2 md:h-2.5 w-4/5 bg-gray-300 rounded-full' />
                                             <div className='h-2 md:h-2.5 w-2/5 bg-gray-300 rounded-full' />
                                         </div>
-                                        <div className='grid gap-[15px]'>
+                                        <div className='space-y-[15px]'>
                                             <div className='h-2 md:h-2.5 w-5/5 bg-gray-300 rounded-full' />
                                             <div className='h-2 md:h-2.5 w-3/5 bg-gray-300 rounded-full' />
                                             <div className='h-2 md:h-2.5 w-5/5 bg-gray-300 rounded-full' />
@@ -123,7 +122,7 @@ export default function Blog({
                                             <div className='h-2 md:h-2.5 w-4/5 bg-gray-300 rounded-full' />
                                             <div className='h-2 md:h-2.5 w-3/5 bg-gray-300 rounded-full' />
                                         </div>
-                                        <div className='grid gap-[15px]'>
+                                        <div className='space-y-[15px]'>
                                             <div className='h-2 md:h-2.5 w-5/5 bg-gray-300 rounded-full' />
                                             <div className='h-2 md:h-2.5 w-3/5 bg-gray-300 rounded-full' />
                                             <div className='h-2 md:h-2.5 w-5/5 bg-gray-300 rounded-full' />
@@ -139,7 +138,7 @@ export default function Blog({
                                     </div>
                                     <div className='w-full flex flex-col gap-[20px] md:gap-[25px] lg:w-1/3'>
                                         <div className='text-dark text-[30px]'>More Birth Stories</div>
-                                        <div className='grid gap-[20px]'>
+                                        <div className='space-y-[20px]'>
                                             <SmallBlogSkeletonCard />
                                             <SmallBlogSkeletonCard />
                                             <SmallBlogSkeletonCard />
@@ -171,7 +170,7 @@ export default function Blog({
                                     </div>
                                     <div className='w-full flex flex-col gap-[20px] md:gap-[25px] lg:w-1/3'>
                                         <div className='text-dark text-[30px]'>More Birth Stories</div>
-                                        <div className='grid gap-[20px]'>
+                                        <div className='space-y-[20px]'>
                                             {/* {SmallBlogsData.map((CardData: SmallBlogType, index: number) => (
                                                 <SmallBlogCard key={index} id={CardData.id} image={CardData.image} header={CardData.header} content={CardData.content} author={CardData.author} />
                                             ))} */}

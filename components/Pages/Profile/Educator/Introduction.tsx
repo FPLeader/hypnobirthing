@@ -7,7 +7,7 @@ import ReactPlayer from 'react-player'
 interface SectionProps {
   name: string,
   personalTitle: string,
-  category: string[],
+  category: string,
   avatarImage: string,
   videoUrl: string,
 }
@@ -59,11 +59,7 @@ export default function Introduction({
               <div className='flex flex-col md:flex-row gap-[5px] max-md:justify-center max-md:items-center md:items-end text-[16px] md:text-[18px]'>
                 <div className='text-Label'>Category:&nbsp;</div>
                 <div className='flex flex-col items-center md:flex-row gap-[7px] md:gap-[5px]'>
-                  {category.map((text: string, index: number) => (
-                    <div key={index}>
-                      <BadgeCard text={text} />
-                    </div>
-                  ))}
+                  <BadgeCard text={category} />
                 </div>
               </div>
             </div>

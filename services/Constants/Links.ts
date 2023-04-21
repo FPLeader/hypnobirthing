@@ -29,7 +29,7 @@ export const HeaderLinks: LinksType[] = [
                 link: '/media',
             },
             {
-                title: 'SHOP',
+                title: 'Shop',
                 link: '/shop',
             }
         ]
@@ -80,11 +80,11 @@ export const HeaderLinks: LinksType[] = [
             },
             {
                 title: 'Become An Educator',
-                link: '/signup',
+                link: '/signup?type=0',
             },
             {
                 title: 'Support HypnoBirthing',
-                link: '/signup',
+                link: '/signup?type=1',
             },
             {
                 title: 'Log-In',
@@ -171,11 +171,11 @@ export const FooterLinks: LinksType[] = [
             },
             {
                 title: 'Become An Educator',
-                link: '/signup',
+                link: '/signup?type=0',
             },
             {
                 title: 'Support HypnoBirthing',
-                link: '/signup',
+                link: '/signup?type=1',
             },
             {
                 title: 'Log-In',

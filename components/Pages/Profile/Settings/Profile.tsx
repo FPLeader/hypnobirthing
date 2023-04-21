@@ -7,8 +7,9 @@ import { MultiSelect } from 'react-multi-select-component'
 import ReactPlayer from 'react-player'
 import { setUser } from '@/services/Actions/Auth.action'
 import API from '@/services/API'
-import { SkillSet, SelectProfile } from '@/services/Constants/SelectOptions'
+import { SkillSet, TypeOptions } from '@/services/Constants/SelectOptions'
 import { Textarea, CategoryRuleInput, IconInput } from '@/components/Inputs'
+import { CategorySelect } from '@/components/Select'
 import { UploadButton } from '@/components/Buttons'
 import { YouTubeInputModal } from '@/components/Modals'
 import { useAppDispatch, useAppSelector } from '@/services/Hooks'
@@ -17,7 +18,7 @@ import { logout } from '@/services/Actions/Auth.action'
 export default function Profile() {
     const router = useRouter();
     const dispatch = useAppDispatch();
-    
+
     const style = {
         Title: 'text-[24px] font-medium',
     }
@@ -47,8 +48,8 @@ export default function Profile() {
     const [image, setImage] = useState<string>('/img/editphoto1.png');
     const [selectedVideo, setSelectedVideo] = useState<File | null>(null);
     const [videoUrl, setVideoUrl] = useState<string>('');
-    const [description, setDescription] = useState<string>('');
-    const [profileType, setProfileType] = useState<MultiSelectOption[]>([]);
+    const [description, setDescription] = useState({ ...initialValue, rules: ['min:200', 'max:1200'] });
+    const [profileType, setProfileType] = useState(TypeOptions[0]);
     const [skills, setSkills] = useState<MultiSelectOption[]>([]);
     const [personalTitle, setPersonalTitle] = useState({ ...initialValue, rules: ['required'] });
     const [personalsite, setPersonalsite] = useState({ ...initialValue, rules: ['personalsite'] });
@@ -87,6 +88,14 @@ export default function Profile() {
                 let siteRegex = /^https:\/\/(www\.)?twitter\.com\//;
                 if (!siteRegex.test(value.value)) {
                     message = 'Invalid Twitter URL.';
+                }
+            } else if (rule === 'min:200') {
+                if (value.value.length < 200) {
+                    message = 'This field should greater than 200.';
+                }
+            } else if (rule === 'max:1200') {
+                if (value.value.length > 1200) {
+                    message = 'This field should lower than 1200.';
                 }
             }
         }
@@ -135,14 +144,12 @@ export default function Profile() {
                 else
                     setVideoUrl(currentUser?.ds_video);
             }
-            let _profileType: MultiSelectOption[] = [];
-            currentUser?.ar_category.map((text: string, index: number) => (
-                _profileType.push({
-                    value: text,
-                    label: text
-                })
-            ))
-            setProfileType(_profileType);
+            TypeOptions.map((item, index: number) => {
+                if (currentUser.ds_category === item.value) {
+                    setProfileType(TypeOptions[index]);
+                    return;
+                }
+            })
             let _skills: MultiSelectOption[] = [];
             currentUser?.ar_skills.map((text: string, index: number) => (
                 _skills.push({
@@ -151,7 +158,7 @@ export default function Profile() {
                 })
             ))
             setSkills(_skills);
-            setDescription(currentUser.ar_aboutme[lngId]);
+            setDescription({ ...initialValue, value: currentUser.ar_aboutme[lngId], rules: ['min:200', 'max:1200'] });
             setPersonalTitle({ ...initialValue, value: currentUser.ar_personaltitle[lngId], rules: ['required'] });
             //contact information
             setPersonalsite({ ...initialValue, value: currentUser?.ln_personalsite === undefined ? '' : currentUser?.ln_personalsite, rules: ['personalsite'] });
@@ -159,7 +166,7 @@ export default function Profile() {
             setFacebook({ ...initialValue, value: currentUser?.ln_facebook === undefined ? '' : currentUser?.ln_facebook, rules: ['facebook'] });
             setTwitter({ ...initialValue, value: currentUser?.ln_twitter === undefined ? '' : currentUser?.ln_twitter, rules: ['twitter'] });
         }
-    }, [currentUser]);
+    }, [currentUser, lngId]);
 
     const avatarBtn = useRef<HTMLInputElement | null>(null);
 
@@ -214,14 +221,7 @@ export default function Profile() {
 
     const isCategorysChanged = () => {
         if (currentUser) {
-            if (currentUser?.ar_category.length !== profileType.length)
-                return true;
-            else {
-                for (let i = 0; i < profileType.length; i++) {
-                    if (profileType[i].label !== currentUser?.ar_category[i])
-                        return true;
-                }
-            }
+            return currentUser.ds_category !== profileType.value;
         }
         return false;
     }
@@ -242,8 +242,12 @@ export default function Profile() {
 
     const isSaveButtonActive = () => {
         if (currentUser &&
+            !description.errorMessage &&
             !personalTitle.errorMessage &&
-            profileType.length > 0 &&
+            !personalsite.errorMessage &&
+            !instagram.errorMessage &&
+            !facebook.errorMessage &&
+            !twitter.errorMessage &&
             skills.length > 0 &&
             !loadingOpen
         ) {
@@ -260,7 +264,7 @@ export default function Profile() {
             // console.log(isSkillsChanged());
             return process.env.FILE_IMAGE_BASE + currentUser?.ds_avatar !== image ||
                 (currentUser?.ds_video === '' ? videoUrl !== '' : getVideoIdFromUrl(videoUrl) === null ? process.env.FILE_VIDEO_BASE + currentUser?.ds_video !== videoUrl : currentUser?.ds_video !== videoUrl) ||
-                currentUser?.ar_aboutme[lngId] !== description ||
+                currentUser?.ar_aboutme[lngId] !== description.value ||
                 currentUser.ar_personaltitle[lngId] !== personalTitle.value ||
                 (currentUser?.ln_personalsite === undefined ? '' !== personalsite.value : currentUser?.ln_personalsite !== personalsite.value) ||
                 (currentUser?.ln_instagram === undefined ? '' !== instagram.value : currentUser?.ln_instagram !== instagram.value) ||
@@ -306,12 +310,10 @@ export default function Profile() {
             formData.append('ln_facebook', facebook.value);
             formData.append('ln_twitter', twitter.value);
             formData.append('lngId', lngId.toString());
-            formData.append('ar_aboutme', description);
+            formData.append('ar_aboutme', description.value);
             formData.append('ar_personaltitle', personalTitle.value);
-            profileType.map((obj: MultiSelectOption, index: number) => (
-                formData.append('ar_category[]', obj.label)
-            ))
-            skills.map((obj: MultiSelectOption, index: number) => (
+            formData.append('ds_category', profileType.value);
+            skills.map((obj: MultiSelectOption) => (
                 formData.append('ar_skills[]', obj.label)
             ))
             console.log(formData);
@@ -365,24 +367,19 @@ export default function Profile() {
                                     category='About me'
                                     placeholder='To help students learn more about you, your curriculum vitae should include information about your reputation, personal qualities and interests.'
                                     inputValue={description}
-                                    handleChange={setDescription}
+                                    handleChange={handleChangeValue(description, setDescription)}
                                 />
                             </div>
-                            <div className='mt-[6px] text-Label text-[14px] font-medium'>
-                                1200 of 1200 characters (minimum 200)
+                            <div className='mt-[6px] text-Label text-[14px] font-medium text-right'>
+                                {description?.value?.length} of 1200 characters (minimum 200)
                             </div>
                             <div className='mt-[10px] flex flex-col gap-[10px]'>
-                                <div className='w-full flex flex-col gap-[6px]'>
-                                    <label className='text-sm text-dark'>Pashut Laledet Cerification</label>
-                                    <MultiSelect
-                                        options={SelectProfile}
-                                        value={profileType}
-                                        onChange={setProfileType}
-                                        labelledBy='Select'
-                                        hasSelectAll={false}
-                                        disableSearch={true}
-                                    />
-                                </div >
+                                <CategorySelect
+                                    category='Pashut Laledet Certification'
+                                    selectItems={TypeOptions}
+                                    inputValue={profileType}
+                                    handleChange={setProfileType}
+                                />
                                 <div className='w-full flex flex-col gap-[6px]'>
                                     <label className='text-sm text-dark'>Professional Expertise</label>
                                     <MultiSelect
@@ -500,7 +497,7 @@ export default function Profile() {
                                             />
                                     }
                                     <div className='absolute top-0 w-full h-full flex justify-center items-center'>
-                                        <div className='grid gap-[15px]'>
+                                        <div className='space-y-[15px]'>
                                             <div>
                                                 <input
                                                     accept='video/*'

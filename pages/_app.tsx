@@ -48,6 +48,7 @@ export default function App({ Component, pageProps }: AppProps) {
               draggable
               pauseOnHover
               theme='light'
+              className={'whitespace-pre-line'}
             />
           </div>
         </LocaleContext.Provider>

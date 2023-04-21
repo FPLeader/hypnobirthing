@@ -104,10 +104,10 @@ export default function YouTubeInput({
                                         {width >= 768 ? <CloseIcon /> : <CloseIcon width={15} height={15} />}
                                     </button>
                                 </div>
-                                <div className='mt-[20px] grid gap-[10px]'>
+                                <div className='mt-[20px] space-y-[10px]'>
                                     <CategoryRuleInput
                                         category='Input your YouTube link'
-                                        placeholder='https://www.youtube.com/watch?'
+                                        placeholder='https://www.youtube.com/embed/dQw4w9WgXcQ'
                                         inputValue={youTubeLink}
                                         handleChange={handleChangeValue(youTubeLink, setYouTubeLink)}
                                     />

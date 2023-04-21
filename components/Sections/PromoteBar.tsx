@@ -1,13 +1,18 @@
 import { BlogData, BlogType } from '@/services/Constants/Sections/BlogData'
 import { useRouter } from 'next/router'
+import i18n from '@/services/i18n'
+import { useTranslation } from 'react-i18next'
 
 export default function PromoteBar() {
     const router = useRouter();
+    // language option
+    const { t } = useTranslation();
+    const lngId: number = i18n.language === 'en' ? 0 : 1;
 
     return (
         <div className='w-full flex justify-center'>
             <div className='w-full max-w-[1225px] mx-[20px]'>
-                <div className='flex flex-col md:flex-row md:justify-between gap-[20px] md:gap-[35px]'>
+                <div dir={lngId === 0 ? 'ltr' : 'rtl'} className='flex flex-col md:flex-row md:justify-between gap-[20px] md:gap-[35px]'>
                     {BlogData.map((obj: BlogType, index: number) => (
                         <button
                             key={index}
@@ -17,7 +22,7 @@ export default function PromoteBar() {
                             <div className='w-[100px] md:w-[120px]'>
                                 <img draggable='false' src={obj.image} alt={obj.title} className='w-full' />
                             </div>
-                            <div className='text-dark text-[20px] md:text-[32px] font-light italic text-center px-[20px]'>{obj.title}</div>
+                            <div className='text-dark text-[20px] md:text-[32px] font-light italic text-center px-[20px]'>{t(obj.title)}</div>
                         </button>
                     ))}
                 </div >

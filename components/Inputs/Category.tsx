@@ -5,7 +5,7 @@ interface InputProps {
     inputValue: string,
     handleChange: any,
     disabled?: boolean,
-    dir?: string,
+    lngId?: number
 }
 
 export default function Category({
@@ -15,19 +15,17 @@ export default function Category({
     inputValue,
     handleChange,
     disabled = false,
-    dir = 'ltr'
+    lngId = 0
 }: InputProps) {
     return (
         <div className='flex flex-col gap-[6px]'>
-            {category !== '' ?
-                <label
-                    className={`text-[14px] text-dark ${dir ==='rtl' && 'text-right'}`}
-                >{category}</label>
-                :
-                <></>
+            {category !== '' &&
+                <label className={`text-[14px] text-dark ${lngId === 0 ? 'text-left' : 'text-right'}`}>
+                    {category}
+                </label>
             }
             <input
-                dir={dir}
+                dir={lngId === 0 ? 'ltr' : 'rtl'}
                 type={type}
                 id={category}
                 value={inputValue}

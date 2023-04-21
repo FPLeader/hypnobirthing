@@ -5,7 +5,7 @@ import { ExerciseSection, TechniquesSection } from './Sections'
 export default function index() {
     return (
         <div className='pt-[70px] md:pt-[90px] w-full'>
-            <Banner title='Course Content' image='/img/banner8.png' />
+            <Banner image='/img/banner8.png' />
             <div className='w-full flex justify-center'>
                 <div className='w-full max-w-[1225px] mx-[20px]'>
                     <div className='mt-[20px] md:mt-[30px] lg:mt-[70px]'>

@@ -50,15 +50,15 @@ export default function EditArticle({
     // values
     const [loadingOpen, setLoadingOpen] = useState<boolean>(false);
     const languageOptions = [
-        { id: 0, name: 'I only know English' },
-        { id: 1, name: 'I only know Hebrew' },
-        { id: 2, name: 'I know English and Hebrew both' },
+        { id: 0, value: 'I only know English' },
+        { id: 1, value: 'I only know Hebrew' },
+        { id: 2, value: 'I know English and Hebrew both' },
     ]
     const [selectedLangauge, setSelectedLanguage] = useState(languageOptions[0]);
     const categoryOptions = [
-        { id: 0, name: 'Article' },
-        { id: 1, name: 'Birth Stories' },
-        { id: 2, name: 'Recipe' },
+        { id: 0, value: 'Article' },
+        { id: 1, value: 'Birth Stories' },
+        { id: 2, value: 'Recipe' },
     ]
     const [selectedCategory, setSelectedCategory] = useState(categoryOptions[0]);
     // for English
@@ -114,7 +114,7 @@ export default function EditArticle({
             setReadTimeHe(mainbody[0].ds_readtime);
         }
         categoryOptions.map((currentOption) => {
-            if (currentOption.name === ds_category) {
+            if (currentOption.value === ds_category) {
                 setSelectedCategory(categoryOptions[currentOption.id]);
                 return;
             }
@@ -202,11 +202,11 @@ export default function EditArticle({
 
     const isButtonDisabled = () => {
         if (selectedLangauge.id === 0)
-            return !((ds_thumbnail !== '' && image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleEn !== mainbody[0].ds_title || contentEn !== mainbody[0].ds_content || readTimeEn !== mainbody[0].ds_readtime || selectedCategory.name !== ds_category);
+            return !((ds_thumbnail !== '' && image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleEn !== mainbody[0].ds_title || contentEn !== mainbody[0].ds_content || readTimeEn !== mainbody[0].ds_readtime || selectedCategory.value !== ds_category);
         else if (selectedLangauge.id === 1)
-            return !((ds_thumbnail !== '' && image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleHe !== mainbody[0].ds_title || contentHe !== mainbody[0].ds_content || readTimeHe !== mainbody[0].ds_readtime || selectedCategory.name !== ds_category);
+            return !((ds_thumbnail !== '' && image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleHe !== mainbody[0].ds_title || contentHe !== mainbody[0].ds_content || readTimeHe !== mainbody[0].ds_readtime || selectedCategory.value !== ds_category);
         else
-            return !((ds_thumbnail !== '' && image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleEn !== mainbody[0].ds_title || contentEn !== mainbody[0].ds_content || readTimeEn !== mainbody[0].ds_readtime || selectedCategory.name !== ds_category || titleHe !== mainbody?.[1]?.ds_title || contentHe !== mainbody?.[1]?.ds_content || readTimeHe !== mainbody?.[1]?.ds_readtime);
+            return !((ds_thumbnail !== '' && image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleEn !== mainbody[0].ds_title || contentEn !== mainbody[0].ds_content || readTimeEn !== mainbody[0].ds_readtime || selectedCategory.value !== ds_category || titleHe !== mainbody?.[1]?.ds_title || contentHe !== mainbody?.[1]?.ds_content || readTimeHe !== mainbody?.[1]?.ds_readtime);
     }
 
     // upload blog
@@ -226,7 +226,7 @@ export default function EditArticle({
             }
             formData.append('id_blog', id_blog);
             formData.append('cd_educator', cd_educator);
-            formData.append('ds_category', selectedCategory.name);
+            formData.append('ds_category', selectedCategory.value);
             if (isPublish())
                 formData.append('ds_state', 'underreview');
             else
@@ -388,7 +388,7 @@ export default function EditArticle({
                                         {width >= 768 ? <CloseIcon /> : <CloseIcon width={15} height={15} />}
                                     </button>
                                 </div>
-                                <div className='mt-[20px] grid gap-[10px]'>
+                                <div className='mt-[20px] space-y-[10px]'>
                                     <CategorySelect
                                         category='Language'
                                         selectItems={languageOptions}
@@ -481,7 +481,7 @@ export default function EditArticle({
                                                 }
                                             </div>
 
-                                            <div className='grid gap-[6px]'>
+                                            <div className='space-y-[6px]'>
                                                 <label className='text-[14px] text-dark'>Main content</label>
                                                 <div>
                                                     <QuillNoSSRWrapper
@@ -589,7 +589,7 @@ export default function EditArticle({
                                                     }
                                                 </div>
 
-                                                <div className='grid gap-[6px]'>
+                                                <div className='space-y-[6px]'>
                                                     <label className='text-[14px] text-dark text-right'>תוכן עיקרי</label>
                                                     <div>
                                                         <QuillNoSSRWrapper
@@ -614,7 +614,7 @@ export default function EditArticle({
                                             :
                                             <>
                                                 {/* for English */}
-                                                <div className='grid gap-[6px]'>
+                                                <div className='space-y-[6px]'>
                                                     <label className='text-[14px] text-dark'>Title (English)</label>
                                                     <CategoryInput
                                                         category=''
@@ -712,7 +712,7 @@ export default function EditArticle({
 
                                                 {/* for English */}
 
-                                                <div className='grid gap-[6px]'>
+                                                <div className='space-y-[6px]'>
                                                     <label className='text-[14px] text-dark'>Main content (English)</label>
                                                     <div>
                                                         <QuillNoSSRWrapper
@@ -729,7 +729,7 @@ export default function EditArticle({
 
                                                 {/* for Hebrew */}
 
-                                                <div className='grid gap-[6px]'>
+                                                <div className='space-y-[6px]'>
                                                     <label className='text-[14px] text-dark text-right'>תוכן עיקרי (עברית)</label>
                                                     <div>
                                                         <QuillNoSSRWrapper

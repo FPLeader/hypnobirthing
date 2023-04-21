@@ -1,9 +1,9 @@
-const ISSERVER = typeof window === "undefined";
+const ISSERVER = typeof window === 'undefined';
 
 const data = {
     currentUser: !ISSERVER && localStorage.user ? JSON.parse(localStorage.user) : '',
     isLogIn: !ISSERVER && localStorage.isLogIn ? JSON.parse(localStorage.isLogIn) : '',
-    tempUser: !ISSERVER && localStorage.tempUser ? JSON.parse(localStorage.tempUser) : '',
+    tempUser: !ISSERVER && localStorage.tempUser ? localStorage.tempUser : '',
 };
 
 // eslint-disable-next-line default-param-last

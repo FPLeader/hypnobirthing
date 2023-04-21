@@ -26,23 +26,28 @@ export const SelectData1: SelectItem[] = [
     }
 ]
 
-interface SelectProfileType {
+interface CategorySelectItemType {
+    id: number,
+    value: string,
+}
+
+export const TypeOptions: CategorySelectItemType[] = [
+    {
+        id: 0,
+        value: 'Educator'
+    },
+    {
+        id: 1,
+        value: 'Birth Professional Supports HypnoBirthing'
+    }
+]
+
+interface SelectItemType {
     value: string,
     label: string,
 }
 
-export const SelectProfile: SelectProfileType[] = [
-    {
-        value: 'Educator',
-        label: 'Educator'
-    },
-    {
-        value: 'Birth Professional Supports HypnoBirthing',
-        label: 'Birth Professional Supports HypnoBirthing'
-    }
-]
-
-export const SkillSet: SelectProfileType[] = [
+export const SkillSet: SelectItemType[] = [
     {
         value: 'Childbirth educator',
         label: 'Childbirth educator'

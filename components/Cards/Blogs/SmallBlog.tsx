@@ -81,7 +81,7 @@ export default function SmallBlogCard({
                 }
             </div>
             <div
-                className='w-full text-dark grid gap-[5px] pr-[15px]'
+                className='w-full text-dark space-y-[5px] pr-[15px]'
                 onClick={() => { disabled ? '' : router.push(`/blog/${id}`) }}
             >
             <div dir={currentLngId() === 0 ? 'ltr' : 'rtl'} className='text-[16px] md:text-[20px] font-medium line-clamp-1'>{getTextFromTitle()}</div>

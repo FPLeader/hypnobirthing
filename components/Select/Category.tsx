@@ -4,7 +4,7 @@ import { CheckIcon, UpdownIcon } from '@/assests/Icons'
 
 interface SelectItem {
     id: number,
-    name: string,
+    value: string,
 }
 
 interface SelectProps {
@@ -27,7 +27,7 @@ export default function Category({
             <Listbox value={inputValue} onChange={handleChange}>
                 <div className='relative mt-1'>
                     <Listbox.Button className='relative w-full cursor-default rounded-[10px] bg-white py-[11px] px-[12px] text-left border border-deviders'>
-                        <span className='block truncate font-[Lato] text-[16px]'>{inputValue.name}</span>
+                        <span className='block truncate font-[Lato] text-[16px]'>{inputValue.value}</span>
                         <span className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-[12px]'>
                             <UpdownIcon />
                         </span>
@@ -48,11 +48,11 @@ export default function Category({
                                     value={item}
                                 >
                                     <span
-                                        className={`block truncate py-[10px] px-[12px] ${item.name === inputValue.name ? 'font-medium bg-bcg_2' : 'font-normal'}`}
+                                        className={`block truncate py-[10px] px-[12px] ${item.value === inputValue.value ? 'font-medium bg-bcg_2' : 'font-normal'}`}
                                     >
-                                        {item.name}
+                                        {item.value}
                                     </span>
-                                    {item.name === inputValue.name ? (
+                                    {item.value === inputValue.value ? (
                                         <span className='absolute inset-y-0 right-0 flex items-center pr-[12px]'>
                                             <CheckIcon />
                                         </span>

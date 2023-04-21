@@ -62,7 +62,7 @@ export default function MemberProfile({
                                         {width >= 768 ? <CloseIcon /> : <CloseIcon width={15} height={15} />}
                                     </button>
                                 </div>
-                                <div className='grid gap-[20px] font-[lato]'>
+                                <div className='space-y-[20px] font-[lato]'>
                                     <div className='flex flex-col md:flex-row gap-[25px]'>
                                         <div className='flex justify-center'>
                                             <img draggable='false' src={image} alt={name} className='w-full rounded-[20px] max-w-[385px] md:min-w-[229px]' />

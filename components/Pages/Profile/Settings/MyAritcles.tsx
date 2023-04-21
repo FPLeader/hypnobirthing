@@ -30,7 +30,7 @@ export default function MyAritcles() {
     }
 
     // values
-    const [domLoaded, setDomLoaded] = useState<number>(0);
+    const [domLoaded, setDomLoaded] = useState<number>(-1);
     const [numberOfTotal, setNumberOfTotal] = useState<number>(0);
 
     interface mainbodyType {
@@ -73,13 +73,8 @@ export default function MyAritcles() {
         setDomLoaded(1);
     }
 
-    // initalize
-    useEffect(() => {
-        // load blogs
-        loadBlogs();
-    }, [isOpen]);
-
     const loadBlogs = () => {
+        console.log('loadblogs');
         API.post('blog/getmyblogs', {
             cd_educator: currentUser.cd_educator,
         })
@@ -107,8 +102,15 @@ export default function MyAritcles() {
             })
     }
 
+
     useEffect(() => {
-        if (domLoaded === 2)
+        setDomLoaded(0);
+    }, [])
+
+    useEffect(() => {
+        if (domLoaded === 0) {
+            loadBlogs();
+        } else if (domLoaded === 2)
             toast.error('please reoload your page');
         else if (domLoaded === 3) {   // jwt expired
             dispatch(logout(router, '/login'));
@@ -122,6 +124,7 @@ export default function MyAritcles() {
                 isOpen={isOpen}
                 closeModal={closeModal}
                 numberOfTotal={numberOfTotal}
+                loadBlogs={loadBlogs}
             />
             <div className='text-[24px] lg:text-[28px] font-medium'>
                 {

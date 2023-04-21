@@ -18,10 +18,10 @@ export default function Index({
     const { isLogIn } = useAppSelector((state) => state.auth);
 
     const tabOptions = [
-        { id: 0, name: 'Profile Pashut Laledet' },
-        { id: 1, name: 'Log-in and security' },
-        { id: 2, name: 'Upcoming Sessions' },
-        { id: 3, name: 'My articles' },
+        { id: 0, value: 'Profile Pashut Laledet' },
+        { id: 1, value: 'Log-in and security' },
+        { id: 2, value: 'Upcoming Sessions' },
+        { id: 3, value: 'My articles' },
     ]
     const [tab, setTab] = useState(tabOptions[0]);
 

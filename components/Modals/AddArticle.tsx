@@ -23,6 +23,7 @@ interface AddArticleProps {
     // openModal: () => void,
     closeModal: () => void,
     numberOfTotal: number, /// number of total blogs
+    loadBlogs: () => void
 }
 
 export default function AddArticle({
@@ -30,7 +31,8 @@ export default function AddArticle({
     // setIsOpen,
     // openModal,
     closeModal,
-    numberOfTotal = 0
+    numberOfTotal = 0,
+    loadBlogs
 }: AddArticleProps) {
     const router = useRouter();
     const dispatch = useAppDispatch();
@@ -40,15 +42,15 @@ export default function AddArticle({
     // values
     const [loadingOpen, setLoadingOpen] = useState<boolean>(false);
     const languageOptions = [
-        { id: 0, name: 'I only know English' },
-        { id: 1, name: 'I only know Hebrew' },
-        { id: 2, name: 'I know English and Hebrew both' },
+        { id: 0, value: 'I only know English' },
+        { id: 1, value: 'I only know Hebrew' },
+        { id: 2, value: 'I know English and Hebrew both' },
     ]
     const [selectedLangauge, setSelectedLanguage] = useState(languageOptions[0]);
     const categoryOptions = [
-        { id: 0, name: 'Article' },
-        { id: 1, name: 'Birth Stories' },
-        { id: 2, name: 'Recipe' },
+        { id: 0, value: 'Article' },
+        { id: 1, value: 'Birth Stories' },
+        { id: 2, value: 'Recipe' },
     ]
     const [selectedCategory, setSelectedCategory] = useState(categoryOptions[0]);
     // for English
@@ -153,7 +155,7 @@ export default function AddArticle({
             formData.append('id_blog', id_blog);
             formData.append('cd_educator', currentUser.cd_educator);
             formData.append('nm_user', currentUser.nm_user);
-            formData.append('ds_category', selectedCategory.name);
+            formData.append('ds_category', selectedCategory.value);
             if (isPublish())
                 formData.append('ds_state', 'underreview');
             else
@@ -249,6 +251,8 @@ export default function AddArticle({
                         setImageUrls([]);
                         // close modal
                         closeModal();
+                        // important load blog again
+                        loadBlogs();
                     }
                 })
                 .catch((err) => {
@@ -312,7 +316,7 @@ export default function AddArticle({
                                         {width >= 768 ? <CloseIcon /> : <CloseIcon width={15} height={15} />}
                                     </button>
                                 </div>
-                                <div className='mt-[20px] grid gap-[10px]'>
+                                <div className='mt-[20px] space-y-[10px]'>
                                     <CategorySelect
                                         category='Language'
                                         selectItems={languageOptions}
@@ -406,7 +410,7 @@ export default function AddArticle({
                                                 }
                                             </div>
 
-                                            <div className='grid gap-[6px]'>
+                                            <div className='space-y-[6px]'>
                                                 <label className='text-[14px] text-dark'>
                                                     Main content
                                                 </label>
@@ -434,7 +438,7 @@ export default function AddArticle({
                                             ?
                                             <>
                                                 <CategoryInput
-                                                    dir='rtl'
+                                                    lngId={1}
                                                     category='כותרת'
                                                     placeholder='הזן טקסט כותרת כאן'
                                                     inputValue={titleHe}
@@ -518,7 +522,7 @@ export default function AddArticle({
                                                     }
                                                 </div>
 
-                                                <div className='grid gap-[6px]'>
+                                                <div className='space-y-[6px]'>
                                                     <label className='text-[14px] text-dark text-right'>תוכן עיקרי</label>
                                                     <div>
                                                         <QuillNoSSRWrapper
@@ -543,7 +547,7 @@ export default function AddArticle({
                                             :
                                             <>
                                                 {/* for English */}
-                                                <div className='grid gap-[6px]'>
+                                                <div className='space-y-[6px]'>
                                                     <label className='text-[14px] text-dark'>Title (English)</label>
                                                     <CategoryInput
                                                         category=''
@@ -555,7 +559,7 @@ export default function AddArticle({
 
                                                 {/* for Hebrew */}
                                                 <CategoryInput
-                                                    dir='rtl'
+                                                    lngId={1}
                                                     category='כותרת'
                                                     placeholder='הזן טקסט כותרת כאן'
                                                     inputValue={titleHe}
@@ -641,7 +645,7 @@ export default function AddArticle({
 
                                                 {/* for English */}
 
-                                                <div className='grid gap-[6px]'>
+                                                <div className='space-y-[6px]'>
                                                     <label className='text-[14px] text-dark'>Main content (English)</label>
                                                     <div>
                                                         <QuillNoSSRWrapper
@@ -658,7 +662,7 @@ export default function AddArticle({
 
                                                 {/* for Hebrew */}
 
-                                                <div className='grid gap-[6px]'>
+                                                <div className='space-y-[6px]'>
                                                     <label className='text-[14px] text-dark text-right'>תוכן עיקרי (עברית)</label>
                                                     <div>
                                                         <QuillNoSSRWrapper
@@ -680,7 +684,7 @@ export default function AddArticle({
                                                     handleChange={setReadTimeEn}
                                                 />
                                                 <CategoryInput
-                                                    dir='rtl'
+                                                    lngId={1}
                                                     category='הזן זמן קריאה (עברית)'
                                                     placeholder='7 דקות'
                                                     inputValue={readTimeHe}

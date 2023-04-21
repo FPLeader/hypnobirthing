@@ -66,7 +66,7 @@ export default function AddSession({
                                         {width >= 768 ? <CloseIcon /> : <CloseIcon width={15} height={15} />}
                                     </button>
                                 </div>
-                                <div className='mt-[20px] grid gap-[10px] font-[lato]'>
+                                <div className='mt-[20px] space-y-[10px] font-[lato]'>
                                     <CategoryInput
                                         category='Name of session'
                                         placeholder=''
@@ -91,7 +91,7 @@ export default function AddSession({
                                             setValue={setEndDate}
                                         />
                                     </div>
-                                    <div className='grid gap-[6px]'>
+                                    <div className='space-y-[6px]'>
                                         <label className='text-[14px] text-dark'>About class</label>
                                         <Textarea
                                             placeholder='Enter text here'
@@ -99,7 +99,7 @@ export default function AddSession({
                                             handleChange={setIntroduction}
                                         />
                                     </div>
-                                    <div className='grid gap-[6px]'>
+                                    <div className='space-y-[6px]'>
                                         <label className='text-[14px] text-dark'>What is included?</label>
                                         <Textarea
                                             placeholder='Enter text here'

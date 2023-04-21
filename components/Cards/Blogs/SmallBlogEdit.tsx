@@ -45,12 +45,6 @@ export default function SmallBlogEditCard({
     const [isEditOpen, setIsEditOpen] = useState<boolean>(false);
     const [isDeleteOpen, setIsDeleteOpen] = useState<boolean>(false);
 
-    // initalize
-    useEffect(() => {
-        // load blogs
-        loadBlogs();
-    }, [isEditOpen]);
-
     function closePreviewModal() {
         setIsPreviewOpen(false)
     }
@@ -149,6 +143,10 @@ export default function SmallBlogEditCard({
                                 toast.error('Something went wrong.');
                                 console.log(err);
                             })
+                    } else {
+                        toast.success('Deleted blog successfully.');
+                        // reload get my blogs function
+                        loadBlogs();
                     }
                 }
             })
@@ -197,7 +195,7 @@ export default function SmallBlogEditCard({
                     </div>
                 }
             </div>
-            <div className='w-full text-center text-dark grid gap-[5px] pr-[15px]'>
+            <div className='w-full text-center text-dark space-y-[5px] pr-[15px]'>
                 <div dir={currentLngId() === 0 ? 'ltr' : 'rtl'} className='text-[16px] md:text-[20px] font-medium line-clamp-1'>{getTextFromTitle()}</div>
                 <div dir={currentLngId() === 0 ? 'ltr' : 'rtl'} className='text-[14px] md:text-[16px] line-clamp-2'>{getTextFromContent()}</div>
                 <div className='text-[14px] md:text-[16px] opacity-60 capitalize line-clamp-1'>—&nbsp;{author}</div>
