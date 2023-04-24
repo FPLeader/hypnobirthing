@@ -46,7 +46,7 @@ export default function Upcoming() {
           </>
           :
           <div>
-            <div className='text-[14px] lg:text-[16px]'>You can't see this page, because your "Pashut Laledet Certification" is "Birth Professional Supports HypnoBirthing". If you want to see this page, please update "Pashut Laledet Certification"</div>
+            <div className='text-[14px] lg:text-[16px]'>You can&apos;t see this page, because your &ldquo;Pashut Laledet Certification&ldquo; is "Birth Professional Supports HypnoBirthing&ldquo;. If you want to see this page, please update &ldquo;Pashut Laledet Certification&ldquo;</div>
           </div>
       }
     </div>

@@ -5,7 +5,9 @@ const ReactQuill = dynamic(
     async () => {
         const { default: RQ } = await import('react-quill');
         // @ts-ignore
-        return ({ forwardedRef, ...props }) => <RQ ref={forwardedRef} {...props} />;
+        const WrappedComponent = ({ forwardedRef, ...props }) => <RQ ref={forwardedRef} {...props} />;
+        WrappedComponent.displayName = 'ReactQuill';
+        return WrappedComponent;
     },
     {
         ssr: false,
