@@ -7,7 +7,7 @@ import { IntroductionSection, AboutMeSection, UpcomingSection, MyAritclesSection
 import { PromoteBar, UpcomingClassesBar } from '@/components/Sections'
 import { TypeOptions } from '@/services/Constants/SelectOptions'
 
-export default function index() {
+export default function Index() {
   const router = useRouter();
   const [domLoaded, setDomLoaded] = useState<boolean>(false);
   const { isLogIn } = useAppSelector((state) => state.auth);

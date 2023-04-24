@@ -1,7 +1,7 @@
 import { IntroductionSection, AboutClassSection, SubmitSection, FaqSection, RelatedCoursesSection, MyContactsSection, FeedbackSection } from './Sections'
 import { PromoteBar, UpcomingClassesBar } from '@/components/Sections'
 
-export default function index() {
+export default function Index() {
   return (
     <div className='pt-[70px] md:pt-[90px] w-full'>
       <IntroductionSection />

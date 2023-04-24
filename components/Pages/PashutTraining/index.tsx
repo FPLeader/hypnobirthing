@@ -13,7 +13,7 @@ import { toast } from 'react-toastify'
 import i18n from '@/services/i18n'
 import { useTranslation } from 'react-i18next'
 
-export default function index() {
+export default function Index() {
     // language option
     const { t } = useTranslation();
     const lngId: number = i18n.language === 'en' ? 0 : 1;

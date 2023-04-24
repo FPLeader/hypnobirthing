@@ -2,7 +2,7 @@ import { Banner, PromoteBar, UpcomingClassesBar } from '@/components/Sections'
 import { RegularTitle } from '@/components/Titles'
 import { ExerciseSection, TechniquesSection } from './Sections'
 
-export default function index() {
+export default function Index() {
     return (
         <div className='pt-[70px] md:pt-[90px] w-full'>
             <Banner image='/img/banner8.png' />

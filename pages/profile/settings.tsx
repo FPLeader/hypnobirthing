@@ -2,7 +2,7 @@ import { EducatorSettingsPage } from '@/components/Pages'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react';
 
-export default function aboutus() {
+export default function Settings() {
     const router = useRouter();
     const [settingId, setSettingId] = useState<number>(0);
     const { setting } = router.query;

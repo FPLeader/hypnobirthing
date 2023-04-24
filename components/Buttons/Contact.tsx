@@ -31,7 +31,7 @@ export default function Contact({
     }
 
     return (
-        <a href={link} target='_blank'>
+        <a href={link} target='_blank' rel='noreferrer'>
             <div
                 className={`w-full h-[50px] md:h-[45px] flex justify-center items-center disabled:bg-disabled border border-beighe ${BgType === 0 ? 'bg-beighe_2 hover:bg-beighe active:bg-beighe_2' : 'bg-bcg hover:bg-beighe_2 active:bg-bcg'} rounded-[10px] transition-all duration-400`}
             >

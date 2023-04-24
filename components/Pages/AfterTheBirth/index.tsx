@@ -1,7 +1,7 @@
 import { Banner, UpcomingClassesBar } from '@/components/Sections'
 import { IntroductionSection, SoftLandingSection, BreastfeedingSection, CourseSection, PostpartumSection, NewMomSection } from './Sections'
 
-export default function index() {
+export default function Index() {
     return (
         <div className='pt-[70px] md:pt-[90px] w-full'>
             <Banner image='/img/banner10.png' />
