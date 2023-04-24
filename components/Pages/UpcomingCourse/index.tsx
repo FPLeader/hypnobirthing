@@ -48,7 +48,7 @@ export default function UpcomingCourse() {
         <div className='pt-[70px] lg:pt-[90px] pb-[60px] md:pb-[92.5px] lg:pb-[160px] w-full flex justify-center'>
             <div dir='ltr' className='max-w-[1225px] px-[20px] w-full'>
                 <div className='w-full mt-[20px] md:mt-[30px] lg:mt-[70px]'>
-                    <RegularTitle text='Upcoming Childbirth Courses' />
+                    <RegularTitle lngId={lngId} text='Upcoming Childbirth Courses' />
                 </div>
                 <div className='w-full mt-[20px] flex flex-col-reverse lg:flex-row md:justify-between lg:items-center gap-[20px] md:gap-x-[35px]'>
                     <div className='flex flex-col gap-[20px]'>

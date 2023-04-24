@@ -5,6 +5,8 @@ import { useAppSelector } from '@/services/Hooks'
 import { RegularTitle } from '@/components/Titles'
 import { CategorySelect } from '@/components/Select'
 import { ProfileSection, LogInSecuritySection, UpcomingSection, MyAritclesSection } from './Sections'
+import i18n from '@/services/i18n'
+import { useTranslation } from 'react-i18next'
 
 interface SettingsPageProps {
     settingId: number,
@@ -16,6 +18,9 @@ export default function Index({
     const router = useRouter();
     const [domLoaded, setDomLoaded] = useState<boolean>(false);
     const { isLogIn } = useAppSelector((state) => state.auth);
+    // language option
+    const { t } = useTranslation();
+    const lngId: number = i18n.language === 'en' ? 0 : 1;
 
     const tabOptions = [
         { id: 0, value: 'Profile Pashut Laledet' },
@@ -54,7 +59,7 @@ export default function Index({
         <div className='pt-[70px] md:pt-[90px] w-full'>
             <div className='w-full flex justify-center my-[20px] md:my-[30px] lg:my-[50px]'>
                 <div className='w-full max-w-[1225px] mx-[20px] flex flex-col gap-[20px] md:gap-[30px] lg:gap-[40px]'>
-                    <RegularTitle text='Profile Settings' />
+                    <RegularTitle lngId={lngId} text='Profile Settings' />
                     {domLoaded &&
                         <>
                             <div className='max-w-[864px] text-dark'>

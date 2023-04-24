@@ -6,14 +6,20 @@ import { SelectData1 } from '@/services/Constants/SelectOptions'
 import { PromoteBar, UpcomingClassesBar } from '../../Sections'
 import { RegularTitle } from '../../Titles'
 import { SearchInput } from '../../Inputs'
+import i18n from '@/services/i18n'
+import { useTranslation } from 'react-i18next'
 
 export default function OurCommunity() {
+    // language option
+    const { t } = useTranslation();
+    const lngId: number = i18n.language === 'en' ? 0 : 1;
+    
     return (
         <>
             <div className='w-full flex justify-center'>
                 <div className='max-w-[1225px] mx-[20px] pt-[70px] md:pt-[90px]'>
                     <div className='mt-[20px] md:mt-[30px] lg:mt-[70px] md:flex md:justify-between md:items-end'>
-                        <RegularTitle text='Our Community' />
+                        <RegularTitle lngId={lngId} text='Our Community' />
                         <div className='hidden md:block'>
                             <RegularButton text='Become a professional' />
                         </div>

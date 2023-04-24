@@ -1,15 +1,21 @@
 import { Banner, PromoteBar, UpcomingClassesBar } from '@/components/Sections'
 import { RegularTitle } from '@/components/Titles'
 import { ExerciseSection, TechniquesSection } from './Sections'
+import i18n from '@/services/i18n'
+import { useTranslation } from 'react-i18next'
 
 export default function Index() {
+    // language option
+    const { t } = useTranslation();
+    const lngId: number = i18n.language === 'en' ? 0 : 1;
+
     return (
         <div className='pt-[70px] md:pt-[90px] w-full'>
             <Banner image='/img/banner8.png' />
             <div className='w-full flex justify-center'>
                 <div className='w-full max-w-[1225px] mx-[20px]'>
                     <div className='mt-[20px] md:mt-[30px] lg:mt-[70px]'>
-                        <RegularTitle text='Course Content' />
+                        <RegularTitle lngId={lngId} text='Course Content' />
                     </div>
                     <div className='w-full mt-[20px] grid lg:grid-cols-2 gap-[20px] md:gap-[30px] lg:gap-x-[40px] lg:gap-y-[70px]'>
                         <ExerciseSection />

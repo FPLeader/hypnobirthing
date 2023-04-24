@@ -7,13 +7,19 @@ import { RegularTitle } from '@/components/Titles'
 import { BigBlogCard } from '@/components/Cards'
 import { SmallBlogCard } from '@/components/Cards'
 import { SmallBlogsData, SmallBlogType } from '@/services/Constants/Sections/BlogData'
+import i18n from '@/services/i18n'
+import { useTranslation } from 'react-i18next'
 
 export default function OurBlogPosts() {
+    // language option
+    const { t } = useTranslation();
+    const lngId: number = i18n.language === 'en' ? 0 : 1;
+
     return (
         <div className='w-full flex justify-center'>
             <div className='w-full max-w-[1225px] mx-[20px]'>
                 <div className='pt-[50px] relative'>
-                    <RegularTitle text='Our Blog Posts' />
+                    <RegularTitle lngId={lngId} text='Our Blog Posts' />
                     <div className='text-base max-w-[800px] mt-[20px]'>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     </div>

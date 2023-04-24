@@ -3,12 +3,18 @@ import { BigBlogCard } from '@/components/Cards'
 import { SmallBlogCard } from '@/components/Cards'
 import { RegularTitle } from '@/components/Titles'
 import { SmallBlogsData, SmallBlogType } from '@/services/Constants/Sections/BlogData'
+import i18n from '@/services/i18n'
+import { useTranslation } from 'react-i18next'
 
 export default function OurBlogPosts() {
+    // language option
+    const { t } = useTranslation();
+    const lngId: number = i18n.language === 'en' ? 0 : 1;
+
     return (
         <div className='w-full flex justify-center'>
             <div className='w-full max-w-[1225px] mx-[20px]'>
-                <RegularTitle text='Birth stories' />
+                <RegularTitle lngId={lngId} text='Birth stories' />
                 <div className='mt-[20px] grid lg:grid-cols-3 gap-[20px] lg:gap-[35px]'>
                     <div className='w-full lg:col-span-2'>
                         <BigBlogCard id={BigBlogCards[0].id} image={BigBlogCards[0].image} title={BigBlogCards[0].title} header={BigBlogCards[0].header} content={BigBlogCards[0].content} author={BigBlogCards[0].author} />
