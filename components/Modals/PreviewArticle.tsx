@@ -83,7 +83,7 @@ export default function PreviewArticle({
                                                 <img draggable='false' src={process.env.FILE_IMAGE_BASE + ds_thumbnail} alt='' className={`w-full h-[205px] md:h-[300px] object-cover`} />
                                             </div>
                                             <div className='mt-[20px] mb-[20px] md:mb-[30px]'>
-                                                <RegularTitle text={blogData.ds_title ?? ''} />
+                                                <RegularTitle lngId={blogData.id_lng} text={blogData.ds_title ?? ''} />
                                             </div>
                                             <div className='font-[lato] ql-editor !p-0' dangerouslySetInnerHTML={{ __html: blogData.ds_content ?? '' }} />
                                             <div className='text-[16px] md:text-[18px] font-normal italic opacity-60 flex flex-col items-center md:flex-row md:justify-between'>
