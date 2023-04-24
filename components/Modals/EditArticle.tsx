@@ -506,7 +506,7 @@ export default function EditArticle({
                                             ?
                                             <>
                                                 <CategoryInput
-                                                    dir='rtl'
+                                                    lngId={1}
                                                     category='כותרת'
                                                     placeholder='הזן טקסט כותרת כאן'
                                                     inputValue={titleHe}
@@ -626,7 +626,7 @@ export default function EditArticle({
 
                                                 {/* for Hebrew */}
                                                 <CategoryInput
-                                                    dir='rtl'
+                                                    lngId={1}
                                                     category='כותרת'
                                                     placeholder='הזן טקסט כותרת כאן'
                                                     inputValue={titleHe}
@@ -751,7 +751,7 @@ export default function EditArticle({
                                                     handleChange={setReadTimeEn}
                                                 />
                                                 <CategoryInput
-                                                    dir='rtl'
+                                                    lngId={1}
                                                     category='הזן זמן קריאה (עברית)'
                                                     placeholder='7 דקות'
                                                     inputValue={readTimeHe}

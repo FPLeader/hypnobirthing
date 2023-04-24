@@ -1,21 +1,21 @@
 interface InputProps {
+    lngId?: number
     category: string,
     placeholder: string,
     type?: string,
     inputValue: string,
     handleChange: any,
     disabled?: boolean,
-    lngId?: number
 }
 
 export default function Category({
+    lngId = 0,
     category,
     placeholder = '',
     type = 'text',
     inputValue,
     handleChange,
     disabled = false,
-    lngId = 0
 }: InputProps) {
     return (
         <div className='flex flex-col gap-[6px]'>
