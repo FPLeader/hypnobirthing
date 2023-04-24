@@ -17,7 +17,6 @@ export default function MyAritcles() {
         ds_title: string,
         ds_content: string,
         ds_readtime: string,
-        ds_category: string,
     }
 
     interface BlogType {
@@ -28,6 +27,7 @@ export default function MyAritcles() {
         dt_publish: Date,
         ds_thumbnail: string,
         nm_user: string,
+        ds_category: string,
         mainbody: mainbodyType[]
     }
 
@@ -101,6 +101,7 @@ export default function MyAritcles() {
                         image={CardData.ds_thumbnail}
                         mainbody={CardData.mainbody}
                         author={CardData.nm_user}
+                        ds_category={CardData.ds_category}
                     />
                 ))}
                 <div className='w-full min-h-[137px] flex justify-center items-center border border-beighe rounded-[10px]'>
