@@ -112,7 +112,7 @@ export default function ValidateCode() {
                             <OtpInput value={otp} valueLength={6} handleChange={setOtp} wrongOtpTimer={wrongOtpTimer} />
                         </div>
                         <label htmlFor='checkbox-two' className='text-dark text-[14px] md:text-[16px] flex flex-col md:flex-row justify-center items-center'>
-                            Didn't get it?&nbsp;
+                            Didn&apos;t get it?&nbsp;
                             <button
                                 className={`font-medium underline underline-offset-4 decoration decoration-dark ${timer > 0 ? 'opacity-50' : 'opacity-100'}`}
                                 onClick={ResendCode}

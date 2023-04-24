@@ -214,7 +214,7 @@ export default function SecurityUpdate({
                                 <Dialog.Title
                                     className='text-[20px] lg:text-[28px] text-center font-medium leading-normal text-dark pr-[35px]'
                                 >
-                                    Verify it's you
+                                    Verify it&apos;s you
                                 </Dialog.Title>
                                 <div className='absolute top-[10px] right-[10px]'>
                                     <button
