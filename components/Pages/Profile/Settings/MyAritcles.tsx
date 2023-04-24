@@ -152,7 +152,7 @@ export default function MyAritcles() {
                     <div className={style.GridStyle}>
                         {liveBlogs.map((CardData: BlogType, index: number) => (
                             <SmallBlogCard
-                                key={'live' + index}
+                                // key={'live' + index}
                                 id={CardData.id_blog}
                                 image={CardData.ds_thumbnail}
                                 mainbody={CardData.mainbody}
@@ -198,7 +198,7 @@ export default function MyAritcles() {
                     <div className={style.GridStyle}>
                         {reviewBlogs.map((CardData: BlogType, index: number) => (
                             <SmallBlogEditCard
-                                key={'review' + index}
+                                // key={'review' + index}
                                 cd_educator={currentUser.cd_educator}
                                 id={CardData.id_blog}
                                 image={CardData.ds_thumbnail}
@@ -236,7 +236,7 @@ export default function MyAritcles() {
                     <div className={style.GridStyle}>
                         {draftBlogs.map((CardData: BlogType, index: number) => (
                             <SmallBlogEditCard
-                                key={'draft' + index}
+                                // key={'draft' + index}
                                 cd_educator={currentUser.cd_educator}
                                 id={CardData.id_blog}
                                 image={CardData.ds_thumbnail}
