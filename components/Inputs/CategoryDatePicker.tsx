@@ -5,7 +5,7 @@ interface InputProps {
     category: string,
     title: string,
     placeholder: string,
-    setValue: Dispatch<SetStateAction<Date>>
+    setValue: Dispatch<SetStateAction<Date | undefined>>
 }
 
 export default function Category({

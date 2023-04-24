@@ -82,11 +82,13 @@ export default function AddSession({
                                     <div className='grid md:grid-cols-2 gap-[10px]'>
                                         <CategoryDatePicker
                                             category='Estimated date of birth (Start)'
+                                            title=''
                                             placeholder=''
                                             setValue={setStartDate}
                                         />
                                         <CategoryDatePicker
                                             category='Estimated date of birth (Finish)'
+                                            title=''
                                             placeholder=''
                                             setValue={setEndDate}
                                         />
