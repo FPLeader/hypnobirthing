@@ -9,6 +9,8 @@ import dynamic from 'next/dynamic'
 // @ts-ignore
 dynamic(import('react-quill/dist/quill.snow.css'), { ssr: false, loading: () => <p>Loading ...</p> })
 // import ReactMarkdown from 'react-markdown/with-html';
+import i18n from '@/services/i18n'
+import { useTranslation } from 'react-i18next'
 
 
 interface BlogProps {
@@ -21,6 +23,9 @@ export default function Blog({
     const moment = require('moment');
     const dispatch = useAppDispatch();
     const { currentUser } = useAppSelector((state) => state.auth);
+    // language option
+    const { t } = useTranslation();
+    const lngId: number = i18n.language === 'en' ? 0 : 1;
 
     interface mainbodyType {
         id_lng: number,
@@ -83,7 +88,7 @@ export default function Blog({
     }
 
     return (
-        <div className='pt-[70px] min-h-screen md:pt-[90px]'>
+        <div className='pt-[70px] md:pt-[90px]'>
             {
                 domLoaded === 0 ?
                     <>
@@ -158,7 +163,7 @@ export default function Blog({
                         <div className='w-full flex justify-center'>
                             <div className='w-full max-w-[1225px] mx-[20px]'>
                                 <div className='mt-[20px] md:mt-[30px] lg:mt-[70px] mb-[20px] md:mb-[30px]'>
-                                    <RegularTitle text={currentBlog?.mainbody[0].ds_title ?? ''} />
+                                    <RegularTitle lngId={lngId} text={currentBlog?.mainbody[0].ds_title ?? ''} />
                                 </div>
                                 <div className='flex flex-col lg:flex-row gap-[20px] lg:gap-[60px]'>
                                     <div className='w-full lg:w-2/3 flex flex-col gap-[20px] md:gap-[30px] text-dark'>
@@ -185,7 +190,11 @@ export default function Blog({
                 <PromoteBar />
             </div>
             <div className='mt-[20px] md:mt-[40px]'>
-                <UpcomingClassesBar title='Upcoming Childbirth Classes' buttonText='Learn More' link='\upcomingcourse' />
+                <UpcomingClassesBar
+                    title='Upcoming Childbirth Classes'
+                    buttonText='Learn More'
+                    link='\upcomingcourse'
+                />
             </div>
         </div>
     )

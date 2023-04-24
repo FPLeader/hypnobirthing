@@ -16,7 +16,6 @@ export default function Video({
     videoUrl = '',
     style = ''
 }: VideoProps) {
-
     const getVideoIdFromUrl = (url: string): string => {
         const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([\w-]{11})/; // match the video ID in the URL
         const match = url.match(regex);

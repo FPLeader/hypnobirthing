@@ -393,7 +393,7 @@ export default function Profile() {
                                 </div >
                                 <CategoryRuleInput
                                     category='Core competence'
-                                    placeholder='Modern Applied Psychology & Personal Development'
+                                    placeholder={t('Modern Applied Psychology & Personal Development')}
                                     inputValue={personalTitle}
                                     handleChange={handleChangeValue(personalTitle, setPersonalTitle)}
                                 />

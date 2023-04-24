@@ -11,7 +11,7 @@ export { default as MediaPage } from './Media/'
 export { default as UpcomingCoursePage } from './UpcomingCourse/'
 export { default as CourseContentPage } from './CourseContent/'
 export { default as FaqPage } from './Faq/'
-export { default as InsurancePage } from './Insurance'
+export { default as InsurancePage } from './Insurance/'
 export { default as OurCommunityPage } from './OurCommunity/'
 //our birth professionals page missing
 export { default as AfterTheBirthPage } from './AfterTheBirth/'

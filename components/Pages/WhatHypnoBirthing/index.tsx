@@ -13,7 +13,11 @@ export default function WhatHypnoBirthing() {
                 <BookSection />
                 <FounderSection />
                 <ReportSection />
-                <UpcomingClassesBar title='Find a HypnoBirthing class near me' buttonText='Learn More' link='\upcomingcourse' />
+                <UpcomingClassesBar
+                    title='Find a HypnoBirthing class near me'
+                    buttonText='Learn More'
+                    link='\upcomingcourse'
+                />
             </div>
         </>
     )

@@ -39,12 +39,12 @@ export default function index() {
   useLayoutEffect(() => {
     if (currentUser) {
       setName(currentUser.nm_user);
-      setPersonalTitle(currentUser?.ar_personaltitle[lngId]);
+      setPersonalTitle(currentUser?.ar_personaltitle?.[lngId]);
       setAvatarImage(currentUser?.ds_avatar);
       setVideoUrl(currentUser?.ds_video);
       setCategory(currentUser.ds_category);
       setSkills(currentUser?.ar_skills);
-      setAboutMe(currentUser?.ar_aboutme[lngId]);
+      setAboutMe(currentUser?.ar_aboutme?.[lngId]);
       //contact information
       setPhoneNumber(currentUser.ds_phonenumber);
       if (currentUser?.ln_personalsite)
@@ -60,7 +60,7 @@ export default function index() {
 
   return (
     <>
-      <div className='pt-[70px] md:pt-[90px] min-h-screen w-full'>
+      <div className='pt-[70px] md:pt-[90px] w-full'>
         {domLoaded && (
           <>
             {isLogIn &&
@@ -98,7 +98,11 @@ export default function index() {
                   <PromoteBar />
                 </div>
                 <div className='mt-[20px] md:mt-[40px]'>
-                  <UpcomingClassesBar title='Upcoming Childbirth Classes' buttonText='Learn More' link='\upcomingcourse' />
+                  <UpcomingClassesBar
+                    title='Upcoming Childbirth Classes'
+                    buttonText='Learn More'
+                    link='\upcomingcourse'
+                  />
                 </div>
               </>
             }

@@ -57,7 +57,7 @@ export default function ProTrainings() {
     }, [domLoaded])
 
     return (
-        <div className='pt-[70px] md:pt-[90px] min-h-screen w-full'>
+        <div className='pt-[70px] md:pt-[90px] w-full'>
             <Banner image='/img/banner9.png' />
             <div dir={lngId === 0 ? 'ltr' : 'rtl'} className='w-full flex justify-center mt-[20px] md:mt-[30px] lg:mt-[70px]'>
                 <div className='w-full max-w-[1225px] mx-[20px]'>

@@ -3,6 +3,8 @@ import { BadgeCard } from '@/components/Cards'
 import { UploadButton } from '@/components/Buttons'
 import { useState, useEffect } from 'react'
 import ReactPlayer from 'react-player'
+import i18n from '@/services/i18n'
+import { useTranslation } from 'react-i18next'
 
 interface SectionProps {
   name: string,
@@ -20,6 +22,8 @@ export default function Introduction({
   videoUrl,
 }: SectionProps) {
   const router = useRouter();
+  const { t } = useTranslation();
+  const lngId: number = i18n.language === 'en' ? 0 : 1;
 
   const [image, setImage] = useState<string>('/img/editphoto1.png');
   const [video, setVideo] = useState<string>('');
@@ -64,7 +68,7 @@ export default function Introduction({
               </div>
             </div>
           </div>
-          <div className={`lg:max-w-[385px] w-full flex flex-col max-lg:items-center md:flex-row lg:flex-col gap-[15px] lg:gap-[30px] max-lg:w-full absolute ${category.length > 1 ? 'top-[200px]' : 'top-[190px]'} md:top-[160px] lg:top-0 right-0`}>
+          <div className={`lg:max-w-[385px] w-full flex flex-col max-lg:items-center md:flex-row lg:flex-col gap-[15px] lg:gap-[30px] max-lg:w-full absolute ${category?.length > 1 ? 'top-[200px]' : 'top-[190px]'} md:top-[160px] lg:top-0 right-0`}>
             <div className='max-md:w-full max-md:max-w-[385px] md:max-lg:min-w-[229px] relative'>
               <div className='w-full max-w-[385px] overflow-hidden border-[4px] rounded-[15px] border-beighe'>
                 <div className='aspect-w-1 aspect-h-1'>

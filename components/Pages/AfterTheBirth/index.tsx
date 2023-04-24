@@ -17,7 +17,11 @@ export default function index() {
                 </div>
             </div>
             <div className='mt-[20px] md:mt-[40px]'>
-                <UpcomingClassesBar title='Upcoming Childbirth Classes' buttonText='Learn More' link='\upcomingcourse' />
+                <UpcomingClassesBar
+                    title='Upcoming Childbirth Classes'
+                    buttonText='Learn More'
+                    link='\upcomingcourse'
+                />
             </div>
         </div>
     )

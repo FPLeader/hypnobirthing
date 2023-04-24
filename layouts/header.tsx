@@ -116,11 +116,11 @@ export default function Header() {
                 </div>
             </div>
             <div className={`${isNavOpen ? 'px-[20px] py-[20px] h-[calc(100vh_-_70px)] md:h-[calc(100vh_-_90px)] opacity-100' : 'h-0 opacity-0'} overflow-auto fixed block lg:hidden w-full bg-bcg transition-all duration-300 top-[70px] md:top-[90px] left-0 z-[2000]`}>
-                <div className='space-y-[15px]'>
+                <div className='grid gap-[15px]'>
                     {HeaderLinks.map((items: LinksType, index: number) => (
-                        <div key={index} className='space-y-[15px]'>
+                        <div key={index} className='grid gap-[15px]'>
                             <div className='uppercase text-[18px]'>{items.title}</div>
-                            <div className='space-y-[10px]'>
+                            <div className='grid gap-[10px]'>
                                 {HeaderLinks[index].links.map((item: LinkType, index: number) => (
                                     <button key={'headerlink3'+index} className={style.MenuItem} onClick={() => { document.body.style.overflow = 'visible', router.push(item.link), setIsNavOpen(false) }}>{item.title}</button>
                                 ))}

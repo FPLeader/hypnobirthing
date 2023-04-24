@@ -7,7 +7,7 @@ export default function Media() {
     VideoWrapper: 'w-full flex flex-col gap-[16px]',
     VideoTitle: 'text-center md:text-left font-medium text-[16px] md:text-[24px] text-dark',
   }
-  
+
   return (
     <div className='pt-[70px] md:pt-[90px] w-full'>
       <Banner image='/img/banner6.png' />
@@ -36,7 +36,11 @@ export default function Media() {
         <PromoteBar />
       </div>
       <div className='mt-[20px] md:mt-[40px]'>
-        <UpcomingClassesBar title='Upcoming Childbirth Classes' buttonText='Learn More' link='\upcomingcourse' />
+        <UpcomingClassesBar
+          title='Upcoming Childbirth Classes'
+          buttonText='Learn More'
+          link='\upcomingcourse'
+        />
       </div>
     </div>
   )
