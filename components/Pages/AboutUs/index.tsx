@@ -8,13 +8,14 @@ import { PromoteBar, UpcomingClassesBar, Banner } from '@/components/Sections'
 import { useState, useEffect, useLayoutEffect } from 'react'
 import API from '@/services/API'
 import { toast } from 'react-toastify'
-import i18n from '@/services/i18n'
-import { useTranslation } from 'react-i18next'
+import dynamic from 'next/dynamic';
+const I18n = dynamic(() => import('@/services/i18n'));
+const { useTranslation } = dynamic(() => import('react-i18next'));
 
 export default function AboutUsPage() {
     // language option
     const { t } = useTranslation();
-    const lngId: number = i18n.language === 'en' ? 0 : 1;
+    const lngId: number = I18n.language === 'en' ? 0 : 1;
 
     interface MainBodyType {
         title1: string[],
