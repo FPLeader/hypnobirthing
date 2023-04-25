@@ -5,7 +5,7 @@ import {
     SkeletonSection
 } from './Sections'
 import { PromoteBar, UpcomingClassesBar, Banner } from '@/components/Sections'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useLayoutEffect } from 'react'
 import API from '@/services/API'
 import { toast } from 'react-toastify'
 import i18n from '@/services/i18n'
@@ -54,6 +54,10 @@ export default function AboutUsPage() {
             loadCurrentPageData();
         }
     }, [domLoaded])
+
+    useLayoutEffect(() => {
+        console.log(previousMainBody);
+    }, [previousMainBody])
 
     return (
         <div className='pt-[70px] md:pt-[90px] w-full'>
