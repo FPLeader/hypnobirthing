@@ -1,6 +1,7 @@
-import { EducatorSettingsPage } from '@/components/Pages'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic'
+const EducatorSettingsPage = dynamic(() => import('@/components/Pages/Profile/Settings/'), { ssr: false })
 
 export default function Settings() {
     const router = useRouter();

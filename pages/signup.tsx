@@ -1,6 +1,7 @@
-import { SignUpPage } from '@/components/Pages'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic'
+const SignUpPage = dynamic(() => import('@/components/Pages/SignUp'), { ssr: false })
 
 export default function SignUp() {
     const router = useRouter();

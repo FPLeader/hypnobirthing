@@ -1,4 +1,5 @@
-import { ContactPage } from '@/components/Pages'
+import dynamic from 'next/dynamic'
+const ContactPage = dynamic(() => import('@/components/Pages/Contact'), { ssr: false })
 
 export default function aboutus() {
     return (

@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
-import { BlogPage } from '@/components/Pages'
 import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic'
+const BlogPage = dynamic(() => import('@/components/Pages/Blog/'), { ssr: false })
 
 export default function Blog() {
     const router = useRouter()
