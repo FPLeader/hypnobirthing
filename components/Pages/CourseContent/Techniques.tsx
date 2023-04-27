@@ -1,29 +1,63 @@
-import { TechniquesData } from '@/services/Constants/Report'
 import { NormalButton } from '@/components/Buttons'
+import { useTranslation } from 'react-i18next'
+import { useRouter } from 'next/router'
 
-export default function Techniques() {
+interface PageProps {
+    lngId: number,
+    title1: string,
+    title2: string,
+    text4: string,
+    text5: string,
+    text6: string,
+    text7: string,
+}
+
+export default function Techniques({
+    lngId,
+    title1,
+    title2,
+    text4,
+    text5,
+    text6,
+    text7,
+}: PageProps) {
+    const router = useRouter();
+    const { t } = useTranslation();
     const style = {
-        Title: 'text-dark text-center font-medium md:text-left text-[20px] md:text-[24px] lg:text-[28px]',
-        Content: 'text-dark text-[16px] lg:text-[20px]',
+        Title: `text-dark text-center font-medium ${lngId === 0 ? 'md:text-left' : 'md:text-right'} text-[20px] md:text-[24px] lg:text-[28px]`,
+        Content: 'whitespace-pre-line text-dark text-[16px] lg:text-[20px]',
     }
+
     return (
         <div className='flex flex-col gap-[30px]'>
             <div className='flex flex-col gap-[10px]'>
-                <div className={style.Title}>Techniques of Pashut Laledet HypnoBirthing</div>
-                <div className={style.Content}>This program utilizes the following techniques to help parents prepare for a positive birth experience. These include:</div>
-                <ul className='list-disc pl-[30px]'>
-                    {TechniquesData.map((item: string, index: number) => (
+                <div className={style.Title}>
+                    {title1}
+                </div>
+                <div className={style.Content}>
+                    {text4}
+                </div>
+                <ul className={`list-disc ${lngId === 0 ? 'pl-[30px]' : 'pr-[30px]'}`}>
+                    {text5.split('\n').map((item: string, index: number) => (
                         <li key={index} className='text-dark text-[16px] md:text-[18px]'>{item}</li>
                     ))}
                 </ul>
-                <div className={style.Content}>Each of these techniques will be implemented throughout the 5-week course.</div>
+                <div className={style.Content}>
+                    {text6}
+                </div>
             </div>
             <div className='flex flex-col gap-[16px]'>
-                <div className={style.Title}>Allow Pregnancy to Make Your Bond Tighter</div>
-                <div className={style.Content}>HypnoBirthing classes are the perfect place to tap into the beautiful bond between you and your partner. Our exercises will help build confidence between both parties; in the partner’s ability to provide support and the birthing person’s feeling of being supported. These classes also provide time for parents to bond with their baby, and build positive excitement for the upcoming birth. This positivity and bonding will play into the birthing experience, where the baby is an active participant.</div>
+                <div className={style.Title}>
+                    {title2}
+                </div>
+                <div className={style.Content}>
+                    {text7}
+                </div>
             </div>
             <div className='mt-[25px]'>
-                <NormalButton text='Go to courses' />
+                <div onClick={() => router.push('/upcomingcourse')}>
+                    <NormalButton text={t('Go to courses')} />
+                </div>
             </div>
         </div>
     )

@@ -2,6 +2,8 @@ import { Banner, SupportBar } from '@/components/Sections'
 import {
     SkeletonSection
 } from './Sections'
+import { BannerSkeleton } from '@/components/Skeletons'
+import { RegularTitle } from '@/components/Titles'
 
 import { useState, useEffect } from 'react'
 import API from '@/services/API'
@@ -21,6 +23,7 @@ export default function ProTrainings() {
         pageTitle: string[],
         text1: string[],
         text2: string[],
+        topImageUrl: string,
         fileName1: string,
         fileName2: string,
     }
@@ -58,14 +61,19 @@ export default function ProTrainings() {
 
     return (
         <div className='pt-[70px] md:pt-[90px] w-full'>
-            <Banner image='/img/banner9.png' />
+            {domLoaded === 1 && previousMainBody ?
+                <Banner image={process.env.FILE_IMAGE_BASE + previousMainBody.topImageUrl} />
+                :
+                <BannerSkeleton />
+            }
             <div dir={lngId === 0 ? 'ltr' : 'rtl'} className='w-full flex justify-center mt-[20px] md:mt-[30px] lg:mt-[70px]'>
                 <div className='w-full max-w-[1225px] mx-[20px]'>
                     {domLoaded === 1 && previousMainBody ?
                         <>
-                            <div className={`text-dark text-center ${lngId === 0 ? 'md:text-left' : 'md:text-right'} text-[20px] md:text-[24px] lg:text-[28px]`}>
+                            {/* <div className={`text-dark text-center ${lngId === 0 ? 'md:text-left' : 'md:text-right'} text-[20px] md:text-[24px] lg:text-[28px]`}>
                                 {previousMainBody.pageTitle[lngId]}
-                            </div>
+                            </div> */}
+                            <RegularTitle lngId={lngId} text={previousMainBody.pageTitle[lngId]} />
                             <div className='w-full mt-[20px] grid lg:grid-cols-2 gap-[20px] md:gap-[30px] lg:gap-x-[35px] lg:gap-y-[70px] items-center'>
                                 <div className='flex flex-col gap-[16px]'>
                                     <div className={style.Content}>
@@ -86,7 +94,7 @@ export default function ProTrainings() {
                                             <div className='min-h-[200px] max-w-[800px] m-auto'>
                                                 <div className='aspect-w-16 aspect-h-9'>
                                                     <VideoCard
-                                                        title='Contact Us'
+                                                        title=''
                                                         videoUrl={previousMainBody.fileName1}
                                                         style='min-h-[200px] max-h-[480px]'
                                                     />
@@ -108,7 +116,7 @@ export default function ProTrainings() {
                                             <div className='min-h-[200px] max-w-[800px] m-auto'>
                                                 <div className='aspect-w-16 aspect-h-9'>
                                                     <VideoCard
-                                                        title='Contact Us'
+                                                        title=''
                                                         videoUrl={previousMainBody.fileName2}
                                                         style='min-h-[200px] max-h-[480px]'
                                                     />

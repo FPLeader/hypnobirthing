@@ -12,17 +12,19 @@ interface SelectProps {
     selectItems: SelectItem[],
     inputValue: SelectItem,
     handleChange: Dispatch<SetStateAction<SelectItem>>,
+    className?: string,
 }
 
 export default function Category({
     category,
     selectItems,
     inputValue,
-    handleChange
+    handleChange,
+    className
 }: SelectProps) {
 
     return (
-        <div className='flex flex-col gap-[6px]'>
+        <div className={`flex flex-col gap-[6px] ${className}`}>
             <label className='text-[14px] text-dark'>{category}</label>
             <Listbox value={inputValue} onChange={handleChange}>
                 <div className='relative mt-1'>

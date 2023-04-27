@@ -1,10 +1,11 @@
 import { isImageOrVideoOrYoutube } from '@/components/Functions'
 import { VideoCard } from '@/components/Cards'
+import { RegularTitle } from '@/components/Titles'
 
 interface PageProps {
     lngId: number,
-    title: string[],
-    text: string[],
+    title: string,
+    text: string,
     fileName: string,
 }
 
@@ -18,12 +19,13 @@ export default function Introduction({
     return (
         <div className='w-full flex justify-center'>
             <div className='w-full max-w-[1225px] mx-[20px] flex flex-col gap-[15px] lg:gap-[20px]'>
-                <div className={`text-dark text-center ${lngId === 0 ? 'md:text-left' : 'md:text-right'} text-[20px] md:text-[24px] lg:text-[28px]`}>
-                    {title[lngId]}
-                </div>
+                {/* <div className={`text-dark text-center ${lngId === 0 ? 'md:text-left' : 'md:text-right'} text-[20px] md:text-[24px] lg:text-[28px]`}>
+                    {title}
+                </div> */}
+                <RegularTitle lngId={lngId} text={title} />
                 <div className='w-full grid lg:grid-cols-2 gap-[35px] items-center'>
                     <span className='whitespace-pre-line text-[18px] text-dark max-lg:row-start-2'>
-                        {text[lngId]}
+                        {text}
                     </span>
                     {
                         isImageOrVideoOrYoutube(fileName) === 'image'

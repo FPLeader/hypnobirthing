@@ -1,4 +1,4 @@
-interface SelectItem {
+export interface SelectItem {
     value: string,
     text: string,
 }
@@ -26,7 +26,7 @@ export const SelectData1: SelectItem[] = [
     }
 ]
 
-interface CategorySelectItemType {
+export interface CategorySelectItemType {
     id: number,
     value: string,
 }

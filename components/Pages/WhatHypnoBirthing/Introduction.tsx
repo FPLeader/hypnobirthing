@@ -1,25 +1,81 @@
-import { VideoCard } from '../../Cards'
+import { isImageOrVideoOrYoutube } from '@/components/Functions'
+import { VideoCard } from '@/components/Cards'
+import { RegularTitle } from '@/components/Titles'
 
-export default function Introduction() {
+interface PageProps {
+    lngId: number,
+    pageTitle: string,
+    text1: string,
+    text2: string,
+    fileName1: string,
+    fileName2: string,
+}
+
+export default function Introduction({
+    lngId,
+    pageTitle,
+    text1,
+    text2,
+    fileName1,
+    fileName2
+}: PageProps) {
+
     return (
         <div className='w-full flex justify-center'>
             <div className='w-full max-w-[1225px] mx-[20px]'>
-                <div className='w-full grid md:grid-cols-2 gap-[35px]'>
-                    <span className='text-[18px] text-dark max-md:row-start-2'>
-                        HypnoBirthing® is a natural approach to a safe, easier, more comfortable birthing. By learning to release fear and consequently releasing physical tension, the birth experience can be gentle and empowering.
-                        <br /><br />
-                        This is a program of childbirth preparation which gives you practical techniques, exercises, and guidance, to relax your mind in order to let your body do its job.
-                        <br /><br />
-                        We teach a range of relaxation techniques such as guided imagery, breathing, meditation, birthing positions, and touch. In addition we focus on communication- with yourself, your baby, your family, and with your caregivers.
+                <RegularTitle lngId={lngId} text={pageTitle} />
+                <div className='mt-[20px] w-full grid md:grid-cols-2 gap-[35px] items-center'>
+                    <span className='whitespace-pre-line text-[18px] text-dark max-md:row-start-2'>
+                        {text1}
                     </span>
-                    <VideoCard title='What is HypnoBirthing?' videoUrl='YGxKPJDzok8' style='w-full aspect-w-16 aspect-h-9 min-h-[177px]' />
-                    <img draggable='false' src='/img/whathypno2.png' alt='' className={`w-full h-full min-h-[250px] object-cover rounded-[10px] lg:rounded-[15px] ${process.env.DEV_MODE && 'blur-lg'}`} />
-                    <span className='text-[18px] text-dark'>
-                        You and your partner will learn to focus inwards, to trust your body and your baby. You&apos;ll have a chance to work through fears and to reexamine your perception of birth. The result of the course is that participants feel empowered and are ready to handle the excitement of birth and the birth setting while staying focused and present in the moment as the birth unfolds.
-                        <br /><br />
-                        Our group classes are held all over Israel or live on zoom. The course consists of 5 meetings, 3 hours each, the most comprehensive course offered here in Israel today. The 5 week process gives you the time to bring about change and work towards the birth that you imagine for yourself. You may be eligible for a refund from Kupat Holim.
-                        <br /><br />
-                        The HypnoBirthing Childbirth Education course will prepare you to welcome your new baby gently and joyfully into the world.
+                    {/* <VideoCard title='What is HypnoBirthing?' videoUrl='YGxKPJDzok8' style='w-full aspect-w-16 aspect-h-9 min-h-[177px]' /> */}
+                    {/* <img draggable='false' src='/img/whathypno2.png' alt='' className={`w-full h-full min-h-[250px] object-cover rounded-[10px] lg:rounded-[15px] ${process.env.DEV_MODE && 'blur-lg'}`} /> */}
+                    {
+                        isImageOrVideoOrYoutube(fileName1) === 'image'
+                            ?
+                            <img
+                                draggable='false'
+                                src={process.env.FILE_IMAGE_BASE + fileName1}
+                                alt=''
+                                className={`w-full h-full min-h-[200px] object-cover rounded-[10px] lg:rounded-[15px] ${process.env.DEV_MODE && 'blur-lg'}`}
+                            />
+                            :
+                            <div className='w-full'>
+                                <div className='min-h-[200px] max-w-[800px] m-auto'>
+                                    <div className='aspect-w-16 aspect-h-9'>
+                                        <VideoCard
+                                            title=''
+                                            videoUrl={fileName1}
+                                            style='min-h-[200px] max-h-[480px]'
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                    }
+                    {
+                        isImageOrVideoOrYoutube(fileName2) === 'image'
+                            ?
+                            <img
+                                draggable='false'
+                                src={process.env.FILE_IMAGE_BASE + fileName2}
+                                alt=''
+                                className={`w-full h-full min-h-[200px] object-cover rounded-[10px] lg:rounded-[15px] ${process.env.DEV_MODE && 'blur-lg'}`}
+                            />
+                            :
+                            <div className='w-full'>
+                                <div className='min-h-[200px] max-w-[800px] m-auto'>
+                                    <div className='aspect-w-16 aspect-h-9'>
+                                        <VideoCard
+                                            title=''
+                                            videoUrl={fileName2}
+                                            style='min-h-[200px] max-h-[480px]'
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                    }
+                    <span className='whitespace-pre-line text-[18px] text-dark'>
+                        {text2}
                     </span>
                 </div>
             </div>

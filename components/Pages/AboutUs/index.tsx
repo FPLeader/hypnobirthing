@@ -4,6 +4,7 @@ import {
     TeamSection,
     SkeletonSection
 } from './Sections'
+import { BannerSkeleton } from '@/components/Skeletons'
 import { PromoteBar, UpcomingClassesBar, Banner } from '@/components/Sections'
 import { useState, useEffect, useLayoutEffect } from 'react'
 import API from '@/services/API'
@@ -21,6 +22,7 @@ export default function AboutUsPage() {
         text1: string[],
         title2: string[],
         text2: string[],
+        topImageUrl: string,
         fileName1: string,
     }
 
@@ -61,14 +63,18 @@ export default function AboutUsPage() {
 
     return (
         <div className='pt-[70px] md:pt-[90px] w-full'>
-            <Banner image='/img/banner7.png' />
+            {domLoaded === 1 && previousMainBody ?
+                <Banner image={process.env.FILE_IMAGE_BASE + previousMainBody.topImageUrl} />
+                :
+                <BannerSkeleton />
+            }
             <div dir={lngId === 0 ? 'ltr' : 'rtl'} className='mt-[20px] md:mt-[30px] lg:mt-[70px] flex flex-col gap-[20px] md:gap-[40px] lg:gap-[70px]'>
                 {domLoaded === 1 && previousMainBody ?
                     <>
                         <IntroductionSection
                             lngId={lngId}
-                            title={previousMainBody.title1}
-                            text={previousMainBody.text1}
+                            title={previousMainBody.title1[lngId]}
+                            text={previousMainBody.text1[lngId]}
                             fileName={previousMainBody.fileName1}
                         />
                         <OurGoalsSectioin

@@ -1,6 +1,7 @@
 import {
     SkeletonSection
 } from './Sections'
+import { BannerSkeleton } from '@/components/Skeletons'
 import { Banner, PromoteBar, UpcomingClassesBar } from '@/components/Sections'
 import { ReviewCard, ImageOrVideoCard } from '@/components/Cards'
 import { useState, useEffect } from 'react'
@@ -23,6 +24,7 @@ export default function Reviews() {
     }
 
     interface MainBodyType {
+        topImageUrl: string,
         fileName1: string,
         fileName2: string,
         fileName3: string,
@@ -63,7 +65,11 @@ export default function Reviews() {
 
     return (
         <div className='pt-[70px] md:pt-[90px] w-full'>
-            <Banner image='/img/banner5.png' />
+            {domLoaded === 1 && previousMainBody ?
+                <Banner image={process.env.FILE_IMAGE_BASE + previousMainBody.topImageUrl} />
+                :
+                <BannerSkeleton />
+            }
             <div className='w-full mt-[20px] md:mt-[30px] lg:mt-[70px] flex justify-center'>
                 <div dir={lngId === 0 ? 'ltr' : 'rtl'} className='w-full max-w-[1225px] mx-[20px]'>
                     <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-[20px] md:gap-[35px]'>

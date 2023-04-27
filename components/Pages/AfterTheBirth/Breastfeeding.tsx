@@ -1,15 +1,50 @@
+import { isImageOrVideoOrYoutube } from '@/components/Functions'
+import { VideoCard } from '@/components/Cards'
 
-export default function Breastfeeding() {
+interface PageProps {
+    title: string,
+    text: string,
+    fileName: string,
+}
+
+export default function Breastfeeding({
+    title,
+    text,
+    fileName
+}: PageProps) {
     return (
         <div className='flex flex-col gap-[16px]'>
-            <div className='text-[30px] md:text-[40px] lg:text-[44px] font-light italic'>
-                Breastfeeding
-            </div>
-            <div className='grid lg:grid-cols-2 gap-[15px] lg:gap-[35px]'>
-                <div className='text-dark text-[16px] md:text-[18px] lg:text-[20px] md:tracking-wide lg:leading-loose'>
-                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+            <div className='grid lg:grid-cols-2 gap-[15px] lg:gap-[35px] items-center'>
+                <div className='flex flex-col gap-[12px] md:gap-[16px]'>
+                    <div className='text-[30px] md:text-[40px] lg:text-[44px] font-light italic'>
+                        {title}
+                    </div>
+                    <div className='whitespace-preline text-dark text-[16px] md:text-[18px] lg:text-[20px] md:tracking-wide lg:leading-loose'>
+                        {text}
+                    </div>
                 </div>
-                <img draggable='false' src='\img\after2.png' alt='' className={`w-full h-full max-lg:max-h-[480px] object-cover rounded-[10px] lg:rounded-[15px] ${process.env.DEV_MODE && 'blur-lg'}`} />
+                {
+                    isImageOrVideoOrYoutube(fileName) === 'image'
+                        ?
+                        <img
+                            draggable='false'
+                            src={process.env.FILE_IMAGE_BASE + fileName}
+                            alt=''
+                            className={`w-full h-full min-h-[200px] object-cover rounded-[10px] lg:rounded-[15px] ${process.env.DEV_MODE && 'blur-lg'}`}
+                        />
+                        :
+                        <div className='w-full'>
+                            <div className='min-h-[200px] max-w-[800px] m-auto'>
+                                <div className='aspect-w-16 aspect-h-9'>
+                                    <VideoCard
+                                        title=''
+                                        videoUrl={fileName}
+                                        style='min-h-[200px] max-h-[480px]'
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                }
             </div>
         </div>
     )

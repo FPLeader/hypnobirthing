@@ -1,25 +1,70 @@
 import { RegularButton } from '@/components/Buttons'
+import { isImageOrVideoOrYoutube } from '@/components/Functions'
+import { VideoCard } from '@/components/Cards'
+import { useTranslation } from 'react-i18next'
 
-export default function Book() {
+interface PageProps {
+    lngId: number,
+    title1: string,
+    text3: string,
+    text4: string,
+    fileName3: string,
+}
+
+export default function Book({
+    lngId,
+    title1,
+    text3,
+    text4,
+    fileName3,
+}: PageProps) {
+    const { t } = useTranslation();
+
     return (
         <div className='w-full flex justify-center'>
             <div className='w-full max-w-[1225px] mx-[20px]'>
-                <div className='text-[32px] max-md:block hidden text-center font-light italic'>HypnoBirthing Book</div>
+                <div className='text-[32px] max-md:block hidden text-center font-light italic'>
+                    {title1}
+                </div>
                 <div className='flex flex-col items-center md:flex-row max-md:mt-[20px] gap-[20px] md:gap-[35px]'>
                     <div className='w-full md:w-1/3 lg:w-1/2 flex justify-center'>
-                        <img draggable='false' src='./img/Book.png' alt='' className={`w-full max-w-[385px] ${process.env.DEV_MODE && 'blur-lg'}`} />
+                        {/* <img draggable='false' src='./img/Book.png' alt='' className={`w-full max-w-[385px] ${process.env.DEV_MODE && 'blur-lg'}`} /> */}
+                        {
+                            isImageOrVideoOrYoutube(fileName3) === 'image'
+                                ?
+                                <img
+                                    draggable='false'
+                                    src={process.env.FILE_IMAGE_BASE + fileName3}
+                                    alt=''
+                                    className={`w-full h-full min-h-[200px] object-cover rounded-[10px] lg:rounded-[15px] ${process.env.DEV_MODE && 'blur-lg'}`}
+                                />
+                                :
+                                <div className='w-full'>
+                                    <div className='min-h-[200px] max-w-[800px] m-auto'>
+                                        <div className='aspect-w-16 aspect-h-9'>
+                                            <VideoCard
+                                                title=''
+                                                videoUrl={fileName3}
+                                                style='min-h-[200px] max-h-[480px]'
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                        }
                     </div>
                     <div className='w-full md:w-2/3 md:w-1/2 text-dark flex flex-col gap-[20px] lg:gap-[30px]'>
-                        <div className='text-[32px] max-md:hidden md:block md:text-[40px] lg:text-[44px] font-light italic'>HypnoBirthing Book</div>
+                        <div className='text-[32px] max-md:hidden md:block md:text-[40px] lg:text-[44px] font-light italic'>
+                            {title1}
+                        </div>
                         <div className='flex flex-col gap-[16px]'>
-                            <div className='text-[16px] lg:text-[20px]'>
-                                Childbirth is not something to be feared; it is a natural expression of life. In this imminently practical guide, HypnoBirthing founder Marie Mongan shatters the myth of pain as a natural accompaniment to birth. With her program that’s being successfully used worldwide, she proves that when we release the fear–a fear that keeps the body tense and closed–we will experience a gentle birth. In fact, the HypnoBirthing method greatly reduces the pain during labor; frequently eliminates the need for drugs; and shortens birthing and recovery time, allowing for a more serene birthing experience and better bonding with baby.
+                            <div className='whitespace-pre-line text-[16px] lg:text-[20px]'>
+                                {text3}
                             </div>
-                            <div className='font-light text-[14px] opacity-60'>
-                                The Hebrew translation of the book HypnoBirthing-the Mongan Method was published by Pashut Laledet in 2015 with the support of Notssa publishers in Israel.
+                            <div className='whitespace-pre-line font-light text-[14px] opacity-60'>
+                                {text4}
                             </div>
                         </div>
-                        <RegularButton text='buy the book' />
+                        <RegularButton text={t('buy the book')} />
                     </div>
                 </div>
             </div>

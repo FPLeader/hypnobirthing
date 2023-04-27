@@ -35,7 +35,9 @@ export default function App({ Component, pageProps }: AppProps) {
           <div className='font-[lato]' id='main'>
             <link rel='stylesheet' href='https://use.typekit.net/zfz1tfz.css' />
             <HeaderPage />
-            <Component {...pageProps} />
+            <div className='min-h-screen'>
+              <Component {...pageProps} />
+            </div>
             <FooterPage />
             <ToastContainer
               position='bottom-right'

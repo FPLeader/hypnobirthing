@@ -4,6 +4,7 @@ import {
     QuestionBox,
     SkeletonSection
 } from './Sections'
+import { BannerSkeleton } from '@/components/Skeletons'
 import { useState, useEffect } from 'react'
 import API from '@/services/API'
 import { toast } from 'react-toastify'
@@ -21,6 +22,7 @@ export default function Faq() {
     }
 
     interface MainBodyType {
+        topImageUrl: string,
         fileName1: string,
         imageTitle: string[],
         faqs: FaqItem[]
@@ -59,7 +61,11 @@ export default function Faq() {
 
     return (
         <div dir={lngId === 0 ? 'ltr' : 'rtl'} className='pt-[70px] md:pt-[90px]'>
-            <Banner image='/img/banner3.png' />
+            {domLoaded === 1 && previousMainBody ?
+                <Banner image={process.env.FILE_IMAGE_BASE + previousMainBody.topImageUrl} />
+                :
+                <BannerSkeleton />
+            }
             <div className='w-full flex justify-center'>
                 <div className='max-w-[1225px] w-full px-[20px] mt-[20px] md:mt-[30px] lg:mt-[70px]'>
                     {domLoaded === 1 && previousMainBody ?

@@ -6,6 +6,7 @@ interface InputProps {
     inputValue: string,
     handleChange: any,
     disabled?: boolean,
+    className?: string,
 }
 
 export default function Category({
@@ -16,9 +17,10 @@ export default function Category({
     inputValue,
     handleChange,
     disabled = false,
+    className
 }: InputProps) {
     return (
-        <div className='flex flex-col gap-[6px]'>
+        <div className={`flex flex-col gap-[6px] ${className}`}>
             {category !== '' &&
                 <label className={`text-[14px] text-dark ${lngId === 0 ? 'text-left' : 'text-right'}`}>
                     {category}

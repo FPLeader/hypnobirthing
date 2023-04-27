@@ -4,6 +4,7 @@ import {
     ContactFormSection,
     SkeletonSection
 } from './Sections'
+import { BannerSkeleton } from '@/components/Skeletons'
 import { Banner } from '@/components/Sections'
 import API from '@/services/API'
 import { toast } from 'react-toastify'
@@ -23,7 +24,8 @@ export default function Contact() {
         instagram: string,
         facebook: string,
         twitter: string,
-        imageTitle: string[]
+        imageTitle: string[],
+        topImageUrl: string,
         fileName1: string,
     }
 
@@ -68,7 +70,11 @@ export default function Contact() {
 
     return (
         <div className='pt-[70px] md:pt-[90px] w-full'>
-            <Banner image='/img/banner4.png' />
+            {domLoaded === 1 && previousMainBody ?
+                <Banner image={process.env.FILE_IMAGE_BASE + previousMainBody.topImageUrl} />
+                :
+                <BannerSkeleton />
+            }
             <div dir={lngId === 0 ? 'ltr' : 'rtl'} className='w-full my-[20px] md:my-[30px] lg:my-[70px] flex justify-center'>
                 <div className='w-full max-w-[1225px] mx-[20px] flex flex-col gap-[70px]'>
                     {domLoaded === 1 && previousMainBody ?

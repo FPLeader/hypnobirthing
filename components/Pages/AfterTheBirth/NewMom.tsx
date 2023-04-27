@@ -1,21 +1,55 @@
-import { NewMomCirclesData } from '@/services/Constants/Report'
+import { isImageOrVideoOrYoutube } from '@/components/Functions'
+import { VideoCard } from '@/components/Cards'
 
-export default function NewMom() {
+interface PageProps {
+    title: string,
+    text1: string,
+    text2: string,
+    fileName: string,
+}
+
+export default function NewMom({
+    title,
+    text1,
+    text2,
+    fileName
+}: PageProps) {
     return (
         <div className='flex flex-col gap-[20px] lg:gap-[30px]'>
-            <div className='grid lg:grid-cols-2 gap-[15px] lg:gap-[35px]'>
-                <img draggable='false' src='\img\support1.png' alt='' className={`w-full h-full max-lg:max-h-[480px] object-cover rounded-[10px] lg:rounded-[15px] ${process.env.DEV_MODE && 'blur-lg'}`} />
-                <div className='w-full max-lg:row-start-1 text-dark flex flex-col gap-[15px] lg:gap-[20px]'>
+            <div className='grid lg:grid-cols-2 gap-[15px] lg:gap-[35px] items-center'>
+                {
+                    isImageOrVideoOrYoutube(fileName) === 'image'
+                        ?
+                        <img
+                            draggable='false'
+                            src={process.env.FILE_IMAGE_BASE + fileName}
+                            alt=''
+                            className={`w-full h-full min-h-[200px] object-cover rounded-[10px] lg:rounded-[15px] ${process.env.DEV_MODE && 'blur-lg'}`}
+                        />
+                        :
+                        <div className='w-full'>
+                            <div className='min-h-[200px] max-w-[800px] m-auto'>
+                                <div className='aspect-w-16 aspect-h-9'>
+                                    <VideoCard
+                                        title=''
+                                        videoUrl={fileName}
+                                        style='min-h-[200px] max-h-[480px]'
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                }
+                <div className='w-full max-lg:row-start-1 text-dark flex flex-col gap-[12px] lg:gap-[16px]'>
                     <div className='text-[30px] md:text-[40px] lg:text-[44px] font-light italic'>
-                        New Mom Circles
+                        {title}
                     </div>
-                    <div className='text-[16px] md:text-[18px]'>
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+                    <div className='whitespace-pre-line text-[16px] md:text-[18px]'>
+                        {text1}
                     </div>
                 </div>
             </div>
             <div className='grid lg:grid-cols-2 gap-[15px]'>
-                {NewMomCirclesData.map((obj: string, index: number) => (
+                {text2.split('\n').map((obj: string, index: number) => (
                     <div key={index} className='text-[16px] md:text-[18px] lg:text-[20px] px-[14px] md:px-[18px] lg:px-[24px] py-[12px] md:py-[14px] lg:py-[16px] bg-bcg_2 rounded-[10px]'>
                         {obj}
                     </div>

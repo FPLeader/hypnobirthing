@@ -1,12 +1,9 @@
 import { InsuranceCard } from '@/components/Cards'
 import {
-    InsuranceCardType,
-    InsuranceCards,
-    InsuranceText1,
-    InsuranceText2
-} from '@/services/Constants/CardsData'
-import { SkeletonSection } from './Sections'
-import { PromoteBar, UpcomingClassesBar } from '@/components/Sections'
+    SkeletonSection
+} from './Sections'
+import { BannerSkeleton } from '@/components/Skeletons'
+import { PromoteBar, UpcomingClassesBar, Banner } from '@/components/Sections'
 import { useState, useEffect } from 'react'
 import { RegularTitle } from '@/components/Titles'
 import API from '@/services/API'
@@ -26,6 +23,7 @@ export default function Insurance() {
     }
 
     interface MainBodyType {
+        topImageUrl: string,
         title1: string[],
         text1: string[],
         text2: string[],
@@ -65,10 +63,15 @@ export default function Insurance() {
     }, [domLoaded])
 
     return (
-        <div dir={lngId === 0 ? 'ltr' : 'rtl'}>
+        <div className='pt-[70px] md:pt-[90px] w-full'>
+            {domLoaded === 1 && previousMainBody ?
+                <Banner image={process.env.FILE_IMAGE_BASE + previousMainBody.topImageUrl} />
+                :
+                <BannerSkeleton />
+            }
             <div className='w-full flex justify-center'>
-                <div className='w-full max-w-[1225px] mx-[20px] pt-[70px] md:pt-[90px]'>
-                    <div className='mt-[20px] md:mt-[30px] lg:mt-[70px]'>
+                <div className='w-full max-w-[1225px] mx-[20px]'>
+                    <div dir={lngId === 0 ? 'ltr' : 'rtl'} className='mt-[20px] md:mt-[30px] lg:mt-[70px]'>
                         {domLoaded === 1 && previousMainBody ?
                             <>
                                 <RegularTitle

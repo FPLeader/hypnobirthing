@@ -10,7 +10,15 @@ import { SmallBlogsData, SmallBlogType } from '@/services/Constants/Sections/Blo
 import i18n from '@/services/i18n'
 import { useTranslation } from 'react-i18next'
 
-export default function OurBlogPosts() {
+interface PageProps {
+    title: string,
+    text: string,
+}
+
+export default function OurBlogPosts({
+    title,
+    text,
+}: PageProps) {
     // language option
     const { t } = useTranslation();
     const lngId: number = i18n.language === 'en' ? 0 : 1;
@@ -19,9 +27,9 @@ export default function OurBlogPosts() {
         <div className='w-full flex justify-center'>
             <div className='w-full max-w-[1225px] mx-[20px]'>
                 <div className='pt-[50px] relative'>
-                    <RegularTitle lngId={lngId} text='Our Blog Posts' />
-                    <div className='text-base max-w-[800px] mt-[20px]'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    <RegularTitle lngId={lngId} text={title} />
+                    <div className='whitespace-pre-line text-base max-w-[800px] mt-[20px]'>
+                        {text}
                     </div>
                 </div>
                 <div className='pt-[60px] flex flex-col md:flex-row gap-2.5 items-end'>
