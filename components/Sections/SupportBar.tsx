@@ -9,7 +9,6 @@ export default function SupportBar() {
     const { t } = useTranslation();
     const lngId: number = i18n.language === 'en' ? 0 : 1;
 
-
     return (
         <div className='w-full flex justify-center'>
             <div className='w-full max-w-[1225px] mx-[20px]'>

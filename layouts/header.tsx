@@ -13,7 +13,6 @@ export default function Header() {
     const { isLogIn } = useSelector((state: any) => state.auth);
     const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
     const [menuPage, setMenuPage] = useState<number>(-1);
-    const [isAvatarOpen, setIsAvatarOpen] = useState<boolean>(false);
     const router = useRouter();
 
     const style = {
@@ -39,12 +38,6 @@ export default function Header() {
             setIsNavOpen(false);
         }
     }, [width]);
-
-    useLayoutEffect(() => {
-        // if (isAvatarOpen === true)
-        console.log('isAvatarOpen:', isAvatarOpen);
-        setMenuPage(-1);
-    }, [isAvatarOpen])
 
     const onClickHandler = (index: number) => {
         if (menuPage === index || index === -1) {
@@ -98,7 +91,7 @@ export default function Header() {
                         </div>
                         {isLogIn &&
                             <AvatarMenu
-                                setMenuPage={setMenuPage}
+                                onClickHandler={onClickHandler}
                             />
                         }
                     </div>

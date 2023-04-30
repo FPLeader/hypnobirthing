@@ -8,11 +8,11 @@ import i18n from '@/services/i18n'
 import { useTranslation } from 'react-i18next'
 
 interface AvatarProps {
-    setMenuPage: Dispatch<SetStateAction<number>>
+    onClickHandler: (index: number) => void
 }
 
 export default function Avatar({
-    setMenuPage
+    onClickHandler
 }: AvatarProps) {
     const style = {
         Link: 'w-full text-[14px] lg:text-[16px] whitespace-nowrap hover:bg-bcg_2 text-left px-[10px] py-[5px] rounded-[5px]'
@@ -46,7 +46,7 @@ export default function Avatar({
                     <div className='flex items-center'>
                         <Popover.Button
                             className='w-[45px] h-[45px] md:w-[50px] md:h-[50px] rounded-full overflow-hidden border-0 ring-deviders focus:ring-0 m-auto'
-                            onClick={() => { setIsOpen(true), setMenuPage(-1) }}
+                            onClick={() => { setIsOpen(true), onClickHandler(-1) }}
                         >
                             <img draggable='false' src={image} alt='Avatar' className='w-full h-full object-cover' />
                         </Popover.Button>
