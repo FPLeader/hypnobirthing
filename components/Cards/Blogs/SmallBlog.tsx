@@ -44,15 +44,17 @@ export default function SmallBlogCard({
     }
 
     const getTextFromContent = () => {
-        let content;
+        let text;
         if (mainbody.length === 2) {
-            content = mainbody[lngId].ds_content.replace(/<[^>]+>/g, '');
+            text = mainbody[lngId].ds_content;
         } else {
-            content = mainbody[0].ds_content.replace(/<[^>]+>/g, '');
+            text = mainbody[0].ds_content;
         }
-        if (content === '')
+        let cleanedText = text.replace(/<\/[^>]+>/g, '\n') // Replace ending tags with newline
+            .replace(/<[^>]+>/g, ''); // Remove all HTML tags
+        if (cleanedText === '')
             return 'No Content';
-        return content;
+        return cleanedText;
     }
 
     const currentLngId = () => {
@@ -81,12 +83,18 @@ export default function SmallBlogCard({
                 }
             </div>
             <div
-                className='w-full text-dark space-y-[5px] pr-[15px]'
+                className='w-full text-dark grid gap-[5px] pr-[15px]'
                 onClick={() => { disabled ? '' : router.push(`/blog/${id}`) }}
             >
-            <div dir={currentLngId() === 0 ? 'ltr' : 'rtl'} className='text-[16px] md:text-[20px] font-medium line-clamp-1'>{getTextFromTitle()}</div>
-            <div dir={currentLngId() === 0 ? 'ltr' : 'rtl'} className='text-[14px] md:text-[16px] line-clamp-2'>{getTextFromContent()}</div>
-                <div className='text-[14px] md:text-[16px] opacity-60 capitalize line-clamp-1'>—&nbsp;{author}</div>
+                <div dir={currentLngId() === 0 ? 'ltr' : 'rtl'} className='text-[16px] md:text-[20px] font-medium line-clamp-1 px-[5px]'>
+                    {getTextFromTitle()}
+                </div>
+                <div dir={currentLngId() === 0 ? 'ltr' : 'rtl'} className='whitespace-pre-line line-clamp-2 text-[14px] md:text-[16px] px-[5px]'>
+                    {getTextFromContent()}
+                </div>
+                <div className='text-[14px] md:text-[16px] opacity-60 capitalize line-clamp-1'>
+                    —&nbsp;{author}
+                </div>
             </div>
         </button>
     )

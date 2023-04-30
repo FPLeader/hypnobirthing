@@ -82,15 +82,17 @@ export default function SmallBlogEditCard({
     }
 
     const getTextFromContent = () => {
-        let content;
+        let text;
         if (mainbody.length === 2) {
-            content = mainbody[lngId].ds_content.replace(/<[^>]+>/g, '');
+            text = mainbody[lngId].ds_content;
         } else {
-            content = mainbody[0].ds_content.replace(/<[^>]+>/g, '');
+            text = mainbody[0].ds_content;
         }
-        if (content === '')
+        let cleanedText = text.replace(/<\/[^>]+>/g, '\n') // Replace ending tags with newline
+            .replace(/<[^>]+>/g, ''); // Remove all HTML tags
+        if (cleanedText === '')
             return 'No Content';
-        return content;
+        return cleanedText;
     }
 
     const currentLngId = () => {
@@ -157,7 +159,10 @@ export default function SmallBlogEditCard({
     }
 
     return (
-        <div className='min-h-[155px] flex items-center gap-[15px] select-none overflow-hidden border-[2px] border-beighe rounded-[10px] relative'>
+        <div
+            dir={currentLngId() === 0 ? 'ltr' : 'rtl'}
+            className='min-h-[155px] flex items-center gap-[15px] select-none overflow-hidden border-[2px] border-beighe rounded-[10px] relative'
+        >
             <PreviewArticleModal
                 isOpen={isPreviewOpen}
                 closeModal={closePreviewModal}
@@ -174,6 +179,7 @@ export default function SmallBlogEditCard({
                 ds_thumbnail={image}
                 mainbody={mainbody}
                 ds_category={ds_category}
+                loadBlogs={loadBlogs}
             />
             <DeleteArticleModal
                 isOpen={isDeleteOpen}
@@ -195,12 +201,18 @@ export default function SmallBlogEditCard({
                     </div>
                 }
             </div>
-            <div className='w-full text-center text-dark space-y-[5px] pr-[15px]'>
-                <div dir={currentLngId() === 0 ? 'ltr' : 'rtl'} className='text-[16px] md:text-[20px] font-medium line-clamp-1'>{getTextFromTitle()}</div>
-                <div dir={currentLngId() === 0 ? 'ltr' : 'rtl'} className='text-[14px] md:text-[16px] line-clamp-2'>{getTextFromContent()}</div>
-                <div className='text-[14px] md:text-[16px] opacity-60 capitalize line-clamp-1'>—&nbsp;{author}</div>
+            <div className='w-full text-dark grid gap-[5px] pr-[15px]'>
+                <div dir={currentLngId() === 0 ? 'ltr' : 'rtl'} className='text-[16px] md:text-[20px] font-medium line-clamp-1 px-[5px]'>
+                    {getTextFromTitle()}
+                </div>
+                <div dir={currentLngId() === 0 ? 'ltr' : 'rtl'} className='whitespace-pre-line line-clamp-2 text-[14px] md:text-[16px] px-[5px]'>
+                    {getTextFromContent()}
+                </div>
+                <div dir={currentLngId() === 0 ? 'ltr' : 'rtl'} className='text-[14px] md:text-[16px] opacity-60 capitalize line-clamp-1'>
+                    —&nbsp;{author}
+                </div>
             </div>
-            <div className='absolute top-[5px] right-[10px] flex gap-[10px]'>
+            <div className={`absolute top-[5px] ${currentLngId() === 0 ? 'right-[10px]' : 'left-[10px]'} flex gap-[10px]`}>
                 {previewIcon &&
                     <button
                         className='hover:bg-beighe hover:ring-beighe hover:ring-4 hover:rounded-full active:bg-transparent active:ring-0 duration-200 transaction-all'

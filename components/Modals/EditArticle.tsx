@@ -5,6 +5,8 @@ import { CloseIcon } from '@/assests/Icons'
 import { ModalButton } from '../Buttons'
 import { CategoryInput } from '../Inputs'
 import { CategorySelect } from '../Select'
+import { LanguageOptions, CategoryOptions } from '@/services/Constants/SelectOptions'
+
 import API from '@/services/API'
 import useWindowSize from '@/services/Hooks/useWindowSize'
 import { useRouter } from 'next/router'
@@ -32,6 +34,7 @@ interface EditArticleProps {
     ds_thumbnail: string,
     mainbody: mainbodyType[],
     ds_category: string,
+    loadBlogs: () => void,
 }
 
 export default function EditArticle({
@@ -41,7 +44,8 @@ export default function EditArticle({
     id_blog,
     ds_thumbnail,
     mainbody,
-    ds_category
+    ds_category,
+    loadBlogs,
 }: EditArticleProps) {
     const router = useRouter();
     const dispatch = useAppDispatch();
@@ -49,18 +53,8 @@ export default function EditArticle({
 
     // values
     const [loadingOpen, setLoadingOpen] = useState<boolean>(false);
-    const languageOptions = [
-        { id: 0, value: 'I only know English' },
-        { id: 1, value: 'I only know Hebrew' },
-        { id: 2, value: 'I know English and Hebrew both' },
-    ]
-    const [selectedLangauge, setSelectedLanguage] = useState(languageOptions[0]);
-    const categoryOptions = [
-        { id: 0, value: 'Article' },
-        { id: 1, value: 'Birth Stories' },
-        { id: 2, value: 'Recipe' },
-    ]
-    const [selectedCategory, setSelectedCategory] = useState(categoryOptions[0]);
+    const [selectedLangauge, setSelectedLanguage] = useState(LanguageOptions[0]);
+    const [selectedCategory, setSelectedCategory] = useState(CategoryOptions[0]);
     // for English
     const [titleEn, setTitleEn] = useState<string>('');
     const [readTimeEn, setReadTimeEn] = useState<string>('');
@@ -84,7 +78,7 @@ export default function EditArticle({
     // initalize
     useEffect(() => {
         if (mainbody.length === 2) { // En/He both option
-            setSelectedLanguage(languageOptions[2]);
+            setSelectedLanguage(LanguageOptions[2]);
 
             if (ds_thumbnail !== '')
                 setImage(process.env.FILE_IMAGE_BASE + ds_thumbnail);
@@ -99,23 +93,23 @@ export default function EditArticle({
             setContentHe(mainbody[1].ds_content);
             setReadTimeHe(mainbody[1].ds_readtime);
         } else if (mainbody[0].id_lng === 0) { // En option
-            setSelectedLanguage(languageOptions[0]);
+            setSelectedLanguage(LanguageOptions[0]);
             setTitleEn(mainbody[0].ds_title);
             if (ds_thumbnail !== '')
                 setImage(process.env.FILE_IMAGE_BASE + ds_thumbnail);
             setContentEn(mainbody[0].ds_content);
             setReadTimeEn(mainbody[0].ds_readtime);
         } else if (mainbody[0].id_lng === 1) { // He option
-            setSelectedLanguage(languageOptions[1]);
+            setSelectedLanguage(LanguageOptions[1]);
             setTitleHe(mainbody[0].ds_title);
             if (ds_thumbnail !== '')
                 setImage(process.env.FILE_IMAGE_BASE + ds_thumbnail);
             setContentHe(mainbody[0].ds_content);
             setReadTimeHe(mainbody[0].ds_readtime);
         }
-        categoryOptions.map((currentOption) => {
+        CategoryOptions.map((currentOption) => {
             if (currentOption.value === ds_category) {
-                setSelectedCategory(categoryOptions[currentOption.id]);
+                setSelectedCategory(CategoryOptions[currentOption.id]);
                 return;
             }
         })
@@ -202,11 +196,11 @@ export default function EditArticle({
 
     const isButtonDisabled = () => {
         if (selectedLangauge.id === 0)
-            return !((ds_thumbnail !== '' && image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleEn !== mainbody[0].ds_title || contentEn !== mainbody[0].ds_content || readTimeEn !== mainbody[0].ds_readtime || selectedCategory.value !== ds_category);
+            return !((image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleEn !== mainbody[0].ds_title || contentEn !== mainbody[0].ds_content || readTimeEn !== mainbody[0].ds_readtime || selectedCategory.value !== ds_category);
         else if (selectedLangauge.id === 1)
-            return !((ds_thumbnail !== '' && image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleHe !== mainbody[0].ds_title || contentHe !== mainbody[0].ds_content || readTimeHe !== mainbody[0].ds_readtime || selectedCategory.value !== ds_category);
+            return !((image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleHe !== mainbody[0].ds_title || contentHe !== mainbody[0].ds_content || readTimeHe !== mainbody[0].ds_readtime || selectedCategory.value !== ds_category);
         else
-            return !((ds_thumbnail !== '' && image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleEn !== mainbody[0].ds_title || contentEn !== mainbody[0].ds_content || readTimeEn !== mainbody[0].ds_readtime || selectedCategory.value !== ds_category || titleHe !== mainbody?.[1]?.ds_title || contentHe !== mainbody?.[1]?.ds_content || readTimeHe !== mainbody?.[1]?.ds_readtime);
+            return !((image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleEn !== mainbody[0].ds_title || contentEn !== mainbody[0].ds_content || readTimeEn !== mainbody[0].ds_readtime || selectedCategory.value !== ds_category || titleHe !== mainbody?.[1]?.ds_title || contentHe !== mainbody?.[1]?.ds_content || readTimeHe !== mainbody?.[1]?.ds_readtime);
     }
 
     // upload blog
@@ -227,8 +221,10 @@ export default function EditArticle({
             formData.append('id_blog', id_blog);
             formData.append('cd_educator', cd_educator);
             formData.append('ds_category', selectedCategory.value);
-            if (isPublish())
+            if (isPublish() === true) {
                 formData.append('ds_state', 'underreview');
+                console.log('ds_state, underreivew');
+            }
             else
                 formData.append('ds_state', 'draft');   /// draft or underreview or live
             let blog_en = {
@@ -320,11 +316,13 @@ export default function EditArticle({
                         setSelectedImage(null);
                         setImage('');
                         // category
-                        setSelectedCategory(categoryOptions[0]);
+                        setSelectedCategory(CategoryOptions[0]);
                         // image urls
                         setImageUrls([]);
                         // close modal
                         closeModal();
+                        // load Blogs
+                        loadBlogs();
                     }
                 })
                 .catch((err) => {
@@ -391,7 +389,7 @@ export default function EditArticle({
                                 <div className='mt-[20px] space-y-[10px]'>
                                     <CategorySelect
                                         category='Language'
-                                        selectItems={languageOptions}
+                                        selectItems={LanguageOptions}
                                         inputValue={selectedLangauge}
                                         handleChange={setSelectedLanguage}
                                     />
@@ -406,7 +404,7 @@ export default function EditArticle({
                                             />
                                             <CategorySelect
                                                 category='Category'
-                                                selectItems={categoryOptions}
+                                                selectItems={CategoryOptions}
                                                 inputValue={selectedCategory}
                                                 handleChange={setSelectedCategory}
                                             />
@@ -514,7 +512,7 @@ export default function EditArticle({
                                                 />
                                                 <CategorySelect
                                                     category='קטגוריה'
-                                                    selectItems={categoryOptions}
+                                                    selectItems={CategoryOptions}
                                                     inputValue={selectedCategory}
                                                     handleChange={setSelectedCategory}
                                                 />
@@ -635,7 +633,7 @@ export default function EditArticle({
 
                                                 <CategorySelect
                                                     category='Category'
-                                                    selectItems={categoryOptions}
+                                                    selectItems={CategoryOptions}
                                                     inputValue={selectedCategory}
                                                     handleChange={setSelectedCategory}
                                                 />

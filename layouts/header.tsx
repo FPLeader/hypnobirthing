@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useLayoutEffect } from 'react'
 import { useRouter } from 'next/router'
 import { LinkType, LinksType, HeaderLinks } from '@/services/Constants/Links'
 import { HeaderLinkButton, LanguageButton, HamburgerButton } from '@/components/Buttons'
@@ -13,6 +13,7 @@ export default function Header() {
     const { isLogIn } = useSelector((state: any) => state.auth);
     const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
     const [menuPage, setMenuPage] = useState<number>(-1);
+    const [isAvatarOpen, setIsAvatarOpen] = useState<boolean>(false);
     const router = useRouter();
 
     const style = {
@@ -38,6 +39,12 @@ export default function Header() {
             setIsNavOpen(false);
         }
     }, [width]);
+
+    useLayoutEffect(() => {
+        // if (isAvatarOpen === true)
+        console.log('isAvatarOpen:', isAvatarOpen);
+        setMenuPage(-1);
+    }, [isAvatarOpen])
 
     const onClickHandler = (index: number) => {
         if (menuPage === index || index === -1) {
@@ -65,7 +72,7 @@ export default function Header() {
                     </button>
                     <div className='gap-[12px] xl:gap-[40px] hidden lg:flex lg:items-center '>
                         {HeaderLinks.map((items: LinksType, index: number) => (
-                            <div key={'headerlink1'+index} onClick={() => onClickHandler(index)}>
+                            <div key={'headerlink1' + index} onClick={() => onClickHandler(index)}>
                                 <HeaderLinkButton title={items.title} index={index} status={menuPage} />
                             </div>
                         ))}
@@ -90,11 +97,13 @@ export default function Header() {
                             />
                         </div>
                         {isLogIn &&
-                            <AvatarMenu />
+                            <AvatarMenu
+                                setMenuPage={setMenuPage}
+                            />
                         }
                     </div>
                 </div>
-                <div className={`h-screen w-full ${menuPage < 0 ? 'hidden opacity-0' : 'block opacity-100'} max-md:hidden absolute top-[90px] z-9`}>
+                <div className={`h-screen w-full ${menuPage < 0 ? 'hidden opacity-0' : 'block opacity-100'} max-md:hidden absolute top-[90px] z-10`}>
                     <div className='w-full bg-bcg border-b border-deviders transaction-all duration-300 flex justify-center'>
                         <div className='max-w-[1225px] mx-[20px] w-full py-[40px] flex flex-col lg:flex-row gap-[30px] lg:gap-[40px]'>
                             <div className='w-full lg:w-1/3 flex flex-col gap-[20px]'>
@@ -106,7 +115,7 @@ export default function Header() {
                             </div>
                             <div className='w-full lg:w-2/3 grid grid-cols-3 gap-[30px]'>
                                 {menuPage >= 0 && HeaderLinks[menuPage].links.map((item: LinkType, index: number) => (
-                                    <button key={'headerlink2'+index} className={style.MenuItem} onClick={() => { document.body.style.overflow = 'visible', router.push(item.link), setMenuPage(-1) }}>{item.title}</button>
+                                    <button key={'headerlink2' + index} className={style.MenuItem} onClick={() => { document.body.style.overflow = 'visible', router.push(item.link), setMenuPage(-1) }}>{item.title}</button>
                                 ))}
                             </div>
                         </div>
@@ -122,7 +131,7 @@ export default function Header() {
                             <div className='uppercase text-[18px]'>{items.title}</div>
                             <div className='grid gap-[10px]'>
                                 {HeaderLinks[index].links.map((item: LinkType, index: number) => (
-                                    <button key={'headerlink3'+index} className={style.MenuItem} onClick={() => { document.body.style.overflow = 'visible', router.push(item.link), setIsNavOpen(false) }}>{item.title}</button>
+                                    <button key={'headerlink3' + index} className={style.MenuItem} onClick={() => { document.body.style.overflow = 'visible', router.push(item.link), setIsNavOpen(false) }}>{item.title}</button>
                                 ))}
                             </div>
                         </div>

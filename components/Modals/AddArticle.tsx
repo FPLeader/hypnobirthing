@@ -2,9 +2,11 @@ import { Fragment, useState, useEffect, useRef } from 'react'
 import { toast } from 'react-toastify'
 import { Dialog, Transition } from '@headlessui/react'
 import { CloseIcon } from '@/assests/Icons'
-import { ModalButton } from '../Buttons'
-import { CategoryInput } from '../Inputs'
-import { CategorySelect } from '../Select'
+import { ModalButton } from '@/components/Buttons'
+import { CategoryInput } from '@/components/Inputs'
+import { CategorySelect } from '@/components/Select'
+import { LanguageOptions, CategoryOptions } from '@/services/Constants/SelectOptions'
+
 import API from '@/services/API'
 import useWindowSize from '@/services/Hooks/useWindowSize'
 import { useRouter } from 'next/router'
@@ -41,18 +43,8 @@ export default function AddArticle({
 
     // values
     const [loadingOpen, setLoadingOpen] = useState<boolean>(false);
-    const languageOptions = [
-        { id: 0, value: 'I only know English' },
-        { id: 1, value: 'I only know Hebrew' },
-        { id: 2, value: 'I know English and Hebrew both' },
-    ]
-    const [selectedLangauge, setSelectedLanguage] = useState(languageOptions[0]);
-    const categoryOptions = [
-        { id: 0, value: 'Article' },
-        { id: 1, value: 'Birth Stories' },
-        { id: 2, value: 'Recipe' },
-    ]
-    const [selectedCategory, setSelectedCategory] = useState(categoryOptions[0]);
+    const [selectedLangauge, setSelectedLanguage] = useState(LanguageOptions[0]);
+    const [selectedCategory, setSelectedCategory] = useState(CategoryOptions[0]);
     // for English
     const [titleEn, setTitleEn] = useState<string>('');
     const [readTimeEn, setReadTimeEn] = useState<string>('');
@@ -246,7 +238,7 @@ export default function AddArticle({
                         setSelectedImage(null);
                         setImage('');
                         // category
-                        setSelectedCategory(categoryOptions[0]);
+                        setSelectedCategory(CategoryOptions[0]);
                         // image urls
                         setImageUrls([]);
                         // close modal
@@ -319,7 +311,7 @@ export default function AddArticle({
                                 <div className='mt-[20px] space-y-[10px]'>
                                     <CategorySelect
                                         category='Language'
-                                        selectItems={languageOptions}
+                                        selectItems={LanguageOptions}
                                         inputValue={selectedLangauge}
                                         handleChange={setSelectedLanguage}
                                     />
@@ -335,7 +327,7 @@ export default function AddArticle({
 
                                             <CategorySelect
                                                 category='Category'
-                                                selectItems={categoryOptions}
+                                                selectItems={CategoryOptions}
                                                 inputValue={selectedCategory}
                                                 handleChange={setSelectedCategory}
                                             />
@@ -447,7 +439,7 @@ export default function AddArticle({
 
                                                 <CategorySelect
                                                     category='קטגוריה'
-                                                    selectItems={categoryOptions}
+                                                    selectItems={CategoryOptions}
                                                     inputValue={selectedCategory}
                                                     handleChange={setSelectedCategory}
                                                 />
@@ -568,7 +560,7 @@ export default function AddArticle({
 
                                                 <CategorySelect
                                                     category='Category'
-                                                    selectItems={categoryOptions}
+                                                    selectItems={CategoryOptions}
                                                     inputValue={selectedCategory}
                                                     handleChange={setSelectedCategory}
                                                 />

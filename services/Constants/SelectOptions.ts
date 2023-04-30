@@ -1,31 +1,3 @@
-export interface SelectItem {
-    value: string,
-    text: string,
-}
-
-export const SelectData1: SelectItem[] = [
-    {
-        value: 'us',
-        text: 'US'
-    },
-    {
-        value: 'us',
-        text: 'IS'
-    },
-    {
-        value: 'us',
-        text: 'CA'
-    },
-    {
-        value: 'us',
-        text: 'IT'
-    },
-    {
-        value: 'us',
-        text: 'BR'
-    }
-]
-
 export interface CategorySelectItemType {
     id: number,
     value: string,
@@ -148,4 +120,26 @@ export const SkillSet: SelectItemType[] = [
         value: 'Other',
         label: 'Other'
     },
+]
+
+export const LanguageOptions = [
+    { id: 0, value: 'I only know English' },
+    { id: 1, value: 'I only know Hebrew' },
+    { id: 2, value: 'I know English and Hebrew both' },
+]
+
+export const CategoryOptions = [
+    { id: 0, value: 'Article' },
+    { id: 1, value: 'Birth Story' },
+    { id: 2, value: 'Recipe' },
+]
+
+export const DayOptions = [
+    { id: 0, value: 'Mondays' },
+    { id: 1, value: 'Tuesdays' },
+    { id: 2, value: 'Wednesdays' },
+    { id: 3, value: 'Thursdays' },
+    { id: 4, value: 'Fridays' },
+    { id: 5, value: 'Saturdays' },
+    { id: 6, value: 'Sundays' },
 ]

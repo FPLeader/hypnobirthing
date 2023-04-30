@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { SearchButton, ExpandButton } from '@/components/Buttons'
 import { CategorySelect } from '../../Select'
-import { SelectData1 } from '@/services/Constants/SelectOptions'
 import { CategoryInput } from '@/components/Inputs'
 import { CourseCardType, SearchResultType, SearchResult } from '@/services/Constants/CardsData'
 import { CourseCard, VideoCard } from '@/components/Cards'
@@ -109,7 +108,7 @@ export default function UpcomingCourse() {
                                     <ExpandButton />
                                 </div>
                             </div>
-                            <div className='flex justify-center'>
+                            <div className='flex justify-center max-h-[300px]'>
                                 <div className='w-full lg:min-w-[500px] sm:max-w-[500px]'>
                                     {
                                         isImageOrVideoOrYoutube(previousMainBody.fileName1) === 'image'

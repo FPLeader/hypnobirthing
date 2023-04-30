@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { SmallBlogCard, SmallBlogEditCard, SmallBlogSkeletonCard } from '@/components/Cards'
+import { SmallBlogCard, SmallBlogEditCard } from '@/components/Cards'
+import { SmallBlogSkeletonCard } from '@/components/Skeletons'
 import { toast } from 'react-toastify'
 import { UploadButton } from '@/components/Buttons'
 import { AddArticleModal } from '@/components/Modals'

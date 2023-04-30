@@ -14,7 +14,7 @@ export default function Search() {
             <input
                 type='text'
                 id='simple-search'
-                className='bg-white border border-deviders text-dark text-[16px] placeholder:text-[#2B252590] placeholder:text-[Lato] rounded-[10px] block w-full pr-7 p-2.5'
+                className='bg-white border border-deviders text-dark text-[16px] placeholder:text-[#2B252590] placeholder:text-[Lato] rounded-[10px] block w-full pr-7 py-[9.5px] lg:py-[11px]'
                 placeholder={t('Search') as string}
                 required
             />

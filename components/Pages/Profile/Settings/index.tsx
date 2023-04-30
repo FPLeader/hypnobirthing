@@ -23,10 +23,10 @@ export default function Index({
     const lngId: number = i18n.language === 'en' ? 0 : 1;
 
     const tabOptions = [
-        { id: 0, value: 'Profile Pashut Laledet' },
-        { id: 1, value: 'Log-in and security' },
-        { id: 2, value: 'Upcoming Sessions' },
-        { id: 3, value: 'My articles' },
+        { id: 0, value: 'PROFILE PASHUT LALEDET' },
+        { id: 1, value: 'LOG-IN AND SECURITY' },
+        { id: 2, value: 'UPCOMING SESSIONS' },
+        { id: 3, value: 'MY ARTICLES' },
     ]
     const [tab, setTab] = useState(tabOptions[0]);
 
@@ -58,8 +58,8 @@ export default function Index({
     return (
         <div className='pt-[70px] md:pt-[90px] w-full'>
             <div className='w-full flex justify-center my-[20px] md:my-[30px] lg:my-[50px]'>
-                <div className='w-full max-w-[1225px] mx-[20px] flex flex-col gap-[20px] md:gap-[30px] lg:gap-[40px]'>
-                    <RegularTitle lngId={lngId} text='Profile Settings' />
+                <div dir={lngId === 0 ? 'ltr' : 'rtl'} className='w-full max-w-[1225px] mx-[20px] flex flex-col gap-[20px] md:gap-[30px] lg:gap-[40px]'>
+                    <RegularTitle lngId={lngId} text={t('Profile Settings')} />
                     {domLoaded &&
                         <>
                             <div className='max-w-[864px] text-dark'>
@@ -72,30 +72,16 @@ export default function Index({
                                     />
                                 </div>
                                 <ul className='hidden text-[14px] font-medium text-center divide-x divide-beighe rounded-[10px] overflow-hidden border-[2px] border-beighe sm:flex'>
-                                    <li className='w-full'>
-                                        <div
-                                            className={OptionClass(0)}
-                                            onClick={() => changeTab(0)}
-                                        >profile Pashut Laledet</div>
-                                    </li>
-                                    <li className='w-full'>
-                                        <div
-                                            className={OptionClass(1)}
-                                            onClick={() => changeTab(1)}
-                                        >Log-in and security</div>
-                                    </li>
-                                    <li className='w-full'>
-                                        <div
-                                            className={OptionClass(2)}
-                                            onClick={() => changeTab(2)}
-                                        >Upcoming Sessions</div>
-                                    </li>
-                                    <li className='w-full'>
-                                        <div
-                                            className={OptionClass(3)}
-                                            onClick={() => changeTab(3)}
-                                        >My articles</div>
-                                    </li>
+                                    {tabOptions.map((tabOption, index: number) => (
+                                        <li key={`tab-option-${index}`} className='w-full'>
+                                            <div
+                                                className={OptionClass(index)}
+                                                onClick={() => changeTab(index)}
+                                            >
+                                                {t(tabOption.value)}
+                                            </div>
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                             {

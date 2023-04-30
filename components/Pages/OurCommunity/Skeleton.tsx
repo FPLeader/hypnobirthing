@@ -1,6 +1,4 @@
 import {
-    NormalTextSkeleton,
-    ImageSkeleton,
     TeacherCardSkeleton
 } from '@/components/Skeletons'
 
@@ -9,9 +7,9 @@ export default function Skeleton() {
         <div className='w-full flex justify-center'>
             <div className='pt-[70px] lg:pt-[90px] w-full max-w-[1225px] mx-[20px]'>
                 <div className='h-3 md:h-4 bg-gray-300 rounded-full w-full max-w-[300px]'></div>
-                <div className='w-full mt-[20px] grid lg:grid-cols-2 gap-[20px] md:gap-[30px] lg:gap-x-[35px] lg:gap-y-[70px] items-center'>
-                    <NormalTextSkeleton />
-                    <ImageSkeleton />
+                <div className='w-full mt-[35px] space-y-[20px]'>
+                    <div className='w-full max-w-[750px] h-2 bg-gray-200 rounded-full'></div>
+                    <div className='w-full max-w-[550px] h-2 bg-gray-200 rounded-full'></div>
                 </div>
 
                 <div className='grid md:grid-cols-4 gap-2 mt-[30px] md:mt-[50px]'>

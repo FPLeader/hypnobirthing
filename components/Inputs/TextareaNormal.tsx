@@ -3,7 +3,7 @@ interface InputProps {
     placeholder: string,
     inputValue: any,
     handleChange: any,
-    lngId: number,
+    lngId?: number,
 }
 
 export default function TextareaNormal({

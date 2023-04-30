@@ -2,7 +2,7 @@ import { useState, Fragment, Dispatch, SetStateAction } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { CloseIcon } from '@/assests/Icons'
 import { ModalButton } from '../Buttons'
-import { CategoryInput, CategoryDatePicker, Textarea } from '../Inputs'
+import { CategoryInput, CategoryDatePicker, TextareaNormal } from '../Inputs'
 import useWindowSize from '@/services/Hooks/useWindowSize'
 
 interface AddSessionProps {
@@ -24,7 +24,7 @@ export default function AddSession({
     const [startDate, setStartDate] = useState<Date>();
     const [endDate, setEndDate] = useState<Date>();
     const [introduction, setIntroduction] = useState<string>('');
-    const [description, setDescription] = useState<string>('');
+    const [details, setDetails] = useState<string>('');
 
     return (
         <Transition appear show={isOpen} as={Fragment}>
@@ -56,7 +56,7 @@ export default function AddSession({
                                 <Dialog.Title
                                     className='text-[20px] lg:text-[28px] font-medium leading-normal text-dark pr-[35px]'
                                 >
-                                    Adding a session
+                                    Adding a course
                                 </Dialog.Title>
                                 <div className='absolute top-[10px] right-[10px]'>
                                     <button
@@ -68,7 +68,7 @@ export default function AddSession({
                                 </div>
                                 <div className='mt-[20px] space-y-[10px] font-[lato]'>
                                     <CategoryInput
-                                        category='Name of session'
+                                        category='Name of Educator'
                                         placeholder=''
                                         inputValue={name}
                                         handleChange={setName}
@@ -79,34 +79,48 @@ export default function AddSession({
                                         inputValue={location}
                                         handleChange={setLocation}
                                     />
-                                    <div className='grid md:grid-cols-2 gap-[10px]'>
+                                    {/* <div className='grid md:grid-cols-2 gap-[10px]'>
                                         <CategoryDatePicker
-                                            category='Estimated date of birth (Start)'
+                                            category='Start Date'
                                             title=''
                                             placeholder=''
+                                            value={startDate}
                                             setValue={setStartDate}
                                         />
                                         <CategoryDatePicker
-                                            category='Estimated date of birth (Finish)'
+                                            category='Dates of each lesson'
                                             title=''
                                             placeholder=''
+                                            value={endDate}
                                             setValue={setEndDate}
                                         />
-                                    </div>
+                                    </div> */}
                                     <div className='space-y-[6px]'>
-                                        <label className='text-[14px] text-dark'>About class</label>
-                                        <Textarea
+                                        <label className='text-[14px] text-dark'>
+                                            About class
+                                        </label>
+                                        <TextareaNormal
                                             placeholder='Enter text here'
                                             inputValue={introduction}
                                             handleChange={setIntroduction}
                                         />
+
                                     </div>
+
+                                    <CategoryInput
+                                        category='How much inventory is open on pashut laledet'
+                                        placeholder=''
+                                        inputValue={location}
+                                        handleChange={setLocation}
+                                    />
                                     <div className='space-y-[6px]'>
-                                        <label className='text-[14px] text-dark'>What is included?</label>
-                                        <Textarea
+                                        <label className='text-[14px] text-dark'>
+                                            Add details
+                                        </label>
+                                        <TextareaNormal
                                             placeholder='Enter text here'
-                                            inputValue={description}
-                                            handleChange={setDescription}
+                                            inputValue={details}
+                                            handleChange={setDetails}
                                         />
                                     </div>
                                 </div>
