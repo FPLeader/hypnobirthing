@@ -45,8 +45,8 @@ export default function Category({
                 value={value}
                 onChange={handleChange}
                 plugins={[
-                    <DatePanel sort='date' />,
-                    <TimePicker position='bottom' hideSeconds />
+                    <DatePanel key='date-panel' sort='date' />,
+                    <TimePicker key='time-picker' position='bottom' hideSeconds />
                 ]}
                 inputClass='w-full px-[12px] py-[9.5px] lg:py-[11px] border border-deviders focus:border-pink-500y text-dark font-[Lato] text-[16px] rounded-[10px] placeholder:text-[#2B252590] placeholder:font-[Lato] transition-all duration-300'
                 className=''
