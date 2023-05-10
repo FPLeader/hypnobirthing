@@ -133,7 +133,7 @@ export default function Upcoming() {
   }
 
   useEffect(() => {
-    setDomLoaded(-1);
+    setDomLoaded(0);
   }, [])
 
   useEffect(() => {
