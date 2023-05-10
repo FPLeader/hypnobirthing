@@ -28,7 +28,7 @@ export default function Expand() {
 
     return (
         <div
-            className='flex w-max flex items-center cursor-pointer select-none border border-beighe text-dark text-[14px] rounded-[50px] py-[4px] px-[12px] gap-[5px]'
+            className='flex w-max items-center cursor-pointer select-none border border-beighe text-dark text-[14px] rounded-[50px] py-[4px] px-[12px] gap-[5px]'
             onClick={() => setIsOpen(!isOpen)}
         >
             EXPAND

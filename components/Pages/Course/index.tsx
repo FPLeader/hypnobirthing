@@ -1,7 +1,28 @@
-import { IntroductionSection, AboutClassSection, SubmitSection, FaqSection, RelatedCoursesSection, MyContactsSection, FeedbackSection } from './Sections'
+import {
+  IntroductionSection,
+  AboutClassSection,
+  SubmitSection,
+  FaqSection,
+  RelatedCoursesSection,
+  MyContactsSection,
+  FeedbackSection
+} from './Sections'
 import { PromoteBar, UpcomingClassesBar } from '@/components/Sections'
+import { useEffect } from 'react'
 
-export default function Index() {
+interface PageProps {
+  courseId: string,
+}
+
+export default function Index({
+  courseId = ''
+}: PageProps) {
+
+  useEffect(() => {
+    if (courseId !== '') {
+    }
+  }, [courseId])
+
   return (
     <div className='pt-[70px] md:pt-[90px] w-full'>
       <IntroductionSection />

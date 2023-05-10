@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from '@/services/Hooks'
 import { logout } from '@/services/Actions/Auth.action'
 import i18n from '@/services/i18n'
 import { useTranslation } from 'react-i18next'
+import { NotificationBadge } from '@/components/Badges'
 
 interface AvatarProps {
     onClickHandler: (index: number) => void
@@ -45,10 +46,15 @@ export default function Avatar({
                 <Popover className='relative z-20'>
                     <div className='flex items-center'>
                         <Popover.Button
-                            className='w-[45px] h-[45px] md:w-[50px] md:h-[50px] rounded-full overflow-hidden border-0 ring-deviders focus:ring-0 m-auto'
+                            className='w-[45px] h-[45px] md:w-[50px] md:h-[50px] border-0 ring-deviders focus:ring-0 focus:outline-none m-auto focus-visible:outline-none'
                             onClick={() => { setIsOpen(true), onClickHandler(-1) }}
                         >
-                            <img draggable='false' src={image} alt='Avatar' className='w-full h-full object-cover' />
+                            <div className='w-full h-full relative'>
+                                <img draggable='false' src={image} alt='Avatar' className='w-full h-full object-cover rounded-full overflow-hidden' />
+                                <div className='absolute top-[2px] right-[2px]'>
+                                    <NotificationBadge />
+                                </div>
+                            </div>
                         </Popover.Button>
                     </div>
 
@@ -63,6 +69,12 @@ export default function Avatar({
                         >
                             <Popover.Panel className='absolute right-0'>
                                 <div className='mt-[5px] p-[10px] flex flex-col items-start gap-[5px] border border-deviders rounded-[10px] bg-bcg'>
+                                    <button className={style.Link + ' relative'} onClick={() => { router.push('/notification'), setIsOpen(false) }}>
+                                        Notificatoin
+                                        <div className='absolute top-[2px] right-[2px]'>
+                                            <NotificationBadge />
+                                        </div>
+                                    </button>
                                     <button className={style.Link} onClick={() => { router.push('/profile/educator'), setIsOpen(false) }}>
                                         My Profile
                                     </button>

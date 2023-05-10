@@ -1,12 +1,16 @@
-import { useState, Dispatch, SetStateAction } from 'react'
+import { useState, Dispatch, SetStateAction, useRef, useEffect } from 'react'
 import DatePicker from 'react-multi-date-picker'
+import DatePanel from 'react-multi-date-picker/plugins/date_panel'
+import useOutsideClick from '@/services/Hooks/useOutsideClick'
+import TimePicker from 'react-multi-date-picker/plugins/time_picker';
+import type { Value } from 'react-multi-date-picker'
 
 interface InputProps {
     category: string,
     title: string,
     placeholder: string,
-    value: Date | undefined,
-    setValue: Dispatch<SetStateAction<Date | undefined>>
+    value: Value,
+    setValue: Dispatch<SetStateAction<Value>>
 }
 
 export default function Category({
@@ -16,59 +20,37 @@ export default function Category({
     value,
     setValue,
 }: InputProps) {
-    // const [show, setShow] = useState<boolean>(false)
-    // const handleChange = (selectedDate: Date) => {
-    //     console.log(selectedDate)
-    //     setValue(selectedDate);
-    // }
-    // const handleClose = (state: boolean) => {
-    //     setShow(state)
-    // }
 
-    // const options = {
-    //     title: '',
-    //     autoHide: true,
-    //     todayBtn: false,
-    //     clearBtn: false,
-    //     maxDate: new Date('2030-01-01'),
-    //     minDate: new Date('1950-01-01'),
-    //     theme: {
-    //         background: 'bg-white z-[4000]',
-    //         todayBtn: '',
-    //         clearBtn: '',
-    //         icons: '',
-    //         text: '',
-    //         disabledText: 'bg-gray',
-    //         input: '',
-    //         inputIcon: '',
-    //         selected: '',
-    //     },
-    //     icons: {
-    //         // () => ReactElement | JSX.Element
-    //         prev: () => <span>Previous</span>,
-    //         next: () => <span>Next</span>,
-    //     },
-    //     datepickerClassNames: 'top-[70px] w-full flex justify-center',
-    //     defaultDate: new Date(),
-    //     language: 'en',
-    // }
+    const datePickerRef = useRef<HTMLDivElement>(null)
+    const datePickerHandler = useOutsideClick({ ref: datePickerRef })
 
     const handleChange = (value: any) => {
         setValue(value);
     }
 
+    useEffect(() => {
+        if (datePickerHandler && datePickerRef.current) {
+            (datePickerRef.current as any).closeCalendar()
+        }
+    }, [datePickerHandler])
+
     return (
         <div className='flex flex-col gap-[6px] relative'>
-            <label className='text-[14px] text-dark'>{category}</label>
-            {/* <Datepicker
-                options={options}
-                onChange={handleChange}
-                show={show}
-                setShow={handleClose}
-            /> */}
+            <label className='text-[14px] text-dark'>
+                {category}
+            </label>
             <DatePicker
+                ref={datePickerRef}
+                multiple
                 value={value}
                 onChange={handleChange}
+                plugins={[
+                    <DatePanel sort='date' />,
+                    <TimePicker position='bottom' hideSeconds />
+                ]}
+                inputClass='w-full px-[12px] py-[9.5px] lg:py-[11px] border border-deviders focus:border-pink-500y text-dark font-[Lato] text-[16px] rounded-[10px] placeholder:text-[#2B252590] placeholder:font-[Lato] transition-all duration-300'
+                className=''
+                format='MM/DD/YYYY HH:mm'
             />
         </div>
     )

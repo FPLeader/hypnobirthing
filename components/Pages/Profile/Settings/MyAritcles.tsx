@@ -32,8 +32,7 @@ export default function MyAritcles() {
 
     // values
     const [domLoaded, setDomLoaded] = useState<number>(-1);
-    const [numberOfTotal, setNumberOfTotal] = useState<number>(0);
-
+    
     interface mainbodyType {
         id_lng: number,
         ds_title: string,
@@ -48,7 +47,7 @@ export default function MyAritcles() {
         dt_upload: Date,
         dt_publish: Date,
         ds_thumbnail: string,
-        nm_user: string,
+        nm_user: string[],
         ds_category: string,
         mainbody: mainbodyType[]
     }
@@ -57,7 +56,6 @@ export default function MyAritcles() {
     const [draftBlogs, setDraftBlogs] = useState<BlogType[]>([]);
 
     const SetBlogsData = (allBlogs: []) => {
-        setNumberOfTotal(allBlogs.length);
         let _liveBlogs: BlogType[] = [], _reviewBlogs: BlogType[] = [], _draftBlogs: BlogType[] = [];
         allBlogs.map((blogData: BlogType) => {
             if (blogData.ds_state === 'live') {
@@ -124,13 +122,12 @@ export default function MyAritcles() {
             <AddArticleModal
                 isOpen={isOpen}
                 closeModal={closeModal}
-                numberOfTotal={numberOfTotal}
                 loadBlogs={loadBlogs}
             />
             <div className='text-[24px] lg:text-[28px] font-medium'>
                 {
                     domLoaded === 1 ?
-                        `My articles (${numberOfTotal})`
+                        `My articles (${liveBlogs.length + reviewBlogs.length + draftBlogs.length})`
                         :
                         `My articles`
                 }
@@ -153,7 +150,7 @@ export default function MyAritcles() {
                     <div className={style.GridStyle}>
                         {liveBlogs.map((CardData: BlogType, index: number) => (
                             <SmallBlogCard
-                                key={'live' + index}
+                                key={'live-blog-' + index}
                                 id={CardData.id_blog}
                                 image={CardData.ds_thumbnail}
                                 mainbody={CardData.mainbody}
@@ -199,7 +196,7 @@ export default function MyAritcles() {
                     <div className={style.GridStyle}>
                         {reviewBlogs.map((CardData: BlogType, index: number) => (
                             <SmallBlogEditCard
-                                key={'review' + index}
+                                key={'review-blog-' + index}
                                 cd_educator={currentUser.cd_educator}
                                 id={CardData.id_blog}
                                 image={CardData.ds_thumbnail}
@@ -237,7 +234,7 @@ export default function MyAritcles() {
                     <div className={style.GridStyle}>
                         {draftBlogs.map((CardData: BlogType, index: number) => (
                             <SmallBlogEditCard
-                                key={'draft' + index}
+                                key={'draft-blog-' + index}
                                 cd_educator={currentUser.cd_educator}
                                 id={CardData.id_blog}
                                 image={CardData.ds_thumbnail}

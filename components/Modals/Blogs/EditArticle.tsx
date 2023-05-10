@@ -2,44 +2,54 @@ import { Fragment, useState, useEffect, useRef } from 'react'
 import { toast } from 'react-toastify'
 import { Dialog, Transition } from '@headlessui/react'
 import { CloseIcon } from '@/assests/Icons'
-import { ModalButton } from '@/components/Buttons'
-import { CategoryInput } from '@/components/Inputs'
-import { CategorySelect } from '@/components/Select'
+import { ModalButton } from '../../Buttons'
+import { CategoryInput } from '../../Inputs'
+import { CategorySelect } from '../../Select'
 import { LanguageOptions, CategoryOptions } from '@/services/Constants/SelectOptions'
 
 import API from '@/services/API'
 import useWindowSize from '@/services/Hooks/useWindowSize'
 import { useRouter } from 'next/router'
-import { useAppDispatch, useAppSelector } from '@/services/Hooks'
+import { useAppDispatch } from '@/services/Hooks'
 import { logout } from '@/services/Actions/Auth.action'
 
 import dynamic from 'next/dynamic'
 const QuillNoSSRWrapper = dynamic(
-    () => import('./RenderQuillReact'),
+    () => import('../RenderQuillReact'),
     { ssr: false, loading: () => <p>Loading ...</p> }
 )
 
-interface AddArticleProps {
-    isOpen: boolean,
-    // setIsOpen: Dispatch<SetStateAction<boolean>>,
-    // openModal: () => void,
-    closeModal: () => void,
-    numberOfTotal: number, /// number of total blogs
-    loadBlogs: () => void
+interface mainbodyType {
+    id_lng: number,
+    ds_title: string,
+    ds_content: string,
+    ds_readtime: string,
 }
 
-export default function AddArticle({
+interface EditArticleProps {
+    isOpen: boolean,
+    closeModal: () => void,
+    cd_educator: string,
+    id_blog: string,
+    ds_thumbnail: string,
+    mainbody: mainbodyType[],
+    ds_category: string,
+    loadBlogs: () => void,
+}
+
+export default function EditArticle({
     isOpen,
-    // setIsOpen,
-    // openModal,
     closeModal,
-    numberOfTotal = 0,
-    loadBlogs
-}: AddArticleProps) {
+    cd_educator,
+    id_blog,
+    ds_thumbnail,
+    mainbody,
+    ds_category,
+    loadBlogs,
+}: EditArticleProps) {
     const router = useRouter();
     const dispatch = useAppDispatch();
     const { width } = useWindowSize();
-    const { currentUser } = useAppSelector((state) => state.auth);
 
     // values
     const [loadingOpen, setLoadingOpen] = useState<boolean>(false);
@@ -67,7 +77,72 @@ export default function AddArticle({
 
     // initalize
     useEffect(() => {
-    }, []);
+        if (mainbody.length === 2) { // En/He both option
+            setSelectedLanguage(LanguageOptions[2]);
+
+            if (ds_thumbnail !== '')
+                setImage(process.env.FILE_IMAGE_BASE + ds_thumbnail);
+
+            // En option
+            setTitleEn(mainbody[0].ds_title);
+            setContentEn(mainbody[0].ds_content);
+            setReadTimeEn(mainbody[0].ds_readtime);
+
+            // He option
+            setTitleHe(mainbody[1].ds_title);
+            setContentHe(mainbody[1].ds_content);
+            setReadTimeHe(mainbody[1].ds_readtime);
+        } else if (mainbody[0].id_lng === 0) { // En option
+            setSelectedLanguage(LanguageOptions[0]);
+            setTitleEn(mainbody[0].ds_title);
+            if (ds_thumbnail !== '')
+                setImage(process.env.FILE_IMAGE_BASE + ds_thumbnail);
+            setContentEn(mainbody[0].ds_content);
+            setReadTimeEn(mainbody[0].ds_readtime);
+        } else if (mainbody[0].id_lng === 1) { // He option
+            setSelectedLanguage(LanguageOptions[1]);
+            setTitleHe(mainbody[0].ds_title);
+            if (ds_thumbnail !== '')
+                setImage(process.env.FILE_IMAGE_BASE + ds_thumbnail);
+            setContentHe(mainbody[0].ds_content);
+            setReadTimeHe(mainbody[0].ds_readtime);
+        }
+        CategoryOptions.map((currentOption) => {
+            if (currentOption.value === ds_category) {
+                setSelectedCategory(CategoryOptions[currentOption.id]);
+                return;
+            }
+        })
+    }, [isOpen, ds_thumbnail, mainbody, ds_category]);
+
+    useEffect(() => {
+        // get all pictures urls from current blog
+        var _ds_images: string[] = [];
+        let regex = /\/([^/]+\.\w{2,4})["']/g;
+        if (selectedLangauge.id === 0) {
+            let matches = [...contentEn.matchAll(regex)];
+            matches.map((match) => {
+                _ds_images.push(match[1]);
+            })
+        } else if (selectedLangauge.id === 1) {
+            let matches = [...contentHe.matchAll(regex)];
+            matches.map((match) => {
+                _ds_images.push(match[1]);
+            })
+        } else if (selectedLangauge.id === 2) {
+            let matchesEn = [...contentEn.matchAll(regex)];
+            matchesEn.map((match) => {
+                _ds_images.push(match[1]);
+            })
+            let matchesHe = [...contentHe.matchAll(regex)];
+            matchesHe.map((match) => {
+                _ds_images.push(match[1]);
+            })
+        }
+        // console.log(_ds_images)
+        if (_ds_images.length !== 0)
+            setImageUrls(_ds_images);
+    }, [mainbody]);
 
     const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
@@ -112,28 +187,27 @@ export default function AddArticle({
 
     const isPublish = () => {
         if (selectedLangauge.id === 0)
-            return titleEn !== '' && selectedImage !== null && contentEn !== '' && readTimeEn !== '';
+            return titleEn !== '' && image !== '' && contentEn !== '' && readTimeEn !== '';
         else if (selectedLangauge.id === 1)
-            return titleHe !== '' && selectedImage !== null && contentHe !== '' && readTimeHe !== '';
+            return titleHe !== '' && image !== '' && contentHe !== '' && readTimeHe !== '';
         else
-            return titleEn !== '' && selectedImage !== null && contentEn !== '' && readTimeEn !== '' && titleHe !== '' && contentHe !== '' && readTimeHe !== '';
+            return titleEn !== '' && image !== '' && contentEn !== '' && readTimeEn !== '' && titleHe !== '' && contentHe !== '' && readTimeHe !== '';
     }
 
-    const isButtonDisabled = () => {
+    const isButtonDisabled = (): boolean => {
         if (selectedLangauge.id === 0)
-            return !(titleEn !== '' || selectedImage !== null || contentEn !== '' || readTimeEn !== '');
+            return !((image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleEn !== mainbody[0].ds_title || contentEn !== mainbody[0].ds_content || readTimeEn !== mainbody[0].ds_readtime || selectedCategory.value !== ds_category);
         else if (selectedLangauge.id === 1)
-            return !(titleHe !== '' || selectedImage !== null || contentHe !== '' || readTimeHe !== '');
+            return !((image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleHe !== mainbody[0].ds_title || contentHe !== mainbody[0].ds_content || readTimeHe !== mainbody[0].ds_readtime || selectedCategory.value !== ds_category);
         else
-            return !(titleEn !== '' || selectedImage !== null || contentEn !== '' || readTimeEn !== '' || titleHe !== '' || selectedImage !== null || contentHe !== '' || readTimeHe !== '');
+            return !((image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleEn !== mainbody[0].ds_title || contentEn !== mainbody[0].ds_content || readTimeEn !== mainbody[0].ds_readtime || selectedCategory.value !== ds_category || titleHe !== mainbody?.[1]?.ds_title || contentHe !== mainbody?.[1]?.ds_content || readTimeHe !== mainbody?.[1]?.ds_readtime);
     }
 
     // upload blog
     const handlePublish = () => {
         if (!loadingOpen) {
-            // setLoadingOpen(true);
+            setLoadingOpen(true);
             let formData = new FormData();
-            let id_blog = currentUser.cd_educator + '_' + (numberOfTotal + 1).toString();
             if (selectedImage !== null) {
                 let parts = selectedImage.name.split('.');
                 let ext = parts[parts.length - 1];
@@ -145,11 +219,12 @@ export default function AddArticle({
                 formData.append('image', selectedImage as unknown as File);
             }
             formData.append('id_blog', id_blog);
-            formData.append('cd_educator', currentUser.cd_educator);
-            formData.append('nm_user', currentUser.nm_user);
+            formData.append('cd_educator', cd_educator);
             formData.append('ds_category', selectedCategory.value);
-            if (isPublish())
+            if (isPublish() === true) {
                 formData.append('ds_state', 'underreview');
+                console.log('ds_state, underreivew');
+            }
             else
                 formData.append('ds_state', 'draft');   /// draft or underreview or live
             let blog_en = {
@@ -177,8 +252,9 @@ export default function AddArticle({
                 ];
                 formData.append('mainbody', JSON.stringify(blog_total));
             }
-            // delete unnecessary image files in Upload folder in backend
+            // delete unnecessary image files in Uploda folder in backend
             let _ds_images: string[] = [];
+            // console.log('imageUrls:', imageUrls);
             if (selectedLangauge.id === 0) { // in case of English
                 imageUrls.map((imageUrl: string) => {
                     // search title En
@@ -194,13 +270,15 @@ export default function AddArticle({
             } else if (selectedLangauge.id === 2) { // in case of En/He option
                 imageUrls.map((imageUrl: string) => {
                     // search title in En or He
+                    // console.log('contentEn.includes(imageUrl)', contentEn.includes(imageUrl));
+                    // console.log('contentHe.includes(imageUrl)', contentHe.includes(imageUrl));
                     if (!contentEn.includes(imageUrl) && !contentHe.includes(imageUrl))
                         _ds_images.push(imageUrl);
                 })
             }
             if (_ds_images.length !== 0) {
                 let formData = new FormData();
-                formData.append('cd_educator', currentUser.cd_educator);
+                formData.append('cd_educator', cd_educator);
                 formData.append('ds_images', JSON.stringify(_ds_images));
                 API.post('blog/deletecontentimages', formData, {
                     headers: {
@@ -217,14 +295,14 @@ export default function AddArticle({
                     })
             }
 
-            API.post('blog/uploadblog', formData, {
+            API.post('blog/updateblog', formData, {
                 headers: {
                     'content-type': 'multipart/form-data',
                 },
             })
                 .then((result: any) => {
                     if (result.data.status === 'success') {
-                        toast.success('Uploaded blog successfully.');
+                        toast.success('Updated blog successfully.');
                         setLoadingOpen(false);
                         // English
                         setTitleEn('');
@@ -243,7 +321,7 @@ export default function AddArticle({
                         setImageUrls([]);
                         // close modal
                         closeModal();
-                        // important load blog again
+                        // load Blogs
                         loadBlogs();
                     }
                 })
@@ -298,7 +376,7 @@ export default function AddArticle({
                                 <Dialog.Title
                                     className='text-[20px] lg:text-[28px] font-medium leading-normal text-dark pr-[35px]'
                                 >
-                                    Adding an article
+                                    Edit an article
                                 </Dialog.Title>
                                 <div className='absolute top-[10px] right-[10px]'>
                                     <button
@@ -324,7 +402,6 @@ export default function AddArticle({
                                                 inputValue={titleEn}
                                                 handleChange={setTitleEn}
                                             />
-
                                             <CategorySelect
                                                 category='Category'
                                                 selectItems={CategoryOptions}
@@ -403,22 +480,19 @@ export default function AddArticle({
                                             </div>
 
                                             <div className='space-y-[6px]'>
-                                                <label className='text-[14px] text-dark'>
-                                                    Main content
-                                                </label>
+                                                <label className='text-[14px] text-dark'>Main content</label>
                                                 <div>
                                                     <QuillNoSSRWrapper
                                                         theme='snow'
                                                         value={contentEn}
                                                         handleChange={handleChangeEn}
-                                                        placeholder={'Start typing!'}
+                                                        placeholder='Start typing!'
                                                         style={{ background: 'white', fontFamily: 'lato' }}
                                                         imageUrls={imageUrls}
                                                         setImageUrls={setImageUrls}
                                                     />
                                                 </div>
                                             </div>
-
                                             <CategoryInput
                                                 category='Enter read time'
                                                 placeholder='7 min'
@@ -436,7 +510,6 @@ export default function AddArticle({
                                                     inputValue={titleHe}
                                                     handleChange={setTitleHe}
                                                 />
-
                                                 <CategorySelect
                                                     category='קטגוריה'
                                                     selectItems={CategoryOptions}
@@ -689,14 +762,14 @@ export default function AddArticle({
 
                                 <div className='mt-[20px]'>
                                     <button
-                                        className='flex items-center justify-center gap-[5px] md:gap-[10px] whitespace-nowrap w-full whitespace-nowrap md:w-max h-max text-center px-[38px] py-[12.5px] lg:py-[17.5px] text-dark text-[14px] font-medium uppercase bg-beighe hover:bg-bhover active:bg-beighe disabled:bg-disabled disabled:cursor-not-allowed rounded-[500px] select-none cursor-pointer transition-all duration-300'
+                                        className='flex items-center justify-center gap-[5px] md:gap-[10px] w-full whitespace-nowrap md:w-max h-max text-center px-[38px] py-[12.5px] lg:py-[17.5px] text-dark text-[14px] font-medium uppercase bg-beighe hover:bg-bhover active:bg-beighe disabled:bg-disabled disabled:cursor-not-allowed rounded-[500px] select-none cursor-pointer transition-all duration-300'
                                         onClick={handlePublish}
                                         disabled={isButtonDisabled()}
                                     >
                                         {loadingOpen && <svg aria-hidden='true' className='w-[25px] h-[25px] text-gray-200 animate-spin fill-dark' viewBox='0 0 100 101' fill='none' xmlns='http://www.w3.org/2000/svg'>
                                             <path d='M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z' fill='currentFill' />
                                         </svg>}
-                                        {isPublish() ? 'publish' : 'save as draft'}
+                                        Update
                                     </button>
                                 </div>
                             </Dialog.Panel>

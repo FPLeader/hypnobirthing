@@ -16,7 +16,7 @@ interface BlogType {
     dt_upload: Date,
     dt_publish: Date,
     ds_thumbnail: string,
-    nm_user: string,
+    nm_user: string[],
     ds_category: string,
     mainbody: mainbodyType[]
 }
@@ -39,7 +39,7 @@ export default function Blogs({
             return 'No Content';
         return cleanedText;
     }
-
+    
     return (
         <div className='w-full flex justify-center'>
             <div className='w-full max-w-[1225px] mx-[20px]'>

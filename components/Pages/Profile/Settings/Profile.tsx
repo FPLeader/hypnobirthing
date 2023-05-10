@@ -7,11 +7,13 @@ import { MultiSelect } from 'react-multi-select-component'
 import ReactPlayer from 'react-player'
 import { setUser } from '@/services/Actions/Auth.action'
 import API from '@/services/API'
-import { SkillSet, TypeOptions } from '@/services/Constants/SelectOptions'
+import { SkillSetEn, SkillSetHe, TypeOptions } from '@/services/Constants/SelectOptions'
 import { Textarea, CategoryRuleInput, IconInput } from '@/components/Inputs'
+import { CategoryCheckbox } from '@/components/Checkbox'
 import { CategorySelect } from '@/components/Select'
 import { UploadButton } from '@/components/Buttons'
 import { YouTubeInputModal } from '@/components/Modals'
+import { LanguageOptions } from '@/services/Constants/SelectOptions'
 import { useAppDispatch, useAppSelector } from '@/services/Hooks'
 import { logout } from '@/services/Actions/Auth.action'
 
@@ -48,10 +50,17 @@ export default function Profile() {
     const [image, setImage] = useState<string>('/img/editphoto1.png');
     const [selectedVideo, setSelectedVideo] = useState<File | null>(null);
     const [videoUrl, setVideoUrl] = useState<string>('');
-    const [description, setDescription] = useState({ ...initialValue, rules: ['min:200', 'max:1200'] });
+
+    const [selectedLangauge, setSelectedLanguage] = useState(LanguageOptions[0]);
+    const [descriptionEn, setDescriptionEn] = useState({ ...initialValue, rules: ['min:200', 'max:1200'] });
+    const [descriptionHe, setDescriptionHe] = useState({ ...initialValue, rules: ['min:200', 'max:1200'] });
+    const [personalTitleEn, setPersonalTitleEn] = useState({ ...initialValue, rules: ['required'] });
+    const [personalTitleHe, setPersonalTitleHe] = useState({ ...initialValue, rules: ['required'] });
+
     const [profileType, setProfileType] = useState(TypeOptions[0]);
     const [skills, setSkills] = useState<MultiSelectOption[]>([]);
-    const [personalTitle, setPersonalTitle] = useState({ ...initialValue, rules: ['required'] });
+    const [privateCourse, setPrivateCourse] = useState<boolean>(false);
+
     const [personalsite, setPersonalsite] = useState({ ...initialValue, rules: ['personalsite'] });
     const [instagram, setInstagram] = useState({ ...initialValue, rules: ['instagram'] });
     const [facebook, setFacebook] = useState({ ...initialValue, rules: ['facebook'] });
@@ -136,13 +145,20 @@ export default function Profile() {
 
     useLayoutEffect(() => {
         if (currentUser) {
-            if (currentUser?.ds_avatar !== '')
-                setImage(process.env.FILE_IMAGE_BASE + currentUser?.ds_avatar);
-            if (currentUser?.ds_video !== '') {
-                if (getVideoIdFromUrl(currentUser?.ds_video) === null)
-                    setVideoUrl(process.env.FILE_VIDEO_BASE + currentUser?.ds_video);
+            if (currentUser.ar_aboutme[0] !== '' && currentUser.ar_personaltitle[0] !== '')
+                setSelectedLanguage(LanguageOptions[0]);
+            if (currentUser.ar_aboutme[1] !== '' && currentUser.ar_personaltitle[1] !== '')
+                setSelectedLanguage(LanguageOptions[1]);
+            if (currentUser.ar_aboutme[0] !== '' && currentUser.ar_personaltitle[1] !== '')
+                setSelectedLanguage(LanguageOptions[2]);
+
+            if (currentUser.ds_avatar !== '')
+                setImage(process.env.FILE_IMAGE_BASE + currentUser.ds_avatar);
+            if (currentUser.ds_video !== '') {
+                if (getVideoIdFromUrl(currentUser.ds_video) === null)
+                    setVideoUrl(process.env.FILE_VIDEO_BASE + currentUser.ds_video);
                 else
-                    setVideoUrl(currentUser?.ds_video);
+                    setVideoUrl(currentUser.ds_video);
             }
             TypeOptions.map((item, index: number) => {
                 if (currentUser.ds_category === item.value) {
@@ -151,22 +167,28 @@ export default function Profile() {
                 }
             })
             let _skills: MultiSelectOption[] = [];
-            currentUser?.ar_skills.map((text: string, index: number) => (
+            currentUser.ar_skills.map((text: string) => (
                 _skills.push({
                     value: text,
                     label: text
                 })
             ))
+            currentUser.ar_skills.map((text: string) => {
+                
+            })
             setSkills(_skills);
-            setDescription({ ...initialValue, value: currentUser.ar_aboutme[lngId], rules: ['min:200', 'max:1200'] });
-            setPersonalTitle({ ...initialValue, value: currentUser.ar_personaltitle[lngId], rules: ['required'] });
+            setDescriptionEn({ ...initialValue, value: currentUser.ar_aboutme[0], rules: ['min:200', 'max:1200'] });
+            setDescriptionHe({ ...initialValue, value: currentUser.ar_aboutme[1], rules: ['min:200', 'max:1200'] });
+            setPersonalTitleEn({ ...initialValue, value: currentUser.ar_personaltitle[0], rules: ['required'] });
+            setPersonalTitleHe({ ...initialValue, value: currentUser.ar_personaltitle[1], rules: ['required'] });
+            setPrivateCourse(Boolean(currentUser.ic_privatecourse));
             //contact information
             setPersonalsite({ ...initialValue, value: currentUser?.ln_personalsite === undefined ? '' : currentUser?.ln_personalsite, rules: ['personalsite'] });
             setInstagram({ ...initialValue, value: currentUser?.ln_instagram === undefined ? '' : currentUser?.ln_instagram, rules: ['instagram'] });
             setFacebook({ ...initialValue, value: currentUser?.ln_facebook === undefined ? '' : currentUser?.ln_facebook, rules: ['facebook'] });
             setTwitter({ ...initialValue, value: currentUser?.ln_twitter === undefined ? '' : currentUser?.ln_twitter, rules: ['twitter'] });
         }
-    }, [currentUser, lngId]);
+    }, [currentUser]);
 
     const avatarBtn = useRef<HTMLInputElement | null>(null);
 
@@ -242,14 +264,25 @@ export default function Profile() {
 
     const isSaveButtonActive = () => {
         if (currentUser &&
-            !description.errorMessage &&
-            !personalTitle.errorMessage &&
             !personalsite.errorMessage &&
             !instagram.errorMessage &&
             !facebook.errorMessage &&
             !twitter.errorMessage &&
             skills.length > 0 &&
-            !loadingOpen
+            !loadingOpen &&
+            (selectedLangauge.id === 0 ?
+                (!descriptionEn.errorMessage &&
+                    !personalTitleEn.errorMessage)
+                :
+                selectedLangauge.id === 1 ?
+                    (!descriptionHe.errorMessage &&
+                        !personalTitleHe.errorMessage)
+                    :
+                    (!descriptionEn.errorMessage &&
+                        !personalTitleEn.errorMessage &&
+                        !descriptionHe.errorMessage &&
+                        !personalTitleHe.errorMessage)
+            )
         ) {
             // console.log('---------------------');
             // console.log(process.env.FILE_IMAGE_BASE + currentUser?.ds_avatar !== image);
@@ -262,10 +295,19 @@ export default function Profile() {
             // console.log((currentUser?.ln_twitter === undefined ? '' !== twitter.value : currentUser?.ln_twitter !== twitter.value));
             // console.log(isCategorysChanged());
             // console.log(isSkillsChanged());
-            return process.env.FILE_IMAGE_BASE + currentUser?.ds_avatar !== image ||
-                (currentUser?.ds_video === '' ? videoUrl !== '' : getVideoIdFromUrl(videoUrl) === null ? process.env.FILE_VIDEO_BASE + currentUser?.ds_video !== videoUrl : currentUser?.ds_video !== videoUrl) ||
-                currentUser?.ar_aboutme[lngId] !== description.value ||
-                currentUser.ar_personaltitle[lngId] !== personalTitle.value ||
+            const descriptionEnChanged = currentUser.ar_aboutme[0] !== descriptionEn.value;
+            const descriptionHeChanged = currentUser.ar_aboutme[1] !== descriptionHe.value;
+            const personaltitleEnChanged = currentUser.ar_personaltitle[0] !== personalTitleEn.value;
+            const personaltitleHeChanged = currentUser.ar_personaltitle[1] !== personalTitleHe.value;
+            if (selectedLangauge.id === 0 && (descriptionEnChanged || personaltitleEnChanged))
+                return true;
+            if (selectedLangauge.id === 1 && (descriptionHeChanged || personaltitleHeChanged))
+                return true;
+            if (selectedLangauge.id === 2 && (descriptionEnChanged || personaltitleEnChanged || descriptionHeChanged || personaltitleHeChanged))
+                return true;
+            return process.env.FILE_IMAGE_BASE + currentUser.ds_avatar !== image ||
+                (currentUser.ds_video === '' ? videoUrl !== '' : getVideoIdFromUrl(videoUrl) === null ? process.env.FILE_VIDEO_BASE + currentUser?.ds_video !== videoUrl : currentUser?.ds_video !== videoUrl) ||
+                privateCourse !== currentUser.ic_privatecourse ||
                 (currentUser?.ln_personalsite === undefined ? '' !== personalsite.value : currentUser?.ln_personalsite !== personalsite.value) ||
                 (currentUser?.ln_instagram === undefined ? '' !== instagram.value : currentUser?.ln_instagram !== instagram.value) ||
                 (currentUser?.ln_facebook === undefined ? '' !== facebook.value : currentUser?.ln_facebook !== facebook.value) ||
@@ -279,6 +321,8 @@ export default function Profile() {
     const handleSave = () => {
         if (isSaveButtonActive()) {
             setLoadingOpen(true);
+            console.log('selectedLangauge.id', selectedLangauge.id);
+
             let formData = new FormData();
             if (selectedImage !== null) {
                 let parts = selectedImage.name.split('.');
@@ -309,14 +353,27 @@ export default function Profile() {
             formData.append('ln_instagram', instagram.value);
             formData.append('ln_facebook', facebook.value);
             formData.append('ln_twitter', twitter.value);
-            formData.append('lngId', lngId.toString());
-            formData.append('ar_aboutme', description.value);
-            formData.append('ar_personaltitle', personalTitle.value);
+            if (selectedLangauge.id === 0) {
+                formData.append('ar_aboutme[]', descriptionEn.value);
+                formData.append('ar_aboutme[]', '');
+                formData.append('ar_personaltitle[]', personalTitleEn.value);
+                formData.append('ar_personaltitle[]', '');
+            } else if (selectedLangauge.id === 1) {
+                formData.append('ar_aboutme[]', '');
+                formData.append('ar_aboutme[]', descriptionHe.value);
+                formData.append('ar_personaltitle[]', '');
+                formData.append('ar_personaltitle[]', personalTitleHe.value);
+            } else if (selectedLangauge.id === 2) {
+                formData.append('ar_aboutme[]', descriptionEn.value);
+                formData.append('ar_aboutme[]', descriptionHe.value);
+                formData.append('ar_personaltitle[]', personalTitleEn.value);
+                formData.append('ar_personaltitle[]', personalTitleHe.value);
+            }
+            formData.append('ic_privatecourse', privateCourse.toString());
             formData.append('ds_category', profileType.value);
             skills.map((obj: MultiSelectOption) => (
                 formData.append('ar_skills[]', obj.label)
             ))
-            console.log(formData);
             API.post('user/setpersonaldata', formData, {
                 headers: {
                     'content-type': 'multipart/form-data',
@@ -361,17 +418,66 @@ export default function Profile() {
                     />
                     <div className='w-full md:col-span-2 text-dark flex flex-col gap-[20px] md:gap-[30px]'>
                         <div className=''>
-                            <div className={style.Title}>Introduction</div>
-                            <div className='mt-[12px]'>
-                                <Textarea
-                                    category='About me'
-                                    placeholder='To help students learn more about you, your curriculum vitae should include information about your reputation, personal qualities and interests.'
-                                    inputValue={description}
-                                    handleChange={handleChangeValue(description, setDescription)}
-                                />
+                            <div className={style.Title}>
+                                {t('Introduction')}
                             </div>
-                            <div className='mt-[6px] text-Label text-[14px] font-medium text-right'>
-                                {description?.value?.length} of 1200 characters (minimum 200)
+                            <div className='mt-[12px] grid gap-[10px] border border-beighe rounded-[10px] p-[10px]'>
+                                <CategorySelect
+                                    category=''
+                                    selectItems={LanguageOptions}
+                                    inputValue={selectedLangauge}
+                                    handleChange={setSelectedLanguage}
+                                />
+                                {
+                                    (selectedLangauge.id === 0 || selectedLangauge.id === 2) &&
+                                    <div className='grid gap-[6px]'>
+                                        <Textarea
+                                            lngId={0}
+                                            category='About me'
+                                            placeholder='To help students learn more about you, your curriculum vitae should include information about your reputation, personal qualities and interests.'
+                                            inputValue={descriptionEn}
+                                            handleChange={handleChangeValue(descriptionEn, setDescriptionEn)}
+                                        />
+                                        <div className='text-Label text-[14px] font-medium text-right'>
+                                            {descriptionEn.value.length} of 1200 characters (minimum 200)
+                                        </div>
+                                    </div>
+                                }
+                                {
+                                    (selectedLangauge.id === 1 || selectedLangauge.id === 2) &&
+                                    <div className='grid gap-[6px]'>
+                                        <Textarea
+                                            lngId={1}
+                                            category='אודותי'
+                                            placeholder='כדי לעזור לתלמידים ללמוד עליך יותר, קורות החיים שלך צריכים לכלול מידע על המוניטין שלך, תכונות אישיות ותחומי עניין שלך.'
+                                            inputValue={descriptionHe}
+                                            handleChange={handleChangeValue(descriptionHe, setDescriptionHe)}
+                                        />
+                                        <div className='text-Label text-[14px] font-medium text-right'>
+                                            {descriptionHe.value.length} of 1200 characters (minimum 200)
+                                        </div>
+                                    </div>
+                                }
+                                {
+                                    (selectedLangauge.id === 0 || selectedLangauge.id === 2) &&
+                                    <CategoryRuleInput
+                                        lngId={0}
+                                        category='Core competence'
+                                        placeholder={'Modern Applied Psychology & Personal Development'}
+                                        inputValue={personalTitleEn}
+                                        handleChange={handleChangeValue(personalTitleEn, setPersonalTitleEn)}
+                                    />
+                                }
+                                {
+                                    (selectedLangauge.id === 1 || selectedLangauge.id === 2) &&
+                                    <CategoryRuleInput
+                                        lngId={1}
+                                        category='Core competence'
+                                        placeholder={'Modern Applied Psychology & Personal Development'}
+                                        inputValue={personalTitleHe}
+                                        handleChange={handleChangeValue(personalTitleHe, setPersonalTitleHe)}
+                                    />
+                                }
                             </div>
                             <div className='mt-[10px] flex flex-col gap-[10px]'>
                                 <CategorySelect
@@ -381,9 +487,11 @@ export default function Profile() {
                                     handleChange={setProfileType}
                                 />
                                 <div className='w-full flex flex-col gap-[6px]'>
-                                    <label className='text-sm text-dark'>Professional Expertise</label>
+                                    <label className='text-sm text-dark'>
+                                        {t('Professional Expertise')}
+                                    </label>
                                     <MultiSelect
-                                        options={SkillSet}
+                                        options={lngId == 0 ? SkillSetEn : SkillSetHe}
                                         value={skills}
                                         onChange={setSkills}
                                         labelledBy='Select'
@@ -391,36 +499,42 @@ export default function Profile() {
                                         className='w-full'
                                     />
                                 </div >
-                                <CategoryRuleInput
-                                    category='Core competence'
-                                    placeholder={t('Modern Applied Psychology & Personal Development')}
-                                    inputValue={personalTitle}
-                                    handleChange={handleChangeValue(personalTitle, setPersonalTitle)}
+                                <CategoryCheckbox
+                                    id='check-private-course'
+                                    text='I can do private one to one course'
+                                    checkValue={privateCourse}
+                                    setCheckValue={setPrivateCourse}
                                 />
                             </div>
                         </div>
                         <div className='flex flex-col gap-[12px]'>
-                            <div className={style.Title}>My contacts</div>
+                            <div className={style.Title}>
+                                {t('My contacts')}
+                            </div>
                             <div className='flex flex-col gap-[6px]'>
                                 <IconInput
+                                    lngId={lngId}
                                     IconType={0}
                                     placeholder='https://'
                                     inputValue={personalsite}
                                     handleChange={handleChangeValue(personalsite, setPersonalsite)}
                                 />
                                 <IconInput
+                                    lngId={lngId}
                                     IconType={1}
                                     placeholder='https://www.instagram.com/'
                                     inputValue={instagram}
                                     handleChange={handleChangeValue(instagram, setInstagram)}
                                 />
                                 <IconInput
+                                    lngId={lngId}
                                     IconType={2}
                                     placeholder='https://www.facebook.com/'
                                     inputValue={facebook}
                                     handleChange={handleChangeValue(facebook, setFacebook)}
                                 />
                                 <IconInput
+                                    lngId={lngId}
                                     IconType={3}
                                     placeholder='https://www.twitter.com/'
                                     inputValue={twitter}
@@ -431,7 +545,7 @@ export default function Profile() {
                         <div className='hidden md:block'>
                             <div className='w-max' onClick={handleSave}>
                                 <UploadButton
-                                    text='Save changes'
+                                    text={t('Save changes')}
                                     disabled={!isSaveButtonActive()}
                                     loadingOpen={loadingOpen}
                                 />
@@ -440,7 +554,9 @@ export default function Profile() {
                     </div>
                     <div className='flex flex-col gap-[20px] md:gap-[30px] text-dark'>
                         <div className='flex flex-col gap-[12px]'>
-                            <div className={style.Title}>Preview image</div>
+                            <div className={style.Title}>
+                                {t('Preview image')}
+                            </div>
                             <div>
                                 <div className='border border-beighe bg-white rounded-[10px] lg:rounded-[15px] w-full max-w-[385px] min-w-[233px] overflow-hidden' >
                                     <div className='aspect-w-1 aspect-h-1'>
@@ -461,7 +577,7 @@ export default function Profile() {
                                                         () => { avatarBtn.current?.click() }
                                                     }
                                                 >
-                                                    <UploadButton text='add photo' />
+                                                    <UploadButton text={t('add photo')} />
                                                 </div>
                                             </div>
                                         </div>
@@ -473,7 +589,9 @@ export default function Profile() {
                             </div>
                         </div>
                         <div className='flex flex-col gap-[12px]'>
-                            <div className={style.Title}>Preview video of me</div>
+                            <div className={style.Title}>
+                                {t('Preview video of me')}
+                            </div>
                             <div className='border border-beighe bg-white rounded-[10px] lg:rounded-[15px] w-full max-w-[385px]'>
                                 <div className='aspect-w-16 aspect-h-9'>
                                     {
@@ -497,8 +615,8 @@ export default function Profile() {
                                             />
                                     }
                                     <div className='absolute top-0 w-full h-full flex justify-center items-center'>
-                                        <div className='space-y-[15px]'>
-                                            <div>
+                                        <div className='grid gap-[15px]'>
+                                            <div className='m-auto'>
                                                 <input
                                                     accept='video/*'
                                                     className='hidden'
@@ -512,11 +630,11 @@ export default function Profile() {
                                                         () => { videoBtn.current?.click() }
                                                     }
                                                 >
-                                                    <UploadButton text='Upload video' />
+                                                    <UploadButton text={t('Upload video')} />
                                                 </div>
                                             </div>
                                             <div onClick={openModal}>
-                                                <UploadButton text='Youtube link' style='full' />
+                                                <UploadButton text={t('Youtube link')} style='full' />
                                             </div>
                                         </div>
                                     </div>
@@ -529,7 +647,7 @@ export default function Profile() {
                         <div className='block md:hidden'>
                             <div className='w-max' onClick={handleSave}>
                                 <UploadButton
-                                    text='Save changes'
+                                    text={t('Save changes')}
                                     disabled={!isSaveButtonActive()}
                                     loadingOpen={loadingOpen}
                                 />

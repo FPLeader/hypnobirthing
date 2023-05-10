@@ -2,7 +2,7 @@
 export default function BigBlogCard() {
     return (
         <div className='w-full flex flex-col animate-pulse'>
-            <div className='border border-[2px] border-gray-200 rounded-[15px] overflow-hidden'>
+            <div className='border-[2px] border-gray-200 rounded-[15px] overflow-hidden'>
                 <div className='w-full h-full min-h-[230px] md:h-[446px] object-cover'>
                     <div className='flex items-center justify-center w-full h-full min-h-[230px] bg-gray-300'>
                         <svg className='w-12 h-12 text-gray-200'

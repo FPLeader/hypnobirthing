@@ -1,20 +1,20 @@
 interface InputProps {
+    lngId?: number,
     category: string,
     placeholder: string,
     type?: string,
     inputValue: any,
     handleChange: any,
-    dir?: string,
 }
 
 export default function CategoryRule({
+    lngId = 0,
     category,
     placeholder = '',
     type = 'text',
     inputValue,
     handleChange,
-    dir = 'ltr'
-    
+
 }: InputProps) {
     const isError = () => {
         return (inputValue.errorMessage !== '' && inputValue.errorMessage.length !== 0);
@@ -22,11 +22,11 @@ export default function CategoryRule({
 
     return (
         <div className='flex flex-col gap-[6px]'>
-            <label className={`text-[14px] text-dark ${dir === 'rtl' && 'text-right'}`}>
+            <label className={`text-[14px] text-dark ${lngId === 0 ? 'text-left' : 'text-right'}`}>
                 {category}
             </label>
             <input
-                dir={dir}
+                dir={lngId === 0 ? 'ltr' : 'rtl'}
                 type={type}
                 id={category}
                 value={inputValue.value}
@@ -36,7 +36,7 @@ export default function CategoryRule({
                 required
             />
             {isError() &&
-                <span className={`pl-[5px] text-[14px] text-danger ${dir === 'rtl' && 'text-right'}`}>
+                <span className={`pl-[5px] text-[14px] text-danger ${lngId === 0 ? 'text-left' : 'text-right'}`}>
                     {inputValue.errorMessage}
                 </span>
             }

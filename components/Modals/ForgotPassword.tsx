@@ -133,7 +133,7 @@ export default function ForgotPassword({
         }
     }
 
-    const isButtonDisabled = () => {
+    const isButtonDisabled = (): boolean => {
         if (page === 1) {
             return !(
                 !!email.value.length &&

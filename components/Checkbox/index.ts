@@ -1,0 +1,1 @@
+export { default as CategoryCheckbox } from './Category'

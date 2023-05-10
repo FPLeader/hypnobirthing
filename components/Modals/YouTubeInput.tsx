@@ -113,7 +113,7 @@ export default function YouTubeInput({
                                     />
                                 </div>
                                 <div className='mt-[20px]'>
-                                    <div className='' onClick={selectHandle}>
+                                    <div className='w-max' onClick={selectHandle}>
                                         <ModalButton text='Select' />
                                     </div>
                                 </div>

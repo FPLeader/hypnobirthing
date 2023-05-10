@@ -7,7 +7,6 @@ import { CategorySelect } from '@/components/Select'
 import { ProfileSection, LogInSecuritySection, UpcomingSection, MyAritclesSection } from './Sections'
 import i18n from '@/services/i18n'
 import { useTranslation } from 'react-i18next'
-
 interface SettingsPageProps {
     settingId: number,
 }
@@ -65,7 +64,7 @@ export default function Index({
                             <div className='max-w-[864px] text-dark'>
                                 <div className='sm:hidden'>
                                     <CategorySelect
-                                        category='Language'
+                                        category=''
                                         selectItems={tabOptions}
                                         inputValue={tab}
                                         handleChange={setTab}
@@ -73,7 +72,7 @@ export default function Index({
                                 </div>
                                 <ul className='hidden text-[14px] font-medium text-center divide-x divide-beighe rounded-[10px] overflow-hidden border-[2px] border-beighe sm:flex'>
                                     {tabOptions.map((tabOption, index: number) => (
-                                        <li key={`tab-option-${index}`} className='w-full'>
+                                        <li key={`tab-option-${index}`} className='w-full overflow-hidden'>
                                             <div
                                                 className={OptionClass(index)}
                                                 onClick={() => changeTab(index)}

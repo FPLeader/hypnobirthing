@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { StudentListModal } from '../Modals'
+import { StudentListModal } from '../../Modals'
 
 interface CourseCardType {
     date: number,

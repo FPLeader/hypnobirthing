@@ -19,7 +19,7 @@ interface SelectItemType {
     label: string,
 }
 
-export const SkillSet: SelectItemType[] = [
+export const SkillSetEn: SelectItemType[] = [
     {
         value: 'Childbirth educator',
         label: 'Childbirth educator'
@@ -119,6 +119,109 @@ export const SkillSet: SelectItemType[] = [
     {
         value: 'Other',
         label: 'Other'
+    },
+]
+
+export const SkillSetHe: SelectItemType[] = [
+    {
+        value: 'Childbirth educator',
+        label: 'מחנכת לידה'
+    },
+    {
+        value: 'Birth Doula',
+        label: 'לידה דולה'
+    },
+    {
+        value: 'Postpartum Doula',
+        label: 'דולה לאחר לידה'
+    },
+    {
+        value: 'Midwife',
+        label: 'מְיַלֶדֶת'
+    },
+    {
+        value: 'Lactation Consultant',
+        label: 'יועצת הנקה'
+    },
+    {
+        value: 'Lactation Counselor',
+        label: 'יועצת הנקה'
+    },
+    {
+        value: 'Yoga Teacher',
+        label: 'מורה ליוגה'
+    },
+    {
+        value: 'Massage Therapist',
+        label: 'מטפל בעיסוי'
+    },
+    {
+        value: 'Baby Massage',
+        label: 'עיסוי תינוקות'
+    },
+    {
+        value: 'Naturopath',
+        label: 'נטורופת'
+    },
+    {
+        value: 'Obstetrician',
+        label: 'מְיַלֶדֶת'
+    },
+    {
+        value: 'Pelvic Floor Physiotherapist',
+        label: 'פיזיותרפיסט רצפת אגן'
+    },
+    {
+        value: 'Infant Development Specialist',
+        label: 'מומחה להתפתחות תינוקות'
+    },
+    {
+        value: 'Osteopath',
+        label: 'אוסטאופת'
+    },
+    {
+        value: 'Reflexologist',
+        label: 'רפלקסולוג'
+    },
+    {
+        value: 'Therapist',
+        label: 'מְרַפֵּא'
+    },
+    {
+        value: 'Psychologist',
+        label: 'פְּסִיכוֹלוֹג'
+    },
+    {
+        value: 'Acupuncturist',
+        label: 'רופא דיקור'
+    },
+    {
+        value: 'Dietician',
+        label: 'תְזוּנַאִי'
+    },
+    {
+        value: 'Equilibrio Practitioner',
+        label: 'מתרגל שיווי משקל'
+    },
+    {
+        value: 'Embrio Balance Practitioner',
+        label: 'מטפלת באיזון אמבריו'
+    },
+    {
+        value: 'Hydrotherapist',
+        label: 'הידרותרפיסט'
+    },
+    {
+        value: 'New mothers circle facilitator',
+        label: 'מנחת מעגלי אמהות טריות'
+    },
+    {
+        value: 'Pilates Teacher',
+        label: 'מורה לפילאטיס'
+    },
+    {
+        value: 'Other',
+        label: 'אַחֵר'
     },
 ]
 

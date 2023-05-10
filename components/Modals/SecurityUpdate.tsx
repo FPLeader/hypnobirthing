@@ -15,7 +15,8 @@ interface SecurityUpdateProps {
     isOpen: boolean,
     closeModal: () => void,
     cd_educator: string,
-    nm_user: string,
+    nameLngId: number,
+    nm_user: string[],
     ds_phonenumber: string,
     ds_email: string,
     ds_password: string,
@@ -26,6 +27,7 @@ export default function SecurityUpdate({
     isOpen,
     closeModal,
     cd_educator,
+    nameLngId,
     nm_user,
     ds_phonenumber,
     ds_email,
@@ -46,7 +48,7 @@ export default function SecurityUpdate({
             else
                 setPage(2);
         }
-    }, [nm_user, ds_phonenumber, ds_email, ds_password, ic_sendme]);
+    }, [isOpen]);
 
     const [otp, setOtp] = useState<string>('');
 
@@ -92,14 +94,22 @@ export default function SecurityUpdate({
     };
 
     const updateHandler = () => {
-        setLoadingOpen(true)
+        setLoadingOpen(true);
+
+        let _nm_user = nm_user;
+        if (nameLngId === 0) // english
+            _nm_user[1] = ''; // hebrew name = ''
+        else if (nameLngId === 1) // hebrew
+            _nm_user[0] = ''; // english name  = ''
+
         if (page === 1) {
             API.post('user/updatesecurity', {
                 cd_educator: cd_educator,
                 ds_password: password.value,
-                nm_user: nm_user,
+                nm_user: _nm_user,
                 ds_phonenumber: ds_phonenumber,
                 newpassword: ds_password,
+                ic_sendme: ic_sendme
             })
                 .then((result) => {
                     if (result.data.status === 'success') {
@@ -127,11 +137,12 @@ export default function SecurityUpdate({
                     }
                     setLoadingOpen(false);
                 })
+            setPassword({ ...initialValue, rules: ['required', 'min:8'] });
         } else if (page === 2) {
             API.post('user/verifynewemail', {
                 cd_educator: cd_educator,
                 code: otp,
-                nm_user: nm_user,
+                nm_user: _nm_user,
                 ds_phonenumber: ds_phonenumber,
                 newemail: ds_email,
                 newpassword: ds_password,
@@ -164,10 +175,11 @@ export default function SecurityUpdate({
                     setLoadingOpen(false);
                     setWrongOtpTimer(3);
                 })
+            setOtp('');
         }
     }
 
-    const isButtonDisabled = () => {
+    const isButtonDisabled = (): boolean => {
         if (page === 1) {
             return !(
                 !!password.value.length &&

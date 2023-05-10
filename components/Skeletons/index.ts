@@ -9,3 +9,5 @@ export { default as ContactFormCardSkeleton } from './ContactForm'
 export { default as TeacherCardSkeleton } from './Teacher'
 export { default as SmallBlogSkeletonCard } from './SmallBlog'
 export { default as BigBlogSkeletonCard } from './BigBlog'
+
+export { default as SmallCourseSkeletonCard } from './SmallCourse'

@@ -31,14 +31,17 @@ export { default as BlogPage } from './Blog/'
 
 //Store
 
+export { default as NotificationPage } from './Notification/'
+
 //Contact
 export { default as ContactPage } from './Contact/'
 
 //404
 export { default as NotFoundPage } from './NotFound'
 
+
 //Other
-export { default as ClassPage } from './Class/'
+export { default as CoursePage } from './Course/'
 export { default as EducatorPage } from './Educator/'
 export { default as EditEducatorPage } from './Profile/Educator/'
 export { default as EducatorSettingsPage } from './Profile/Settings/'

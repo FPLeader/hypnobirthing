@@ -1,6 +1,7 @@
 import { WorldIcon, InstagramIcon, FacebookIcon, TwitterIcon } from '@/assests/Icons'
 
 interface InputProps {
+    lngId?: number,
     IconType: number,
     placeholder: string,
     inputValue: any,
@@ -8,6 +9,7 @@ interface InputProps {
 }
 
 export default function Category({
+    lngId = 0,
     IconType = 0,
     placeholder = '',
     inputValue,
@@ -37,19 +39,19 @@ export default function Category({
     return (
         <div>
             <div className='relative w-full'>
-                <div className='absolute top-0 h-full left-2 flex items-center pl-3 pointer-events-none'>
+                <div className={`absolute top-0 h-full ${lngId === 0 ? 'left-2 pl-3' : 'right-2 pr-3'} flex items-center pointer-events-none`}>
                     {renderIcon()}
                 </div>
                 <input
                     type='text'
-                    className={`appearance-none w-full pl-[40px] pr-[15px] py-[9.5px] lg:py-[11px] bg-white border ${isError() ? 'border-danger' : 'border-deviders'} text-dark font-[Lato] text-[16px] rounded-[10px] placeholder:text-[#2B252590] placeholder:font-[Lato] transition-all duration-300`}
+                    className={`appearance-none w-full ${lngId === 0 ? 'pl-[40px] pr-[15px]' : 'pl-[15px] pr-[40px]'} py-[9.5px] lg:py-[11px] bg-white border ${isError() ? 'border-danger' : 'border-deviders'} text-dark font-[Lato] text-[16px] rounded-[10px] placeholder:text-[#2B252590] placeholder:font-[Lato] transition-all duration-300`}
                     placeholder={placeholder}
                     value={inputValue.value}
                     onChange={handleChange}
                 />
             </div>
             {isError() &&
-                <span className='pl-[40px] text-[14px] text-danger'>
+                <span className={`${lngId === 0 ? 'pl-[40px]' : 'pr-[40px]'} text-[14px] text-danger`}>
                     {inputValue.errorMessage}
                 </span>
             }

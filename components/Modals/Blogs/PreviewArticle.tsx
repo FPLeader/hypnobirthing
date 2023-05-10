@@ -2,7 +2,7 @@ import { Fragment, useState, useEffect } from 'react'
 import useWindowSize from '@/services/Hooks/useWindowSize'
 import { Dialog, Transition } from '@headlessui/react'
 import { CloseIcon } from '@/assests/Icons'
-import { RegularTitle } from '../Titles'
+import { RegularTitle } from '../../Titles'
 
 interface mainbodyType {
     id_lng: number,
@@ -16,7 +16,7 @@ interface PreviewArticleProps {
     closeModal: () => void,
     ds_thumbnail: string,
     mainbody: mainbodyType[],
-    nm_user: string,
+    nm_user: string[],
     ds_category: string,
 }
 
@@ -30,6 +30,17 @@ export default function PreviewArticle({
 }: PreviewArticleProps) {
     const moment = require('moment');
     const { width } = useWindowSize();
+
+    const currentName = (id: number) => {
+        if (nm_user[id] !== '')
+            return nm_user[id];
+        else {
+            if (id === 0)
+                return nm_user[1];
+            else if (id === 1)
+                return nm_user[0];
+        }
+    }
 
     return (
         <Transition appear show={isOpen} as={Fragment}>
@@ -87,7 +98,7 @@ export default function PreviewArticle({
                                             </div>
                                             <div className='font-[lato] ql-editor !p-0' dangerouslySetInnerHTML={{ __html: blogData.ds_content ?? '' }} />
                                             <div className='text-[16px] md:text-[18px] font-normal italic opacity-60 flex flex-col items-center md:flex-row md:justify-between'>
-                                                <div className='capitalize'>—&nbsp;{nm_user}</div>
+                                                <div className='capitalize'>—&nbsp;{currentName(index)}</div>
                                                 <div>{moment(Date.now()).format('MMMM D, YYYY')}</div>
                                             </div>
                                         </div>

@@ -13,8 +13,8 @@ import {
 
 import API from '@/services/API'
 import { toast } from 'react-toastify'
-import i18n from '@/services/i18n'
 import { isImageOrVideoOrYoutube } from '@/components/Functions'
+import i18n from '@/services/i18n'
 import { useTranslation } from 'react-i18next'
 
 export default function UpcomingCourse() {

@@ -1,5 +1,5 @@
 import '@/styles/globals.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import type { AppProps } from 'next/app'
 import { HeaderPage, FooterPage } from '@/layouts'
 import { Meta } from '@/config'

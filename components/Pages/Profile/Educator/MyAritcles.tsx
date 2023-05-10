@@ -26,7 +26,7 @@ export default function MyAritcles() {
         dt_upload: Date,
         dt_publish: Date,
         ds_thumbnail: string,
-        nm_user: string,
+        nm_user: string[],
         ds_category: string,
         mainbody: mainbodyType[]
     }

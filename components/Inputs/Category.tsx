@@ -3,7 +3,7 @@ interface InputProps {
     category: string,
     placeholder: string,
     type?: string,
-    inputValue: string,
+    inputValue: any,
     handleChange: any,
     disabled?: boolean,
     className?: string,

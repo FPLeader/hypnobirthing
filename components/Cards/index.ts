@@ -11,17 +11,21 @@ export { default as MemberCard } from './Member'
 export { default as MemberRowCard } from './MemberRow'
 export { default as ReviewCard } from './Review'
 
-export { default as BigCourseCard } from './BigCourse'
-export { default as CourseCard } from './Course'
 export { default as TeacherProfileCard } from './TeacherProfile'
+
+// Course Type
+export { default as BigCourseCard } from './Courses/BigCourse'
+export { default as CourseCard } from './Courses/Course'
+export { default as LiveCourseCard } from './Courses/LiveCourse'
+export { default as ReviewCourseCard } from './Courses/ReviewCourse'
+export { default as WaitCourseCard } from './Courses/WaitCourse'
 
 // Blog Type
 export { default as BigBlogCard } from './Blogs/BigBlog'
 export { default as BlogCard } from './Blogs/RegularBlog'
 export { default as SmallBlogCard } from './Blogs/SmallBlog'
-
-// Small Blog Edit
 export { default as SmallBlogEditCard } from './Blogs/SmallBlogEdit'
+
 
 export { default as BadgeCard } from './Badge'
 export { default as ContactCard } from './Contact'

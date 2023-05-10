@@ -4,7 +4,7 @@ import useWindowSize from '@/services/Hooks/useWindowSize'
 import API from '@/services/API'
 import { Dialog, Transition } from '@headlessui/react'
 import { CloseIcon } from '@/assests/Icons'
-import { CategoryRuleInput } from '../Inputs'
+import { CategoryRuleInput } from '../../Inputs'
 import { OtpInput } from '@/components/Inputs'
 
 interface DeleteArticleProps {

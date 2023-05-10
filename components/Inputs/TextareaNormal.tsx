@@ -24,7 +24,7 @@ export default function TextareaNormal({
             <textarea
                 dir={lngId === 0 ? 'ltr' : 'rtl'}
                 id={category}
-                className={`w-full px-[12px] py-[9.5px] lg:py-[11px] bg-white border border-deviders text-dark text-[Lato] text-[16px] rounded-[10px] placeholder:text-[#2B252590] placeholder:text-[Lato] transition-border duration-300`}
+                className={`w-full px-[12px] py-[9.5px] lg:py-[11px] bg-white border border-deviders text-dark text-[Lato] text-[16px] rounded-[10px] placeholder:text-[#2B252590] placeholder:font-[lato] transition-border duration-300`}
                 placeholder={placeholder}
                 rows={5}
                 cols={33}

@@ -24,7 +24,7 @@ export default function BlogsSection() {
                         ))
                     }
                 </div>
-                <div className='flex justify-center mt-[20px] block md:hidden'>
+                <div className='flex justify-center mt-[20px] md:hidden'>
                     <RegularButton text='blog' />
                 </div>
             </div>

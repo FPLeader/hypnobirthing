@@ -19,7 +19,7 @@ interface BlogCardProps {
     id: string,
     image: string,
     mainbody: mainbodyType[],
-    author: string,
+    author: string[],
     loadBlogs: () => void,
     previewIcon?: boolean,
     ds_category: string,

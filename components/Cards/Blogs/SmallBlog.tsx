@@ -13,7 +13,7 @@ interface BlogCardProps {
     id: string,
     image: string,
     mainbody: mainbodyType[],
-    author: string,
+    author: string[],
     disabled?: boolean,
     ds_category: string,
 }
@@ -65,6 +65,17 @@ export default function SmallBlogCard({
         }
     }
 
+    const currentName = () => {
+        if (author[lngId] !== '')
+            return author[lngId];
+        else {
+            if (lngId === 0)
+                return author[1];
+            else if (lngId === 1)
+                return author[0];
+        }
+    }
+
     return (
         <button className='min-h-[137px] flex items-center gap-[15px] overflow-hidden border-[2px] border-beighe rounded-[10px] hover:bg-bcg_2 active:bg-beighe duration-300 transaction-all'>
             <div className='w-full h-full max-w-[100px]'>
@@ -93,7 +104,7 @@ export default function SmallBlogCard({
                     {getTextFromContent()}
                 </div>
                 <div className='text-[14px] md:text-[16px] opacity-60 capitalize line-clamp-1'>
-                    —&nbsp;{author}
+                    —&nbsp;{currentName()}
                 </div>
             </div>
         </button>

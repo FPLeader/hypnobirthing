@@ -26,11 +26,17 @@ export default function TeacherProfile({
             </div>
             <div className='flex flex-col max-md:items-center max-md:text-center lg:items-center lg:text-center px-[10px] py-[15px] md:px-[35px] md:py-0 lg:px-[20px] lg:py-[20px] gap-[10px] md:gap-[15px] lg:gap-[20px] text-dark'>
                 <div className='flex flex-col gpa-[10px]'>
-                    <div className='text-[24px] lg:text-[28px] font-me dium'>{name}</div>
-                    <div className='text-[14px] md:text-[16px] lg:text-[20px]'>{title}</div>
+                    <div className='text-[24px] lg:text-[28px] font-me dium'>
+                        {name}
+                    </div>
+                    <div className='text-[14px] md:text-[16px] lg:text-[20px]'>
+                        {title}
+                    </div>
                 </div>
                 <MiddleButton text={text} link={link} />
-                <div className='text-[14px] text-Label'>Last update&nbsp;{moment(date).format('DD.MM.YYYY')}</div>
+                <div className='text-[14px] text-Label'>
+                    Last update&nbsp;{moment(date).format('DD.MM.YYYY')}
+                </div>
             </div>
         </div>
     )

@@ -39,7 +39,7 @@ export default function Blog({
         dt_upload: Date,
         dt_publish: Date,
         ds_thumbnail: string,
-        nm_user: string,
+        nm_user: string[],
         ds_category: string,
         mainbody: mainbodyType[]
     }
@@ -53,8 +53,10 @@ export default function Blog({
     // initalize
 
     useEffect(() => {
-        setDomLoaded(0);
-        setBlogsLoaded(0);
+        if (blogId !== '') {
+            setDomLoaded(0);
+            setBlogsLoaded(0);
+        }
     }, [blogId])
 
     const loadCurrentBlog = () => {
@@ -149,6 +151,19 @@ export default function Blog({
         return 0;
     }
 
+    const currentName = () => {
+        if (currentBlog)
+            if (currentBlog.nm_user[lngId] !== '')
+                return currentBlog.nm_user[lngId];
+            else {
+                if (lngId === 0)
+                    return currentBlog.nm_user[1];
+                else if (lngId === 1)
+                    return currentBlog.nm_user[0];
+            }
+        return '';
+    }
+
     return (
         <div dir={lngId === 0 ? 'ltr' : 'rtl'} className='pt-[70px] md:pt-[90px]'>
             {domLoaded > 0 && currentBlog ?
@@ -176,7 +191,7 @@ export default function Blog({
                                             }}
                                         />
                                         <div className='text-[16px] md:text-[18px] font-normal italic opacity-60 flex flex-col items-center md:flex-row md:justify-between'>
-                                            <div className='capitalize'>—&nbsp;{currentBlog?.nm_user}</div>
+                                            <div className='capitalize'>—&nbsp;{currentName()}</div>
                                             <div>{moment(currentBlog.dt_upload).format('MMMM D, YYYY')}</div>
                                         </div>
                                     </div>
