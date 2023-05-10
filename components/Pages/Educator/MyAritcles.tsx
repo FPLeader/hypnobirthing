@@ -1,5 +1,5 @@
 import { SmallBlogCard } from '@/components/Cards'
-import { SmallBlogsData, SmallBlogType } from '@/services/Constants/Sections/BlogData'
+// import { SmallBlogsData, SmallBlogType } from '@/services/Constants/Sections/BlogData'
 
 export default function MyAritcles() {
     const numberOfArticles = 2;
