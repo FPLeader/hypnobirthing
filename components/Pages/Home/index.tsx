@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { requestForToken } from '@/services/Firebase'
+// import { requestForToken } from '@/services/Firebase'
 import {
     BannerSection,
     QuoteSection,
