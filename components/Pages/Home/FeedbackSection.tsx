@@ -31,7 +31,7 @@ export default function FeedbackSection() {
             </div>
           ))}
         </div>
-        <div className='flex justify-center mt-[20px] block md:hidden'>
+        <div className='flex justify-center mt-[20px] md:hidden'>
           <RegularButton text='Reviews' />
         </div>
       </div>
