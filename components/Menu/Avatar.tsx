@@ -70,7 +70,7 @@ export default function Avatar({
                             <Popover.Panel className='absolute right-0'>
                                 <div className='mt-[5px] p-[10px] flex flex-col items-start gap-[5px] border border-deviders rounded-[10px] bg-bcg'>
                                     <button className={style.Link + ' relative'} onClick={() => { router.push('/notification'), setIsOpen(false) }}>
-                                        Notificatoin
+                                        Notification
                                         <div className='absolute top-[2px] right-[2px]'>
                                             <NotificationBadge />
                                         </div>
