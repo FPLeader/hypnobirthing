@@ -228,7 +228,7 @@ export const SkillSetHe: SelectItemType[] = [
 export const LanguageOptions = [
     { id: 0, value: 'I only know English' },
     { id: 1, value: 'I only know Hebrew' },
-    { id: 2, value: 'I know English and Hebrew both' },
+    { id: 2, value: 'I know English and Hebrew' },
 ]
 
 export const CategoryOptions = [
@@ -237,12 +237,12 @@ export const CategoryOptions = [
     { id: 2, value: 'Recipe' },
 ]
 
-export const DayOptions = [
-    { id: 0, value: 'Mondays' },
-    { id: 1, value: 'Tuesdays' },
-    { id: 2, value: 'Wednesdays' },
-    { id: 3, value: 'Thursdays' },
-    { id: 4, value: 'Fridays' },
-    { id: 5, value: 'Saturdays' },
-    { id: 6, value: 'Sundays' },
-]
+// export const DayOptions = [
+//     { id: 0, value: 'Mondays' },
+//     { id: 1, value: 'Tuesdays' },
+//     { id: 2, value: 'Wednesdays' },
+//     { id: 3, value: 'Thursdays' },
+//     { id: 4, value: 'Fridays' },
+//     { id: 5, value: 'Saturdays' },
+//     { id: 6, value: 'Sundays' },
+// ]

@@ -462,7 +462,7 @@ export default function Profile() {
                                     (selectedLangauge.id === 0 || selectedLangauge.id === 2) &&
                                     <CategoryRuleInput
                                         lngId={0}
-                                        category='Core competence'
+                                        category='Personal Title'
                                         placeholder={'Modern Applied Psychology & Personal Development'}
                                         inputValue={personalTitleEn}
                                         handleChange={handleChangeValue(personalTitleEn, setPersonalTitleEn)}
@@ -472,7 +472,7 @@ export default function Profile() {
                                     (selectedLangauge.id === 1 || selectedLangauge.id === 2) &&
                                     <CategoryRuleInput
                                         lngId={1}
-                                        category='Core competence'
+                                        category='Personal Title'
                                         placeholder={'Modern Applied Psychology & Personal Development'}
                                         inputValue={personalTitleHe}
                                         handleChange={handleChangeValue(personalTitleHe, setPersonalTitleHe)}
