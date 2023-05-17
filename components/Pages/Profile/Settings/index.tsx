@@ -56,7 +56,7 @@ export default function Index({
 
     return (
         <div className='pt-[70px] md:pt-[90px] w-full'>
-            <div className='w-full flex justify-center my-[20px] md:my-[30px] lg:my-[50px]'>
+            <div className='w-full flex justify-center py-[20px] md:py-[30px] lg:py-[50px]'>
                 <div dir={lngId === 0 ? 'ltr' : 'rtl'} className='w-full max-w-[1225px] mx-[20px] flex flex-col gap-[20px] md:gap-[30px] lg:gap-[40px]'>
                     <RegularTitle lngId={lngId} text={t('Profile Settings')} />
                     {domLoaded &&

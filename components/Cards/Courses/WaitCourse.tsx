@@ -81,6 +81,17 @@ export default function Course({
         setIsOpenCoEducators(true)
     }
 
+    const currentName = () => {
+        if (nm_user[lngId] !== '')
+            return nm_user[lngId];
+        else {
+            if (lngId === 0)
+                return nm_user[1];
+            else if (lngId === 1)
+                return nm_user[0];
+        }
+    }
+
     return (
         <div className='rounded-[10px] border-[2px] border-beighe overflow-hidden'>
             <EditSessionModal
@@ -119,7 +130,7 @@ export default function Course({
                     {js_location.label}
                 </div>
                 <div className='capitalize text-[14px] lg:text-[18px]'>
-                    —&nbsp;{nm_user[0]}
+                    —&nbsp;{currentName()}
                 </div>
             </div>
 

@@ -2,7 +2,7 @@ import { Fragment, useState, useEffect } from 'react'
 import useWindowSize from '@/services/Hooks/useWindowSize'
 import { Dialog, Transition } from '@headlessui/react'
 import { CloseIcon } from '@/assests/Icons'
-import { RegularTitle } from '../../Titles'
+import { EducatorItemCard } from '@/components/Cards'
 
 interface EducatorItemType {
     cd_educator: string,
@@ -101,88 +101,41 @@ export default function CoEducatorList({
                                     dir={lngId === 0 ? 'ltr' : 'rtl'}
                                     className='mt-[20px] grid sm:grid-cols-2 gap-[10px] font-[lato]'
                                 >
-                                    {ar_members.length !== 0 &&
-                                        <div className='w-full grid gap-[10px]'>
-                                            <div
-                                                className='w-full text-[16px] lg:text-[20px]'
-                                            >
-                                                Accepected Members
-                                            </div>
-                                            <div className='grid gap-[10px]'>
-                                                {ar_members.map((educatorId: string, index: number) => (
-                                                    <div
-                                                        key={`co-educator-${index}`}
-                                                        className='rounded-full bg-bhover relative p-[5px] sm:w-max'
-                                                    >
-                                                        <div
-                                                            className={`w-full flex gap-[10px] items-center ${lngId === 0 ? 'pr-[12px]' : 'pl-[12px] flex-row-reverse'}`}
-                                                        >
-                                                            <img
-                                                                draggable='false'
-                                                                src={educatorItemAvatar(educatorId) === ''
-                                                                    ?
-                                                                    '/img/defaultavatar.png'
-                                                                    :
-                                                                    `${process.env.FILE_IMAGE_BASE + educatorItemAvatar(educatorId)}`
-                                                                }
-                                                                alt=''
-                                                                className='w-[30px] h-[30px] md:w-[40px] md:h-[40px] object-cover rounded-full overflow-hidden'
-                                                            />
-                                                            <a
-                                                                href={'/user/' + educatorId}
-                                                                target='_blank'
-                                                                rel='noreferrer'
-                                                                className='text-[16px] md:text-[18px] capitalize line-clamp-1 underline italic hover:text-Label active:text-dark transition-all duration-300'
-                                                            >
-                                                                {currentName(educatorItemName(educatorId))}
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                ))}
-                                            </div>
+                                    <div className='w-full grid gap-[10px]'>
+                                        <div
+                                            className='w-full text-[16px] md:text-[18px] lg:text-[20px]'
+                                        >
+                                            Accepeted ({ar_members.length})
                                         </div>
-                                    }
-                                    {ar_requestmembers.length !== 0 &&
-                                        <div className='w-full grid gap-[10px]'>
-                                            <div
-                                                className='w-full text-[16px] lg:text-[20px]'
-                                            >
-                                                Waiting Members
-                                            </div>
-                                            <div className='grid gap-[10px]'>
-                                                {ar_requestmembers.map((educatorId: string, index: number) => (
-                                                    <div
-                                                        key={`co-educator-${index}`}
-                                                        className='rounded-full bg-Label relative p-[5px] sm:w-max'
-                                                    >
-                                                        <div
-                                                            className={`w-full flex gap-[10px] items-center ${lngId === 0 ? 'pr-[20px]' : 'pl-[20px] flex-row-reverse'}`}
-                                                        >
-                                                            <img
-                                                                draggable='false'
-                                                                src={educatorItemAvatar(educatorId) === ''
-                                                                    ?
-                                                                    '/img/defaultavatar.png'
-                                                                    :
-                                                                    `${process.env.FILE_IMAGE_BASE + educatorItemAvatar(educatorId)}`
-                                                                }
-                                                                alt=''
-                                                                className='w-[30px] h-[30px] md:w-[40px] md:h-[40px] object-cover rounded-full overflow-hidden'
-                                                            />
-                                                            <a
-                                                                href={'/user/' + educatorId}
-                                                                target='_blank'
-                                                                rel='noreferrer'
-                                                                className='text-[16px] md:text-[18px] capitalize line-clamp-1 underline italic hover:text-white active:text-dark transition-all duration-300'
-                                                            >
-                                                                {currentName(educatorItemName(educatorId))}
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                ))}
-                                            </div>
+                                        <div className='flex flex-wrap gap-[15px] md:gap-[20px]'>
+                                            {ar_members.map((educatorId: string, index: number) => (
+                                                <EducatorItemCard
+                                                    key={`co-educator-accept-${index}`}
+                                                    imageUrl={educatorItemAvatar(educatorId)}
+                                                    educatorId={educatorId}
+                                                    name={currentName(educatorItemName(educatorId))}
+                                                />
+                                            ))}
                                         </div>
-                                    }
+                                    </div>
+                                    <div className='w-full grid gap-[10px]'>
+                                        <div
+                                            className='w-full text-[16px] md:text-[18px] lg:text-[20px]'
+                                        >
+                                            Pending ({ar_requestmembers.length})
+                                        </div>
+                                        <div className='flex flex-wrap gap-[15px] md:gap-[20px]'>
+                                            {ar_requestmembers.map((educatorId: string, index: number) => (
+                                                <EducatorItemCard
+                                                    key={`co-educator-pending-${index}`}
+                                                    isPending={true}
+                                                    imageUrl={educatorItemAvatar(educatorId)}
+                                                    educatorId={educatorId}
+                                                    name={currentName(educatorItemName(educatorId))}
+                                                />
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
                             </Dialog.Panel>
                         </Transition.Child>

@@ -132,7 +132,7 @@ export default function MyAritcles() {
                         `My articles`
                 }
             </div>
-            {
+            {/* {
                 domLoaded === 1 ?
                     liveBlogs.length !== 0 ?
                         <div className={style.SubTitle}>
@@ -144,7 +144,7 @@ export default function MyAritcles() {
                     <div className={style.SubTitle}>
                         Live
                     </div>
-            }
+            } */}
             {domLoaded === 1 ?
                 liveBlogs.length !== 0 ?
                     <div className={style.GridStyle}>

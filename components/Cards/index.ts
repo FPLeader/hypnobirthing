@@ -29,3 +29,5 @@ export { default as SmallBlogEditCard } from './Blogs/SmallBlogEdit'
 
 export { default as BadgeCard } from './Badge'
 export { default as ContactCard } from './Contact'
+
+export { default as EducatorItemCard } from './Courses/EducatorItem'
