@@ -14,9 +14,7 @@ import {
 } from './Sections'
 
 export default function Home() {
-    useEffect(() => {
-        requestForToken();
-    }, [])
+    
 
     return (
         <div className='pt-[70px] md:pt-[90px]'>

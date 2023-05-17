@@ -5,7 +5,7 @@ export default function Document() {
   return (
     <Html lang='en'>
       <Head>
-        <Script src='/firebase-messaging-sw.js'></Script>
+        
       </Head>
       <body>
         <Main />
