@@ -29,7 +29,6 @@ export default function Blog({
         id_lng: number,
         ds_title: string,
         ds_content: string,
-        ds_readtime: string,
     }
 
     interface BlogType {

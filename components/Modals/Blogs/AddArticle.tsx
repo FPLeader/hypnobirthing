@@ -45,13 +45,11 @@ export default function AddArticle({
     const [selectedCategory, setSelectedCategory] = useState(CategoryOptions[0]);
     // for English
     const [titleEn, setTitleEn] = useState<string>('');
-    const [readTimeEn, setReadTimeEn] = useState<string>('');
     // for quill
     const [contentEn, setContentEn] = useState('');
 
     // for Hebrew
     const [titleHe, setTitleHe] = useState<string>('');
-    const [readTimeHe, setReadTimeHe] = useState<string>('');
     // for quill
     const [contentHe, setContentHe] = useState('');
 
@@ -110,20 +108,20 @@ export default function AddArticle({
 
     const isPublish = () => {
         if (selectedLangauge.id === 0)
-            return titleEn !== '' && selectedImage !== null && contentEn !== '' && readTimeEn !== '';
+            return titleEn !== '' && selectedImage !== null && contentEn !== '';
         else if (selectedLangauge.id === 1)
-            return titleHe !== '' && selectedImage !== null && contentHe !== '' && readTimeHe !== '';
+            return titleHe !== '' && selectedImage !== null && contentHe !== '';
         else
-            return titleEn !== '' && selectedImage !== null && contentEn !== '' && readTimeEn !== '' && titleHe !== '' && contentHe !== '' && readTimeHe !== '';
+            return titleEn !== '' && selectedImage !== null && contentEn !== '' && titleHe !== '' && contentHe !== '';
     }
 
     const isButtonDisabled = (): boolean => {
         if (selectedLangauge.id === 0)
-            return !(titleEn !== '' || selectedImage !== null || contentEn !== '' || readTimeEn !== '');
+            return !(titleEn !== '' || selectedImage !== null || contentEn !== '');
         else if (selectedLangauge.id === 1)
-            return !(titleHe !== '' || selectedImage !== null || contentHe !== '' || readTimeHe !== '');
+            return !(titleHe !== '' || selectedImage !== null || contentHe !== '');
         else
-            return !(titleEn !== '' || selectedImage !== null || contentEn !== '' || readTimeEn !== '' || titleHe !== '' || selectedImage !== null || contentHe !== '' || readTimeHe !== '');
+            return !(titleEn !== '' || selectedImage !== null || contentEn !== '' || titleHe !== '' || selectedImage !== null || contentHe !== '');
     }
 
     const generateBlogId = (length: number): string => {
@@ -164,13 +162,11 @@ export default function AddArticle({
                 id_lng: 0,
                 ds_title: titleEn,
                 ds_content: contentEn,
-                ds_readtime: readTimeEn,
             }
             let blog_he = {
                 id_lng: 1,
                 ds_title: titleHe,
                 ds_content: contentHe,
-                ds_readtime: readTimeHe,
             }
             // console.log('contentEn', contentEn);
             // console.log('contentHe', contentHe);
@@ -236,11 +232,9 @@ export default function AddArticle({
                         setLoadingOpen(false);
                         // English
                         setTitleEn('');
-                        setReadTimeEn('');
                         setContentEn('');
                         //Hebrew
                         setTitleHe('');
-                        setReadTimeHe('');
                         setContentHe('');
                         // thumbnail
                         setSelectedImage(null);
@@ -426,13 +420,6 @@ export default function AddArticle({
                                                     />
                                                 </div>
                                             </div>
-
-                                            <CategoryInput
-                                                category='Enter read time'
-                                                placeholder='7 min'
-                                                inputValue={readTimeEn}
-                                                handleChange={setReadTimeEn}
-                                            />
                                         </>
                                         : selectedLangauge.id === 1 //Hebrew
                                             ?
@@ -536,13 +523,6 @@ export default function AddArticle({
                                                         />
                                                     </div>
                                                 </div>
-
-                                                <CategoryInput
-                                                    category='הזן זמן קריאה'
-                                                    placeholder='7 דקות'
-                                                    inputValue={readTimeHe}
-                                                    handleChange={setReadTimeHe}
-                                                />
                                             </>
                                             :
                                             <>
@@ -673,20 +653,6 @@ export default function AddArticle({
                                                         />
                                                     </div>
                                                 </div>
-
-                                                <CategoryInput
-                                                    category='Enter read time (English)'
-                                                    placeholder='7 min'
-                                                    inputValue={readTimeEn}
-                                                    handleChange={setReadTimeEn}
-                                                />
-                                                <CategoryInput
-                                                    lngId={1}
-                                                    category='הזן זמן קריאה (עברית)'
-                                                    placeholder='7 דקות'
-                                                    inputValue={readTimeHe}
-                                                    handleChange={setReadTimeHe}
-                                                />
                                             </>
                                     }
 

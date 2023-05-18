@@ -117,6 +117,10 @@ export const SkillSetEn: SelectItemType[] = [
         label: 'Pilates Teacher'
     },
     {
+        value: 'Blessing way facilitator',
+        label: 'Blessing way facilitator'
+    },
+    {
         value: 'Other',
         label: 'Other'
     },
@@ -218,6 +222,10 @@ export const SkillSetHe: SelectItemType[] = [
     {
         value: 'Pilates Teacher',
         label: 'מורה לפילאטיס'
+    },
+    {
+        value: 'Blessing way facilitator',
+        label: 'מנחה דרך ברכה'
     },
     {
         value: 'Other',

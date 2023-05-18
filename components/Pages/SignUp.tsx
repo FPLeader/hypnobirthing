@@ -250,7 +250,7 @@ export default function SignUp({
                     <div className='flex flex-col gap-[17px]'>
                         <CategoryCheckbox
                             id='check-private-course'
-                            text='I can do private one to one course'
+                            text={t('I can do private one to one courses')}
                             checkValue={privateCourse}
                             setCheckValue={setPrivateCourse}
                         />

@@ -23,7 +23,6 @@ interface mainbodyType {
     id_lng: number,
     ds_title: string,
     ds_content: string,
-    ds_readtime: string,
 }
 
 interface EditArticleProps {
@@ -57,13 +56,11 @@ export default function EditArticle({
     const [selectedCategory, setSelectedCategory] = useState(CategoryOptions[0]);
     // for English
     const [titleEn, setTitleEn] = useState<string>('');
-    const [readTimeEn, setReadTimeEn] = useState<string>('');
     // for quill
     const [contentEn, setContentEn] = useState('');
 
     // for Hebrew
     const [titleHe, setTitleHe] = useState<string>('');
-    const [readTimeHe, setReadTimeHe] = useState<string>('');
     // for quill
     const [contentHe, setContentHe] = useState('');
 
@@ -86,26 +83,22 @@ export default function EditArticle({
             // En option
             setTitleEn(mainbody[0].ds_title);
             setContentEn(mainbody[0].ds_content);
-            setReadTimeEn(mainbody[0].ds_readtime);
 
             // He option
             setTitleHe(mainbody[1].ds_title);
             setContentHe(mainbody[1].ds_content);
-            setReadTimeHe(mainbody[1].ds_readtime);
         } else if (mainbody[0].id_lng === 0) { // En option
             setSelectedLanguage(LanguageOptions[0]);
             setTitleEn(mainbody[0].ds_title);
             if (ds_thumbnail !== '')
                 setImage(process.env.FILE_IMAGE_BASE + ds_thumbnail);
             setContentEn(mainbody[0].ds_content);
-            setReadTimeEn(mainbody[0].ds_readtime);
         } else if (mainbody[0].id_lng === 1) { // He option
             setSelectedLanguage(LanguageOptions[1]);
             setTitleHe(mainbody[0].ds_title);
             if (ds_thumbnail !== '')
                 setImage(process.env.FILE_IMAGE_BASE + ds_thumbnail);
             setContentHe(mainbody[0].ds_content);
-            setReadTimeHe(mainbody[0].ds_readtime);
         }
         CategoryOptions.map((currentOption) => {
             if (currentOption.value === ds_category) {
@@ -187,20 +180,20 @@ export default function EditArticle({
 
     const isPublish = () => {
         if (selectedLangauge.id === 0)
-            return titleEn !== '' && image !== '' && contentEn !== '' && readTimeEn !== '';
+            return titleEn !== '' && image !== '' && contentEn !== '';
         else if (selectedLangauge.id === 1)
-            return titleHe !== '' && image !== '' && contentHe !== '' && readTimeHe !== '';
+            return titleHe !== '' && image !== '' && contentHe !== '';
         else
-            return titleEn !== '' && image !== '' && contentEn !== '' && readTimeEn !== '' && titleHe !== '' && contentHe !== '' && readTimeHe !== '';
+            return titleEn !== '' && image !== '' && contentEn !== '' && titleHe !== '' && contentHe !== '';
     }
 
     const isButtonDisabled = (): boolean => {
         if (selectedLangauge.id === 0)
-            return !((image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleEn !== mainbody[0].ds_title || contentEn !== mainbody[0].ds_content || readTimeEn !== mainbody[0].ds_readtime || selectedCategory.value !== ds_category);
+            return !((image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleEn !== mainbody[0].ds_title || contentEn !== mainbody[0].ds_content || selectedCategory.value !== ds_category);
         else if (selectedLangauge.id === 1)
-            return !((image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleHe !== mainbody[0].ds_title || contentHe !== mainbody[0].ds_content || readTimeHe !== mainbody[0].ds_readtime || selectedCategory.value !== ds_category);
+            return !((image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleHe !== mainbody[0].ds_title || contentHe !== mainbody[0].ds_content || selectedCategory.value !== ds_category);
         else
-            return !((image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleEn !== mainbody[0].ds_title || contentEn !== mainbody[0].ds_content || readTimeEn !== mainbody[0].ds_readtime || selectedCategory.value !== ds_category || titleHe !== mainbody?.[1]?.ds_title || contentHe !== mainbody?.[1]?.ds_content || readTimeHe !== mainbody?.[1]?.ds_readtime);
+            return !((image !== process.env.FILE_IMAGE_BASE + ds_thumbnail) || titleEn !== mainbody[0].ds_title || contentEn !== mainbody[0].ds_content || selectedCategory.value !== ds_category || titleHe !== mainbody?.[1]?.ds_title || contentHe !== mainbody?.[1]?.ds_content);
     }
 
     // upload blog
@@ -231,13 +224,11 @@ export default function EditArticle({
                 id_lng: 0,
                 ds_title: titleEn,
                 ds_content: contentEn,
-                ds_readtime: readTimeEn,
             }
             let blog_he = {
                 id_lng: 1,
                 ds_title: titleHe,
                 ds_content: contentHe,
-                ds_readtime: readTimeHe,
             }
             // console.log('contentEn', contentEn);
             // console.log('contentHe', contentHe);
@@ -306,11 +297,9 @@ export default function EditArticle({
                         setLoadingOpen(false);
                         // English
                         setTitleEn('');
-                        setReadTimeEn('');
                         setContentEn('');
                         //Hebrew
                         setTitleHe('');
-                        setReadTimeHe('');
                         setContentHe('');
                         // thumbnail
                         setSelectedImage(null);
@@ -493,12 +482,6 @@ export default function EditArticle({
                                                     />
                                                 </div>
                                             </div>
-                                            <CategoryInput
-                                                category='Enter read time'
-                                                placeholder='7 min'
-                                                inputValue={readTimeEn}
-                                                handleChange={setReadTimeEn}
-                                            />
                                         </>
                                         : selectedLangauge.id === 1 //Hebrew
                                             ?
@@ -601,13 +584,6 @@ export default function EditArticle({
                                                         />
                                                     </div>
                                                 </div>
-
-                                                <CategoryInput
-                                                    category='הזן זמן קריאה'
-                                                    placeholder='7 דקות'
-                                                    inputValue={readTimeHe}
-                                                    handleChange={setReadTimeHe}
-                                                />
                                             </>
                                             :
                                             <>
@@ -741,20 +717,6 @@ export default function EditArticle({
                                                         />
                                                     </div>
                                                 </div>
-
-                                                <CategoryInput
-                                                    category='Enter read time (English)'
-                                                    placeholder='7 min'
-                                                    inputValue={readTimeEn}
-                                                    handleChange={setReadTimeEn}
-                                                />
-                                                <CategoryInput
-                                                    lngId={1}
-                                                    category='הזן זמן קריאה (עברית)'
-                                                    placeholder='7 דקות'
-                                                    inputValue={readTimeHe}
-                                                    handleChange={setReadTimeHe}
-                                                />
                                             </>
                                     }
 

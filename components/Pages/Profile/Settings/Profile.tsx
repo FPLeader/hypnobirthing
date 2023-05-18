@@ -501,7 +501,7 @@ export default function Profile() {
                                 </div >
                                 <CategoryCheckbox
                                     id='check-private-course'
-                                    text='I can do private one to one course'
+                                    text={t('I can do private one to one courses')}
                                     checkValue={privateCourse}
                                     setCheckValue={setPrivateCourse}
                                 />
