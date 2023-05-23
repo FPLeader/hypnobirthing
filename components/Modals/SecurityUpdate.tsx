@@ -6,10 +6,9 @@ import { Dialog, Transition } from '@headlessui/react'
 import { CloseIcon } from '@/assests/Icons'
 import { CategoryRuleInput } from '../Inputs'
 import { OtpInput } from '@/components/Inputs'
-import { setUser } from '@/services/Actions/Auth.action'
+import { setUser, logout } from '@/services/Actions/Auth.action'
 import { useRouter } from 'next/router'
 import { useAppDispatch, useAppSelector } from '@/services/Hooks'
-import { logout } from '@/services/Actions/Auth.action'
 
 interface SecurityUpdateProps {
     isOpen: boolean,
@@ -42,6 +41,7 @@ export default function SecurityUpdate({
     const [page, setPage] = useState<number>(1);
 
     useEffect(() => {
+        console.log(nameLngId);
         if (currentUser) {
             if (ds_email === currentUser.ds_email)
                 setPage(1);

@@ -1,5 +1,5 @@
 export { default as IntroductionSection } from './Introduction'
-export { default as AboutClassSection } from './AboutClass'
+export { default as AboutCourseSection } from './AboutCourse'
 export { default as SubmitSection } from './Submit'
 export { default as FaqSection } from './Faq'
 export { default as RelatedCoursesSection } from './RelatedCourses'

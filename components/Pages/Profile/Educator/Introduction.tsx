@@ -53,7 +53,7 @@ export default function Introduction({
       <div className='w-full flex justify-center'>
         <div className='w-full max-w-[1225px] mx-[20px] relative'>
           <div className='min-[1225px]:max-w-[805px] lg:max-w-[calc(100vw-460px)] text-dark text-center md:text-left flex flex-col gap-[8px]'>
-            <div className='lg:mt-[20px] capitalize text-center md:text-left text-[32px] md:text-[40px] lg:text-[44px] italic font-light'>
+            <div className='lg:mt-[20px] capitalize text-center md:text-left text-[32px] md:text-[40px] lg:text-[44px] italic font-light underline underline-offset-8 decoration-beighe'>
               {name}
             </div>
             <div className='lg:mt-[20px] capitalize text-center md:text-left text-[18px]'>

@@ -369,7 +369,7 @@ export default function AddSession({
                                             />
                                         }
                                     </div>
-                                    <div className=''>
+                                    {/* <div className=''>
                                         {educatorsList.length === 0
                                             ?
                                             <div>
@@ -382,7 +382,7 @@ export default function AddSession({
                                                 setCoEducators={setMembers}
                                             />
                                         }
-                                    </div>
+                                    </div> */}
                                 </div>
 
                                 <div className='mt-[20px]'>

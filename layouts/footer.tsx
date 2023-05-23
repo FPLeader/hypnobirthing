@@ -71,7 +71,7 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className='block md:hidden mt-[27.5px] w-full flex justify-center'>
+                <div className='md:hidden mt-[27.5px] w-full flex justify-center'>
                     <div className='flex gap-x-[7px]'>
                         <img draggable='false' src='/img/affiliated.png' alt='Logo' className='w-[21px] h-[21px]' />
                         <div className='flex text-dark text-[14px] opacity-60'>

@@ -52,8 +52,8 @@ export default function Profile() {
     const [videoUrl, setVideoUrl] = useState<string>('');
 
     const [selectedLangauge, setSelectedLanguage] = useState(LanguageOptions[0]);
-    const [descriptionEn, setDescriptionEn] = useState({ ...initialValue, rules: ['min:200', 'max:1200'] });
-    const [descriptionHe, setDescriptionHe] = useState({ ...initialValue, rules: ['min:200', 'max:1200'] });
+    const [descriptionEn, setDescriptionEn] = useState({ ...initialValue, rules: ['min:200'] });
+    const [descriptionHe, setDescriptionHe] = useState({ ...initialValue, rules: ['min:200'] });
     const [personalTitleEn, setPersonalTitleEn] = useState({ ...initialValue, rules: ['required'] });
     const [personalTitleHe, setPersonalTitleHe] = useState({ ...initialValue, rules: ['required'] });
 
@@ -101,10 +101,6 @@ export default function Profile() {
             } else if (rule === 'min:200') {
                 if (value.value.length < 200) {
                     message = 'This field should greater than 200.';
-                }
-            } else if (rule === 'max:1200') {
-                if (value.value.length > 1200) {
-                    message = 'This field should lower than 1200.';
                 }
             }
         }
@@ -174,11 +170,11 @@ export default function Profile() {
                 })
             ))
             currentUser.ar_skills.map((text: string) => {
-                
+
             })
             setSkills(_skills);
-            setDescriptionEn({ ...initialValue, value: currentUser.ar_aboutme[0], rules: ['min:200', 'max:1200'] });
-            setDescriptionHe({ ...initialValue, value: currentUser.ar_aboutme[1], rules: ['min:200', 'max:1200'] });
+            setDescriptionEn({ ...initialValue, value: currentUser.ar_aboutme[0], rules: ['min:200'] });
+            setDescriptionHe({ ...initialValue, value: currentUser.ar_aboutme[1], rules: ['min:200'] });
             setPersonalTitleEn({ ...initialValue, value: currentUser.ar_personaltitle[0], rules: ['required'] });
             setPersonalTitleHe({ ...initialValue, value: currentUser.ar_personaltitle[1], rules: ['required'] });
             setPrivateCourse(Boolean(currentUser.ic_privatecourse));
@@ -438,8 +434,8 @@ export default function Profile() {
                                             inputValue={descriptionEn}
                                             handleChange={handleChangeValue(descriptionEn, setDescriptionEn)}
                                         />
-                                        <div className='text-Label text-[14px] font-medium text-right'>
-                                            {descriptionEn.value.length} of 1200 characters (minimum 200)
+                                        <div dir='ltr' className='text-Label text-[14px] font-medium text-right'>
+                                            {descriptionEn.value.length} characters (minimum 200)
                                         </div>
                                     </div>
                                 }
@@ -453,8 +449,8 @@ export default function Profile() {
                                             inputValue={descriptionHe}
                                             handleChange={handleChangeValue(descriptionHe, setDescriptionHe)}
                                         />
-                                        <div className='text-Label text-[14px] font-medium text-right'>
-                                            {descriptionHe.value.length} of 1200 characters (minimum 200)
+                                        <div dir='rtl' className='text-Label text-[14px] font-medium text-right'>
+                                            {descriptionHe.value.length} תווים (מינימום 200)
                                         </div>
                                     </div>
                                 }
@@ -472,8 +468,8 @@ export default function Profile() {
                                     (selectedLangauge.id === 1 || selectedLangauge.id === 2) &&
                                     <CategoryRuleInput
                                         lngId={1}
-                                        category='Personal Title'
-                                        placeholder={'Modern Applied Psychology & Personal Development'}
+                                        category='כותרת אישית'
+                                        placeholder={'פסיכולוגיה שימושית מודרנית והתפתחות אישית'}
                                         inputValue={personalTitleHe}
                                         handleChange={handleChangeValue(personalTitleHe, setPersonalTitleHe)}
                                     />
@@ -481,7 +477,7 @@ export default function Profile() {
                             </div>
                             <div className='mt-[10px] flex flex-col gap-[10px]'>
                                 <CategorySelect
-                                    category='Pashut Laledet Certification'
+                                    category={t('Pashut Laledet Certification')}
                                     selectItems={TypeOptions}
                                     inputValue={profileType}
                                     handleChange={setProfileType}

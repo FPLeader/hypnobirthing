@@ -16,7 +16,6 @@ export default function FeedbackCard({
 
   useEffect(() => {
     setNumberEmptyStar(5 - rating);
-    console.log(numberEmptyStar);
   }, [rating])
 
   return (
@@ -30,7 +29,7 @@ export default function FeedbackCard({
         ))} */}
       </div>
       <div className='mt-[15px] flex flex-col items-center gap-[10px] text-dark text-center'>
-        <div className='whitespace-pre-line line-clamp-3 text-[16px] lg:text-[20px]'>
+        <div className='whitespace-pre-line line-clamp-5 text-[18px] lg:text-[20px]'>
           {content}
         </div>
         <div className='w-0 h-[15px] border-r-[1px] border-dark'></div>

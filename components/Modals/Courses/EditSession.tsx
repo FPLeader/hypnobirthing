@@ -112,6 +112,7 @@ export default function EditSession({
 
     // initialize
     useEffect(() => {
+        console.log(js_location);
         setLocation(js_location);
         setLessonDates(dt_lessons);
         setMaxCouples(nu_maxcouples);
@@ -132,7 +133,7 @@ export default function EditSession({
             }
         })
         setMembers([...ar_members, ...ar_requestmembers]);
-    }, [])
+    }, [isOpen])
 
     const handleChangeValue = (value: any, setValue: any) => (event: any) => {
         checkValidity({ ...value, value: event.target.value }, setValue);
@@ -459,7 +460,7 @@ export default function EditSession({
                                             />
                                         }
                                     </div>
-                                    <div className=''>
+                                    {/* <div className=''>
                                         {educatorsList.length === 0
                                             ?
                                             <div>
@@ -472,7 +473,7 @@ export default function EditSession({
                                                 setCoEducators={setMembers}
                                             />
                                         }
-                                    </div>
+                                    </div> */}
                                 </div>
 
                                 <div className='mt-[20px]'>

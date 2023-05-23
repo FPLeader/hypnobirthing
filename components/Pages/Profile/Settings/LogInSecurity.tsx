@@ -37,8 +37,8 @@ export default function LogInSecurity() {
     const [checkSend, setCheckSend] = useState<boolean>(false);
     const [firstNameEn, setFirstNameEn] = useState({ ...initialValue, rules: ['required', 'name'] });
     const [lastNameEn, setLastNameEn] = useState({ ...initialValue, rules: ['required', 'name'] });
-    const [firstNameHe, setFirstNameHe] = useState({ ...initialValue, rules: ['required', 'name'] });
-    const [lastNameHe, setLastNameHe] = useState({ ...initialValue, rules: ['required', 'name'] });
+    const [firstNameHe, setFirstNameHe] = useState({ ...initialValue, rules: ['required'] });
+    const [lastNameHe, setLastNameHe] = useState({ ...initialValue, rules: ['required'] });
     const [phoneNumber, setPhoneNumber] = useState({ ...initialValue, rules: ['required', 'phone'] });
     const [email, setEmail] = useState({ ...initialValue, rules: ['required', 'email'] });
     const [newPassword, setNewPassword] = useState({ ...initialValue, rules: ['required', 'min:8'] });
@@ -122,8 +122,8 @@ export default function LogInSecurity() {
                 let nameParts = currentUser.nm_user[1].split(' ');
                 const _firstName = nameParts[0];
                 const _lastName = nameParts.slice(1).join(' ');
-                setFirstNameHe({ ...initialValue, value: _firstName, rules: ['required', 'name'] });
-                setLastNameHe({ ...initialValue, value: _lastName, rules: ['required', 'name'] });
+                setFirstNameHe({ ...initialValue, value: _firstName, rules: ['required'] });
+                setLastNameHe({ ...initialValue, value: _lastName, rules: ['required'] });
             }
             setEmail({ ...initialValue, value: currentUser.ds_email, rules: ['required', 'email'] });
             setPhoneNumber({ ...initialValue, value: currentUser.ds_phonenumber, rules: ['required', 'phone'] });

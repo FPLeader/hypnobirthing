@@ -12,6 +12,7 @@ export { default as MemberRowCard } from './MemberRow'
 export { default as ReviewCard } from './Review'
 
 export { default as TeacherProfileCard } from './TeacherProfile'
+export { default as ExpandCard } from './Expand'
 
 // Course Type
 export { default as BigCourseCard } from './Courses/BigCourse'

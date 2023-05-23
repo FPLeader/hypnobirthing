@@ -47,6 +47,7 @@
     "UPCOMING SESSIONS": "UPCOMING SESSIONS",
     "MY ARTICLES": "MY ARTICLES",
     "Sign up": "Sign up",
+    "register": "register",
     "First name": "First name",
     "Last name": "Last name",
     "Confirm Password": "Confirm Password",
@@ -74,5 +75,7 @@
     "Upload video": "Upload video",
     "Youtube link": "Youtube link",
     "New Password": "New Password",
-    "I can do private one to one courses": "I can do private one to one courses"
+    "I can do private one to one courses": "I can do private one to one courses",
+    "Sign Up Now": "Sign Up Now",
+    "About the teacher": "About the teacher"
 }

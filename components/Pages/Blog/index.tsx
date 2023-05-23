@@ -191,7 +191,9 @@ export default function Blog({
                                         />
                                         <div className='text-[16px] md:text-[18px] font-normal italic opacity-60 flex flex-col items-center md:flex-row md:justify-between'>
                                             <div className='capitalize'>—&nbsp;{currentName()}</div>
-                                            <div>{moment(currentBlog.dt_upload).format('MMMM D, YYYY')}</div>
+                                            <div>
+                                                {moment(currentBlog.dt_upload).format('MMMM D, YYYY')}
+                                            </div>
                                         </div>
                                     </div>
                                     {latestBlogs.length !== 0 &&

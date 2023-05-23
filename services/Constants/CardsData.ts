@@ -627,3 +627,23 @@ export const SupportReviewCards: ReviewCardType[] = [
         date: 0,
     }
 ]
+
+export interface ExpandCardType {
+    title: string,
+    content: string
+}
+
+export const ExpandCardsEn: ExpandCardType[] = [
+    {
+        title: 'About the course',
+        content: `The Pashut Laledet HypnoBirthing course is a series of five lessons which meet once a week for three hours each time.
+        You are welcome to come with a partner. The course is informative and experiential.
+        You will learn and practice special techniques which make birthing easier while also gaining a lot of practical knowledge and tips about pregnancy and birth.
+        You will enjoy a process of bringing self awareness to your body and mind; and will discover how they affect each other and how a relaxed mind and body contribute to a gentle birth experience. You and your birth partner will gain knowledge and develop skills for communication, with each other, with your baby, and with your birth support team.`
+    },
+    {
+        title: 'What is included?',
+        content: `Along with the series of five lessons you will receive materials to help you maintain a Pashut Laledet HypnoBirthing practice.
+        Materials include: the book HypnoBirthing the Mongan Method, four audio tracks of guided imagery and affirmations including the Internationally loved “Rainbow Relaxation”, and a booklet full of exercises and information to support your practice.`
+    }
+]

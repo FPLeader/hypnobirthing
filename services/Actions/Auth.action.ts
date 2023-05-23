@@ -84,12 +84,6 @@ export function setTempUser(data: any) {
     return { type: 'setTempUser', data };
 }
 
-// export function setCurrentProfile(data: any) {
-//     localStorage.removeItem('currentprofile');
-//     localStorage.setItem('currentprofile', JSON.stringify(data));
-//     return { type: 'setCurrentProfile', data };
-// }
-
 export function setUser(data: any) {
     localStorage.removeItem('tempUser');
     localStorage.removeItem('user');

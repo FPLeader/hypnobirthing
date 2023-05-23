@@ -39,7 +39,7 @@ export default function EducatorItem({
         </div>
       </div>
       <a
-        href={'/user/' + educatorId}
+        href={`/user/${educatorId}`}
         target='_blank'
         rel='noreferrer'
         className='text-[16px] md:text-[18px] capitalize line-clamp-1 underline italic hover:text-Label active:text-dark transition-all duration-300'

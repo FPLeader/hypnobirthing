@@ -51,9 +51,9 @@ export default function Avatar({
                         >
                             <div className='w-full h-full relative'>
                                 <img draggable='false' src={image} alt='Avatar' className='w-full h-full object-cover rounded-full overflow-hidden' />
-                                <div className='absolute top-[2px] right-[2px]'>
+                                {/* <div className='absolute top-[2px] right-[2px]'>
                                     <NotificationBadge />
-                                </div>
+                                </div> */}
                             </div>
                         </Popover.Button>
                     </div>
@@ -69,12 +69,12 @@ export default function Avatar({
                         >
                             <Popover.Panel className='absolute right-0'>
                                 <div className='mt-[5px] p-[10px] flex flex-col items-start gap-[5px] border border-deviders rounded-[10px] bg-bcg'>
-                                    <button className={style.Link + ' relative'} onClick={() => { router.push('/notification'), setIsOpen(false) }}>
+                                    {/* <button className={style.Link + ' relative'} onClick={() => { router.push('/notification'), setIsOpen(false) }}>
                                         Notification
                                         <div className='absolute top-[2px] right-[2px]'>
                                             <NotificationBadge />
                                         </div>
-                                    </button>
+                                    </button> */}
                                     <button className={style.Link} onClick={() => { router.push('/profile/educator'), setIsOpen(false) }}>
                                         My Profile
                                     </button>

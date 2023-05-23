@@ -18,35 +18,18 @@ interface mainbodyType {
 
 interface LiveCourseCardType {
     id_course: string,
-    cd_educator: string,
     js_location: locationType,
     dt_lessons: Date[],
-    nu_maxcouples: number,
-    nu_price: number,
-    nu_inventory: number,
-    ic_extracourse: boolean,
     nm_user: string[],
     mainbody: mainbodyType[]
-    ar_members: string[],
-    ar_requestmembers: string[],
-    ds_state?: string,                  // wait, underreivew, live
-    // dt_update: string,
 }
 
 export default function Course({
     id_course,
-    cd_educator,
     js_location,
-    dt_lessons,
-    nu_maxcouples,
-    nu_price,
-    nu_inventory,
-    ic_extracourse,
     nm_user,
+    dt_lessons,
     mainbody,
-    ar_members,
-    ar_requestmembers,
-    ds_state = 'live',
 }: LiveCourseCardType) {
     // language option
     const { t } = useTranslation();
@@ -61,6 +44,17 @@ export default function Course({
 
     function openModal() {
         setIsOpen(true)
+    }
+
+    const currentName = () => {
+        if (nm_user[lngId] !== '')
+            return nm_user[lngId];
+        else {
+            if (lngId === 0)
+                return nm_user[1];
+            else if (lngId === 1)
+                return nm_user[0];
+        }
     }
 
     return (
@@ -80,7 +74,7 @@ export default function Course({
                     {js_location.label}
                 </div>
                 <div className='capitalize text-[14px] lg:text-[18px]'>
-                    —&nbsp;{nm_user[0]}
+                    —&nbsp;{currentName()}
                 </div>
             </div>
 
@@ -91,11 +85,14 @@ export default function Course({
                 >
                     student list
                 </button>
-                <button
-                    className='w-full h-[45px] text-[14px] border border-beighe uppercase flex justify-center items-center bg-[#DFD3BC80] hover:bg-beighe active:bg-[#DFD3BC80] transition-all duration-300'
+                <a
+                    className='w-full h-[45px] text-[14px] border border-beighe uppercase flex justify-center items-center bg-[#DFD3BC80] hover:bg-beighe active:bg-[#DFD3BC80] transition-all duration-300 cursor-pointer'
+                    href={`/course/${id_course}`}
+                    target='_blank'
+                    rel='noreferrer'
                 >
                     preview
-                </button>
+                </a>
             </div>
         </div>
     )

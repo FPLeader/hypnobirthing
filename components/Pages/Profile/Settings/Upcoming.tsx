@@ -38,7 +38,6 @@ export default function Upcoming() {
   // values
   const [domLoaded, setDomLoaded] = useState<number>(-1);
 
-
   interface locationType {
     label: string,
     place_id: string,
@@ -174,17 +173,10 @@ export default function Upcoming() {
                     <LiveCourseCard
                       key={'live-course-' + index}
                       id_course={CardData.id_course}
-                      cd_educator={CardData.cd_educator}
                       js_location={CardData.js_location}
                       dt_lessons={CardData.dt_lessons}
-                      nu_maxcouples={CardData.nu_maxcouples}
-                      nu_price={CardData.nu_price}
-                      nu_inventory={CardData.nu_inventory}
-                      ic_extracourse={CardData.ic_extracourse}
                       nm_user={CardData.nm_user}
                       mainbody={CardData.mainbody}
-                      ar_members={CardData.ar_members}
-                      ar_requestmembers={CardData.ar_requestmembers}
                     />
                   ))}
                   <div className='w-full min-h-[137px] flex justify-center items-center border border-beighe rounded-[10px]'>
