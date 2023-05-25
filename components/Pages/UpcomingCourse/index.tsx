@@ -174,7 +174,7 @@ export default function UpcomingCourse() {
                                         containerClass='carousel-container'
                                         shouldResetAutoplay={false}
                                     >
-                                        {MonthData.cards.map((card: CourseCardType, index: number) => (
+                                        {/* {MonthData.cards.map((card: CourseCardType, index: number) => (
                                             <div dir={lngId === 0 ? 'ltr' : 'rtl'} key={index} className='min-[530px]:mx-[12.5px]'>
                                                 <CourseCard
                                                     date={card.date}
@@ -183,7 +183,7 @@ export default function UpcomingCourse() {
                                                     teacher={card.teacher}
                                                 />
                                             </div>
-                                        ))}
+                                        ))} */}
                                     </Carousel>
                                 </div>
                             ))}
