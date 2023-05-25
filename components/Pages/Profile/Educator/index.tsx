@@ -38,7 +38,14 @@ export default function Index() {
 
   useLayoutEffect(() => {
     if (currentUser) {
-      setName(currentUser.nm_user);
+      if (currentUser.nm_user[lngId] !== '')
+        setName(currentUser.nm_user[lngId]);
+      else {
+        if (lngId === 0)
+          setName(currentUser.nm_user[1]);
+        else if (lngId === 1)
+          setName(currentUser.nm_user[0]);
+      }
       setPersonalTitle(currentUser?.ar_personaltitle?.[lngId]);
       setAvatarImage(currentUser?.ds_avatar);
       setVideoUrl(currentUser?.ds_video);
@@ -56,59 +63,60 @@ export default function Index() {
       if (currentUser?.ln_twitter)
         setTwitter(currentUser.ln_twitter);
     }
-  }, [currentUser]);
+  }, [currentUser, lngId]);
 
   return (
-    <>
-      <div className='pt-[70px] md:pt-[90px] w-full'>
-        {domLoaded && (
-          <>
-            {isLogIn &&
-              <>
-                <IntroductionSection
-                  name={name}
-                  personalTitle={personalTitle}
-                  category={category}
-                  avatarImage={avatarImage}
-                  videoUrl={videoUrl}
-                />
-                <div className='w-full flex justify-center mt-[20px] md:mt-[30px] lg:mt-[70px]'>
-                  <div className='w-full max-w-[1225px] mx-[20px]'>
-                    <div className='min-[1260px]:max-w-[805px] lg:max-w-[calc(100vw-460px)] w-full max-md:mt-[820px] max-lg:mt-[240px] flex flex-col gap-[20px] md:gap-[30px] lg:gap-[70px]'>
-                      <AboutMeSection
-                        aboutMe={aboutMe}
-                        skills={skills}
+    <div dir={lngId == 0 ? 'ltr' : 'rtl'} className='pt-[70px] md:pt-[90px] w-full'>
+      {domLoaded && (
+        <>
+          {isLogIn &&
+            <>
+              <IntroductionSection
+                lngId={lngId}
+                name={name}
+                personalTitle={personalTitle}
+                category={category}
+                avatarImage={avatarImage}
+                videoUrl={videoUrl}
+              />
+              <div className='w-full flex justify-center mt-[20px] md:mt-[30px] lg:mt-[70px]'>
+                <div className='w-full max-w-[1225px] mx-[20px]'>
+                  <div className='min-[1260px]:max-w-[805px] lg:max-w-[calc(100vw-460px)] w-full max-md:mt-[820px] max-lg:mt-[240px] flex flex-col gap-[20px] md:gap-[30px] lg:gap-[70px]'>
+                    <AboutMeSection
+                      aboutMe={aboutMe}
+                      skills={skills}
+                    />
+                    {
+                      currentUser.ds_category === TypeOptions[0].value &&
+                      <UpcomingSection
+                        lngId={lngId}
                       />
-                      {
-                        currentUser.ds_category === TypeOptions[0].value &&
-                        <UpcomingSection />
-                      }
-                      <MyAritclesSection />
-                      <MyContactsSection
-                        phoneNumber={phoneNumber}
-                        personalSite={personalSite}
-                        instagram={instagram}
-                        facebook={facebook}
-                        twitter={twitter}
-                      />
-                    </div>
+                    }
+                    <MyAritclesSection />
+                    <MyContactsSection
+                      phoneNumber={phoneNumber}
+                      personalSite={personalSite}
+                      instagram={instagram}
+                      facebook={facebook}
+                      twitter={twitter}
+                    />
                   </div>
                 </div>
-                <div className='mt-[20px] md:mt-[70px] lg:mt-[100px]'>
-                  <PromoteBar />
-                </div>
-                <div className='mt-[20px] md:mt-[40px]'>
-                  <UpcomingClassesBar
-                    title='Upcoming Childbirth Classes'
-                    buttonText='Learn More'
-                    link='\upcomingcourse'
-                  />
-                </div>
-              </>
-            }
-          </>
-        )}
-      </div>
-    </>
+              </div>
+              <div className='mt-[20px] md:mt-[70px] lg:mt-[100px]'>
+                <PromoteBar />
+              </div>
+              <div className='mt-[20px] md:mt-[40px]'>
+                <UpcomingClassesBar
+                  title='Upcoming Childbirth Classes'
+                  buttonText='Learn More'
+                  link='\upcomingcourse'
+                />
+              </div>
+            </>
+          }
+        </>
+      )}
+    </div>
   )
 }

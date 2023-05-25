@@ -1,22 +1,22 @@
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic'
-const CoursePage = dynamic(() => import('@/components/Pages/Course'), { ssr: false })
+const EducatorPage = dynamic(() => import('@/components/Pages/Educator'), { ssr: false })
 
-export default function User() {
+export default function Educator() {
     const router = useRouter()
-    const [courseId, setCourseId] = useState<string>('');
+    const [educatorId, setEducatorId] = useState<string>('');
     const { id } = router.query;
 
     useEffect(() => {
         if (typeof id === 'string') {
-            setCourseId(id);
+            setEducatorId(id);
         }
     }, [id]);
 
     return (
-        <CoursePage
-            courseId={courseId}
+        <EducatorPage
+            educatorId={educatorId}
         />
     )
 }

@@ -7,6 +7,7 @@ import i18n from '@/services/i18n'
 import { useTranslation } from 'react-i18next'
 
 interface SectionProps {
+  lngId: number,
   name: string,
   personalTitle: string,
   category: string,
@@ -15,6 +16,7 @@ interface SectionProps {
 }
 
 export default function Introduction({
+  lngId,
   name,
   personalTitle,
   category,
@@ -23,7 +25,6 @@ export default function Introduction({
 }: SectionProps) {
   const router = useRouter();
   const { t } = useTranslation();
-  const lngId: number = i18n.language === 'en' ? 0 : 1;
 
   const [image, setImage] = useState<string>('/img/editphoto1.png');
   const [video, setVideo] = useState<string>('');
@@ -52,23 +53,25 @@ export default function Introduction({
     <div className='w-full bg-bcg_2 pt-[20px] md:pt-[30px] lg:pt-[50px] pb-[82px]'>
       <div className='w-full flex justify-center'>
         <div className='w-full max-w-[1225px] mx-[20px] relative'>
-          <div className='min-[1225px]:max-w-[805px] lg:max-w-[calc(100vw-460px)] text-dark text-center md:text-left flex flex-col gap-[8px]'>
-            <div className='lg:mt-[20px] capitalize text-center md:text-left text-[32px] md:text-[40px] lg:text-[44px] italic font-light underline underline-offset-8 decoration-beighe'>
+          <div className='min-[1225px]:max-w-[805px] lg:max-w-[calc(100vw-460px)] text-dark flex flex-col gap-[8px]'>
+            <div className={`lg:mt-[20px] capitalize text-center ${lngId === 0 ? 'md:text-left' : 'md:text-right'} text-[32px] md:text-[40px] lg:text-[44px] italic font-light underline underline-offset-8 decoration-beighe`}>
               {name}
             </div>
-            <div className='lg:mt-[20px] capitalize text-center md:text-left text-[18px]'>
+            <div className={`lg:mt-[20px] capitalize text-center ${lngId === 0 ? 'md:text-left' : 'md:text-right'} text-[18px]`}>
               {personalTitle}
             </div>
             <div className='flex flex-col gap-[5px]'>
               <div className='flex flex-col md:flex-row gap-[5px] max-md:justify-center max-md:items-center md:items-end text-[16px] md:text-[18px]'>
-                <div className='text-Label'>Category:&nbsp;</div>
+                <div className='text-Label'>
+                  {t('Category')}:&nbsp;
+                </div>
                 <div className='flex flex-col items-center md:flex-row gap-[7px] md:gap-[5px]'>
                   <BadgeCard text={category} />
                 </div>
               </div>
             </div>
           </div>
-          <div className={`lg:max-w-[385px] w-full flex flex-col max-lg:items-center md:flex-row lg:flex-col gap-[15px] lg:gap-[30px] max-lg:w-full absolute ${category?.length > 1 ? 'top-[200px]' : 'top-[190px]'} md:top-[160px] lg:top-0 right-0`}>
+          <div className={`lg:max-w-[385px] w-full flex flex-col max-lg:items-center md:flex-row lg:flex-col gap-[15px] lg:gap-[30px] max-lg:w-full absolute top-[190px] md:top-[160px] lg:top-0 ${lngId === 0 ? 'right-0' : 'left-0'}`}>
             <div className='max-md:w-full max-md:max-w-[385px] md:max-lg:min-w-[229px] relative'>
               <div className='w-full max-w-[385px] overflow-hidden border-[4px] rounded-[15px] border-beighe'>
                 <div className='aspect-w-1 aspect-h-1'>
@@ -78,7 +81,7 @@ export default function Introduction({
               {avatarImage === '' &&
                 <div className='absolute top-0 w-full h-full flex justify-center items-center'>
                   <div onClick={() => router.push({ pathname: '/profile/settings', query: { setting: 0 } })}>
-                    <UploadButton text='add photo' />
+                    <UploadButton text={t('add photo')} />
                   </div>
                 </div>
               }
@@ -118,18 +121,26 @@ export default function Introduction({
             </div>
             <div className='flex flex-col gap-[15px] lg:gap-[30px] text-dark'>
               <div className='max-w-[385px] px-[5px] flex flex-col gap-[15px]'>
-                <div className='text-[18px]'>To get started with our service Pashut Laledet, please fill in your details:</div>
-                <ul className='list-disc pl-[20px]'>
-                  <li className='text-[16px] md:text-[18px]'>About me</li>
-                  <li className='text-[16px] md:text-[18px]'>Photo</li>
-                  <li className='text-[16px] md:text-[18px]'>Upcoming Session</li>
+                <div className='text-[18px]'>
+                  {t('To get started with our service Pashut Laledet, please fill in your details:')}
+                </div>
+                <ul className={`list-disc ${lngId == 0 ? 'pl-[20px]' : 'pr-[20px]'}`}>
+                  <li className='text-[16px] md:text-[18px]'>
+                    {t('About me')}
+                  </li>
+                  <li className='text-[16px] md:text-[18px]'>
+                    {t('Photo')}
+                  </li>
+                  <li className='text-[16px] md:text-[18px]'>
+                    {t('Upcoming Sessions')}
+                  </li>
                 </ul>
               </div>
               <button
                 className={`w-full whitespace-nowrap h-max text-center px-[38px] py-[12.5px] lg:py-[17.5px] text-dark text-[14px] font-medium uppercase bg-beighe hover:bg-bhover active:bg-beighe rounded-[500px] select-none cursor-pointer transition-all duration-300`}
                 onClick={() => router.push('/profile/settings')}
               >
-                Profile Settings
+                {t('Profile Settings')}
               </button>
             </div>
           </div>

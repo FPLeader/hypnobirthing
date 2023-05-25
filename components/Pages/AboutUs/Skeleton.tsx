@@ -18,12 +18,11 @@ export default function Skeleton() {
                     <BenefitCardSkeleton />
 
                     <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-[20px] lg:gap-[35px]'>
-                        <SmallReviewCardSkeleton />
-                        <SmallReviewCardSkeleton />
-                        <SmallReviewCardSkeleton />
-                        <SmallReviewCardSkeleton />
-                        <SmallReviewCardSkeleton />
-                        <SmallReviewCardSkeleton />
+                        {Array.from({ length: 6 }, (_, index: number) => (
+                            <SmallReviewCardSkeleton
+                                key={`sk-small-review-${index}`}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>

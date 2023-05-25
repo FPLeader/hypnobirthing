@@ -93,7 +93,7 @@ export default function Course({
     }
 
     return (
-        <div className='rounded-[10px] border-[2px] border-beighe overflow-hidden'>
+        <div className='rounded-[10px] border-[2px] border-beighe overflow-hidden grid grid-rows-[38px_1fr] md:grid-rows-[60px_1fr]'>
             <EditSessionModal
                 isOpen={isOpenEdit}
                 closeModal={closeModalEdit}
@@ -122,15 +122,17 @@ export default function Course({
             <div className='h-[38px] md:h-[60px] text-center text-[14px] lg:text-[16px] flex justify-center items-center bg-bcg_2'>
                 {dt_lessons[0] && moment(dt_lessons[0]).format('DD/MM/YYYY, dddd, HH:mm')}
             </div>
-            <div className='py-[15px] px-[5px] flex flex-col gap-[6px] text-center text-dark'>
-                <div className='font-medium text-[16px] lg:text-[24px]'>
-                    {mainbody[0].ds_title}
-                </div>
-                <div className='opacity-60 text-[14px] lg:text-[18px]'>
-                    {js_location.label}
-                </div>
-                <div className='capitalize text-[14px] lg:text-[18px]'>
-                    —&nbsp;{currentName()}
+            <div className='flex justify-center items-center'>
+                <div className='py-[15px] px-[5px] flex flex-col gap-[6px] text-center text-dark'>
+                    <div className='font-medium text-[16px] lg:text-[24px]'>
+                        {mainbody[0].ds_title}
+                    </div>
+                    <div className='opacity-60 text-[14px] lg:text-[18px]'>
+                        {js_location.label}
+                    </div>
+                    <div className='capitalize text-[14px] lg:text-[18px]'>
+                        —&nbsp;{currentName()}
+                    </div>
                 </div>
             </div>
 

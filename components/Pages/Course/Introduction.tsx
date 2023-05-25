@@ -43,7 +43,7 @@ export default function Introduction({
   }
 
   return (
-    <div className='w-full bg-bcg_2 py-[20px] md:py-[30px] lg:pt-[50px] pb-[82px]'>
+    <div className='w-full bg-bcg_2 py-[20px] md:py-[30px] lg:pt-[50px] pb-[100px] lg:pb-[82px]'>
       <div className='w-full flex justify-center'>
         <div className='w-full max-w-[1225px] mx-[20px] relative'>
           <div className={`min-[1225px]:max-w-[805px] lg:max-w-[calc(100vw-460px)] text-dark text-center ${lngId === 0 ? 'md:text-left' : 'md:text-right'} flex flex-col gap-[8px]`}>
@@ -51,20 +51,20 @@ export default function Introduction({
               {nm_user}
             </div>
             <div className='text-[32px] md:text-[40px] lg:text-[44px] italic font-light'>
-              Zoom Prenatal Course
+              {t('Zoom Prenatal Course')}
             </div>
             <div className='flex flex-col gap-[8px]'>
-              <div className='max-md:flex justify-center text-[16px] md:text-[18px]'>
-                <span className='text-Label'>
-                  Location:&nbsp;
-                </span>
-                <span>
+              <div className={`flex flex-col text-center ${lngId === 0 ? 'md:text-left' : 'md:text-right'} md:flex-row text-[16px] md:text-[18px]`}>
+                <div className='text-Label'>
+                  {t('Location')}:&nbsp;
+                </div>
+                <div>
                   {ds_location} / Zoom
-                </span>
+                </div>
               </div>
               <div className={`flex flex-col text-center ${lngId === 0 ? 'md:text-left' : 'md:text-right'} md:flex-row text-[16px] md:text-[18px]`}>
                 <div className='text-Label whitespace-nowrap'>
-                  Course start date:&nbsp;
+                {t('Course start date')}:&nbsp;
                 </div>
                 <div>
                   {moment(dt_lessons?.[0]).format('dddd, MMMM D, YYYY H:mm A UTCZ')}
@@ -76,7 +76,7 @@ export default function Introduction({
             </div>
           </div>
           <div
-            className={`max-lg:w-full absolute top-[270px] min-[340px]:top-[230px] md:top-[180px] lg:top-0 ${lngId === 0 ? 'right-0' : 'left-0'}`}
+            className={`max-lg:w-full absolute top-[290px] min-[340px]:top-[270px] md:top-[250px] lg:top-0 ${lngId === 0 ? 'right-0' : 'left-0'}`}
           >
             <TeacherProfileCard
               cd_educator={cd_educator as string}

@@ -179,9 +179,10 @@ export default function LogInSecurity() {
                 return true;
             else if (selectedLangauge.id === 2 && (nameEnChanged || nameHeChanged))
                 return true;
-            return email.value !== currentUser.ds_email ||
+            if (email.value !== currentUser.ds_email ||
                 phoneNumber.value !== currentUser.ds_phonenumber ||
-                checkSend !== currentUser.ic_sendme;
+                checkSend !== currentUser.ic_sendme)
+                return true;
         }
         return false;
     }
@@ -329,7 +330,7 @@ export default function LogInSecurity() {
             <div className='mt-[20px]'>
                 <CategoryCheckbox
                     id='check-send'
-                    text='Send me helpful emails to find rewarding work and job leads.'
+                    text={t('Send me helpful emails to find rewarding work and job leads.')}
                     checkValue={checkSend}
                     setCheckValue={setCheckSend}
                 />

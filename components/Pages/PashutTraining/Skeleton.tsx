@@ -21,9 +21,11 @@ export default function Skeleton() {
             <div className='space-y-[20px]'>
                 <div className='h-2.5 bg-gray-300 rounded-full w-full max-w-[180px]'></div>
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-[20px]'>
-                    <BigReviewCardSkeleton />
-                    <BigReviewCardSkeleton />
-                    <BigReviewCardSkeleton />
+                    {Array.from({ length: 3 }, (_, index: number) => (
+                        <BigReviewCardSkeleton
+                            key={`big-review-${index}`}
+                        />
+                    ))}
                 </div>
             </div>
 

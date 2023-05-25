@@ -11,6 +11,7 @@ export default function Expand({
     content
 }: CardProps) {
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const MIN_LENGTH = 200;
 
     return (
         <div className='text-dark flex flex-col gap-[16px]'>
@@ -18,15 +19,19 @@ export default function Expand({
                 {title}
             </div>
             <div className='relative'>
-                <div className={`text-[16px] lg:text-[18px] ${isOpen ? 'h-full' : 'h-[120px]'} overflow-hidden transition-all duration-500 whitespace-pre-line`}>
+                <div className={`text-[16px] lg:text-[18px] ${content.length > MIN_LENGTH ? isOpen ? 'h-full' : 'h-[120px]' : ''} overflow-hidden transition-all duration-500 whitespace-pre-line`}>
                     {content}
                 </div>
-                <div className={`z-1 inset-x-0 absolute bottom-0 bg-gradient-to-t from-bcg pt-[50px] pointer-events-none transition-opacity duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`}>
+                {content.length > MIN_LENGTH &&
+                    <div className={`z-1 inset-x-0 absolute bottom-0 bg-gradient-to-t from-bcg pt-[50px] pointer-events-none ${isOpen ? 'opacity-0' : 'opacity-100'}`}>
+                    </div>
+                }
+            </div>
+            {content.length > MIN_LENGTH &&
+                <div className='w-max' onClick={() => setIsOpen(!isOpen)}>
+                    <ExpandButton />
                 </div>
-            </div>
-            <div className='w-max' onClick={() => setIsOpen(!isOpen)}>
-                <ExpandButton />
-            </div>
+            }
         </div>
     )
 }

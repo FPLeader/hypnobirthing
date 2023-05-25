@@ -31,6 +31,7 @@ export default function Submit({
               placeholder={t('Enter your name')}
               inputValue={name}
               handleChange={setName}
+              lngId={lngId}
             />
             <CategoryInput
               category={t('Phone number')}
@@ -38,17 +39,19 @@ export default function Submit({
               placeholder='+972'
               inputValue={number}
               handleChange={setNumber}
+              lngId={lngId}
             />
             <CategoryInput
               category={t('Email')}
               placeholder='user@example.com'
               inputValue={email}
               handleChange={setEmail}
+              lngId={lngId}
             />
           </div>
           <TextareaNormal
             category={t('Comments') as string}
-            placeholder='Enter text here'
+            placeholder={t('Enter text here')}
             inputValue={comments}
             handleChange={setComments}
             lngId={lngId}
@@ -57,7 +60,7 @@ export default function Submit({
         <div className='flex flex-col md:flex-row justify-between items-center gap-[20px]'>
           <RegularButton text={t('register')} />
           <div className='text-center md:text-left text-Label text-[14px]'>
-            By clicking &quot;send&quot; you accept our Terms & Conditions and Privacy Policy
+            {t('By clicking \"send\" you accept our Terms & Conditions and Privacy Policy')}
           </div>
         </div>
       </div>

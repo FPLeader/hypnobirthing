@@ -23,18 +23,22 @@ export default function Skeleton() {
                 <ImageSkeleton />
             </div>
             <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-[20px] lg:gap-[35px]'>
-                <SmallReviewCardSkeleton />
-                <SmallReviewCardSkeleton />
-                <SmallReviewCardSkeleton />
+                {Array.from({ length: 3 }, (_, index: number) => (
+                    <SmallReviewCardSkeleton
+                        key={`sk-small-review1-${index}`}
+                    />
+                ))}
             </div>
             <div className='w-full mt-[20px] grid lg:grid-cols-2 gap-[20px] md:gap-[30px] lg:gap-x-[35px] lg:gap-y-[70px]'>
                 <NormalTextSkeleton />
                 <ImageSkeleton />
             </div>
             <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-[20px] lg:gap-[35px]'>
-                <SmallReviewCardSkeleton />
-                <SmallReviewCardSkeleton />
-                <SmallReviewCardSkeleton />
+                {Array.from({ length: 3 }, (_, index: number) => (
+                    <SmallReviewCardSkeleton
+                        key={`sk-small-review2-${index}`}
+                    />
+                ))}
             </div>
             <div className='w-full mt-[20px] grid lg:grid-cols-2 gap-[20px] md:gap-[30px] lg:gap-x-[35px] lg:gap-y-[70px]'>
                 <NormalTextSkeleton />

@@ -52,7 +52,7 @@ export default function CoEducator({
                                 >
                                     <img
                                         draggable='false'
-                                        src={educator.ds_avatar === ''
+                                        src={educator.ds_avatar === undefined || educator.ds_avatar === ''
                                             ?
                                             '/img/defaultavatar.png'
                                             :

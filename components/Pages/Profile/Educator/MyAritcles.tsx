@@ -6,8 +6,11 @@ import API from '@/services/API'
 import { toast } from 'react-toastify'
 import { useAppDispatch, useAppSelector } from '@/services/Hooks'
 import { logout } from '@/services/Actions/Auth.action'
+import { useTranslation } from 'react-i18next'
+import { SmallBlogSkeletonCard } from '@/components/Skeletons';
 
 export default function MyAritcles() {
+    const { t } = useTranslation();
     const router = useRouter();
     const dispatch = useAppDispatch();
     const { currentUser } = useAppSelector((state) => state.auth);
@@ -91,23 +94,40 @@ export default function MyAritcles() {
 
     return (
         <div className='flex flex-col gap-[16px] text-dark'>
-            <div className='text-[24px] lg:text-[28px] font-medium'>My articles ({liveBlogs.length})</div>
+            <div className='text-[24px] lg:text-[28px] font-medium'>
+                {
+                    domLoaded === 1 ?
+                        `${t('My articles')} (${liveBlogs.length})`
+                        :
+                        `${t('My articles')}`
+                }
+            </div>
             <div className='grid md:grid-cols-2 gap-[20px] md:gap-[35px]'>
-                {liveBlogs.map((CardData: BlogType, index: number) => (
-                    <SmallBlogCard
-                        key={'live' + index}
-                        id={CardData.id_blog}
-                        image={CardData.ds_thumbnail}
-                        mainbody={CardData.mainbody}
-                        author={CardData.nm_user}
-                        ds_category={CardData.ds_category}
-                    />
-                ))}
-                <div className='w-full min-h-[137px] flex justify-center items-center border border-beighe rounded-[10px]'>
-                    <div onClick={() => router.push({ pathname: '/profile/settings', query: { setting: 3 } })}>
-                        <UploadButton text='add article' />
-                    </div>
-                </div>
+                {domLoaded === 1 ?
+                    <>
+                        {liveBlogs.map((CardData: BlogType, index: number) => (
+                            <SmallBlogCard
+                                key={'my-article' + index}
+                                id={CardData.id_blog}
+                                image={CardData.ds_thumbnail}
+                                mainbody={CardData.mainbody}
+                                author={CardData.nm_user}
+                                ds_category={CardData.ds_category}
+                            />
+                        ))}
+                        <div className='w-full min-h-[137px] flex justify-center items-center border border-beighe rounded-[10px]'>
+                            <div onClick={() => router.push({ pathname: '/profile/settings', query: { setting: 3 } })}>
+                                <UploadButton text='add article' />
+                            </div>
+                        </div>
+                    </>
+                    :
+                    Array.from({ length: 2 }, (_, index: number) => (
+                        <SmallBlogSkeletonCard
+                            key={`sk-my-article-${index}`}
+                        />
+                    ))
+                }
             </div>
         </div>
     )

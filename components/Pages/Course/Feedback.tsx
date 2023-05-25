@@ -19,7 +19,11 @@ export default function Feedback() {
               {index !== 0 && <div className={style.DividerWrapper}>
                 <div className={style.DividerInner} />
               </div>}
-              <FeedbackCard rating={CardData.rating} content={CardData.title} name={CardData.name} />
+              <FeedbackCard
+                rating={CardData.rating}
+                content={CardData.title}
+                name={CardData.name}
+              />
             </div>
           ))}
         </div>

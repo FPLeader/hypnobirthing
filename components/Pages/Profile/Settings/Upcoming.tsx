@@ -7,6 +7,7 @@ import API from '@/services/API'
 import { useRouter } from 'next/router'
 import { useAppDispatch, useAppSelector } from '@/services/Hooks'
 import { logout } from '@/services/Actions/Auth.action'
+import { useTranslation } from 'react-i18next'
 import {
   LiveCourseCard,
   ReviewCourseCard,
@@ -18,6 +19,7 @@ export default function Upcoming() {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const { currentUser } = useAppSelector((state) => state.auth);
+  const { t } = useTranslation();
 
   const style = {
     SubTitle: 'text-[20px] lg:text-[24px] font-medium',
@@ -158,17 +160,19 @@ export default function Upcoming() {
               educatorsList={educatorsList}
               loadCourses={loadCourses}
             />
+
             <div className='text-[24px] lg:text-[28px] font-medium'>
               {
                 domLoaded === 1 ?
-                  `Upcoming Sessions (${liveCourses.length})`
+                  `${t('Upcoming Sessions')} (${liveCourses.length})`
                   :
-                  `Upcoming Sessions`
+                  `${t('Upcoming Sessions')}`
               }
             </div>
-            {domLoaded === 1 ?
-              liveCourses.length !== 0 ?
-                <div className={style.GridStyle}>
+
+            <div className={style.GridStyle}>
+              {domLoaded === 1 ?
+                <>
                   {liveCourses.map((CardData: CourseType, index: number) => (
                     <LiveCourseCard
                       key={'live-course-' + index}
@@ -181,84 +185,74 @@ export default function Upcoming() {
                   ))}
                   <div className='w-full min-h-[137px] flex justify-center items-center border border-beighe rounded-[10px]'>
                     <div className='w-max' onClick={openModal}>
-                      <UploadButton text='add session' />
+                      <UploadButton text={t('add session')} />
                     </div>
                   </div>
-                </div>
+                </>
                 :
-                <div className={style.GridStyle}>
-                  <div className='w-full min-h-[137px] flex justify-center items-center border border-beighe rounded-[10px]'>
-                    <div className='w-max' onClick={openModal}>
-                      <UploadButton text='add session' />
-                    </div>
-                  </div>
-                </div>
-              :
-              <div className={style.GridStyle}>
-                <SmallCourseSkeletonCard />
-                <SmallCourseSkeletonCard />
-              </div>
-            }
-            {
-              domLoaded === 1 ?
-                reviewCourses.length !== 0 ?
-                  <div className={style.SubTitle}>
-                    Under Review ({reviewCourses.length})
-                  </div>
+                Array.from({ length: 2 }, (_, index: number) => (
+                  <SmallCourseSkeletonCard
+                    key={`sk-live-course-${index}`}
+                  />
+                ))
+              }
+            </div>
+
+            <div className={style.SubTitle}>
+              {
+                domLoaded === 1 ?
+                  reviewCourses.length !== 0 &&
+                  `${t('Under review')} (${reviewCourses.length})`
                   :
-                  <></>
+                  `${t('Under review')}`
+              }
+            </div>
+
+            <div className={style.GridStyle}>
+              {domLoaded === 1 ?
+                reviewCourses.length !== 0 &&
+                reviewCourses.map((CardData: CourseType, index: number) => (
+                  <ReviewCourseCard
+                    key={'review-course-' + index}
+                    id_course={CardData.id_course}
+                    js_location={CardData.js_location}
+                    dt_lessons={CardData.dt_lessons}
+                    nu_maxcouples={CardData.nu_maxcouples}
+                    nu_price={CardData.nu_price}
+                    nu_inventory={CardData.nu_inventory}
+                    ic_extracourse={CardData.ic_extracourse}
+                    nm_user={CardData.nm_user}
+                    mainbody={CardData.mainbody}
+                    ar_members={CardData.ar_members}
+                    ar_requestmembers={CardData.ar_requestmembers}
+                    educatorsList={educatorsList}
+                    loadCourses={loadCourses}
+                  />
+                ))
                 :
-                <div className={style.SubTitle}>
-                  Under Review
-                </div>
-            }
-            {domLoaded === 1 ?
-              reviewCourses.length !== 0 ?
-                <div className={style.GridStyle}>
-                  {reviewCourses.map((CardData: CourseType, index: number) => (
-                    <ReviewCourseCard
-                      key={'review-course-' + index}
-                      id_course={CardData.id_course}
-                      js_location={CardData.js_location}
-                      dt_lessons={CardData.dt_lessons}
-                      nu_maxcouples={CardData.nu_maxcouples}
-                      nu_price={CardData.nu_price}
-                      nu_inventory={CardData.nu_inventory}
-                      ic_extracourse={CardData.ic_extracourse}
-                      nm_user={CardData.nm_user}
-                      mainbody={CardData.mainbody}
-                      ar_members={CardData.ar_members}
-                      ar_requestmembers={CardData.ar_requestmembers}
-                      educatorsList={educatorsList}
-                      loadCourses={loadCourses}
-                    />
-                  ))}
-                </div>
-                :
-                <></>
-              :
-              <div className={style.GridStyle}>
-                <SmallCourseSkeletonCard />
-                <SmallCourseSkeletonCard />
-              </div>
-            }
-            {
-              domLoaded === 1 ?
-                waitCourses.length !== 0 ?
-                  <div className={style.SubTitle}>
-                    Wait for response ({waitCourses.length})
-                  </div>
+                Array.from({ length: 2 }, (_, index: number) => (
+                  <SmallCourseSkeletonCard
+                    key={`sk-review-course-${index}`}
+                  />
+                ))
+              }
+            </div>
+
+            <div className={style.SubTitle}>
+              {
+                domLoaded === 1 ?
+                  waitCourses.length !== 0 &&
+                  `${t('Wait for response')} (${waitCourses.length})`
                   :
-                  <></>
-                :
-                <div className={style.SubTitle}>
-                  Wait for response
-                </div>
-            }
-            {domLoaded === 1 ?
-              waitCourses.length !== 0 ?
-                <div className={style.GridStyle}>
-                  {waitCourses.map((CardData: CourseType, index: number) => (
+                  `${t('Wait for response')}`
+              }
+            </div>
+
+            <div className={style.GridStyle}>
+              {
+                domLoaded === 1 ?
+                  waitCourses.length !== 0 &&
+                  waitCourses.map((CardData: CourseType, index: number) => (
                     <WaitCourseCard
                       key={'wait-course-' + index}
                       id_course={CardData.id_course}
@@ -275,21 +269,20 @@ export default function Upcoming() {
                       educatorsList={educatorsList}
                       loadCourses={loadCourses}
                     />
-                  ))}
-                </div>
-                :
-                <></>
-              :
-              <div className={style.GridStyle}>
-                <SmallCourseSkeletonCard />
-                <SmallCourseSkeletonCard />
-              </div>
-            }
+                  ))
+                  :
+                  Array.from({ length: 2 }, (_, index: number) => (
+                    <SmallCourseSkeletonCard
+                      key={`sk-wait-course-${index}`}
+                    />
+                  ))
+              }
+            </div>
           </>
           :
           <div>
             <div className='text-[14px] lg:text-[16px]'>
-              You can&apos;t see this page, because your &ldquo;Pashut Laledet Certification&ldquo; is &quot;Birth Professional Supports HypnoBirthing&ldquo;. If you want to see this page, please update &ldquo;Pashut Laledet Certification&ldquo;
+              {t(`You can't see this page, because your \"Pashut Laledet Certification\" is \"Birth Professional Supports HypnoBirthing\". If you want to see this page, please update \"Pashut Laledet Certification\"`)}
             </div>
           </div>
       }

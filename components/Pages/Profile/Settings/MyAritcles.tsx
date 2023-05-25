@@ -8,11 +8,14 @@ import API from '@/services/API'
 import { useRouter } from 'next/router'
 import { useAppDispatch, useAppSelector } from '@/services/Hooks'
 import { logout } from '@/services/Actions/Auth.action'
+import { useTranslation } from 'react-i18next'
 
 export default function MyAritcles() {
     const router = useRouter();
     const dispatch = useAppDispatch();
     const { currentUser } = useAppSelector((state) => state.auth);
+
+    const { t } = useTranslation();
 
     const style = {
         SubTitle: 'text-[20px] lg:text-[24px] font-medium',
@@ -32,7 +35,7 @@ export default function MyAritcles() {
 
     // values
     const [domLoaded, setDomLoaded] = useState<number>(-1);
-    
+
     interface mainbodyType {
         id_lng: number,
         ds_title: string,
@@ -126,130 +129,116 @@ export default function MyAritcles() {
             <div className='text-[24px] lg:text-[28px] font-medium'>
                 {
                     domLoaded === 1 ?
-                        `My articles (${liveBlogs.length + reviewBlogs.length + draftBlogs.length})`
+                        `${t('My articles')} (${liveBlogs.length})`
                         :
-                        `My articles`
+                        `${t('My articles')}`
                 }
             </div>
             {/* {
-                domLoaded === 1 ?
+                domLoaded === 1 &&
                     liveBlogs.length !== 0 ?
                         <div className={style.SubTitle}>
                             Live ({liveBlogs.length})
                         </div>
-                        :
-                        <></>
                     :
                     <div className={style.SubTitle}>
                         Live
                     </div>
             } */}
             {domLoaded === 1 ?
-                liveBlogs.length !== 0 ?
-                    <div className={style.GridStyle}>
-                        {liveBlogs.map((CardData: BlogType, index: number) => (
-                            <SmallBlogCard
-                                key={'live-blog-' + index}
-                                id={CardData.id_blog}
-                                image={CardData.ds_thumbnail}
-                                mainbody={CardData.mainbody}
-                                author={CardData.nm_user}
-                                ds_category={CardData.ds_category}
-                            />
-                        ))}
-                        <div className='w-full min-h-[137px] flex justify-center items-center border border-beighe rounded-[10px]'>
-                            <div className='w-max' onClick={openModal}>
-                                <UploadButton text='add article' />
-                            </div>
+                <div className={style.GridStyle}>
+                    {liveBlogs.map((CardData: BlogType, index: number) => (
+                        <SmallBlogCard
+                            key={'live-blog-' + index}
+                            id={CardData.id_blog}
+                            image={CardData.ds_thumbnail}
+                            mainbody={CardData.mainbody}
+                            author={CardData.nm_user}
+                            ds_category={CardData.ds_category}
+                        />
+                    ))}
+                    <div className='w-full min-h-[137px] flex justify-center items-center border border-beighe rounded-[10px]'>
+                        <div className='w-max' onClick={openModal}>
+                            <UploadButton text={t('add article')} />
                         </div>
                     </div>
-                    :
-                    <div className={style.GridStyle}>
-                        <div className='w-full min-h-[137px] flex justify-center items-center border border-beighe rounded-[10px]'>
-                            <div className='w-max' onClick={openModal}>
-                                <UploadButton text='add article' />
-                            </div>
-                        </div>
-                    </div>
+                </div>
                 :
                 <div className={style.GridStyle}>
-                    <SmallBlogSkeletonCard />
-                    <SmallBlogSkeletonCard />
+                    {Array.from({ length: 2 }, (_, index: number) => (
+                        <SmallBlogSkeletonCard
+                            key={`sk-live-blog-${index}`}
+                        />
+                    ))}
                 </div>
             }
-            {
-                domLoaded === 1 ?
-                    reviewBlogs.length !== 0 ?
-                        <div className={style.SubTitle}>
-                            Under Review ({reviewBlogs.length})
-                        </div>
+            <div className={style.SubTitle}>
+                {
+                    domLoaded === 1 ?
+                        reviewBlogs.length !== 0 &&
+                        `${t('Under review')} (${reviewBlogs.length})`
                         :
-                        <></>
-                    :
-                    <div className={style.SubTitle}>
-                        Under Review
-                    </div>
-            }
+                        `${t('Under review')}`
+                }
+            </div>
             {domLoaded === 1 ?
-                reviewBlogs.length !== 0 ?
-                    <div className={style.GridStyle}>
-                        {reviewBlogs.map((CardData: BlogType, index: number) => (
-                            <SmallBlogEditCard
-                                key={'review-blog-' + index}
-                                cd_educator={currentUser.cd_educator}
-                                id={CardData.id_blog}
-                                image={CardData.ds_thumbnail}
-                                mainbody={CardData.mainbody}
-                                author={CardData.nm_user}
-                                loadBlogs={loadBlogs}
-                                previewIcon={true}
-                                ds_category={CardData.ds_category}
-                            />
-                        ))}
-                    </div>
-                    :
-                    <></>
+                reviewBlogs.length !== 0 &&
+                <div className={style.GridStyle}>
+                    {reviewBlogs.map((CardData: BlogType, index: number) => (
+                        <SmallBlogEditCard
+                            key={'review-blog-' + index}
+                            cd_educator={currentUser.cd_educator}
+                            id={CardData.id_blog}
+                            image={CardData.ds_thumbnail}
+                            mainbody={CardData.mainbody}
+                            author={CardData.nm_user}
+                            loadBlogs={loadBlogs}
+                            previewIcon={true}
+                            ds_category={CardData.ds_category}
+                        />
+                    ))}
+                </div>
                 :
                 <div className={style.GridStyle}>
-                    <SmallBlogSkeletonCard />
-                    <SmallBlogSkeletonCard />
+                    {Array.from({ length: 2 }, (_, index: number) => (
+                        <SmallBlogSkeletonCard
+                            key={`sk-review-blog-${index}`}
+                        />
+                    ))}
                 </div>
             }
-            {
-                domLoaded === 1 ?
-                    draftBlogs.length !== 0 ?
-                        <div className={style.SubTitle}>
-                            Draft ({draftBlogs.length})
-                        </div>
+            <div className={style.SubTitle}>
+                {
+                    domLoaded === 1 ?
+                        draftBlogs.length !== 0 &&
+                        `${t('Draft')} (${draftBlogs.length})`
                         :
-                        <></>
-                    :
-                    <div className={style.SubTitle}>
-                        Draft
-                    </div>
-            }
+                        `${t('Draft')}`
+                }
+            </div>
             {domLoaded === 1 ?
-                draftBlogs.length !== 0 ?
-                    <div className={style.GridStyle}>
-                        {draftBlogs.map((CardData: BlogType, index: number) => (
-                            <SmallBlogEditCard
-                                key={'draft-blog-' + index}
-                                cd_educator={currentUser.cd_educator}
-                                id={CardData.id_blog}
-                                image={CardData.ds_thumbnail}
-                                mainbody={CardData.mainbody}
-                                author={CardData.nm_user}
-                                loadBlogs={loadBlogs}
-                                ds_category={CardData.ds_category}
-                            />
-                        ))}
-                    </div>
-                    :
-                    <></>
+                draftBlogs.length !== 0 &&
+                <div className={style.GridStyle}>
+                    {draftBlogs.map((CardData: BlogType, index: number) => (
+                        <SmallBlogEditCard
+                            key={'draft-blog-' + index}
+                            cd_educator={currentUser.cd_educator}
+                            id={CardData.id_blog}
+                            image={CardData.ds_thumbnail}
+                            mainbody={CardData.mainbody}
+                            author={CardData.nm_user}
+                            loadBlogs={loadBlogs}
+                            ds_category={CardData.ds_category}
+                        />
+                    ))}
+                </div>
                 :
                 <div className={style.GridStyle}>
-                    <SmallBlogSkeletonCard />
-                    <SmallBlogSkeletonCard />
+                    {Array.from({ length: 2 }, (_, index: number) => (
+                        <SmallBlogSkeletonCard
+                            key={`sk-draft-blog-${index}`}
+                        />
+                    ))}
                 </div>
             }
         </div>

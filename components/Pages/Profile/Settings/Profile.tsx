@@ -301,7 +301,7 @@ export default function Profile() {
                 return true;
             if (selectedLangauge.id === 2 && (descriptionEnChanged || personaltitleEnChanged || descriptionHeChanged || personaltitleHeChanged))
                 return true;
-            return process.env.FILE_IMAGE_BASE + currentUser.ds_avatar !== image ||
+            if (process.env.FILE_IMAGE_BASE + currentUser.ds_avatar !== image ||
                 (currentUser.ds_video === '' ? videoUrl !== '' : getVideoIdFromUrl(videoUrl) === null ? process.env.FILE_VIDEO_BASE + currentUser?.ds_video !== videoUrl : currentUser?.ds_video !== videoUrl) ||
                 privateCourse !== currentUser.ic_privatecourse ||
                 (currentUser?.ln_personalsite === undefined ? '' !== personalsite.value : currentUser?.ln_personalsite !== personalsite.value) ||
@@ -309,7 +309,8 @@ export default function Profile() {
                 (currentUser?.ln_facebook === undefined ? '' !== facebook.value : currentUser?.ln_facebook !== facebook.value) ||
                 (currentUser?.ln_twitter === undefined ? '' !== twitter.value : currentUser?.ln_twitter !== twitter.value) ||
                 isCategorysChanged() ||
-                isSkillsChanged();
+                isSkillsChanged())
+                return true;
         }
         return false;
     }

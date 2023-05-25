@@ -25,21 +25,27 @@ export default function Skeleton() {
                 <div className='py-[20px] md:py-[50px] lg:py-[70px] grid gap-[20px] md:gap-[35px]'>
                     <div className='w-full max-w-[200px] h-2 bg-gray-200 rounded-full'></div>
                     <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-[20px] lg:gap-[35px]'>
-                        <SmallReviewCardSkeleton />
-                        <SmallReviewCardSkeleton />
-                        <SmallReviewCardSkeleton />
+                        {Array.from({ length: 3 }, (_, index: number) => (
+                            <SmallReviewCardSkeleton
+                                key={`sk-small-review1-${index}`}
+                            />
+                        ))}
                     </div>
                     <div className='w-full max-w-[200px] h-2 bg-gray-200 rounded-full'></div>
                     <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-[20px] lg:gap-[35px]'>
-                        <SmallReviewCardSkeleton />
-                        <SmallReviewCardSkeleton />
-                        <SmallReviewCardSkeleton />
+                        {Array.from({ length: 3 }, (_, index: number) => (
+                            <SmallReviewCardSkeleton
+                                key={`sk-small-review2-${index}`}
+                            />
+                        ))}
                     </div>
                     <div className='w-full max-w-[200px] h-2 bg-gray-200 rounded-full'></div>
                     <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-[20px] lg:gap-[35px]'>
-                        <SmallReviewCardSkeleton />
-                        <SmallReviewCardSkeleton />
-                        <SmallReviewCardSkeleton />
+                        {Array.from({ length: 3 }, (_, index: number) => (
+                            <SmallReviewCardSkeleton
+                                key={`sk-small-review3-${index}`}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>

@@ -1,8 +1,6 @@
 import {
-    ImageSkeleton,
     SmallReviewCardSkeleton,
     TwoLineCardSkeleton,
-
 } from '@/components/Skeletons'
 
 export default function Skeleton() {
@@ -14,16 +12,20 @@ export default function Skeleton() {
             </div>
             <TwoLineCardSkeleton />
             <div className='w-full grid md:grid-cols-2 gap-[20px] md:gap-[30px]'>
-                <SmallReviewCardSkeleton />
-                <SmallReviewCardSkeleton />
-                <SmallReviewCardSkeleton />
-                <SmallReviewCardSkeleton />
+                {Array.from({ length: 4 }, (_, index: number) => (
+                    <SmallReviewCardSkeleton
+                        key={`sk-small-review-${index}`}
+                    />
+                ))}
             </div>
             <div className='space-y-4 rounded animate-pulse'>
-                <div className='w-full max-w-[450px] h-2 bg-gray-200 rounded-full'></div>
-                <div className='w-full max-w-[350px] h-2 bg-gray-200 rounded-full'></div>
-                <div className='w-full max-w-[250px] h-2 bg-gray-200 rounded-full'></div>
-                <div className='w-full max-w-[350px] h-2 bg-gray-200 rounded-full'></div>
+                {Array.from({ length: 4 }, (_, index: number) => (
+                    <div
+                        key={`sk-one-line-${index}`}
+                        className='w-full max-w-[450px] h-2 bg-gray-200 rounded-full'
+                    >
+                    </div>
+                ))}
             </div>
         </div>
     )
